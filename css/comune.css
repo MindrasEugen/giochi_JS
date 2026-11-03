@@ -75,6 +75,7 @@ h1, h2, h3 {
   border-radius: var(--raggio-s);
   padding: var(--spazio-2) var(--spazio-3);
   min-height: var(--area-minima);
+  font-family: inherit;
   font-size: var(--testo-m);
   font-weight: var(--peso-semibold);
   cursor: pointer;
@@ -113,7 +114,9 @@ input, select {
   font-size: var(--testo-s);
   color: var(--colore-primario);
   text-decoration: none;
-  display: inline-block;
+  /* blocco largo quanto il testo: resta a sinistra anche nei contenitori centrati */
+  display: block;
+  width: fit-content;
   margin-bottom: var(--spazio-3);
 }
 .link-home:hover { text-decoration: underline; }

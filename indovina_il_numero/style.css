@@ -1,49 +1,80 @@
-* {
-    box-sizing: border-box;
-}
+/* Indovina il numero — stili del gioco (le basi sono in ../css/comune.css) */
 
+/* Layout */
 .contenitore {
-    margin: auto;
-    padding: 50px;
-    width: 80%;
-    max-width: 800px;
-    background-color: azure;
+    background-color: var(--colore-superficie);
+    border-radius: var(--raggio-m);
+    box-shadow: var(--ombra-leggera);
+    margin-block: var(--spazio-4);
     text-align: center;
 }
 
-.comunicazioni {
-    margin: auto;
-    margin-top: 30px;
-    min-height: 100px;
-    width: 80%;
-    background-color: antiquewhite;
+.istruzioni {
+    color: var(--colore-testo-tenue);
 }
 
-.comunicazioni>p {
-    padding: 10px;
+.istruzioni h2 {
+    font-size: var(--testo-l);
 }
 
-button {
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
+/* Form: etichetta sopra il campo su mobile */
+#form {
+    display: grid;
+    gap: var(--spazio-2);
+    max-width: 420px;
+    margin: var(--spazio-4) auto 0;
+    text-align: left;
 }
 
-button:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
+#form label {
+    font-weight: var(--peso-semibold);
 }
 
 #input {
-    padding: 10px;
-    border-radius: 10px;
-    font-weight: bold;
-    font-size: 14px;
+    font-weight: var(--peso-bold);
 }
 
-option, #difficolta{
-    padding: 10px;
-    border-radius: 10px;
-    font-weight: bold;
-    font-size: 14px;
+.azioni {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spazio-2);
+    margin-top: var(--spazio-2);
+}
+
+.azioni .pulsante {
+    flex: 1 1 140px;
+}
+
+/* Messaggi */
+.comunicazioni {
+    max-width: 420px;
+    min-height: 100px;
+    margin: var(--spazio-4) auto 0;
+    padding: var(--spazio-2) var(--spazio-3);
+    background-color: var(--colore-sfondo);
+    border: 1px solid var(--colore-bordo);
+    border-radius: var(--raggio-m);
+}
+
+#messaggi {
+    min-height: 1.5em;
+    font-size: var(--testo-l);
+    font-weight: var(--peso-bold);
+}
+
+#contatore {
+    color: var(--colore-testo-tenue);
+}
+
+/* Responsive: etichetta e campo in riga */
+@media (min-width: 600px) {
+    #form {
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        column-gap: var(--spazio-3);
+    }
+
+    .azioni {
+        grid-column: 1 / -1;
+    }
 }

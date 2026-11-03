@@ -2,7 +2,7 @@
 
 - **Stato:** accettata
 - **Data:** 2026-11-03
-- **Commit:** — (Tappe 3 e 4)
+- **Commit:** `a775431` (Tappa 3), Tappa 4
 
 ## Contesto
 

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/comune.css">
     <link rel="stylesheet" href="./style.css">
     <title>Carta, forbici e sasso</title>
 </head>
@@ -22,14 +23,14 @@
             </ol>
         </div>
         <div class="sceltaGiocatore">
-            <button id="carta" type="button">Carta</button>
-            <button id="forbici" type="button">Forbici</button>
-            <button id="sasso" type="button">Sasso</button>
+            <button id="carta" type="button" class="scelta">Carta</button>
+            <button id="forbici" type="button" class="scelta">Forbici</button>
+            <button id="sasso" type="button" class="scelta">Sasso</button>
         </div>
         <p class="sceltaPc"></p>
-        <p class="risultato">Buona fortuna!</p>
+        <p class="risultato" aria-live="polite">Buona fortuna!</p>
         <p class="punteggio"></p>
-        <button id="nuovaPartita" type="button">Nuova partita</button>
+        <button id="nuovaPartita" type="button" class="pulsante pulsante--secondario">Nuova partita</button>
     </div>
     <script src="./main.js"></script>
 </body>

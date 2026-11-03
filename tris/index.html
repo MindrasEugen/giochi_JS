@@ -4,12 +4,13 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/comune.css">
         <link rel="stylesheet" href="./style.css">
         <title>Tris</title>
     </head>
 
     <body>
-        <div id="contenitore_body">
+        <div id="contenitore_body" class="contenitore">
             <a class="link-home" href="../index.html">← Tutti i giochi</a>
             <h1>Tris</h1>
             <label for="modalita">Modalità</label>
@@ -18,8 +19,8 @@
                 <option value="controPC">Un giocatore</option>
             </select>
             <p id="punteggio">
-                <span id="punteggio_giocatore_X">Punteggio X: 0</span>
-                <span id="punteggio_giocatore_O">Punteggio O: 0</span>
+                <span id="punteggio_giocatore_X" class="badge badge--x">Punteggio X: 0</span>
+                <span id="punteggio_giocatore_O" class="badge badge--o">Punteggio O: 0</span>
             </p>
             <div id="griglia">
                 <button class="cella" type="button" data-index="0"></button>
@@ -32,9 +33,9 @@
                 <button class="cella" type="button" data-index="7"></button>
                 <button class="cella" type="button" data-index="8"></button>
             </div>
-            <p id="messaggi">Comincia X</p>
-            <button id="nuovaPartita" type="button">Nuova partita</button>
-            <button id="azzera" type="button">Azzera il Punteggio</button>
+            <p id="messaggi" aria-live="polite">Comincia X</p>
+            <button id="nuovaPartita" type="button" class="pulsante">Nuova partita</button>
+            <button id="azzera" type="button" class="pulsante pulsante--secondario">Azzera il Punteggio</button>
             <div id="regole">
                 <p>Regole del gioco:</p>
                 <ol>

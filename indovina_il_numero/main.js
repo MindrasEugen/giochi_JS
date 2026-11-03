@@ -22,16 +22,20 @@ form.addEventListener('submit', (event) => {
     const tentativiRimanenti = limiteTentativi - numeroTentativi;
     contatore.textContent = `Tentativi fatti: ${numeroTentativi} - Tentativi rimanenti: ${tentativiRimanenti} `;
     if (tentativo === numeroSegreto) {
+        messaggi.className = 'messaggio--successo';
         messaggi.textContent = `Hai indovinato in ${numeroTentativi} tentativi!`;
         button.disabled = true;
         input.disabled = true;
     }else if (numeroTentativi >= limiteTentativi){
         button.disabled = true;
         input.disabled = true;
+        messaggi.className = 'messaggio--errore';
         messaggi.textContent = `Hai finito i tentativi... Il numero segreto era: ${numeroSegreto}`
     } else if (tentativo > numeroSegreto) {
+        messaggi.className = 'messaggio--avviso';
         messaggi.textContent = 'Troppo alto';
     } else {
+        messaggi.className = 'messaggio--avviso';
         messaggi.textContent = 'Troppo basso';
     };
     
@@ -48,6 +52,7 @@ function nuovaPartita(){
     button.disabled = false;
     numeroTentativi = 0;
     contatore.textContent = `Tentativi fatti: ${numeroTentativi} - Tentativi rimanenti: ${limiteTentativi} `;
+    messaggi.className = '';
     messaggi.textContent = '';
     
 };

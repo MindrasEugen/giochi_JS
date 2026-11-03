@@ -1,15 +1,123 @@
-body{
-    background-color:antiquewhite;
+/* Tris — stili del gioco (le basi sono in ../css/comune.css) */
+
+/* Layout */
+#contenitore_body {
+    background-color: var(--colore-superficie);
+    border-radius: var(--raggio-m);
+    box-shadow: var(--ombra-leggera);
+    margin-block: var(--spazio-4);
+    text-align: center;
 }
 
-#griglia{
+#modalita {
+    margin-left: var(--spazio-2);
+}
+
+/* Punteggio */
+#punteggio {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spazio-2);
+}
+
+.badge {
+    padding: var(--spazio-1) var(--spazio-3);
+    font-weight: var(--peso-bold);
+    border-radius: var(--raggio-l);
+    background-color: var(--colore-sfondo);
+    border: 2px solid currentColor;
+}
+
+.badge--x {
+    color: var(--colore-info);
+}
+
+.badge--o {
+    color: var(--colore-errore);
+}
+
+/* Griglia */
+#griglia {
     display: grid;
     grid-template-columns: repeat(3, 80px);
-    gap: 8px;
+    justify-content: center;
+    gap: var(--spazio-2);
+    margin: var(--spazio-4) 0;
 }
 
-.cella{
+.cella {
+    width: 80px;
     height: 80px;
-    font-size: 40px;
+    font: inherit;
+    font-size: 2.5rem;
+    font-weight: var(--peso-bold);
+    line-height: 1;
+    background-color: var(--colore-superficie);
+    border: 2px solid var(--colore-bordo);
+    border-radius: var(--raggio-m);
     cursor: pointer;
+    transition: background-color var(--transizione);
+}
+
+.cella:not([data-simbolo]):hover {
+    background-color: var(--colore-sfondo);
+    border-color: var(--colore-accento);
+}
+
+.cella[data-simbolo] {
+    cursor: default;
+}
+
+.cella[data-simbolo="X"] {
+    color: var(--colore-info);
+}
+
+.cella[data-simbolo="O"] {
+    color: var(--colore-errore);
+}
+
+/* Messaggi e pulsanti */
+#messaggi {
+    min-height: 1.5em;
+    font-size: var(--testo-l);
+    font-weight: var(--peso-semibold);
+}
+
+#nuovaPartita,
+#azzera {
+    margin: var(--spazio-1);
+}
+
+/* Regole */
+#regole {
+    margin-top: var(--spazio-5);
+    padding: var(--spazio-3) var(--spazio-4);
+    background-color: var(--colore-sfondo);
+    border: 1px solid var(--colore-bordo);
+    border-radius: var(--raggio-m);
+    color: var(--colore-testo-tenue);
+    text-align: left;
+}
+
+#regole p {
+    margin-top: 0;
+    font-weight: var(--peso-semibold);
+}
+
+#regole li + li {
+    margin-top: var(--spazio-1);
+}
+
+/* Responsive */
+@media (min-width: 600px) {
+    #griglia {
+        grid-template-columns: repeat(3, 100px);
+    }
+
+    .cella {
+        width: 100px;
+        height: 100px;
+        font-size: 3rem;
+    }
 }

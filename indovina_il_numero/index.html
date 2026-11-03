@@ -4,6 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/comune.css">
         <link rel="stylesheet" href="./style.css">
         <title>Indovina il numero</title>
     </head>
@@ -12,7 +13,7 @@
         <div class="contenitore">
             <a class="link-home" href="../index.html">← Tutti i giochi</a>
             <h1>Indovina il numero</h1>
-            <div>
+            <div class="istruzioni">
                 <h2>Istruzioni</h2>
                 <p>il computer pensa a un numero intero da 1 a 100. L'utente lo scrive in un campo di testo e preme un
                     bottone. La pagina risponde con "Troppo alto", "Troppo basso" oppure "Indovinato in X tentativi!"
@@ -28,10 +29,12 @@
 
                 <label for="input">Il tuo numero:</label>
                 <input id="input" name="numero" type="number" min="1" max="100" required autofocus>
-                <button id="button" type="submit">Prova</button>
-                <button id="reset" type="button">Nuova partita</button>
+                <div class="azioni">
+                    <button id="button" type="submit" class="pulsante">Prova</button>
+                    <button id="reset" type="button" class="pulsante pulsante--secondario">Nuova partita</button>
+                </div>
             </form>
-            <div class="comunicazioni">
+            <div class="comunicazioni" aria-live="polite">
                 <p id="messaggi"></p>
                 <p id="contatore"></p>
             </div>

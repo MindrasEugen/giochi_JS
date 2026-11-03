@@ -26,6 +26,7 @@ for (let i = 0; i < celle.length; i++) {
     celle[i].addEventListener('click', () => {
         if (celle[i].textContent === '' && partitaFinita === false) {
             celle[i].textContent = giocatoreCorrente;
+            celle[i].dataset.simbolo = giocatoreCorrente;
             giocatoreCorrente === 'X' ? giocatoreCorrente = 'O' : giocatoreCorrente = 'X';
             messaggi.textContent = `È il turno di: ${giocatoreCorrente}`;
             controllaVincitore()

@@ -60,12 +60,13 @@ function provaLettera(letteraScelta) {
         };
 
     if (lettereUsate.includes(letteraScelta)) {
-        messaggi.style.color = '#9A4D00';
+        messaggi.className = 'messaggi messaggio--avviso';
         messaggi.textContent = `Lettera già usata`;
         return
     } else {
         lettereUsate.push(letteraScelta);
         lettereInserite.textContent = lettereUsate.join(', ');
+        messaggi.className = 'messaggi';
         messaggi.textContent = '';
     }
 
@@ -85,7 +86,7 @@ function provaLettera(letteraScelta) {
 
 
     if (!lettereScoperte.includes('_')) {
-        messaggi.style.color = 'green';
+        messaggi.className = 'messaggi messaggio--successo';
         messaggi.textContent = 'Hai indovinato la parola!';
 
         for (let i = 0; i < tasti.length; i++) {
@@ -95,7 +96,7 @@ function provaLettera(letteraScelta) {
         laTuaLettera.disabled = true;
         prova.disabled = true;
     } else if (numeroErrori >= 6) {
-        messaggi.style.color = 'red';
+        messaggi.className = 'messaggi messaggio--errore';
         messaggi.innerHTML = `Hai perso! La parola segreta era: 
         <strong>${parolaSegreta}</strong>`
 
@@ -131,7 +132,7 @@ nuovaPartita.addEventListener('click', () => {
         lettereScoperte.push('_');
     };
     parolaVisualizzata.textContent = lettereScoperte.join(' ');
-    messaggi.style.color = '';
+    messaggi.className = 'messaggi';
     messaggi.textContent = '';
     lettereInserite.textContent = '';
     errore.textContent = '';

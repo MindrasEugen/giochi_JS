@@ -33,6 +33,7 @@ function iniziaPartita() {
     giocatoreCorrente = 'X';
     for (let i = 0; i < celle.length; i++) {
         celle[i].textContent = '';
+        delete celle[i].dataset.simbolo;
     }
     messaggi.textContent = 'Comincia X';
     partitaFinita = false;
@@ -62,6 +63,7 @@ function mossaPC() {
         indiceCella = celleVuote[indiceScelto]
     };
     celle[indiceCella].textContent = 'O';
+    celle[indiceCella].dataset.simbolo = 'O';
     controllaVincitore();
     giocatoreCorrente = 'X';
     if (partitaFinita === false) {

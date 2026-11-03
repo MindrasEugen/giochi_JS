@@ -22,17 +22,14 @@ function giocaTurno(sceltaGiocatore) {
 
     if (sceltaGiocatore === scelte[indiceCasuale]) {
         risultato.textContent = 'Pareggio!';
-        risultato.style.color = '';
-        risultato.style.fontWeight = '';
+        risultato.className = 'risultato';
     } else if ((sceltaGiocatore === 'carta' && scelte[indiceCasuale] === 'sasso') || (sceltaGiocatore === 'forbici' && scelte[indiceCasuale] === 'carta') || (sceltaGiocatore === 'sasso' && scelte[indiceCasuale] === 'forbici')) {
         risultato.textContent = 'Hai vinto il turno!';
-        risultato.style.color = 'green';
-        risultato.style.fontWeight = '';
+        risultato.className = 'risultato messaggio--successo';
         ++puntiGiocatore
     } else {
         risultato.textContent = 'Hai perso il turno!';
-        risultato.style.color = 'red';
-        risultato.style.fontWeight = '';
+        risultato.className = 'risultato messaggio--errore';
         ++puntiComputer
     };
     punteggio.textContent = `I tuoi punti: ${puntiGiocatore}  I punti del PC: ${puntiComputer}`;
@@ -53,15 +50,13 @@ sasso.addEventListener('click', () => {
 function finePartita() {
     if (puntiGiocatore === 5) {
         risultato.textContent = 'Hai vinto la partita!!';
-        risultato.style.color = 'green';
-        risultato.style.fontWeight = 'bold';
+        risultato.className = 'risultato messaggio--successo risultato--finale';
         carta.disabled = true;
         forbici.disabled = true;
         sasso.disabled = true;
     } else if (puntiComputer === 5) {
         risultato.textContent = 'Hai perso la partita!'
-        risultato.style.color = 'red';
-        risultato.style.fontWeight = 'bold';
+        risultato.className = 'risultato messaggio--errore risultato--finale';
         carta.disabled = true;
         forbici.disabled = true;
         sasso.disabled = true;
@@ -74,9 +69,8 @@ nuovaPartita.addEventListener('click', () => {
     sasso.disabled = false;
     puntiComputer = 0;
     puntiGiocatore = 0;
-    risultato.style.color = '';
+    risultato.className = 'risultato';
     risultato.textContent = 'Buona fortuna!';
-    risultato.style.fontWeight = '';
     sceltaPc.textContent = '';
     punteggio.textContent = `I tuoi punti: ${puntiGiocatore}  I punti del PC: ${puntiComputer}`;
 });

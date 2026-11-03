@@ -4,6 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/comune.css">
         <link rel="stylesheet" href="./style.css">
         <title>L'impiccato!</title>
     </head>
@@ -17,17 +18,17 @@
                 <form id="lettera">
                     <label for="laTuaLettera">La tua lettera</label>
                     <input type="text" id="laTuaLettera" required autofocus maxlength="1" pattern="[a-zA-Z]">
-                    <button type="submit" id="prova">Prova</button>
+                    <button type="submit" id="prova" class="pulsante">Prova</button>
                 </form>
             </div>
             <div class="contenitore_tastiera_disegno">
                 <div id="tastiera"></div>
                 <img id="disegno" src="./pic/stato-0.png" alt="Disegno dell'impiccato">
             </div>
-            <p class="messaggi"></p>
+            <p class="messaggi" aria-live="polite"></p>
             <p class="lettereUsate"></p>
             <p class="errore"></p>
-            <button type="button" id="nuovaPartita">Nuova Partita</button>
+            <button type="button" id="nuovaPartita" class="pulsante pulsante--secondario">Nuova Partita</button>
             <div class="regole">
                 <ol>
                     <li>Il computer sceglie una parola segreta e mostra un trattino per ogni lettera.</li>

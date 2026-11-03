@@ -1,91 +1,113 @@
-* {
-    box-sizing: border-box;
+/* Sette e mezzo — stili del gioco, tema "tavolo verde" (le basi sono in ../css/comune.css) */
+
+/* Tavolo */
+.contenitore_body {
+    max-width: var(--contenitore-max);
+    margin: var(--spazio-4) auto;
+    padding: var(--spazio-3);
+    background-color: var(--colore-primario);
+    color: var(--colore-sfondo);
+    border-radius: var(--raggio-m);
+    box-shadow: var(--ombra-media);
 }
 
-body{
-    background-color:#FFF8E7;
+/* Sul fondo scuro titoli e link diventano chiari */
+.contenitore_body h1,
+.contenitore_body h2,
+.contenitore_body h3 {
+    color: var(--colore-sfondo);
 }
 
-.contenitore_body{
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #12372A;
-    color:#FFF8E7 ;
+.contenitore_body h1 {
+    text-align: center;
 }
 
-.campo_di_gioco{
+.contenitore_body .link-home {
+    color: var(--colore-accento);
+}
+
+/* Giocatore e banco */
+.campo_di_gioco {
     display: flex;
-    gap: 24px;
     flex-wrap: wrap;
     justify-content: center;
+    gap: var(--spazio-4);
 }
 
-#carte_giocatore, #carte_banco{
+.contenitore_giocatore,
+.contenitore_banco {
+    flex: 1 1 280px;
+    padding: var(--spazio-3);
+    background-color: var(--colore-primario-chiaro);
+    border-radius: var(--raggio-m);
+    text-align: center;
+}
+
+#carte_giocatore,
+#carte_banco {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    min-height: 160px;
     justify-content: center;
-    
+    gap: var(--spazio-2);
+    min-height: 130px;
 }
 
-.contenitore_giocatore, .contenitore_banco{
-    padding: 16px;
-    border-radius: 12px;
-    background-color: #205444;
-    flex: 1 1 300px;
-    /* min-width:40%; */
+#carte_giocatore img,
+#carte_banco img {
+    max-width: 80px;
+    border-radius: var(--raggio-s);
+    box-shadow: var(--ombra-media);
+}
+
+#punti_giocatore,
+#punti_banco {
+    font-size: var(--testo-l);
+    font-weight: var(--peso-semibold);
+}
+
+/* Pulsanti e messaggi */
+.pulsanti {
+    margin-top: var(--spazio-4);
     text-align: center;
 }
 
-#carte_giocatore img, #carte_banco img{
-    max-width: 100px;
+.pulsanti .pulsante {
+    margin: var(--spazio-1);
 }
 
-.pulsanti button{
-    margin-top: 30px;
-    background-color:#E9C46A ;
-    color: #12372A;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
+#messaggi {
+    min-height: 2em;
+    margin-top: var(--spazio-3);
+    font-size: var(--testo-l);
+    font-weight: var(--peso-bold);
+    color: var(--colore-accento);
 }
 
-.pulsanti button:disabled{
-    opacity: 0.5;
-    cursor: not-allowed;
+/* Regole */
+#regole {
+    margin-top: var(--spazio-5);
+    padding: var(--spazio-3) var(--spazio-4);
+    background-color: var(--colore-primario-chiaro);
+    border-radius: var(--raggio-m);
 }
 
-.pulsanti{
-    text-align: center;
+#regole li + li {
+    margin-top: var(--spazio-2);
 }
 
-button{
-    margin: 4px;
-}
+/* Responsive */
+@media (min-width: 600px) {
+    .contenitore_body {
+        padding: var(--spazio-4);
+    }
 
-#messaggi{
-    font-size: 20px;
-    font-weight: bold;
-    min-height: 48px;
-    margin-top: 20px;
-}
+    #carte_giocatore,
+    #carte_banco {
+        min-height: 160px;
+    }
 
-h1{
-    text-align: center;
-}
-
-#regole{
-    margin-top: 32px;
-    padding: 20px;
-    background-color:#205444 ;
-    border-radius: 12px;
-    line-height: 1.6;
-}
-
-#regole li{
-    margin-bottom: 8px;
+    #carte_giocatore img,
+    #carte_banco img {
+        max-width: 100px;
+    }
 }

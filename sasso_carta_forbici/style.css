@@ -1,3 +1,98 @@
-body{
-    background-color:antiquewhite;
+/* Sasso carta forbici — stili del gioco (le basi sono in ../css/comune.css) */
+
+/* Layout */
+.contenitore {
+    background-color: var(--colore-superficie);
+    border-radius: var(--raggio-m);
+    box-shadow: var(--ombra-leggera);
+    margin-block: var(--spazio-4);
+    text-align: center;
+}
+
+/* Regole */
+.regole {
+    padding: var(--spazio-3) var(--spazio-4);
+    background-color: var(--colore-sfondo);
+    border: 1px solid var(--colore-bordo);
+    border-radius: var(--raggio-m);
+    color: var(--colore-testo-tenue);
+    font-weight: var(--peso-semibold);
+    text-align: left;
+}
+
+.regole ol {
+    font-weight: normal;
+}
+
+.regole li + li {
+    margin-top: var(--spazio-1);
+}
+
+/* Pulsanti di scelta */
+.sceltaGiocatore {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spazio-3);
+    margin-top: var(--spazio-5);
+}
+
+.scelta {
+    min-width: 96px;
+    min-height: 64px;
+    padding: var(--spazio-2) var(--spazio-4);
+    font: inherit;
+    font-size: var(--testo-l);
+    font-weight: var(--peso-bold);
+    color: var(--colore-primario);
+    background-color: var(--colore-sfondo);
+    border: 2px solid var(--colore-primario);
+    border-radius: var(--raggio-m);
+    cursor: pointer;
+    transition: background-color var(--transizione), transform var(--transizione);
+}
+
+.scelta:hover:not(:disabled) {
+    background-color: var(--colore-accento);
+    transform: translateY(-2px);
+}
+
+.scelta:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Risultato e punteggio */
+.sceltaPc {
+    min-height: 1.5em;
+    margin-top: var(--spazio-4);
+    color: var(--colore-testo-tenue);
+}
+
+.risultato {
+    min-height: 1.5em;
+    font-size: var(--testo-l);
+    font-weight: var(--peso-semibold);
+}
+
+.risultato--finale {
+    font-size: var(--testo-xl);
+    font-weight: var(--peso-bold);
+}
+
+.punteggio {
+    display: inline-block;
+    padding: var(--spazio-2) var(--spazio-4);
+    font-size: var(--testo-l);
+    font-weight: var(--peso-bold);
+    color: var(--colore-superficie);
+    background-color: var(--colore-primario);
+    border-radius: var(--raggio-l);
+    white-space: pre-wrap;
+}
+
+#nuovaPartita {
+    display: flex;
+    width: fit-content;
+    margin: var(--spazio-4) auto 0;
 }
