@@ -1,4 +1,3 @@
-console.log('caricato');
 
 
 const carta = document.querySelector('#carta');

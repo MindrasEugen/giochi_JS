@@ -4,7 +4,7 @@ function controllaVincitore() {
         const secondo = celle[combinazioniVincenti[i][1]].textContent;
         const terzo = celle[combinazioniVincenti[i][2]].textContent;
         if (primo === secondo && primo === terzo && primo !== '') {
-            messaggi.textContent = `Il vincitore e ${primo}`;
+            messaggi.textContent = `Il vincitore è ${primo}`;
             partitaFinita = true;
             if (primo === 'X') {
                 vittorieX++;
@@ -65,7 +65,7 @@ function mossaPC() {
     controllaVincitore();
     giocatoreCorrente = 'X';
     if (partitaFinita === false) {
-        messaggi.textContent = `E il turno di: ${giocatoreCorrente}`
+        messaggi.textContent = `È il turno di: ${giocatoreCorrente}`
     }
 }
 

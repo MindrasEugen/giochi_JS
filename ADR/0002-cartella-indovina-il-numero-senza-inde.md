@@ -1,8 +1,8 @@
 # ADR 0002 — Indovina il numero: file spostati fuori da `inde/`
 
-- **Stato:** proposta
+- **Stato:** accettata
 - **Data:** 2026-11-03
-- **Commit:** — (Tappa 2)
+- **Commit:** vedi `git log` (Tappa 2)
 
 ## Contesto
 

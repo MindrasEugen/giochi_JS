@@ -9,7 +9,6 @@ const reset = document.querySelector('#reset');
 const difficolta = document.querySelector('#difficolta');
 
 let numeroSegreto = Math.floor((Math.random() * 100) + 1);
-console.log(numeroSegreto);
 
 let numeroTentativi = 0;
 let limiteTentativi = 10;
@@ -25,8 +24,10 @@ form.addEventListener('submit', (event) => {
     if (tentativo === numeroSegreto) {
         messaggi.textContent = `Hai indovinato in ${numeroTentativi} tentativi!`;
         button.disabled = true;
+        input.disabled = true;
     }else if (numeroTentativi >= limiteTentativi){
         button.disabled = true;
+        input.disabled = true;
         messaggi.textContent = `Hai finito i tentativi... Il numero segreto era: ${numeroSegreto}`
     } else if (tentativo > numeroSegreto) {
         messaggi.textContent = 'Troppo alto';
@@ -41,7 +42,7 @@ reset.addEventListener('click', nuovaPartita)
 function nuovaPartita(){
     limiteTentativi = Number(difficolta.value);
     numeroSegreto = Math.floor((Math.random() * 100) + 1);
-    console.log(numeroSegreto);
+    input.disabled = false;
     input.focus();
     input.value = '';
     button.disabled = false;

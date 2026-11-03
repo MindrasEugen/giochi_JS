@@ -41,12 +41,13 @@ function giocatorePesca() {
     const carteEstrate = mazzo.splice(Math.floor(Math.random() * mazzo.length), 1);
     const immagineCarta = document.createElement('img');
     immagineCarta.src = carteEstrate[0].immagine;
+    immagineCarta.alt = `${carteEstrate[0].nome} di ${carteEstrate[0].seme}`;
     carteGiocatore.appendChild(immagineCarta);
     puntiGiocatore += carteEstrate[0].valore;
-    punteggioG.textContent = `Il tuo punteggio: ${puntiGiocatore}`;
+    punteggioG.textContent = `Il tuo punteggio: ${puntiGiocatore.toLocaleString('it-IT')}`;
 
     if (puntiGiocatore > 7.5) {
-        messaggi.textContent = ' Hai sballato!';
+        messaggi.textContent = 'Hai sballato! Vince il banco.';
         stai.disabled = true;
         pesca.disabled = true;
     }
@@ -57,9 +58,10 @@ function bancoPesca() {
         const carteEstrate = mazzo.splice(Math.floor(Math.random() * mazzo.length), 1);
         const immagineCarta = document.createElement('img');
         immagineCarta.src = carteEstrate[0].immagine;
+        immagineCarta.alt = `${carteEstrate[0].nome} di ${carteEstrate[0].seme}`;
         carteBanco.appendChild(immagineCarta);
         puntiBanco += carteEstrate[0].valore;
-        punteggioB.textContent = `Punteggio banco: ${puntiBanco}`;
+        punteggioB.textContent = `Punteggio banco: ${puntiBanco.toLocaleString('it-IT')}`;
         timerBanco = setTimeout(bancoPesca, 1000);
     } else if (puntiBanco > 7.5) {
         messaggi.textContent = ' Il banco ha sballato, vince il giocatore! '

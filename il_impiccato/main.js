@@ -77,8 +77,9 @@ function provaLettera(letteraScelta) {
             }
         };
         parolaVisualizzata.textContent = lettereScoperte.join(' ');
+        errore.textContent = numeroErrori > 0 ? `Errori: ${numeroErrori}/6` : '';
     } else {
-        errore.textContent = `La lettera non e presente nella parola. Errori: ${++numeroErrori}/6`;
+        errore.textContent = `La lettera non è presente nella parola. Errori: ${++numeroErrori}/6`;
         disegno.src = disegni[numeroErrori];
     }
 
@@ -106,7 +107,6 @@ function provaLettera(letteraScelta) {
         prova.disabled = true;
     };
 
-    console.log(letteraScelta);
 }
 
 
@@ -144,9 +144,4 @@ nuovaPartita.addEventListener('click', () => {
     prova.disabled = false;
     laTuaLettera.focus();
     laTuaLettera.value = '';
-    console.log(parolaSegreta);
 });
-
-
-
-console.log(parolaSegreta);

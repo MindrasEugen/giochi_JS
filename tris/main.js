@@ -27,7 +27,7 @@ for (let i = 0; i < celle.length; i++) {
         if (celle[i].textContent === '' && partitaFinita === false) {
             celle[i].textContent = giocatoreCorrente;
             giocatoreCorrente === 'X' ? giocatoreCorrente = 'O' : giocatoreCorrente = 'X';
-            messaggi.textContent = `E il turno di: ${giocatoreCorrente}`;
+            messaggi.textContent = `È il turno di: ${giocatoreCorrente}`;
             controllaVincitore()
             if(modalita.value === 'controPC' && partitaFinita === false){
                 mossaPC();
