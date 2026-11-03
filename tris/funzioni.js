@@ -18,15 +18,21 @@ const combinazioniVincenti = [
     [2, 4, 6]
 ];
 
-// Restituisce 'X' o 'O' se qualcuno ha fatto tris, altrimenti null
-function trovaVincitore(caselle) {
+// Restituisce la combinazione del tris (es. [0, 4, 8]) oppure null
+function rigaVincente(caselle) {
     for (let i = 0; i < combinazioniVincenti.length; i++) {
         const [a, b, c] = combinazioniVincenti[i];
         if (caselle[a] !== '' && caselle[a] === caselle[b] && caselle[a] === caselle[c]) {
-            return caselle[a];
+            return combinazioniVincenti[i];
         }
     }
     return null;
+}
+
+// Restituisce 'X' o 'O' se qualcuno ha fatto tris, altrimenti null
+function trovaVincitore(caselle) {
+    const riga = rigaVincente(caselle);
+    return riga === null ? null : caselle[riga[0]];
 }
 
 function grigliaPiena(caselle) {
@@ -141,5 +147,5 @@ function mossaPC(caselle, difficolta) {
 
 // In Node (script di prova) esporta le funzioni; nel browser "module" non esiste e questa parte viene saltata
 if (typeof module !== 'undefined') {
-    module.exports = { combinazioniVincenti, trovaVincitore, grigliaPiena, caselleVuote, mossaCasuale, cercaMossa, mossaMedia, minimax, mossaMigliore, mossaPC };
+    module.exports = { combinazioniVincenti, rigaVincente, trovaVincitore, grigliaPiena, caselleVuote, mossaCasuale, cercaMossa, mossaMedia, minimax, mossaMigliore, mossaPC };
 }

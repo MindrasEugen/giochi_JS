@@ -10,5 +10,6 @@ Ultima modifica: 2026-11-03
 | 4 | [CSS migliorato per tutti i giochi](13-tappa-04-css.md) | ☑ completata |
 | 5 | [Tris: riordino del codice e menu di difficoltà](14-tappa-05-tris-difficolta.md) | ☑ completata |
 | 6 | [Tris: modalità impossibile con minimax](15-tappa-06-tris-minimax.md) | ☑ completata |
+| 7 | [Restyling moderno di Sasso carta forbici e Tris](16-tappa-07-restyling-moderno.md) | ☑ completata |
 
 Legenda: ☐ da fare · ◐ in corso · ☑ completata · ✗ annullata

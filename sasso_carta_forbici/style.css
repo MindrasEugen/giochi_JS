@@ -2,77 +2,131 @@
 
 /* Layout */
 .contenitore {
+    max-width: 640px;
     background-color: var(--colore-superficie);
-    border-radius: var(--raggio-m);
-    box-shadow: var(--ombra-leggera);
+    border-radius: var(--raggio-xl);
+    box-shadow: var(--ombra-forte);
     margin-block: var(--spazio-4);
     text-align: center;
 }
 
-/* Regole */
-.regole {
-    padding: var(--spazio-3) var(--spazio-4);
-    background-color: var(--colore-sfondo);
-    border: 1px solid var(--colore-bordo);
-    border-radius: var(--raggio-m);
+h1 {
+    margin-bottom: var(--spazio-1);
+}
+
+.sottotitolo {
+    margin-top: 0;
     color: var(--colore-testo-tenue);
-    font-weight: var(--peso-semibold);
-    text-align: left;
 }
 
-.regole ol {
-    font-weight: normal;
+/* Tabellone: Tu — VS — PC */
+.tabellone {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: var(--spazio-2);
+    margin-top: var(--spazio-4);
+    padding: var(--spazio-3);
+    background: linear-gradient(135deg, var(--colore-primario), var(--colore-primario-chiaro));
+    border-radius: var(--raggio-l);
+    color: var(--colore-sfondo);
 }
 
-.regole li + li {
-    margin-top: var(--spazio-1);
-}
-
-/* Pulsanti di scelta */
-.sceltaGiocatore {
+.segnapunti {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: var(--spazio-3);
-    margin-top: var(--spazio-5);
+    flex-direction: column;
+    align-items: center;
 }
 
-.scelta {
-    min-width: 96px;
-    min-height: 64px;
-    padding: var(--spazio-2) var(--spazio-4);
-    font: inherit;
-    font-size: var(--testo-l);
+.segnapunti__nome {
+    font-size: var(--testo-s);
+    font-weight: var(--peso-semibold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.85;
+}
+
+.segnapunti__punti {
+    font-size: var(--testo-xxl);
+    font-weight: var(--peso-bold);
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+}
+
+.segnapunti--tu .segnapunti__punti {
+    color: var(--colore-accento);
+}
+
+.tabellone__vs {
+    padding: var(--spazio-1) var(--spazio-2);
+    font-size: var(--testo-s);
     font-weight: var(--peso-bold);
     color: var(--colore-primario);
-    background-color: var(--colore-sfondo);
-    border: 2px solid var(--colore-primario);
-    border-radius: var(--raggio-m);
-    cursor: pointer;
-    transition: background-color var(--transizione), transform var(--transizione);
-}
-
-.scelta:hover:not(:disabled) {
     background-color: var(--colore-accento);
-    transform: translateY(-2px);
+    border-radius: var(--raggio-l);
 }
 
-.scelta:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-/* Risultato e punteggio */
-.sceltaPc {
-    min-height: 1.5em;
+/* Arena: le due mani una di fronte all'altra */
+.arena {
+    display: flex;
+    justify-content: center;
+    gap: var(--spazio-5);
     margin-top: var(--spazio-4);
-    color: var(--colore-testo-tenue);
 }
 
+.mano {
+    display: grid;
+    place-items: center;
+    width: 96px;
+    height: 96px;
+    font-size: 3.25rem;
+    line-height: 1;
+    background-color: var(--colore-sfondo);
+    border: 2px solid var(--colore-bordo);
+    border-radius: 50%;
+}
+
+/* la mano del PC è specchiata, così "guarda" quella del giocatore */
+.mano--pc {
+    transform: scaleX(-1);
+}
+
+.mano--entra {
+    animation: entra-mano 420ms var(--molla);
+}
+
+.mano--pc.mano--entra {
+    animation-name: entra-mano-pc;
+}
+
+@keyframes entra-mano {
+    from { transform: translateX(-24px) scale(0.6); opacity: 0; }
+    to   { transform: none; opacity: 1; }
+}
+
+@keyframes entra-mano-pc {
+    from { transform: scaleX(-1) translateX(-24px) scale(0.6); opacity: 0; }
+    to   { transform: scaleX(-1); opacity: 1; }
+}
+
+/* Risultato del turno */
 .risultato {
+    display: inline-block;
     min-height: 1.5em;
+    margin: var(--spazio-3) 0 0;
+    padding: var(--spazio-1) var(--spazio-4);
     font-size: var(--testo-l);
     font-weight: var(--peso-semibold);
+    border-radius: var(--raggio-l);
+    background-color: var(--colore-sfondo);
+}
+
+.risultato.messaggio--successo {
+    background-color: #E3F1EA;
+}
+
+.risultato.messaggio--errore {
+    background-color: #F8E5E8;
 }
 
 .risultato--finale {
@@ -80,19 +134,87 @@
     font-weight: var(--peso-bold);
 }
 
-.punteggio {
-    display: inline-block;
-    padding: var(--spazio-2) var(--spazio-4);
-    font-size: var(--testo-l);
+/* Le tre scelte, a tessera */
+.sceltaGiocatore {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spazio-2);
+    margin-top: var(--spazio-4);
+}
+
+.scelta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spazio-1);
+    min-height: 112px;
+    padding: var(--spazio-3) var(--spazio-1);
+    font: inherit;
     font-weight: var(--peso-bold);
-    color: var(--colore-superficie);
-    background-color: var(--colore-primario);
+    color: var(--colore-primario);
+    background-color: var(--colore-superficie);
+    border: 2px solid var(--colore-bordo);
     border-radius: var(--raggio-l);
-    white-space: pre-wrap;
+    box-shadow: 0 4px 0 var(--colore-bordo);
+    cursor: pointer;
+    transition: transform var(--transizione), box-shadow var(--transizione), border-color var(--transizione);
+}
+
+.scelta__icona {
+    font-size: 2.5rem;
+    line-height: 1;
+    transition: transform var(--transizione);
+}
+
+.scelta:hover:not(:disabled) {
+    border-color: var(--colore-accento);
+    transform: translateY(-3px);
+    box-shadow: 0 7px 0 var(--colore-accento);
+}
+
+.scelta:hover:not(:disabled) .scelta__icona {
+    transform: rotate(-10deg) scale(1.1);
+}
+
+.scelta:active:not(:disabled) {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 var(--colore-accento);
+}
+
+.scelta:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
 }
 
 #nuovaPartita {
     display: flex;
     width: fit-content;
     margin: var(--spazio-4) auto 0;
+}
+
+/* Regole */
+.regole {
+    margin-top: var(--spazio-4);
+}
+
+.regole li + li {
+    margin-top: var(--spazio-1);
+}
+
+/* Responsive */
+@media (min-width: 600px) {
+    .scelta {
+        min-height: 136px;
+        font-size: var(--testo-l);
+    }
+
+    .scelta__icona {
+        font-size: 3rem;
+    }
+
+    .mano {
+        width: 120px;
+        height: 120px;
+        font-size: 4rem;
+    }
 }

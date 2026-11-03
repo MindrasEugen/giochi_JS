@@ -1,24 +1,45 @@
 
-
 const carta = document.querySelector('#carta');
 const forbici = document.querySelector('#forbici');
 const sasso = document.querySelector('#sasso');
 const sceltaPc = document.querySelector('.sceltaPc');
 const risultato = document.querySelector('.risultato');
-const punteggio = document.querySelector('.punteggio');
+const puntiTu = document.querySelector('#puntiGiocatore');
+const puntiPc = document.querySelector('#puntiComputer');
+const manoGiocatore = document.querySelector('#manoGiocatore');
+const manoComputer = document.querySelector('#manoComputer');
 const nuovaPartita = document.querySelector('#nuovaPartita');
 
 
 const scelte = ['carta', 'forbici', 'sasso'];
+const icone = { carta: '✋', forbici: '✌️', sasso: '✊' };
 
 let puntiGiocatore = 0;
 let puntiComputer = 0;
-punteggio.textContent = `I tuoi punti: ${puntiGiocatore}  I punti del PC: ${puntiComputer}`;
+aggiornaPunteggio();
 
+
+function aggiornaPunteggio() {
+    puntiTu.textContent = puntiGiocatore;
+    puntiPc.textContent = puntiComputer;
+}
+
+// Mostra le due mani nell'arena e fa ripartire l'animazione di entrata
+function mostraMani(sceltaGiocatore, sceltaComputer) {
+    manoGiocatore.textContent = icone[sceltaGiocatore];
+    manoComputer.textContent = icone[sceltaComputer];
+    const mani = [manoGiocatore, manoComputer];
+    for (let i = 0; i < mani.length; i++) {
+        mani[i].classList.remove('mano--entra');
+        void mani[i].offsetWidth; // forza il browser a "dimenticare" l'animazione precedente
+        mani[i].classList.add('mano--entra');
+    }
+}
 
 function giocaTurno(sceltaGiocatore) {
     const indiceCasuale = Math.floor(Math.random() * 3);
     sceltaPc.textContent = `Scelta del PC: ${scelte[indiceCasuale]}`;
+    mostraMani(sceltaGiocatore, scelte[indiceCasuale]);
 
     if (sceltaGiocatore === scelte[indiceCasuale]) {
         risultato.textContent = 'Pareggio!';
@@ -32,7 +53,7 @@ function giocaTurno(sceltaGiocatore) {
         risultato.className = 'risultato messaggio--errore';
         ++puntiComputer
     };
-    punteggio.textContent = `I tuoi punti: ${puntiGiocatore}  I punti del PC: ${puntiComputer}`;
+    aggiornaPunteggio();
     finePartita();
 }
 
@@ -72,5 +93,7 @@ nuovaPartita.addEventListener('click', () => {
     risultato.className = 'risultato';
     risultato.textContent = 'Buona fortuna!';
     sceltaPc.textContent = '';
-    punteggio.textContent = `I tuoi punti: ${puntiGiocatore}  I punti del PC: ${puntiComputer}`;
+    manoGiocatore.textContent = '❔';
+    manoComputer.textContent = '❔';
+    aggiornaPunteggio();
 });

@@ -7,6 +7,9 @@ const punteggioO = document.querySelector('#punteggio_giocatore_O');
 const azzera = document.querySelector('#azzera');
 const modalita = document.querySelector('#modalita');
 const difficolta = document.querySelector('#difficolta');
+const contenitore = document.querySelector('#contenitore_body');
+const nomeX = document.querySelector('#nome_giocatore_X');
+const nomeO = document.querySelector('#nome_giocatore_O');
 
 // Stato della partita: la pagina viene sempre ridisegnata a partire da qui
 let caselle = ['', '', '', '', '', '', '', '', ''];
@@ -16,19 +19,35 @@ let giocatoreCorrente = 'X';
 let partitaFinita = false;
 
 function disegnaGriglia() {
+    const riga = rigaVincente(caselle);
     for (let i = 0; i < celle.length; i++) {
         celle[i].textContent = caselle[i];
+        celle[i].setAttribute('aria-label', `Casella ${i + 1}: ${caselle[i] === '' ? 'vuota' : caselle[i]}`);
         if (caselle[i] === '') {
             delete celle[i].dataset.simbolo;
         } else {
             celle[i].dataset.simbolo = caselle[i];
         }
+        // le tre caselle del tris vengono evidenziate dal CSS
+        celle[i].classList.toggle('cella--vincente', riga !== null && riga.includes(i));
     }
 }
 
+// Il CSS usa data-turno per evidenziare chi deve muovere e per l'anteprima del simbolo
+function aggiornaTurno() {
+    contenitore.dataset.turno = partitaFinita ? '' : giocatoreCorrente;
+}
+
+// Nomi sul tabellone: contro il PC la O è il computer
+function aggiornaNomi() {
+    const controPC = modalita.value === 'controPC';
+    nomeX.textContent = controPC ? 'Tu' : 'Giocatore X';
+    nomeO.textContent = controPC ? 'Computer' : 'Giocatore O';
+}
+
 function aggiornaPunteggi() {
-    punteggioX.textContent = `Punteggio X: ${vittorieX}`;
-    punteggioO.textContent = `Punteggio O: ${vittorieO}`;
+    punteggioX.textContent = vittorieX;
+    punteggioO.textContent = vittorieO;
 }
 
 function controllaFinePartita() {
@@ -56,6 +75,7 @@ function giocaMossa(indice) {
         giocatoreCorrente === 'X' ? giocatoreCorrente = 'O' : giocatoreCorrente = 'X';
         messaggi.textContent = `È il turno di: ${giocatoreCorrente}`;
     }
+    aggiornaTurno();
 }
 
 function iniziaPartita() {
@@ -63,6 +83,7 @@ function iniziaPartita() {
     giocatoreCorrente = 'X';
     partitaFinita = false;
     disegnaGriglia();
+    aggiornaTurno();
     messaggi.textContent = 'Comincia X';
 }
 
@@ -93,9 +114,11 @@ nuovaPartita.addEventListener('click', iniziaPartita);
 azzera.addEventListener('click', azzeraPunteggi);
 modalita.addEventListener('change', () => {
     aggiornaDifficolta();
+    aggiornaNomi();
     azzeraPunteggi();
 });
 difficolta.addEventListener('change', azzeraPunteggi);
 
 aggiornaDifficolta();
+aggiornaNomi();
 iniziaPartita();

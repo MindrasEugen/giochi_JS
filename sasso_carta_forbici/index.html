@@ -11,7 +11,37 @@
     <div class="contenitore">
         <a class="link-home" href="../index.html">← Tutti i giochi</a>
         <h1>Carta, forbici e sasso</h1>
-        <div class="regole">Regole del gioco:
+        <p class="sottotitolo">Vince la partita chi arriva per primo a 5 punti.</p>
+
+        <div class="tabellone" aria-label="Punteggio">
+            <div class="segnapunti segnapunti--tu">
+                <span class="segnapunti__nome">Tu</span>
+                <span class="segnapunti__punti" id="puntiGiocatore">0</span>
+            </div>
+            <span class="tabellone__vs" aria-hidden="true">VS</span>
+            <div class="segnapunti segnapunti--pc">
+                <span class="segnapunti__nome">PC</span>
+                <span class="segnapunti__punti" id="puntiComputer">0</span>
+            </div>
+        </div>
+
+        <div class="arena" aria-hidden="true">
+            <span class="mano" id="manoGiocatore">❔</span>
+            <span class="mano mano--pc" id="manoComputer">❔</span>
+        </div>
+        <p class="sceltaPc nascosto-visivamente"></p>
+        <p class="risultato" aria-live="polite">Buona fortuna!</p>
+
+        <div class="sceltaGiocatore">
+            <button id="carta" type="button" class="scelta"><span class="scelta__icona" aria-hidden="true">✋</span>Carta</button>
+            <button id="forbici" type="button" class="scelta"><span class="scelta__icona" aria-hidden="true">✌️</span>Forbici</button>
+            <button id="sasso" type="button" class="scelta"><span class="scelta__icona" aria-hidden="true">✊</span>Sasso</button>
+        </div>
+
+        <button id="nuovaPartita" type="button" class="pulsante pulsante--secondario">Nuova partita</button>
+
+        <details class="pannello regole">
+            <summary>Regole del gioco</summary>
             <ol>
                 <li>Il giocatore sceglie sasso, carta o forbici.</li>
                 <li>Il computer sceglie casualmente una delle tre opzioni.</li>
@@ -21,16 +51,7 @@
                 <li>Vince la partita chi arriva per primo a 5 punti.</li>
                 <li>“Nuova partita” azzera i punteggi e permette di ricominciare.</li>
             </ol>
-        </div>
-        <div class="sceltaGiocatore">
-            <button id="carta" type="button" class="scelta">Carta</button>
-            <button id="forbici" type="button" class="scelta">Forbici</button>
-            <button id="sasso" type="button" class="scelta">Sasso</button>
-        </div>
-        <p class="sceltaPc"></p>
-        <p class="risultato" aria-live="polite">Buona fortuna!</p>
-        <p class="punteggio"></p>
-        <button id="nuovaPartita" type="button" class="pulsante pulsante--secondario">Nuova partita</button>
+        </details>
     </div>
     <script src="./main.js"></script>
 </body>

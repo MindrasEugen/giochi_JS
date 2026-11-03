@@ -2,5 +2,5 @@
 
 Ultima modifica: 2026-11-03
 
-- **Azione successiva:** l'utente prova nel browser la home e i 5 giochi (doppio clic su `index.html` nella radice), poi decide se fare il push e se affrontare qualche idea di [90-fuori-mvp.md](90-fuori-mvp.md).
-- **Cosa serve dall'utente:** l'esito della prova nel browser ed eventuali nuove richieste.
+- **Azione successiva:** l'utente prova nel browser la home e i 5 giochi (Ctrl+F5 per evitare la cache) e decide se portare lo stesso stile moderno (tabellone, regole richiudibili) anche su impiccato, indovina il numero e sette e mezzo.
+- **Cosa serve dall'utente:** l'esito della prova, le eventuali richieste e il push quando vuole.

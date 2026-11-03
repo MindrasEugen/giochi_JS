@@ -30,10 +30,18 @@
                     </select>
                 </div>
             </div>
-            <p id="punteggio">
-                <span id="punteggio_giocatore_X" class="badge badge--x">Punteggio X: 0</span>
-                <span id="punteggio_giocatore_O" class="badge badge--o">Punteggio O: 0</span>
-            </p>
+            <div id="punteggio" class="tabellone" aria-label="Punteggio">
+                <div class="segnapunti segnapunti--x">
+                    <span class="segnapunti__simbolo" aria-hidden="true">X</span>
+                    <span class="segnapunti__nome" id="nome_giocatore_X">Giocatore X</span>
+                    <span class="segnapunti__punti" id="punteggio_giocatore_X">0</span>
+                </div>
+                <div class="segnapunti segnapunti--o">
+                    <span class="segnapunti__simbolo" aria-hidden="true">O</span>
+                    <span class="segnapunti__nome" id="nome_giocatore_O">Giocatore O</span>
+                    <span class="segnapunti__punti" id="punteggio_giocatore_O">0</span>
+                </div>
+            </div>
             <div id="griglia">
                 <button class="cella" type="button" data-index="0"></button>
                 <button class="cella" type="button" data-index="1"></button>
@@ -46,10 +54,12 @@
                 <button class="cella" type="button" data-index="8"></button>
             </div>
             <p id="messaggi" aria-live="polite">Comincia X</p>
-            <button id="nuovaPartita" type="button" class="pulsante">Nuova partita</button>
-            <button id="azzera" type="button" class="pulsante pulsante--secondario">Azzera il Punteggio</button>
-            <div id="regole">
-                <p>Regole del gioco:</p>
+            <div class="azioni">
+                <button id="nuovaPartita" type="button" class="pulsante">Nuova partita</button>
+                <button id="azzera" type="button" class="pulsante pulsante--secondario">Azzera il Punteggio</button>
+            </div>
+            <details id="regole" class="pannello">
+                <summary>Regole del gioco</summary>
                 <ol>
                     <li>Si gioca in due sulla stessa griglia di 9 caselle, oppure da soli contro il computer (modalità Un giocatore)</li>
                     <li>Un giocatore usa il simbolo X, l'altro il simbolo O</li>
@@ -62,7 +72,7 @@
                     <li>Quando la partita finisce, non si possono più inserire simboli</li>
                     <li>Il pulsante “Nuova partita” svuota la griglia e fa ricominciare dal turno di X</li>
                 </ol>
-            </div>
+            </details>
         </div>
         <script src="./funzioni.js"></script>
         <script src="./main.js"></script>
