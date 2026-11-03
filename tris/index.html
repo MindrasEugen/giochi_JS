@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="it">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./style.css">
+        <title>Tris</title>
+    </head>
+
+    <body>
+        <div id="contenitore_body">
+            <h1>Tris</h1>
+            <label for="modalita">Modalità</label>
+            <select name="modalita" id="modalita">
+                <option value="dueGiocatori">Due giocatori</option>
+                <option value="controPC">Un giocatore</option>
+            </select>
+            <p id="punteggio">
+                <span id="punteggio_giocatore_X">Punteggio X: 0</span>
+                <span id="punteggio_giocatore_O">Punteggio O: 0</span>
+            </p>
+            <div id="griglia">
+                <button class="cella" type="button" data-index="0"></button>
+                <button class="cella" type="button" data-index="1"></button>
+                <button class="cella" type="button" data-index="2"></button>
+                <button class="cella" type="button" data-index="3"></button>
+                <button class="cella" type="button" data-index="4"></button>
+                <button class="cella" type="button" data-index="5"></button>
+                <button class="cella" type="button" data-index="6"></button>
+                <button class="cella" type="button" data-index="7"></button>
+                <button class="cella" type="button" data-index="8"></button>
+            </div>
+            <p id="messaggi">Comincia X</p>
+            <button id="nuovaPartita" type="button">Nuova partita</button>
+            <button id="azzera" type="button">Azzera il Punteggio</button>
+            <div id="regole">
+                <p>Regole del gioco:</p>
+                <ol>
+                    <li>Si gioca in due, su una griglia di 9 caselle</li>
+                    <li>Un giocatore usa il simbolo X, l'altro il simbolo O</li>
+                    <li>X comincia, poi i giocatori si alternano</li>
+                    <li>A ogni turno, il giocatore inserisce il proprio simbolo in una casella libera</li>
+                    <li>Una casella occupata non può essere modificata</li>
+                    <li>Vince chi allinea tre simboli uguali in orizzontale, verticale o diagonale</li>
+                    <li>Se tutte le caselle vengono occupate senza un vincitore, la partita termina in pareggio</li>
+                    <li>Quando la partita finisce, non si possono più inserire simboli</li>
+                    <li>Il pulsante “Nuova partita” svuota la griglia e fa ricominciare dal turno di X</li>
+                </ol>
+            </div>
+        </div>
+        <script src="./funzioni.js"></script>
+        <script src="./main.js"></script>
+    </body>
+
+</html>

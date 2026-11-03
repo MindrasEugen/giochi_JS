@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="it">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./style.css">
+        <title>L'impiccato!</title>
+    </head>
+
+    <body>
+        <div class="contenitore">
+            <h1>L'impiccato</h1>
+            <p class="parolaVisualizzata"></p>
+            <div class="form">
+                <form id="lettera">
+                    <label for="laTuaLettera">La tua lettera</label>
+                    <input type="text" id="laTuaLettera" required autofocus maxlength="1" pattern="[a-zA-Z]">
+                    <button type="submit" id="prova">Prova</button>
+                </form>
+            </div>
+            <div class="contenitore_tastiera_disegno">
+                <div id="tastiera"></div>
+                <img id="disegno" src="./pic/stato-0.png" alt="Disegno dell'impiccato">
+            </div>
+            <p class="messaggi"></p>
+            <p class="lettereUsate"></p>
+            <p class="errore"></p>
+            <button type="button" id="nuovaPartita">Nuova Partita</button>
+            <div class="regole">
+                <ol>
+                    <li>Il computer sceglie una parola segreta e mostra un trattino per ogni lettera.</li>
+                    <li>Inserisci una lettera alla volta e premi “Prova”.</li>
+                    <li>Se la lettera è presente, viene mostrata in tutte le posizioni in cui compare.</li>
+                    <li>Se la lettera non è presente, commetti un errore.</li>
+                    <li>Puoi commettere al massimo 6 errori: al sesto perdi la partita e viene rivelata la parola.</li>
+                    <li>Una lettera già provata non viene conteggiata di nuovo e non costa errori.</li>
+                    <li>Vinci se scopri tutta la parola prima di esaurire gli errori disponibili.</li>
+                    <li>Premi “Nuova partita” per ricominciare con una nuova parola.</li>
+                </ol>
+            </div>
+        </div>
+        <script src="./doc/lista_parole.js"></script>
+        <script src="./main.js"></script>
+    </body>
+
+</html>

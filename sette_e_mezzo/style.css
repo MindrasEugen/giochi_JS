@@ -1,0 +1,91 @@
+* {
+    box-sizing: border-box;
+}
+
+body{
+    background-color:#FFF8E7;
+}
+
+.contenitore_body{
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #12372A;
+    color:#FFF8E7 ;
+}
+
+.campo_di_gioco{
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#carte_giocatore, #carte_banco{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    min-height: 160px;
+    justify-content: center;
+    
+}
+
+.contenitore_giocatore, .contenitore_banco{
+    padding: 16px;
+    border-radius: 12px;
+    background-color: #205444;
+    flex: 1 1 300px;
+    /* min-width:40%; */
+    text-align: center;
+}
+
+#carte_giocatore img, #carte_banco img{
+    max-width: 100px;
+}
+
+.pulsanti button{
+    margin-top: 30px;
+    background-color:#E9C46A ;
+    color: #12372A;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.pulsanti button:disabled{
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pulsanti{
+    text-align: center;
+}
+
+button{
+    margin: 4px;
+}
+
+#messaggi{
+    font-size: 20px;
+    font-weight: bold;
+    min-height: 48px;
+    margin-top: 20px;
+}
+
+h1{
+    text-align: center;
+}
+
+#regole{
+    margin-top: 32px;
+    padding: 20px;
+    background-color:#205444 ;
+    border-radius: 12px;
+    line-height: 1.6;
+}
+
+#regole li{
+    margin-bottom: 8px;
+}

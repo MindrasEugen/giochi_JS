@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="it">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./style.css">
+        <title>Sette e mezzo</title>
+    </head>
+
+    <body>
+        <div class="contenitore_body">
+            <h1>Sette e mezzo</h1>
+            <div class="campo_di_gioco">
+                <div class="contenitore_giocatore">
+                    <h2>Giocatore</h2>
+                    <div id="carte_giocatore"></div>
+                    <p id="punti_giocatore"></p>
+                </div>
+                <div class="contenitore_banco">
+                    <h2>Banco</h2>
+                    <div id="carte_banco"></div>
+                    <p id="punti_banco">Punteggio banco: 0</p>
+                </div>
+            </div>
+            <div class="pulsanti">
+                <button type="button" id="pesca">Pesca</button>
+                <button type="button" id="stai">Stai</button>
+                <button type="button" id="nuova_partita">Nuova Partita</button>
+                <p id="messaggi"></p>
+            </div>
+            <div id="regole">
+                <h3>Regole del gioco:</h3>
+                <ol>
+                    <li>Si gioca contro il banco con un mazzo italiano di 40 carte, senza matta.</li>
+                    <li>L’obiettivo è avvicinarsi il più possibile a 7,5 punti, senza superarli.</li>
+                    <li>L’asso vale 1 punto, le carte dal 2 al 7 valgono il loro numero. Fante, cavallo e re valgono mezzo punto.</li>
+                    <li>All’inizio ricevi una carta. Puoi premere “Pesca” per chiederne un’altra oppure “Stai” per terminare il tuo turno.</li>
+                    <li>Se superi 7,5 punti, sballi e perdi subito.</li>
+                    <li>Quando stai, il banco pesca finché raggiunge o supera il tuo punteggio.</li>
+                    <li>Se il banco sballa, vinci. Altrimenti vince chi ha il punteggio più alto; a parità vince il banco.</li>
+                    <li>Le carte pescate vengono rimosse dal mazzo: la stessa carta non può uscire due volte nella partita.</li>
+                    <li>Premi “Nuova partita” per ricominciare con il mazzo completo e i punteggi azzerati.</li>
+                </ol>
+            </div>
+        </div>
+        <script src="./main.js"></script>
+    </body>
+
+</html>

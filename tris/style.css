@@ -1,0 +1,15 @@
+body{
+    background-color:antiquewhite;
+}
+
+#griglia{
+    display: grid;
+    grid-template-columns: repeat(3, 80px);
+    gap: 8px;
+}
+
+.cella{
+    height: 80px;
+    font-size: 40px;
+    cursor: pointer;
+}

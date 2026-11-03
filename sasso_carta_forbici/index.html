@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Carta, forbici e sasso</title>
+</head>
+<body>
+    <div class="contenitore">
+        <h1>Carta, forbici e sasso</h1>
+        <div class="regole">Regole del gioco:
+            <ol>
+                <li>Il giocatore sceglie sasso, carta o forbici.</li>
+                <li>Il computer sceglie casualmente una delle tre opzioni.</li>
+                <li>Sasso batte forbici, forbici battono carta, carta batte sasso.</li>
+                <li>Se le scelte sono uguali, è pareggio.</li>
+                <li>Chi vince il turno guadagna 1 punto; in caso di pareggio nessuno guadagna punti.</li>
+                <li>Vince la partita chi arriva per primo a 5 punti.</li>
+                <li>“Nuova partita” azzera i punteggi e permette di ricominciare.</li>
+            </ol>
+        </div>
+        <div class="sceltaGiocatore">
+            <button id="carta" type="button">Carta</button>
+            <button id="forbici" type="button">Forbici</button>
+            <button id="sasso" type="button">Sasso</button>
+        </div>
+        <p class="sceltaPc"></p>
+        <p class="risultato">Buona fortuna!</p>
+        <p class="punteggio"></p>
+        <button id="nuovaPartita" type="button">Nuova partita</button>
+    </div>
+    <script src="./main.js"></script>
+</body>
+</html>
