@@ -13,11 +13,22 @@
         <div id="contenitore_body" class="contenitore">
             <a class="link-home" href="../index.html">← Tutti i giochi</a>
             <h1>Tris</h1>
-            <label for="modalita">Modalità</label>
-            <select name="modalita" id="modalita">
-                <option value="dueGiocatori">Due giocatori</option>
-                <option value="controPC">Un giocatore</option>
-            </select>
+            <div class="opzioni">
+                <div class="opzione">
+                    <label for="modalita">Modalità</label>
+                    <select name="modalita" id="modalita">
+                        <option value="dueGiocatori">Due giocatori</option>
+                        <option value="controPC">Un giocatore</option>
+                    </select>
+                </div>
+                <div class="opzione">
+                    <label for="difficolta">Difficoltà</label>
+                    <select name="difficolta" id="difficolta">
+                        <option value="facile">Facile</option>
+                        <option value="media" selected>Media</option>
+                    </select>
+                </div>
+            </div>
             <p id="punteggio">
                 <span id="punteggio_giocatore_X" class="badge badge--x">Punteggio X: 0</span>
                 <span id="punteggio_giocatore_O" class="badge badge--o">Punteggio O: 0</span>
@@ -41,6 +52,7 @@
                 <ol>
                     <li>Si gioca in due sulla stessa griglia di 9 caselle, oppure da soli contro il computer (modalità Un giocatore)</li>
                     <li>Un giocatore usa il simbolo X, l'altro il simbolo O</li>
+                    <li>Contro il computer tu giochi con X e il computer con O. La difficoltà si sceglie solo in questa modalità: Facile (mosse a caso) o Media (il computer chiude il suo tris e blocca il tuo)</li>
                     <li>X comincia, poi i giocatori si alternano</li>
                     <li>A ogni turno, il giocatore inserisce il proprio simbolo in una casella libera</li>
                     <li>Una casella occupata non può essere modificata</li>

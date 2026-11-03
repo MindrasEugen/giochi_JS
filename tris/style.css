@@ -9,8 +9,28 @@
     text-align: center;
 }
 
-#modalita {
-    margin-left: var(--spazio-2);
+/* Modalità e difficoltà */
+.opzioni {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spazio-2) var(--spazio-4);
+    margin-bottom: var(--spazio-3);
+}
+
+.opzione {
+    display: flex;
+    align-items: center;
+    gap: var(--spazio-2);
+}
+
+.opzione label {
+    font-weight: var(--peso-semibold);
+}
+
+.opzione select:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 /* Punteggio */

@@ -1,6 +1,6 @@
 # ADR 0005 — Tris: logica su un array di caselle, separata dalla pagina
 
-- **Stato:** proposta
+- **Stato:** accettata
 - **Data:** 2026-11-03
 - **Commit:** — (Tappa 5)
 
@@ -12,6 +12,7 @@
 
 - Lo stato della griglia è un array di 9 valori (`'X'`, `'O'` o `''`).
 - `funzioni.js` contiene solo funzioni che ricevono l'array come parametro e restituiscono un risultato (vincitore, mossa del PC), senza leggere o modificare il DOM.
+- Per lo script di prova con Node, `funzioni.js` termina con `if (typeof module !== 'undefined') module.exports = {...}`: nel browser `module` non esiste e la riga viene saltata.
 - `main.js` tiene lo stato, gestisce i clic e aggiorna la pagina a partire dall'array.
 
 ## Conseguenze
