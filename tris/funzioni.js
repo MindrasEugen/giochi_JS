@@ -75,15 +75,71 @@ function mossaMedia(caselle) {
     return indice;
 }
 
+// Minimax: il PC "immagina" tutte le partite possibili a partire da questa griglia,
+// supponendo che entrambi i giocatori scelgano sempre la mossa migliore per sé.
+// - "simbolo" è chi deve muovere adesso nella partita immaginata;
+// - il punteggio è dal punto di vista di O (il PC): positivo se vince O, negativo se vince X, 0 se pareggio;
+// - "profondita" conta le mosse immaginate: sottraendola, una vittoria vicina vale più di una lontana
+//   e una sconfitta lontana pesa meno di una vicina.
+function minimax(caselle, simbolo, profondita) {
+    const vincitore = trovaVincitore(caselle);
+    if (vincitore === 'O') {
+        return 10 - profondita;
+    }
+    if (vincitore === 'X') {
+        return profondita - 10;
+    }
+    if (grigliaPiena(caselle)) {
+        return 0;
+    }
+
+    const vuote = caselleVuote(caselle);
+    const prossimo = simbolo === 'O' ? 'X' : 'O';
+    // O cerca il punteggio più alto, X il più basso
+    let migliore = simbolo === 'O' ? -Infinity : Infinity;
+    for (let i = 0; i < vuote.length; i++) {
+        caselle[vuote[i]] = simbolo;                                // prova la mossa...
+        const punteggio = minimax(caselle, prossimo, profondita + 1);
+        caselle[vuote[i]] = '';                                     // ...e la annulla
+        if (simbolo === 'O') {
+            migliore = Math.max(migliore, punteggio);
+        } else {
+            migliore = Math.min(migliore, punteggio);
+        }
+    }
+    return migliore;
+}
+
+// Impossibile: prova ogni casella libera con O e tiene quella con il punteggio minimax più alto
+function mossaMigliore(caselle) {
+    const copia = [...caselle]; // il minimax lavora su una copia: la griglia vera non cambia
+    const vuote = caselleVuote(copia);
+    let migliorPunteggio = -Infinity;
+    let migliorIndice = vuote[0];
+    for (let i = 0; i < vuote.length; i++) {
+        copia[vuote[i]] = 'O';
+        const punteggio = minimax(copia, 'X', 1);
+        copia[vuote[i]] = '';
+        if (punteggio > migliorPunteggio) {
+            migliorPunteggio = punteggio;
+            migliorIndice = vuote[i];
+        }
+    }
+    return migliorIndice;
+}
+
 // Sceglie la mossa del PC (che gioca sempre con O) in base alla difficoltà
 function mossaPC(caselle, difficolta) {
     if (difficolta === 'facile') {
         return mossaCasuale(caselle);
+    }
+    if (difficolta === 'impossibile') {
+        return mossaMigliore(caselle);
     }
     return mossaMedia(caselle);
 }
 
 // In Node (script di prova) esporta le funzioni; nel browser "module" non esiste e questa parte viene saltata
 if (typeof module !== 'undefined') {
-    module.exports = { combinazioniVincenti, trovaVincitore, grigliaPiena, caselleVuote, mossaCasuale, cercaMossa, mossaMedia, mossaPC };
+    module.exports = { combinazioniVincenti, trovaVincitore, grigliaPiena, caselleVuote, mossaCasuale, cercaMossa, mossaMedia, minimax, mossaMigliore, mossaPC };
 }

@@ -9,3 +9,4 @@ Ultima modifica: 2026-11-03
 - 2026-11-03 — Tappa 3 completata: link "← Tutti i giochi" nei 5 giochi, home verificata a 375/600/1000 px. Tappa 4 avviata (CSS affidato a Codex), con il via dell'utente già dato.
 - 2026-11-03 — Codex della Tappa 4 fermato su richiesta dell'utente ("occupati te personalmente di tutte le modifiche"). Tappa 4 completata da Claude: CSS dei 5 giochi, verificata con screenshot e jsdom.
 - 2026-11-03 — Tappa 5 completata: logica del Tris separata dalla pagina, menu Facile/Media, 20 controlli passati. Avviata la Tappa 6.
+- 2026-11-03 — Tappa 6 completata: modalità Impossibile con minimax, prova esaustiva (0 vittorie di X su 569 partite) e controllo indipendente su 2097 posizioni. Piano concluso.

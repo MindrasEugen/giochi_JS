@@ -1,8 +1,8 @@
 # ADR 0004 — Tris: tre livelli di difficoltà, Impossibile con minimax
 
-- **Stato:** proposta
+- **Stato:** accettata
 - **Data:** 2026-11-03
-- **Commit:** — (Tappe 5 e 6)
+- **Commit:** `f0745f2` (Tappa 5), Tappa 6
 
 ## Contesto
 
@@ -18,10 +18,11 @@ Un `select` "Difficoltà", attivo solo nella modalità "Un giocatore", con tre l
 | Media | la logica di oggi: vince se può, altrimenti blocca, altrimenti a caso |
 | Impossibile | **minimax**: esplora tutte le partite possibili e sceglie la mossa migliore |
 
-Il minimax assegna +10 alla vittoria di O, −10 alla vittoria di X e 0 al pareggio, e usa la profondità per preferire le vittorie più rapide. Non serve l'ottimizzazione alfa-beta, perché il tris ha al massimo 9! (circa 360.000) sequenze di mosse e la risposta è comunque immediata. Il giocatore è sempre X e comincia sempre lui.
+Il minimax assegna `10 − profondità` alla vittoria di O, `profondità − 10` alla vittoria di X e 0 al pareggio: così usa la profondità per preferire le vittorie più rapide. Non serve l'ottimizzazione alfa-beta, perché il tris ha al massimo 9! (circa 360.000) sequenze di mosse e la risposta è comunque immediata. Il giocatore è sempre X e comincia sempre lui.
 
 ## Conseguenze
 
 - Il livello Impossibile si può solo pareggiare. È voluto, ed è il comportamento atteso dal tris giocato perfettamente.
-- Si aggiunge uno script di prova eseguito con Node per dimostrare che il PC non perde mai.
+- A parità di punteggio il PC sceglie la prima casella libera, quindi a livello Impossibile gioca sempre allo stesso modo.
+- Si aggiunge uno script di prova (`tris/test-minimax.js`) eseguito con Node per dimostrare che il PC non perde mai.
 - Cambiare difficoltà fa ricominciare la partita e azzera il punteggio, come già succede cambiando modalità.
