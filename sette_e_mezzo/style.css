@@ -1,14 +1,16 @@
 /* Sette e mezzo — stili del gioco, tema "tavolo verde" (le basi sono in ../css/comune.css) */
 
-/* Tavolo */
+/* Tavolo: verde con un alone più chiaro al centro, come il panno */
 .contenitore_body {
     max-width: var(--contenitore-max);
     margin: var(--spazio-4) auto;
     padding: var(--spazio-3);
-    background-color: var(--colore-primario);
+    background:
+        radial-gradient(ellipse at 50% 30%, rgba(255, 248, 231, .08), transparent 60%),
+        var(--colore-primario);
     color: var(--colore-sfondo);
-    border-radius: var(--raggio-m);
-    box-shadow: var(--ombra-media);
+    border-radius: var(--raggio-xl);
+    box-shadow: var(--ombra-forte), inset 0 0 0 6px rgba(233, 196, 106, .25);
 }
 
 /* Sul fondo scuro titoli e link diventano chiari */
@@ -28,19 +30,50 @@
 
 /* Giocatore e banco */
 .campo_di_gioco {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: var(--spazio-4);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spazio-3);
 }
 
 .contenitore_giocatore,
 .contenitore_banco {
-    flex: 1 1 280px;
     padding: var(--spazio-3);
     background-color: var(--colore-primario-chiaro);
-    border-radius: var(--raggio-m);
+    border: 2px solid transparent;
+    border-radius: var(--raggio-l);
+    transition: border-color var(--transizione), box-shadow var(--transizione);
+}
+
+/* Il riquadro di chi sta giocando ha il bordo dorato */
+.contenitore_body[data-turno="giocatore"] .contenitore_giocatore,
+.contenitore_body[data-turno="banco"] .contenitore_banco {
+    border-color: var(--colore-accento);
+    box-shadow: 0 0 0 4px rgba(233, 196, 106, .18);
+}
+
+.intestazione {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spazio-3);
+}
+
+.intestazione h2 {
+    margin: 0;
+    font-size: var(--testo-l);
+}
+
+.pillola-punti {
+    min-width: 64px;
+    padding: var(--spazio-1) var(--spazio-3);
+    font-size: var(--testo-xl);
+    font-weight: var(--peso-bold);
+    line-height: 1.2;
     text-align: center;
+    font-variant-numeric: tabular-nums;
+    color: var(--colore-primario);
+    background-color: var(--colore-accento);
+    border-radius: var(--raggio-l);
 }
 
 #carte_giocatore,
@@ -56,39 +89,87 @@
 #carte_banco img {
     max-width: 80px;
     border-radius: var(--raggio-s);
-    box-shadow: var(--ombra-media);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, .35);
+    animation: distribuisci 420ms var(--molla);
 }
 
-#punti_giocatore,
-#punti_banco {
-    font-size: var(--testo-l);
-    font-weight: var(--peso-semibold);
+/* la carta arriva dall'alto, leggermente ruotata */
+@keyframes distribuisci {
+    from { transform: translateY(-40px) rotate(-8deg) scale(0.8); opacity: 0; }
+    to   { transform: none; opacity: 1; }
 }
 
-/* Pulsanti e messaggi */
-.pulsanti {
-    margin-top: var(--spazio-4);
-    text-align: center;
-}
-
-.pulsanti .pulsante {
-    margin: var(--spazio-1);
-}
-
+/* Messaggio */
 #messaggi {
-    min-height: 2em;
-    margin-top: var(--spazio-3);
+    display: flex;
+    justify-content: center;
+    min-height: 2.5em;
+    margin: var(--spazio-3) 0 0;
     font-size: var(--testo-l);
     font-weight: var(--peso-bold);
-    color: var(--colore-accento);
 }
 
-/* Regole */
+#messaggi:not(:empty) {
+    width: fit-content;
+    margin-inline: auto;
+    padding: var(--spazio-1) var(--spazio-4);
+    border-radius: var(--raggio-l);
+    align-items: center;
+}
+
+#messaggi.messaggio--successo {
+    color: var(--colore-successo);
+    background-color: #E3F1EA;
+}
+
+#messaggi.messaggio--errore {
+    color: var(--colore-errore);
+    background-color: #F8E5E8;
+}
+
+#messaggi.messaggio--attesa {
+    color: var(--colore-primario);
+    background-color: var(--colore-accento);
+    animation: pulsa 1s ease-in-out infinite alternate;
+}
+
+@keyframes pulsa {
+    from { opacity: 1; }
+    to   { opacity: 0.6; }
+}
+
+/* Pulsanti */
+.pulsanti {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spazio-2);
+    margin-top: var(--spazio-3);
+}
+
+/* variante chiara, per "Nuova partita" sul tavolo scuro */
+.pulsante--chiaro {
+    color: var(--colore-primario);
+    background-color: var(--colore-sfondo);
+}
+
+.pulsante--chiaro:hover:not(:disabled) {
+    background-color: var(--colore-superficie);
+}
+
+/* Regole: pannello scuro */
 #regole {
     margin-top: var(--spazio-5);
-    padding: var(--spazio-3) var(--spazio-4);
     background-color: var(--colore-primario-chiaro);
-    border-radius: var(--raggio-m);
+    border-color: rgba(255, 248, 231, .2);
+}
+
+#regole summary {
+    color: var(--colore-sfondo);
+}
+
+#regole > :not(summary) {
+    color: var(--colore-sfondo);
 }
 
 #regole li + li {
@@ -99,6 +180,10 @@
 @media (min-width: 600px) {
     .contenitore_body {
         padding: var(--spazio-4);
+    }
+
+    .campo_di_gioco {
+        grid-template-columns: 1fr 1fr;
     }
 
     #carte_giocatore,

@@ -2,76 +2,187 @@
 
 /* Layout */
 .contenitore {
+    max-width: 600px;
     background-color: var(--colore-superficie);
-    border-radius: var(--raggio-m);
-    box-shadow: var(--ombra-leggera);
+    border-radius: var(--raggio-xl);
+    box-shadow: var(--ombra-forte);
     margin-block: var(--spazio-4);
     text-align: center;
 }
 
-.istruzioni {
+h1 {
+    margin-bottom: var(--spazio-1);
+}
+
+.sottotitolo {
+    margin-top: 0;
     color: var(--colore-testo-tenue);
 }
 
-.istruzioni h2 {
-    font-size: var(--testo-l);
+/* Tabellone: tentativi fatti, intervallo, tentativi rimasti */
+.tabellone {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr 1fr;
+    align-items: center;
+    gap: var(--spazio-2);
+    margin-top: var(--spazio-4);
+    padding: var(--spazio-3);
+    background: linear-gradient(135deg, var(--colore-primario), var(--colore-primario-chiaro));
+    border-radius: var(--raggio-l);
+    color: var(--colore-sfondo);
 }
 
-/* Form: etichetta sopra il campo su mobile */
+.segnapunti {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.segnapunti__nome {
+    font-size: var(--testo-s);
+    font-weight: var(--peso-semibold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.85;
+}
+
+.segnapunti__punti {
+    font-size: var(--testo-xl);
+    font-weight: var(--peso-bold);
+    line-height: 1.15;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+/* l'intervallo è al centro, in oro */
+.segnapunti--intervallo {
+    padding: var(--spazio-1) var(--spazio-2);
+    background-color: rgba(255, 248, 231, .1);
+    border-radius: var(--raggio-m);
+}
+
+.segnapunti--intervallo .segnapunti__punti {
+    color: var(--colore-accento);
+}
+
+/* Form */
 #form {
     display: grid;
-    gap: var(--spazio-2);
-    max-width: 420px;
-    margin: var(--spazio-4) auto 0;
+    gap: var(--spazio-3);
+    margin-top: var(--spazio-4);
     text-align: left;
 }
 
-#form label {
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spazio-1);
+}
+
+.campo label {
+    font-size: var(--testo-s);
     font-weight: var(--peso-semibold);
+    color: var(--colore-testo-tenue);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
 }
 
 #input {
+    min-height: 64px;
+    font-size: var(--testo-xl);
     font-weight: var(--peso-bold);
+    text-align: center;
+    border-width: 2px;
+    transition: border-color var(--transizione), box-shadow var(--transizione);
+}
+
+#input:focus {
+    border-color: var(--colore-accento);
+    box-shadow: 0 0 0 4px rgba(233, 196, 106, .3);
 }
 
 .azioni {
     display: flex;
     flex-wrap: wrap;
     gap: var(--spazio-2);
-    margin-top: var(--spazio-2);
 }
 
 .azioni .pulsante {
     flex: 1 1 140px;
 }
 
-/* Messaggi */
-.comunicazioni {
-    max-width: 420px;
-    min-height: 100px;
-    margin: var(--spazio-4) auto 0;
-    padding: var(--spazio-2) var(--spazio-3);
-    background-color: var(--colore-sfondo);
-    border: 1px solid var(--colore-bordo);
-    border-radius: var(--raggio-m);
-}
-
+/* Messaggio */
 #messaggi {
+    display: inline-block;
     min-height: 1.5em;
+    margin: var(--spazio-4) 0 0;
+    padding: var(--spazio-1) var(--spazio-4);
     font-size: var(--testo-l);
     font-weight: var(--peso-bold);
+    border-radius: var(--raggio-l);
 }
 
-#contatore {
-    color: var(--colore-testo-tenue);
+#messaggi:empty {
+    padding: 0;
 }
 
-/* Responsive: etichetta e campo in riga */
+#messaggi.messaggio--avviso {
+    background-color: #FBEBD5;
+}
+
+#messaggi.messaggio--successo {
+    background-color: #E3F1EA;
+}
+
+#messaggi.messaggio--errore {
+    background-color: #F8E5E8;
+}
+
+/* Storico dei tentativi */
+.storico {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spazio-2);
+    margin: var(--spazio-3) 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.storico__voce {
+    padding: var(--spazio-1) var(--spazio-3);
+    font-weight: var(--peso-bold);
+    font-variant-numeric: tabular-nums;
+    border-radius: var(--raggio-l);
+    animation: entra 260ms var(--molla);
+}
+
+.storico__voce--alto,
+.storico__voce--basso {
+    color: var(--colore-avviso);
+    background-color: #FBEBD5;
+}
+
+.storico__voce--giusto {
+    color: var(--colore-superficie);
+    background-color: var(--colore-successo);
+}
+
+@keyframes entra {
+    from { transform: scale(0.5); opacity: 0; }
+    to   { transform: none; opacity: 1; }
+}
+
+/* Istruzioni */
+.regole {
+    margin-top: var(--spazio-4);
+}
+
+/* Responsive */
 @media (min-width: 600px) {
     #form {
-        grid-template-columns: auto 1fr;
-        align-items: center;
-        column-gap: var(--spazio-3);
+        grid-template-columns: 1fr 1fr;
+        align-items: end;
     }
 
     .azioni {

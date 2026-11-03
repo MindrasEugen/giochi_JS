@@ -12,3 +12,5 @@ Ultima modifica: 2026-11-03
 - 2026-11-03 — Tappa 6 completata: modalità Impossibile con minimax, prova esaustiva (0 vittorie di X su 569 partite) e controllo indipendente su 2097 posizioni. Piano concluso.
 - 2026-11-03 — Voce sul minimax salvata nell'archivio globale. Aggiunta la Tappa 7 (restyling moderno di Sasso carta forbici e Tris) su richiesta dell'utente.
 - 2026-11-03 — Tappa 7 completata: restyling moderno di Sasso carta forbici e Tris e ritocchi a `css/comune.css`, verificati con jsdom, test del minimax e screenshot.
+- 2026-11-03 — Aggiunta la Tappa 8 (stile moderno su Impiccato, Indovina il numero e Sette e mezzo) su richiesta dell'utente.
+- 2026-11-03 — Tappa 8 completata: stile moderno su Impiccato, Indovina il numero e Sette e mezzo, verificato con jsdom (23 controlli) e screenshot.

@@ -15,6 +15,17 @@ const mazzo = [];
 let puntiGiocatore = 0;
 let puntiBanco = 0;
 let timerBanco;
+const contenitore = document.querySelector('.contenitore_body');
+
+// Il CSS usa data-turno per evidenziare il riquadro di chi sta giocando
+function impostaTurno(turno) {
+    contenitore.dataset.turno = turno;
+}
+
+function mostraMessaggio(testo, tipo) {
+    messaggi.textContent = testo;
+    messaggi.className = tipo ? `messaggio--${tipo}` : '';
+}
 
 
 creaMazzo();
@@ -44,10 +55,11 @@ function giocatorePesca() {
     immagineCarta.alt = `${carteEstrate[0].nome} di ${carteEstrate[0].seme}`;
     carteGiocatore.appendChild(immagineCarta);
     puntiGiocatore += carteEstrate[0].valore;
-    punteggioG.textContent = `Il tuo punteggio: ${puntiGiocatore.toLocaleString('it-IT')}`;
+    punteggioG.textContent = puntiGiocatore.toLocaleString('it-IT');
 
     if (puntiGiocatore > 7.5) {
-        messaggi.textContent = 'Hai sballato! Vince il banco.';
+        mostraMessaggio('Hai sballato! Vince il banco.', 'errore');
+        impostaTurno('');
         stai.disabled = true;
         pesca.disabled = true;
     }
@@ -61,12 +73,14 @@ function bancoPesca() {
         immagineCarta.alt = `${carteEstrate[0].nome} di ${carteEstrate[0].seme}`;
         carteBanco.appendChild(immagineCarta);
         puntiBanco += carteEstrate[0].valore;
-        punteggioB.textContent = `Punteggio banco: ${puntiBanco.toLocaleString('it-IT')}`;
+        punteggioB.textContent = puntiBanco.toLocaleString('it-IT');
         timerBanco = setTimeout(bancoPesca, 1000);
     } else if (puntiBanco > 7.5) {
-        messaggi.textContent = ' Il banco ha sballato, vince il giocatore! '
+        mostraMessaggio('Il banco ha sballato, vince il giocatore!', 'successo');
+        impostaTurno('');
     } else {
-        messaggi.textContent = 'Vince il banco!'
+        mostraMessaggio('Vince il banco!', 'errore');
+        impostaTurno('');
     }
 }
 
@@ -78,7 +92,8 @@ pesca.addEventListener('click', giocatorePesca);
 stai.addEventListener('click', () => {
     stai.disabled = true;
     pesca.disabled = true;
-    messaggi.textContent = ' Il banco sta giocando...';
+    mostraMessaggio('Il banco sta giocando...', 'attesa');
+    impostaTurno('banco');
     timerBanco = setTimeout(() => {
         bancoPesca();
     }, 1000)
@@ -88,9 +103,10 @@ nuovaPartita.addEventListener('click', () => {
     clearTimeout(timerBanco);
     puntiBanco = 0;
     puntiGiocatore = 0;
-    punteggioB.textContent = 'Punteggio banco: 0';
-    punteggioG.textContent = '';
-    messaggi.textContent = '';
+    punteggioB.textContent = '0';
+    punteggioG.textContent = '0';
+    mostraMessaggio('', '');
+    impostaTurno('giocatore');
     carteGiocatore.textContent = '';
     carteBanco.textContent = '';
     creaMazzo();
@@ -100,4 +116,5 @@ nuovaPartita.addEventListener('click', () => {
 });
 
 
+impostaTurno('giocatore');
 giocatorePesca();

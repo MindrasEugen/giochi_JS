@@ -13,31 +13,52 @@
         <div class="contenitore">
             <a class="link-home" href="../index.html">← Tutti i giochi</a>
             <h1>Indovina il numero</h1>
-            <div class="istruzioni">
-                <h2>Istruzioni</h2>
-                <p>il computer pensa a un numero intero da 1 a 100. L'utente lo scrive in un campo di testo e preme un
-                    bottone. La pagina risponde con "Troppo alto", "Troppo basso" oppure "Indovinato in X tentativi!"
-                </p>
-            </div>
-            <form id="form">
-                <label for="difficolta">Scegli la difficolta:</label>
-                <select name="difficolta" id="difficolta">
-                    <option value="10">Facile</option>
-                    <option value="7">Media</option>
-                    <option value="5">Difficile</option>
-                </select>
+            <p class="sottotitolo">Il computer ha pensato un numero da 1 a 100. Riesci a trovarlo?</p>
 
-                <label for="input">Il tuo numero:</label>
-                <input id="input" name="numero" type="number" min="1" max="100" required autofocus>
+            <div class="tabellone">
+                <div class="segnapunti">
+                    <span class="segnapunti__nome">Tentativi</span>
+                    <span class="segnapunti__punti" id="fatti">0</span>
+                </div>
+                <div class="segnapunti segnapunti--intervallo">
+                    <span class="segnapunti__nome">È tra</span>
+                    <span class="segnapunti__punti" id="intervallo">1 – 100</span>
+                </div>
+                <div class="segnapunti">
+                    <span class="segnapunti__nome">Rimasti</span>
+                    <span class="segnapunti__punti" id="rimanenti">10</span>
+                </div>
+            </div>
+            <p id="contatore" class="nascosto-visivamente"></p>
+
+            <form id="form">
+                <div class="campo">
+                    <label for="difficolta">Difficoltà</label>
+                    <select name="difficolta" id="difficolta">
+                        <option value="10">Facile (10 tentativi)</option>
+                        <option value="7">Media (7 tentativi)</option>
+                        <option value="5">Difficile (5 tentativi)</option>
+                    </select>
+                </div>
+                <div class="campo">
+                    <label for="input">Il tuo numero</label>
+                    <input id="input" name="numero" type="number" min="1" max="100" required autofocus>
+                </div>
                 <div class="azioni">
                     <button id="button" type="submit" class="pulsante">Prova</button>
                     <button id="reset" type="button" class="pulsante pulsante--secondario">Nuova partita</button>
                 </div>
             </form>
-            <div class="comunicazioni" aria-live="polite">
-                <p id="messaggi"></p>
-                <p id="contatore"></p>
-            </div>
+
+            <p id="messaggi" aria-live="polite"></p>
+            <ul class="storico" id="storico" aria-label="Tentativi fatti"></ul>
+
+            <details class="pannello regole">
+                <summary>Istruzioni</summary>
+                <p>Il computer pensa a un numero intero da 1 a 100. L'utente lo scrive in un campo di testo e preme un
+                    bottone. La pagina risponde con "Troppo alto", "Troppo basso" oppure "Indovinato in X tentativi!"
+                </p>
+            </details>
         </div>
         <script src="./main.js"></script>
     </body>

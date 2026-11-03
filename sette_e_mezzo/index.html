@@ -15,24 +15,28 @@
             <h1>Sette e mezzo</h1>
             <div class="campo_di_gioco">
                 <div class="contenitore_giocatore">
-                    <h2>Giocatore</h2>
+                    <div class="intestazione">
+                        <h2>Giocatore</h2>
+                        <span class="pillola-punti" id="punti_giocatore" aria-label="Il tuo punteggio">0</span>
+                    </div>
                     <div id="carte_giocatore"></div>
-                    <p id="punti_giocatore"></p>
                 </div>
                 <div class="contenitore_banco">
-                    <h2>Banco</h2>
+                    <div class="intestazione">
+                        <h2>Banco</h2>
+                        <span class="pillola-punti" id="punti_banco" aria-label="Punteggio del banco">0</span>
+                    </div>
                     <div id="carte_banco"></div>
-                    <p id="punti_banco">Punteggio banco: 0</p>
                 </div>
             </div>
+            <p id="messaggi" aria-live="polite"></p>
             <div class="pulsanti">
                 <button type="button" id="pesca" class="pulsante pulsante--secondario">Pesca</button>
                 <button type="button" id="stai" class="pulsante pulsante--secondario">Stai</button>
-                <button type="button" id="nuova_partita" class="pulsante pulsante--secondario">Nuova Partita</button>
-                <p id="messaggi" aria-live="polite"></p>
+                <button type="button" id="nuova_partita" class="pulsante pulsante--chiaro">Nuova Partita</button>
             </div>
-            <div id="regole">
-                <h3>Regole del gioco:</h3>
+            <details id="regole" class="pannello">
+                <summary>Regole del gioco</summary>
                 <ol>
                     <li>Si gioca contro il banco con un mazzo italiano di 40 carte, senza matta.</li>
                     <li>L’obiettivo è avvicinarsi il più possibile a 7,5 punti, senza superarli.</li>
@@ -44,7 +48,7 @@
                     <li>Le carte pescate vengono rimosse dal mazzo: la stessa carta non può uscire due volte nella partita.</li>
                     <li>Premi “Nuova partita” per ricominciare con il mazzo completo e i punteggi azzerati.</li>
                 </ol>
-            </div>
+            </details>
         </div>
         <script src="./main.js"></script>
     </body>

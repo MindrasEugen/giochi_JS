@@ -16,10 +16,6 @@ const disegni = [
     './pic/stato-6.png',
 ];
 
-for (let i = 0; i < parolaSegreta.length; i++) {
-    lettereScoperte.push('_');
-};
-
 
 const parolaVisualizzata = document.querySelector('.parolaVisualizzata');
 const lettera = document.querySelector('#lettera');
@@ -31,8 +27,8 @@ const prova = document.querySelector('#prova');
 const nuovaPartita = document.querySelector('#nuovaPartita');
 const tastiera = document.querySelector('#tastiera');
 const disegno = document.querySelector('#disegno');
-
-disegno.src = disegni[numeroErrori];
+const vite = document.querySelectorAll('.vita');
+const contaErrori = document.querySelector('#contaErrori');
 
 
 for (let i = 0; i < alfabeto.length; i++) {
@@ -46,18 +42,52 @@ for (let i = 0; i < alfabeto.length; i++) {
     })
 };
 
+// Prepara la parola nascosta: una tessera vuota per ogni lettera
+function preparaParola() {
+    lettereScoperte = [];
+    parolaVisualizzata.textContent = '';
+    for (let i = 0; i < parolaSegreta.length; i++) {
+        lettereScoperte.push('_');
+        const tessera = document.createElement('span');
+        tessera.className = 'tessera';
+        parolaVisualizzata.appendChild(tessera);
+    }
+    aggiornaDescrizioneParola();
+}
+
+// Per i lettori di schermo la parola viene letta come "c _ _ a"
+function aggiornaDescrizioneParola() {
+    parolaVisualizzata.setAttribute('aria-label', `Parola: ${lettereScoperte.join(' ')}`);
+}
+
+function scopriTessera(indice, classe) {
+    const tessera = parolaVisualizzata.children[indice];
+    tessera.textContent = parolaSegreta[indice];
+    tessera.classList.add(classe);
+}
+
+// Le vite perse diventano grigie, una per ogni errore
+function aggiornaVite() {
+    for (let i = 0; i < vite.length; i++) {
+        vite[i].classList.toggle('vita--persa', i >= vite.length - numeroErrori);
+    }
+    contaErrori.textContent = `${numeroErrori}/6`;
+}
+
+function bloccaPartita() {
+    const tasti = tastiera.querySelectorAll('button');
+    for (let i = 0; i < tasti.length; i++) {
+        tasti[i].disabled = true;
+    };
+    laTuaLettera.disabled = true;
+    prova.disabled = true;
+}
+
 function provaLettera(letteraScelta) {
 
     if (numeroErrori >= 6 || !lettereScoperte.includes('_')) {
         return
     }
-
-    const tasti = tastiera.querySelectorAll('button');
-    for (let i = 0; i < tasti.length; i++) {
-            if (tasti[i].textContent === letteraScelta) {
-                tasti[i].disabled = true;
-            }
-        };
 
     if (lettereUsate.includes(letteraScelta)) {
         messaggi.className = 'messaggi messaggio--avviso';
@@ -65,53 +95,59 @@ function provaLettera(letteraScelta) {
         return
     } else {
         lettereUsate.push(letteraScelta);
-        lettereInserite.textContent = lettereUsate.join(', ');
+        lettereInserite.textContent = `Lettere provate: ${lettereUsate.join(', ')}`;
         messaggi.className = 'messaggi';
         messaggi.textContent = '';
     }
 
+    const presente = parolaSegreta.includes(letteraScelta);
 
-    if (parolaSegreta.includes(letteraScelta)) {
+    // il tasto diventa verde se la lettera c'è, rosso se non c'è
+    const tasti = tastiera.querySelectorAll('button');
+    for (let i = 0; i < tasti.length; i++) {
+        if (tasti[i].textContent === letteraScelta) {
+            tasti[i].disabled = true;
+            tasti[i].classList.add(presente ? 'tasto--giusto' : 'tasto--sbagliato');
+        }
+    };
+
+    if (presente) {
         for (let i = 0; i < parolaSegreta.length; i++) {
             if (parolaSegreta[i] === letteraScelta) {
-                lettereScoperte[i] = letteraScelta
+                lettereScoperte[i] = letteraScelta;
+                scopriTessera(i, 'tessera--scoperta');
             }
         };
-        parolaVisualizzata.textContent = lettereScoperte.join(' ');
-        errore.textContent = numeroErrori > 0 ? `Errori: ${numeroErrori}/6` : '';
+        aggiornaDescrizioneParola();
+        errore.textContent = '';
     } else {
         errore.textContent = `La lettera non è presente nella parola. Errori: ${++numeroErrori}/6`;
         disegno.src = disegni[numeroErrori];
     }
+    aggiornaVite();
 
 
     if (!lettereScoperte.includes('_')) {
         messaggi.className = 'messaggi messaggio--successo';
         messaggi.textContent = 'Hai indovinato la parola!';
-
-        for (let i = 0; i < tasti.length; i++) {
-            tasti[i].disabled = true;
-        };
-
-        laTuaLettera.disabled = true;
-        prova.disabled = true;
+        bloccaPartita();
     } else if (numeroErrori >= 6) {
         messaggi.className = 'messaggi messaggio--errore';
-        messaggi.innerHTML = `Hai perso! La parola segreta era: 
+        messaggi.innerHTML = `Hai perso! La parola segreta era:
         <strong>${parolaSegreta}</strong>`
-
-        for (let i = 0; i < tasti.length; i++) {
-            tasti[i].disabled = true;
-        };
-
-        laTuaLettera.disabled = true;
-        prova.disabled = true;
+        // mostra le lettere che mancavano, in un altro colore
+        for (let i = 0; i < parolaSegreta.length; i++) {
+            if (lettereScoperte[i] === '_') {
+                scopriTessera(i, 'tessera--rivelata');
+            }
+        }
+        bloccaPartita();
     };
-
 }
 
 
-parolaVisualizzata.textContent = lettereScoperte.join(' ');
+preparaParola();
+aggiornaVite();
 
 
 lettera.addEventListener('submit', (event) => {
@@ -126,12 +162,9 @@ lettera.addEventListener('submit', (event) => {
 nuovaPartita.addEventListener('click', () => {
     parolaSegreta = listaParole[Math.floor(Math.random() * listaParole.length)];
     numeroErrori = 0;
-    lettereScoperte = [];
     lettereUsate = [];
-    for (let i = 0; i < parolaSegreta.length; i++) {
-        lettereScoperte.push('_');
-    };
-    parolaVisualizzata.textContent = lettereScoperte.join(' ');
+    preparaParola();
+    aggiornaVite();
     messaggi.className = 'messaggi';
     messaggi.textContent = '';
     lettereInserite.textContent = '';
@@ -140,6 +173,7 @@ nuovaPartita.addEventListener('click', () => {
     const tasti = tastiera.querySelectorAll('button');
     for (let i = 0; i < tasti.length; i++) {
         tasti[i].disabled = false;
+        tasti[i].classList.remove('tasto--giusto', 'tasto--sbagliato');
     };
     laTuaLettera.disabled = false;
     prova.disabled = false;

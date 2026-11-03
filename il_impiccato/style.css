@@ -2,26 +2,224 @@
 
 /* Layout */
 .contenitore {
+    max-width: 760px;
     background-color: var(--colore-superficie);
-    border-radius: var(--raggio-m);
-    box-shadow: var(--ombra-leggera);
+    border-radius: var(--raggio-xl);
+    box-shadow: var(--ombra-forte);
     margin-block: var(--spazio-4);
+    text-align: center;
 }
 
 h1 {
-    text-align: center;
+    margin-bottom: var(--spazio-1);
 }
 
-/* Parola da indovinare */
-.parolaVisualizzata {
-    font-family: var(--font-mono);
-    font-size: var(--testo-l);
+.sottotitolo {
+    margin-top: 0;
+    color: var(--colore-testo-tenue);
+}
+
+/* Tabellone: vite ed errori */
+.tabellone {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: var(--spazio-3);
+    margin-top: var(--spazio-4);
+    padding: var(--spazio-3) var(--spazio-4);
+    background: linear-gradient(135deg, var(--colore-primario), var(--colore-primario-chiaro));
+    border-radius: var(--raggio-l);
+    color: var(--colore-sfondo);
+}
+
+.segnapunti {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spazio-1);
+    text-align: left;
+}
+
+.segnapunti + .segnapunti {
+    text-align: right;
+}
+
+.segnapunti__nome {
+    font-size: var(--testo-s);
+    font-weight: var(--peso-semibold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.85;
+}
+
+.segnapunti__punti {
+    font-size: var(--testo-xl);
     font-weight: var(--peso-bold);
-    letter-spacing: 0.05em;
-    text-align: center;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+    color: var(--colore-accento);
+}
+
+.vite {
+    display: flex;
+    gap: 6px;
+}
+
+/* una vita è un cerchio dorato; quando si perde diventa vuoto */
+.vita {
+    width: 18px;
+    height: 18px;
+    background-color: var(--colore-accento);
+    border: 2px solid var(--colore-accento);
+    border-radius: 50%;
+    transition: background-color 300ms ease, transform 300ms var(--molla);
+}
+
+.vita--persa {
+    background-color: transparent;
+    border-color: rgba(255, 248, 231, .45);
+    transform: scale(0.8);
+}
+
+/* Parola: una tessera per lettera */
+.parolaVisualizzata {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin: var(--spazio-4) 0 var(--spazio-2);
+}
+
+.tessera {
+    display: grid;
+    place-items: center;
+    flex: 0 1 44px;
+    min-width: 0;
+    height: clamp(40px, 11vw, 56px);
+    font-family: var(--font-mono);
+    font-size: clamp(1.1rem, 5vw, 1.75rem);
+    font-weight: var(--peso-bold);
+    text-transform: uppercase;
     color: var(--colore-primario);
-    overflow-wrap: anywhere;
-    margin: var(--spazio-4) 0;
+    background-color: var(--colore-sfondo);
+    border-bottom: 4px solid var(--colore-bordo);
+    border-radius: var(--raggio-s);
+}
+
+.tessera--scoperta {
+    background-color: var(--colore-superficie);
+    border-bottom-color: var(--colore-successo);
+    box-shadow: var(--ombra-leggera);
+    animation: gira 380ms var(--molla);
+}
+
+/* lettere mostrate a fine partita persa */
+.tessera--rivelata {
+    color: var(--colore-errore);
+    border-bottom-color: var(--colore-errore);
+    animation: gira 380ms var(--molla);
+}
+
+@keyframes gira {
+    from { transform: rotateX(90deg); }
+    to   { transform: none; }
+}
+
+/* Messaggi */
+.messaggi {
+    min-height: 1.5em;
+    margin: 0;
+    font-size: var(--testo-l);
+    font-weight: var(--peso-semibold);
+}
+
+.errore {
+    margin: var(--spazio-1) 0 0;
+    color: var(--colore-errore);
+}
+
+.errore:empty {
+    display: none;
+}
+
+/* Tastiera e disegno */
+.contenitore_tastiera_disegno {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: var(--spazio-4);
+    margin-top: var(--spazio-3);
+}
+
+#tastiera {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(40px, 1fr));
+    gap: 6px;
+    width: 100%;
+    max-width: 380px;
+}
+
+#tastiera button {
+    min-height: var(--area-minima);
+    font: inherit;
+    font-weight: var(--peso-bold);
+    text-transform: uppercase;
+    color: var(--colore-primario);
+    background-color: var(--colore-superficie);
+    border: 2px solid var(--colore-bordo);
+    border-radius: var(--raggio-m);
+    box-shadow: 0 3px 0 var(--colore-bordo);
+    cursor: pointer;
+    transition: transform var(--transizione), box-shadow var(--transizione), border-color var(--transizione);
+}
+
+#tastiera button:hover:not(:disabled) {
+    border-color: var(--colore-accento);
+    box-shadow: 0 5px 0 var(--colore-accento);
+    transform: translateY(-2px);
+}
+
+#tastiera button:active:not(:disabled) {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 var(--colore-accento);
+}
+
+#tastiera button:disabled {
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: translateY(3px);
+}
+
+/* lettera giusta: verde; sbagliata: rossa e barrata */
+#tastiera button.tasto--giusto {
+    color: var(--colore-superficie);
+    background-color: var(--colore-successo);
+    border-color: var(--colore-successo);
+}
+
+#tastiera button.tasto--sbagliato {
+    color: var(--colore-errore);
+    background-color: #F8E5E8;
+    border-color: #F8E5E8;
+    text-decoration: line-through;
+}
+
+/* a partita finita i tasti non usati si spengono */
+#tastiera button:disabled:not(.tasto--giusto):not(.tasto--sbagliato) {
+    opacity: 0.4;
+}
+
+.riquadro-disegno {
+    display: grid;
+    place-items: center;
+    width: 200px;
+    padding: var(--spazio-3);
+    background-color: var(--colore-sfondo);
+    border: 1px solid var(--colore-bordo);
+    border-radius: var(--raggio-l);
+}
+
+#disegno {
+    width: 100%;
+    height: auto;
 }
 
 /* Form della lettera */
@@ -31,119 +229,52 @@ h1 {
     justify-content: center;
     align-items: center;
     gap: var(--spazio-2);
+    margin-top: var(--spazio-4);
+}
+
+#lettera label {
+    color: var(--colore-testo-tenue);
 }
 
 #laTuaLettera {
     width: 4rem;
     text-align: center;
     font-size: var(--testo-l);
+    font-weight: var(--peso-bold);
     text-transform: lowercase;
 }
 
-/* Tastiera e disegno */
-.contenitore_tastiera_disegno {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--spazio-4);
-    margin-top: var(--spazio-4);
-}
-
-#tastiera {
-    display: grid;
-    grid-template-columns: repeat(7, minmax(40px, 1fr));
-    gap: 6px;
-    width: 100%;
-    max-width: 360px;
-}
-
-#tastiera button {
-    min-height: var(--area-minima);
-    font: inherit;
-    font-weight: var(--peso-semibold);
-    text-transform: uppercase;
-    color: var(--colore-primario);
-    background-color: var(--colore-sfondo);
-    border: 1px solid var(--colore-bordo);
-    border-radius: var(--raggio-s);
-    cursor: pointer;
-    transition: background-color var(--transizione);
-}
-
-#tastiera button:hover:not(:disabled) {
-    background-color: var(--colore-accento);
-}
-
-/* Tasto già usato: barrato e più chiaro, non solo un colore diverso */
-#tastiera button:disabled {
-    color: var(--colore-testo-tenue);
-    background-color: var(--colore-bordo);
-    text-decoration: line-through;
-    cursor: not-allowed;
-}
-
-#disegno {
-    width: 200px;
-    max-width: 60%;
-    height: auto;
-}
-
-/* Messaggi */
-.messaggi,
-.errore,
 .lettereUsate {
-    text-align: center;
-}
-
-.messaggi {
     min-height: 1.5em;
-    font-size: var(--testo-l);
-    font-weight: var(--peso-semibold);
-}
-
-.errore {
-    color: var(--colore-errore);
-}
-
-.lettereUsate {
     color: var(--colore-testo-tenue);
-    text-decoration: line-through;
-    letter-spacing: 0.05em;
+    font-size: var(--testo-s);
+    letter-spacing: 0.03em;
 }
 
 #nuovaPartita {
     display: flex;
     width: fit-content;
-    margin: var(--spazio-4) auto 0;
+    margin: var(--spazio-2) auto 0;
 }
 
 /* Regole */
 .regole {
-    margin-top: var(--spazio-5);
-    padding: var(--spazio-3) var(--spazio-4);
-    background-color: var(--colore-sfondo);
-    border: 1px solid var(--colore-bordo);
-    border-radius: var(--raggio-m);
-    color: var(--colore-testo-tenue);
+    margin-top: var(--spazio-4);
 }
 
 .regole li + li {
     margin-top: var(--spazio-1);
 }
 
-/* Responsive */
+/* Responsive: tastiera e disegno affiancati */
 @media (min-width: 600px) {
-    .parolaVisualizzata {
-        font-size: var(--testo-xl);
-        letter-spacing: 0.1em;
-    }
-
     .contenitore_tastiera_disegno {
         flex-direction: row;
         justify-content: center;
+        align-items: center;
     }
 
-    #disegno {
-        max-width: 200px;
+    .riquadro-disegno {
+        width: 220px;
     }
 }

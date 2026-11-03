@@ -13,23 +13,44 @@
         <div class="contenitore">
             <a class="link-home" href="../index.html">← Tutti i giochi</a>
             <h1>L'impiccato</h1>
+            <p class="sottotitolo">Scopri la parola segreta prima di fare 6 errori.</p>
+
+            <div class="tabellone">
+                <div class="segnapunti">
+                    <span class="segnapunti__nome">Vite</span>
+                    <span class="vite" id="vite" aria-hidden="true">
+                        <span class="vita"></span><span class="vita"></span><span class="vita"></span><span class="vita"></span><span class="vita"></span><span class="vita"></span>
+                    </span>
+                </div>
+                <div class="segnapunti">
+                    <span class="segnapunti__nome">Errori</span>
+                    <span class="segnapunti__punti" id="contaErrori">0/6</span>
+                </div>
+            </div>
+
             <p class="parolaVisualizzata"></p>
+            <p class="messaggi" aria-live="polite"></p>
+            <p class="errore" aria-live="polite"></p>
+
+            <div class="contenitore_tastiera_disegno">
+                <div id="tastiera"></div>
+                <div class="riquadro-disegno">
+                    <img id="disegno" src="./pic/stato-0.png" alt="Disegno dell'impiccato">
+                </div>
+            </div>
+
             <div class="form">
                 <form id="lettera">
-                    <label for="laTuaLettera">La tua lettera</label>
+                    <label for="laTuaLettera">Oppure scrivi una lettera</label>
                     <input type="text" id="laTuaLettera" required autofocus maxlength="1" pattern="[a-zA-Z]">
                     <button type="submit" id="prova" class="pulsante">Prova</button>
                 </form>
             </div>
-            <div class="contenitore_tastiera_disegno">
-                <div id="tastiera"></div>
-                <img id="disegno" src="./pic/stato-0.png" alt="Disegno dell'impiccato">
-            </div>
-            <p class="messaggi" aria-live="polite"></p>
             <p class="lettereUsate"></p>
-            <p class="errore"></p>
             <button type="button" id="nuovaPartita" class="pulsante pulsante--secondario">Nuova Partita</button>
-            <div class="regole">
+
+            <details class="pannello regole">
+                <summary>Regole del gioco</summary>
                 <ol>
                     <li>Il computer sceglie una parola segreta e mostra un trattino per ogni lettera.</li>
                     <li>Inserisci una lettera alla volta e premi “Prova”.</li>
@@ -40,7 +61,7 @@
                     <li>Vinci se scopri tutta la parola prima di esaurire gli errori disponibili.</li>
                     <li>Premi “Nuova partita” per ricominciare con una nuova parola.</li>
                 </ol>
-            </div>
+            </details>
         </div>
         <script src="./doc/lista_parole.js"></script>
         <script src="./main.js"></script>

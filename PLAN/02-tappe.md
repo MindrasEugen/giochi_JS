@@ -11,5 +11,6 @@ Ultima modifica: 2026-11-03
 | 5 | [Tris: riordino del codice e menu di difficoltà](14-tappa-05-tris-difficolta.md) | ☑ completata |
 | 6 | [Tris: modalità impossibile con minimax](15-tappa-06-tris-minimax.md) | ☑ completata |
 | 7 | [Restyling moderno di Sasso carta forbici e Tris](16-tappa-07-restyling-moderno.md) | ☑ completata |
+| 8 | [Stesso stile per Impiccato, Indovina il numero e Sette e mezzo](17-tappa-08-restyling-altri-giochi.md) | ☑ completata |
 
 Legenda: ☐ da fare · ◐ in corso · ☑ completata · ✗ annullata
