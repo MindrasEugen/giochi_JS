@@ -2,5 +2,5 @@
 
 Ultima modifica: 2026-11-03
 
-- **Azione successiva:** chiudere la [Tappa 3](12-tappa-03-home.md) (link "← Tutti i giochi" in ogni gioco e verifica della home), poi la [Tappa 4](13-tappa-04-css.md).
-- **Cosa serve dall'utente:** la conferma per chiudere la Tappa 3.
+- **Azione successiva:** controllo del CSS della [Tappa 4](13-tappa-04-css.md) prodotto da Codex, poi la [Tappa 5](14-tappa-05-tris-difficolta.md).
+- **Cosa serve dall'utente:** la conferma per la Tappa 5 dopo la chiusura della Tappa 4.

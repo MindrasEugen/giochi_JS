@@ -1,0 +1,159 @@
+/* Variabili */
+:root {
+  --colore-sfondo: #FFF8E7;
+  --colore-superficie: #FFFFFF;
+  --colore-primario: #12372A;
+  --colore-primario-chiaro: #205444;
+  --colore-accento: #E9C46A;
+  --colore-testo: #1F2A24;
+  --colore-testo-tenue: #4A5A51;
+  --colore-bordo: #D9CFB8;
+  --colore-successo: #2D6A4F;
+  --colore-errore: #B23A48;
+  --colore-avviso: #9A4D00;
+  --colore-info: #1D4E89;
+  --font-base: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, Consolas, monospace;
+  --testo-s: 0.875rem;
+  --testo-m: 1rem;
+  --testo-l: 1.25rem;
+  --testo-xl: 1.75rem;
+  --testo-xxl: 2.5rem;
+  --peso-normale: 400;
+  --peso-semibold: 600;
+  --peso-bold: 700;
+  --interlinea: 1.5;
+  --spazio-1: 4px;
+  --spazio-2: 8px;
+  --spazio-3: 16px;
+  --spazio-4: 24px;
+  --spazio-5: 32px;
+  --raggio-s: 6px;
+  --raggio-m: 12px;
+  --raggio-l: 20px;
+  --ombra-leggera: 0 2px 8px rgba(18,55,42,.12);
+  --ombra-media: 0 6px 18px rgba(18,55,42,.18);
+  --transizione: 150ms ease;
+  --contenitore-max: 1000px;
+  --area-minima: 44px;
+}
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+body { margin: 0; }
+img { max-width: 100%; }
+
+/* Corpo */
+body {
+  background-color: var(--colore-sfondo);
+  color: var(--colore-testo);
+  font-family: var(--font-base);
+  font-size: var(--testo-m);
+  line-height: var(--interlinea);
+}
+
+/* Tipografia */
+h1, h2, h3 {
+  color: var(--colore-primario);
+  font-weight: var(--peso-bold);
+}
+
+/* Layout */
+.contenitore {
+  max-width: var(--contenitore-max);
+  margin: 0 auto;
+  padding: var(--spazio-3);
+}
+
+/* Componenti */
+.pulsante {
+  background-color: var(--colore-primario);
+  color: var(--colore-superficie);
+  border: none;
+  border-radius: var(--raggio-s);
+  padding: var(--spazio-2) var(--spazio-3);
+  min-height: var(--area-minima);
+  font-size: var(--testo-m);
+  font-weight: var(--peso-semibold);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transizione);
+}
+.pulsante:hover { background-color: var(--colore-primario-chiaro); }
+.pulsante--secondario {
+  background-color: var(--colore-accento);
+  color: var(--colore-primario);
+}
+.pulsante--secondario:hover { background-color: var(--colore-accento); }
+.pulsante:disabled, .pulsante[aria-disabled="true"] {
+  opacity: .5;
+  cursor: not-allowed;
+}
+input, select {
+  border: 1px solid var(--colore-bordo);
+  border-radius: var(--raggio-s);
+  padding: var(--spazio-2) var(--spazio-3);
+  min-height: var(--area-minima);
+  font: inherit;
+  color: var(--colore-testo);
+  background-color: var(--colore-superficie);
+}
+.card {
+  background-color: var(--colore-superficie);
+  border-radius: var(--raggio-m);
+  box-shadow: var(--ombra-leggera);
+  padding: var(--spazio-4);
+}
+.link-home {
+  font-size: var(--testo-s);
+  color: var(--colore-primario);
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: var(--spazio-3);
+}
+.link-home:hover { text-decoration: underline; }
+.messaggio--successo { color: var(--colore-successo); }
+.messaggio--errore { color: var(--colore-errore); }
+.messaggio--avviso { color: var(--colore-avviso); }
+
+/* Accessibilità */
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible, summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--colore-info);
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms;
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+  }
+}
+
+/* Utility */
+.testo-centrato { text-align: center; }
+.nascosto-visivamente {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Responsive */
+@media (min-width: 600px) {
+  .contenitore { padding: var(--spazio-4); }
+}
+@media (min-width: 900px) {
+  .contenitore { padding: var(--spazio-5); }
+}

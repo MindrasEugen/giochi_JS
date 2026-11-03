@@ -1,0 +1,53 @@
+/* Presentazione */
+header.contenitore {
+  text-align: center;
+  margin-top: var(--spazio-4);
+  margin-bottom: var(--spazio-5);
+}
+.presentazione { color: var(--colore-testo-tenue); }
+
+/* Elenco giochi */
+main > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--spazio-4);
+  grid-template-columns: 1fr;
+}
+li.card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  transition: transform var(--transizione), box-shadow var(--transizione);
+}
+li.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--ombra-media);
+}
+li.card .pulsante { margin-top: auto; }
+.emoji-gioco {
+  font-size: 2.5rem;
+  line-height: 1;
+  margin-bottom: var(--spazio-2);
+}
+li.card h2 {
+  font-size: var(--testo-l);
+  margin: 0 0 var(--spazio-2);
+}
+
+/* Chiusura */
+footer.contenitore {
+  text-align: center;
+  color: var(--colore-testo-tenue);
+  font-size: var(--testo-s);
+  margin-top: var(--spazio-5);
+}
+
+/* Responsive */
+@media (min-width: 600px) {
+  main > ul { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 900px) {
+  main > ul { grid-template-columns: repeat(3, 1fr); }
+}

@@ -1,6 +1,6 @@
 # ADR 0003 — Un CSS comune con le variabili più un CSS per gioco
 
-- **Stato:** proposta
+- **Stato:** accettata
 - **Data:** 2026-11-03
 - **Commit:** — (Tappe 3 e 4)
 
@@ -10,7 +10,8 @@ Oggi ogni gioco ha colori, font e pulsanti diversi: `bisque`, `antiquewhite`, `a
 
 ## Decisione
 
-- `css/comune.css` nella radice contiene la palette in variabili CSS (`--colore-primario`, …) e gli stili di base: reset, font, contenitore, pulsanti, focus visibile, link alla home.
+- `css/comune.css` contiene la palette in variabili CSS (`--colore-primario`, …) e gli stili di base: reset, font, contenitore, pulsanti, focus visibile, link alla home.
+- La home usa `css/home.css`, nella stessa cartella.
 - Ogni gioco collega prima `../css/comune.css` e poi il proprio `style.css`, che contiene solo le regole specifiche del gioco e usa le variabili comuni.
 - Il CSS è scritto a mano seguendo lo schema P.A.L.E.T.T.E., senza librerie.
 

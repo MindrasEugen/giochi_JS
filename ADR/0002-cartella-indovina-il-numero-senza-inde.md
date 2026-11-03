@@ -2,7 +2,7 @@
 
 - **Stato:** accettata
 - **Data:** 2026-11-03
-- **Commit:** vedi `git log` (Tappa 2)
+- **Commit:** `085c7be` (Tappa 2)
 
 ## Contesto
 
