@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="it">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/comune.css">
+        <link rel="stylesheet" href="../css/giocatori.css">
+        <link rel="stylesheet" href="./style.css">
+        <title>Sudoku</title>
+    </head>
+
+    <body>
+        <div class="contenitore" id="contenitore_gioco">
+            <a class="link-home" href="../index.html">← Tutti i giochi</a>
+            <h1>Sudoku</h1>
+            <p class="sottotitolo">Completa la griglia: ogni riga, colonna e riquadro 3×3 contiene i numeri da 1 a 9 una sola volta.</p>
+
+            <div class="barra-modalita">
+                <label for="difficolta" class="nascosto-visivamente">Difficoltà</label>
+                <select id="difficolta">
+                    <option value="facile">Facile</option>
+                    <option value="medio" selected>Medio</option>
+                    <option value="difficile">Difficile</option>
+                </select>
+            </div>
+
+            <div class="tabellone">
+                <div class="segnapunti">
+                    <span class="segnapunti__nome">Tempo</span>
+                    <span class="segnapunti__punti" id="tempo">0:00</span>
+                </div>
+                <div class="segnapunti">
+                    <span class="segnapunti__nome">Da riempire</span>
+                    <span class="segnapunti__punti" id="rimaste">0</span>
+                </div>
+                <div class="segnapunti">
+                    <span class="segnapunti__nome">Record</span>
+                    <span class="segnapunti__punti" id="record">–</span>
+                </div>
+            </div>
+
+            <!-- 81 caselle, create da main.js -->
+            <div class="griglia-sudoku" id="griglia" role="grid" aria-label="Griglia del Sudoku"></div>
+
+            <div class="tastierino" aria-label="Tastierino">
+                <div class="tastierino__numeri" id="numeri"></div>
+                <div class="tastierino__azioni">
+                    <button type="button" id="note" class="pulsante pulsante--secondario" aria-pressed="false">✏️ Note</button>
+                    <button type="button" id="cancella" class="pulsante pulsante--secondario">Cancella</button>
+                    <button type="button" id="annulla" class="pulsante pulsante--secondario">↶ Annulla</button>
+                    <button type="button" id="controlla" class="pulsante pulsante--secondario">Controlla</button>
+                </div>
+            </div>
+
+            <p id="messaggi" aria-live="polite"></p>
+            <button type="button" id="nuovaPartita" class="pulsante">Nuova partita</button>
+
+            <details class="pannello regole">
+                <summary>Regole e comandi</summary>
+                <ol>
+                    <li>Ogni riga, ogni colonna e ogni riquadro 3×3 deve contenere i numeri da 1 a 9, una sola volta.</li>
+                    <li>I numeri in grassetto sono gli indizi di partenza e non si possono cambiare. Ogni sudoku ha una sola soluzione.</li>
+                    <li>Scegli una casella e poi un numero, dal tastierino o dalla tastiera (1–9). Frecce per spostarti, Canc o 0 per cancellare.</li>
+                    <li>Con “Note” attivo (o il tasto N) scrivi i numeri possibili in piccolo. Quando metti un numero, le stesse note spariscono dalle caselle collegate.</li>
+                    <li>Due numeri uguali nella stessa riga, colonna o riquadro vengono segnati in rosso. “Controlla” mostra le caselle diverse dalla soluzione.</li>
+                    <li>“Annulla” (o Ctrl+Z) torna indietro di una mossa. Il record è il tempo migliore per ogni difficoltà.</li>
+                </ol>
+            </details>
+        </div>
+        <script src="./funzioni.js"></script>
+        <script src="./main.js"></script>
+    </body>
+
+</html>

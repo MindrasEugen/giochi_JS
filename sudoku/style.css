@@ -1,0 +1,314 @@
+/* Layout */
+.contenitore {
+  width: 100%;
+  max-width: 660px;
+  margin-block: var(--spazio-3);
+  background: var(--colore-superficie);
+  border-radius: var(--raggio-xl);
+  box-shadow: var(--ombra-forte);
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+h1 {
+  margin-bottom: var(--spazio-1);
+}
+
+.sottotitolo {
+  margin-top: 0;
+  color: var(--colore-testo-tenue);
+}
+
+/* Punteggio */
+.tabellone:not([hidden]) {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--spazio-2);
+  margin-bottom: var(--spazio-4);
+  padding: var(--spazio-3) var(--spazio-2);
+  border-radius: var(--raggio-l);
+  background: linear-gradient(135deg, var(--colore-primario), var(--colore-primario-chiaro));
+  color: var(--colore-superficie);
+}
+
+.segnapunti {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spazio-1);
+  min-width: 0;
+  padding: var(--spazio-1);
+  border: 2px solid transparent;
+  border-radius: var(--raggio-m);
+}
+
+.segnapunti__nome {
+  overflow-wrap: anywhere;
+  font-size: var(--testo-s);
+  font-weight: var(--peso-semibold);
+}
+
+.segnapunti__punti {
+  color: var(--colore-accento);
+  font-size: var(--testo-xl);
+  font-weight: var(--peso-bold);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+
+/* Messaggi e comandi */
+#messaggi {
+  width: fit-content;
+  max-width: 100%;
+  margin: var(--spazio-3) auto;
+  padding: var(--spazio-2) var(--spazio-3);
+  border: 1px solid var(--colore-bordo);
+  border-radius: var(--raggio-xl);
+  background: var(--colore-sfondo);
+  font-weight: var(--peso-semibold);
+}
+
+#messaggi:empty {
+  display: none;
+}
+
+#nuovaPartita {
+  max-width: 100%;
+  min-height: var(--area-minima);
+  margin-top: var(--spazio-3);
+}
+
+.contenitore .pulsante:focus-visible {
+  outline-offset: 4px;
+}
+
+.regole {
+  margin-top: var(--spazio-4);
+}
+
+/* Griglia */
+#griglia.griglia-sudoku {
+  display: grid;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  grid-template-rows: repeat(9, minmax(0, 1fr));
+  gap: 0;
+  width: 100%;
+  max-width: 460px;
+  aspect-ratio: 1;
+  margin: var(--spazio-4) auto;
+  border: 3px solid var(--colore-primario);
+  border-radius: var(--raggio-l);
+  background: var(--colore-superficie);
+  overflow: hidden;
+}
+
+button.cella-sudoku {
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-right: 1px solid var(--colore-bordo);
+  border-bottom: 1px solid var(--colore-bordo);
+  border-radius: 0;
+  background: transparent;
+  font: inherit;
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  min-height: 0;
+  font-size: clamp(1rem, 4.3vw, 1.75rem);
+  font-weight: var(--peso-normale);
+  line-height: 1;
+  color: var(--colore-info);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.cella-sudoku.cella-sudoku--bordo-destro {
+  border-right: 2px solid var(--colore-primario);
+}
+
+.cella-sudoku.cella-sudoku--bordo-sotto {
+  border-bottom: 2px solid var(--colore-primario);
+}
+
+button.cella-sudoku:nth-child(9n) {
+  border-right: 0;
+}
+
+button.cella-sudoku:nth-child(n+73) {
+  border-bottom: 0;
+}
+
+.cella-sudoku.cella-sudoku--data {
+  font-weight: var(--peso-bold);
+  color: var(--colore-testo);
+  background: color-mix(in srgb, var(--colore-bordo) 15%, var(--colore-superficie));
+}
+
+/* Stati in ordine di priorita */
+.cella-sudoku.cella-sudoku--evidenziata {
+  background: color-mix(in srgb, var(--colore-accento) 12%, var(--colore-superficie));
+}
+
+.cella-sudoku.cella-sudoku--stesso {
+  background: color-mix(in srgb, var(--colore-accento) 35%, var(--colore-superficie));
+}
+
+.cella-sudoku.cella-sudoku--conflitto {
+  color: var(--colore-errore);
+  font-weight: var(--peso-bold);
+  background: color-mix(in srgb, var(--colore-errore) 6%, var(--colore-superficie));
+}
+
+.cella-sudoku.cella-sudoku--sbagliata {
+  background: color-mix(in srgb, var(--colore-errore) 10%, var(--colore-superficie));
+  color: var(--colore-errore);
+  text-decoration: line-through;
+}
+
+.cella-sudoku.cella-sudoku--selezionata {
+  background: var(--colore-accento);
+  color: var(--colore-primario);
+  box-shadow: inset 0 0 0 3px var(--colore-primario);
+}
+
+button.cella-sudoku:focus-visible {
+  position: relative;
+  z-index: 1;
+  outline: 3px solid var(--colore-info);
+  outline-offset: -4px;
+}
+
+/* Note */
+.note-sudoku {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  width: 100%;
+  height: 100%;
+  font-size: 0.6em;
+  line-height: 1;
+  color: var(--colore-testo-tenue);
+  font-weight: var(--peso-normale);
+}
+
+.cella-sudoku--selezionata .note-sudoku {
+  color: var(--colore-primario);
+}
+
+.note-sudoku > span {
+  display: grid;
+  place-items: center;
+}
+
+/* Tastierino */
+.tastierino {
+  margin-top: var(--spazio-3);
+  display: grid;
+  gap: var(--spazio-3);
+}
+
+.tastierino__numeri {
+  display: grid;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  gap: var(--spazio-1);
+  width: 100%;
+  max-width: 460px;
+  margin-inline: auto;
+}
+
+.tasto-numero {
+  min-width: 0;
+  min-height: 44px;
+  padding: 0;
+  border: 1px solid var(--colore-bordo);
+  border-radius: var(--raggio-s);
+  background: var(--colore-superficie);
+  color: var(--colore-primario);
+  font: inherit;
+  font-size: clamp(1.25rem, 4vw, 1.75rem);
+  font-weight: var(--peso-bold);
+  box-shadow: 0 3px 0 var(--colore-bordo);
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: transform var(--transizione), background-color var(--transizione);
+}
+
+.tasto-numero:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--colore-bordo);
+}
+
+.tasto-numero:focus-visible {
+  outline: 3px solid var(--colore-info);
+  outline-offset: 2px;
+}
+
+.tastierino__azioni {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spazio-2);
+}
+
+.tastierino__azioni .pulsante {
+  min-width: 0;
+  width: 100%;
+  padding-inline: var(--spazio-2);
+  overflow-wrap: anywhere;
+}
+
+#note[aria-pressed="true"] {
+  background: var(--colore-primario);
+  color: var(--colore-superficie);
+}
+
+@media (hover: hover) {
+  .tasto-numero:hover {
+    background: var(--colore-sfondo);
+    border-color: var(--colore-primario);
+  }
+
+  button.cella-sudoku:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
+
+  button.cella-sudoku--sbagliata:hover {
+    text-decoration: underline line-through;
+  }
+}
+
+@media (min-width: 600px) {
+  .tastierino__azioni {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+/* Schermi ampi */
+@media (min-width: 600px) {
+  .contenitore {
+    margin-block: var(--spazio-4);
+  }
+
+  .tabellone:not([hidden]) {
+    padding: var(--spazio-3) var(--spazio-4);
+  }
+}
+
+@media (min-width: 900px) {
+  .contenitore {
+    margin-block: var(--spazio-5);
+  }
+}
+
+/* Movimento ridotto */
+@media (prefers-reduced-motion: reduce) {
+  .contenitore *,
+  .contenitore *::before,
+  .contenitore *::after {
+    animation: none;
+    transition: none;
+  }
+}
+

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="it">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/comune.css">
+        <link rel="stylesheet" href="../css/giocatori.css">
+        <link rel="stylesheet" href="./style.css">
+        <title>Raddoppia</title>
+    </head>
+
+    <body>
+        <div class="contenitore" id="contenitore_gioco">
+            <a class="link-home" href="../index.html">← Tutti i giochi</a>
+            <h1>Raddoppia</h1>
+            <p class="sottotitolo">Fai scorrere le tessere: due tessere uguali si uniscono e raddoppiano. Arriva a 2048!</p>
+
+            <div class="barra-modalita">
+                <label for="modalitaGioco" class="nascosto-visivamente">Modalità</label>
+                <select id="modalitaGioco">
+                    <option value="uno">1 giocatore</option>
+                    <option value="due">Sfida a 2 giocatori</option>
+                </select>
+                <button type="button" id="nomiGiocatori" class="pulsante pulsante--secondario" hidden>Nomi</button>
+            </div>
+
+            <div class="tabellone">
+                <div class="segnapunti">
+                    <span class="segnapunti__nome">Punti</span>
+                    <span class="segnapunti__punti" id="punti">0</span>
+                </div>
+                <div class="segnapunti">
+                    <span class="segnapunti__nome" id="etichettaRecord">Record</span>
+                    <span class="segnapunti__punti" id="record">0</span>
+                </div>
+            </div>
+
+            <!-- Sfida a 2: punteggio finale di ciascuno -->
+            <div class="punteggi-due" id="punteggiDue" hidden>
+                <span class="punteggi-due__giocatore"><span class="punteggi-due__nome" id="nomeG1">Giocatore 1</span> <span class="punteggi-due__punti" id="puntiG1">–</span></span>
+                <span class="punteggi-due__giocatore"><span class="punteggi-due__punti" id="puntiG2">–</span> <span class="punteggi-due__nome" id="nomeG2">Giocatore 2</span></span>
+            </div>
+            <p class="turno-due" id="turnoDue" hidden></p>
+
+            <!-- 16 caselle, create da main.js; si gioca con frecce, WASD, scorrendo il dito o con i pulsanti -->
+            <div class="tavolo-raddoppia" id="tavolo" role="grid" aria-label="Griglia di Raddoppia"></div>
+
+            <div class="comandi" aria-label="Comandi">
+                <button type="button" class="comando comando--su" data-direzione="su" aria-label="Su">↑</button>
+                <button type="button" class="comando comando--sinistra" data-direzione="sinistra" aria-label="Sinistra">←</button>
+                <button type="button" class="comando comando--giu" data-direzione="giu" aria-label="Giù">↓</button>
+                <button type="button" class="comando comando--destra" data-direzione="destra" aria-label="Destra">→</button>
+            </div>
+
+            <p id="messaggi" aria-live="polite"></p>
+            <button type="button" id="nuovaPartita" class="pulsante">Nuova partita</button>
+
+            <details class="pannello regole">
+                <summary>Regole e comandi</summary>
+                <ol>
+                    <li>Muovi tutte le tessere insieme con le frecce, con i tasti W A S D, scorrendo il dito sulla griglia oppure con i pulsanti.</li>
+                    <li>Due tessere con lo stesso numero che si toccano si uniscono in una sola, con il doppio del valore. I punti guadagnati sono il valore della nuova tessera.</li>
+                    <li>Dopo ogni mossa compare una nuova tessera da 2 (o, più di rado, da 4).</li>
+                    <li>L’obiettivo è arrivare alla tessera 2048, ma puoi continuare per fare più punti. La partita finisce quando non ci sono più mosse.</li>
+                    <li>Sfida a 2 giocatori: gioca prima uno e poi l’altro, con le nuove tessere che arrivano nello stesso ordine. Vince chi fa più punti.</li>
+                </ol>
+            </details>
+        </div>
+        <script src="../js/giocatori.js"></script>
+        <script src="./funzioni.js"></script>
+        <script src="./main.js"></script>
+    </body>
+
+</html>
