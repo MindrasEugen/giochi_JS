@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="it">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/comune.css">
+        <link rel="stylesheet" href="../css/giocatori.css">
+        <link rel="stylesheet" href="./style.css">
+        <title>Memory</title>
+    </head>
+
+    <body>
+        <div class="contenitore" id="contenitore_gioco">
+            <a class="link-home" href="../index.html">← Tutti i giochi</a>
+            <h1>Memory</h1>
+            <p class="sottotitolo">Gira due carte alla volta e trova tutte le coppie.</p>
+
+            <div class="barra-modalita">
+                <label for="modalitaGioco" class="nascosto-visivamente">Modalità</label>
+                <select id="modalitaGioco">
+                    <option value="uno">1 giocatore</option>
+                    <option value="due">2 giocatori</option>
+                </select>
+                <label for="formato" class="nascosto-visivamente">Dimensione della griglia</label>
+                <select id="formato">
+                    <option value="piccola">Piccola (6 coppie)</option>
+                    <option value="media" selected>Media (8 coppie)</option>
+                    <option value="grande">Grande (12 coppie)</option>
+                </select>
+                <button type="button" id="nomiGiocatori" class="pulsante pulsante--secondario" hidden>Nomi</button>
+            </div>
+
+            <!-- 1 giocatore: mosse, tempo e record -->
+            <div class="tabellone" id="tabelloneUno">
+                <div class="segnapunti">
+                    <span class="segnapunti__nome">Mosse</span>
+                    <span class="segnapunti__punti" id="mosse">0</span>
+                </div>
+                <div class="segnapunti">
+                    <span class="segnapunti__nome">Tempo</span>
+                    <span class="segnapunti__punti" id="tempo">0:00</span>
+                </div>
+                <div class="segnapunti">
+                    <span class="segnapunti__nome">Record</span>
+                    <span class="segnapunti__punti" id="record">–</span>
+                </div>
+            </div>
+
+            <!-- 2 giocatori: coppie trovate da ciascuno -->
+            <div class="punteggi-due" id="punteggiDue" hidden>
+                <span class="punteggi-due__giocatore"><span class="punteggi-due__nome" id="nomeG1">Giocatore 1</span> <span class="punteggi-due__punti" id="puntiG1">0</span></span>
+                <span class="punteggi-due__giocatore"><span class="punteggi-due__punti" id="puntiG2">0</span> <span class="punteggi-due__nome" id="nomeG2">Giocatore 2</span></span>
+            </div>
+            <p class="turno-due" id="turnoDue" hidden></p>
+
+            <!-- Carte, create da main.js -->
+            <div class="tavolo-memory" id="tavolo" role="group" aria-label="Carte del Memory"></div>
+
+            <p id="messaggi" aria-live="polite"></p>
+            <button type="button" id="nuovaPartita" class="pulsante">Nuova partita</button>
+
+            <details class="pannello regole">
+                <summary>Regole del gioco</summary>
+                <ol>
+                    <li>Le carte sono coperte e ogni simbolo compare due volte.</li>
+                    <li>A ogni mossa giri due carte: se sono uguali restano scoperte, altrimenti si coprono di nuovo.</li>
+                    <li>Da soli: trova tutte le coppie con meno mosse possibili. Il record è il numero di mosse più basso, salvato per ogni dimensione.</li>
+                    <li>In due: si gioca a turno; chi trova una coppia guadagna un punto e gioca ancora. Vince chi trova più coppie.</li>
+                </ol>
+            </details>
+        </div>
+        <script src="../js/giocatori.js"></script>
+        <script src="./funzioni.js"></script>
+        <script src="./main.js"></script>
+    </body>
+
+</html>

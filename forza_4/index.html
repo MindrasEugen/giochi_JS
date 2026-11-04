@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="it">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/comune.css">
+        <link rel="stylesheet" href="../css/giocatori.css">
+        <link rel="stylesheet" href="./style.css">
+        <title>Forza 4</title>
+    </head>
+
+    <body>
+        <div class="contenitore" id="contenitore_gioco">
+            <a class="link-home" href="../index.html">← Tutti i giochi</a>
+            <h1>Forza 4</h1>
+            <p class="sottotitolo">Fai scendere le pedine: vince chi ne allinea 4 in orizzontale, in verticale o in diagonale.</p>
+
+            <div class="barra-modalita">
+                <label for="modalitaGioco" class="nascosto-visivamente">Modalità</label>
+                <select id="modalitaGioco">
+                    <option value="uno">Contro il computer</option>
+                    <option value="due">2 giocatori</option>
+                </select>
+                <label for="difficolta" class="nascosto-visivamente">Difficoltà</label>
+                <select id="difficolta">
+                    <option value="facile">Facile</option>
+                    <option value="media" selected>Media</option>
+                    <option value="difficile">Difficile</option>
+                </select>
+                <button type="button" id="nomiGiocatori" class="pulsante pulsante--secondario" hidden>Nomi</button>
+            </div>
+
+            <div class="tabellone" aria-label="Punteggio">
+                <div class="segnapunti segnapunti--R">
+                    <span class="pedina-icona pedina-icona--R" aria-hidden="true"></span>
+                    <span class="segnapunti__nome" id="nomeR">Tu</span>
+                    <span class="segnapunti__punti" id="puntiR">0</span>
+                </div>
+                <div class="segnapunti segnapunti--G">
+                    <span class="pedina-icona pedina-icona--G" aria-hidden="true"></span>
+                    <span class="segnapunti__nome" id="nomeG">Computer</span>
+                    <span class="segnapunti__punti" id="puntiG">0</span>
+                </div>
+            </div>
+
+            <!-- 7 colonne, create da main.js: ogni colonna è un pulsante con 6 caselle -->
+            <div class="griglia" id="griglia" role="group" aria-label="Griglia di Forza 4: scegli una colonna (tasti da 1 a 7)"></div>
+
+            <p id="messaggi" aria-live="polite"></p>
+
+            <div class="azioni">
+                <button type="button" id="nuovaPartita" class="pulsante">Nuova partita</button>
+                <button type="button" id="azzera" class="pulsante pulsante--secondario">Azzera il punteggio</button>
+            </div>
+
+            <details class="pannello regole">
+                <summary>Regole del gioco</summary>
+                <ol>
+                    <li>Si gioca su una griglia verticale di 7 colonne e 6 righe.</li>
+                    <li>A turno ogni giocatore sceglie una colonna: la pedina cade nella casella libera più in basso.</li>
+                    <li>Vince chi allinea 4 pedine del proprio colore in orizzontale, in verticale o in diagonale.</li>
+                    <li>Se la griglia si riempie senza 4 pedine in fila, è pareggio.</li>
+                    <li>A ogni nuova partita comincia l’altro giocatore.</li>
+                    <li>Contro il computer tu giochi con il rosso. Difficoltà: Facile (mosse a caso), Media (vince se può e blocca le tue vittorie immediate), Difficile (prevede 6 mosse in anticipo).</li>
+                    <li>Puoi scegliere la colonna anche con i tasti da 1 a 7.</li>
+                </ol>
+            </details>
+        </div>
+        <script src="../js/giocatori.js"></script>
+        <script src="./funzioni.js"></script>
+        <script src="./main.js"></script>
+    </body>
+
+</html>

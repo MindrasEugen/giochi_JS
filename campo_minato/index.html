@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="it">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/comune.css">
+        <link rel="stylesheet" href="../css/giocatori.css">
+        <link rel="stylesheet" href="./style.css">
+        <title>Campo minato</title>
+    </head>
+
+    <body>
+        <div class="contenitore" id="contenitore_gioco">
+            <a class="link-home" href="../index.html">← Tutti i giochi</a>
+            <h1>Campo minato</h1>
+            <p class="sottotitolo">Apri tutte le caselle senza mine. I numeri dicono quante mine ci sono intorno.</p>
+
+            <div class="barra-modalita">
+                <label for="livello" class="nascosto-visivamente">Livello</label>
+                <select id="livello">
+                    <option value="facile">Facile (9×9, 10 mine)</option>
+                    <option value="medio">Medio (16×16, 40 mine)</option>
+                    <option value="difficile">Difficile (16×24, 75 mine)</option>
+                </select>
+                <button type="button" id="modoBandiera" class="pulsante pulsante--secondario" aria-pressed="false">🚩 Bandiera</button>
+            </div>
+
+            <div class="tabellone">
+                <div class="segnapunti">
+                    <span class="segnapunti__nome">Mine</span>
+                    <span class="segnapunti__punti" id="mineRimaste">10</span>
+                </div>
+                <div class="segnapunti">
+                    <span class="segnapunti__nome">Tempo</span>
+                    <span class="segnapunti__punti" id="tempo">0:00</span>
+                </div>
+                <div class="segnapunti">
+                    <span class="segnapunti__nome">Record</span>
+                    <span class="segnapunti__punti" id="record">–</span>
+                </div>
+            </div>
+
+            <!-- Il campo può essere più largo dello schermo: scorre dentro il suo riquadro -->
+            <div class="campo-scorrevole">
+                <div class="campo" id="campo" role="group" aria-label="Campo minato"></div>
+            </div>
+
+            <p id="messaggi" aria-live="polite"></p>
+            <button type="button" id="nuovaPartita" class="pulsante">Nuova partita</button>
+
+            <details class="pannello regole">
+                <summary>Regole e comandi</summary>
+                <ol>
+                    <li>Clic su una casella per aprirla. La prima casella che apri non è mai una mina.</li>
+                    <li>Un numero indica quante mine ci sono nelle 8 caselle intorno. Una casella senza mine intorno apre da sola le vicine.</li>
+                    <li>Metti una bandiera dove pensi ci sia una mina: tasto destro del mouse, pressione lunga sul telefono, oppure attiva “🚩 Bandiera” e tocca la casella.</li>
+                    <li>Clic su un numero che ha intorno tante bandiere quante sono le sue mine: si aprono tutte le altre caselle vicine.</li>
+                    <li>Vinci quando hai aperto tutte le caselle senza mine; perdi se apri una mina. Il record è il tempo migliore per ogni livello.</li>
+                </ol>
+            </details>
+        </div>
+        <script src="./funzioni.js"></script>
+        <script src="./main.js"></script>
+    </body>
+
+</html>

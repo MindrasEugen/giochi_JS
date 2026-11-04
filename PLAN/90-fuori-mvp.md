@@ -12,3 +12,4 @@ Idee non incluse in questo lavoro, da valutare in futuro:
 - Briscola a 4 e Scopone con più giocatori umani su dispositivi diversi, per lo stesso motivo.
 - README per il portfolio GitHub e pubblicazione (per esempio GitHub Pages).
 - La consegna `indovina_il_numero/esercizio_1.md` resta com'è (testo dell'esercizio, non codice).
+- Un CSS comune dei giochi (contenitore, tabellone, messaggi, regole) per togliere le regole ripetute nei `style.css` dei giochi nuovi.

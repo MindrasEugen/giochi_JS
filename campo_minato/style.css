@@ -1,0 +1,267 @@
+/* Layout */
+.contenitore {
+  width: 100%;
+  max-width: 1000px;
+  margin-block: var(--spazio-3);
+  background: var(--colore-superficie);
+  border-radius: var(--raggio-xl);
+  box-shadow: var(--ombra-forte);
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+h1 {
+  margin-bottom: var(--spazio-1);
+}
+
+.sottotitolo {
+  margin-top: 0;
+  color: var(--colore-testo-tenue);
+}
+
+/* Punteggio */
+.tabellone:not([hidden]) {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--spazio-2);
+  margin-bottom: var(--spazio-4);
+  padding: var(--spazio-3) var(--spazio-2);
+  border-radius: var(--raggio-l);
+  background: linear-gradient(135deg, var(--colore-primario), var(--colore-primario-chiaro));
+  color: var(--colore-superficie);
+}
+
+.segnapunti {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spazio-1);
+  min-width: 0;
+  padding: var(--spazio-1);
+  border: 2px solid transparent;
+  border-radius: var(--raggio-m);
+}
+
+.segnapunti__nome {
+  font-size: var(--testo-s);
+  font-weight: var(--peso-semibold);
+}
+
+.segnapunti__punti {
+  color: var(--colore-accento);
+  font-size: var(--testo-xl);
+  font-weight: var(--peso-bold);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+
+/* Messaggi e comandi */
+#messaggi {
+  width: fit-content;
+  max-width: 100%;
+  margin: var(--spazio-3) auto;
+  padding: var(--spazio-2) var(--spazio-3);
+  border: 1px solid var(--colore-bordo);
+  border-radius: var(--raggio-xl);
+  background: var(--colore-sfondo);
+  font-weight: var(--peso-semibold);
+}
+
+#messaggi:empty {
+  display: none;
+}
+
+#nuovaPartita {
+  max-width: 100%;
+  min-height: var(--area-minima);
+  margin-top: var(--spazio-3);
+}
+
+.contenitore .pulsante:focus-visible {
+  outline-offset: 4px;
+}
+
+.regole {
+  margin-top: var(--spazio-4);
+}
+
+.barra-modalita #livello {
+  width: auto;
+  max-width: 100%;
+}
+
+/* Modalita bandiera */
+#modoBandiera[aria-pressed="true"] {
+  background: var(--colore-primario);
+  color: var(--colore-superficie);
+  box-shadow: inset 0 0 0 2px var(--colore-accento);
+}
+
+.barra-modalita #modoBandiera[aria-pressed="true"]:hover:not(:disabled) {
+  background: var(--colore-primario-chiaro);
+  color: var(--colore-superficie);
+}
+
+/* Campo scorrevole */
+.campo-scorrevole {
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  padding: 8px;
+  border-radius: var(--raggio-l);
+  background: var(--colore-sfondo);
+  border: 1px solid var(--colore-bordo);
+}
+
+#campo.campo {
+  display: grid;
+  grid-template-columns: repeat(var(--colonne), 32px);
+  gap: 3px;
+  width: max-content;
+  margin: auto;
+}
+
+button.casella {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--colore-primario);
+  border-top-color: color-mix(in srgb, var(--colore-primario-chiaro) 65%, var(--colore-superficie));
+  border-left-color: color-mix(in srgb, var(--colore-primario-chiaro) 65%, var(--colore-superficie));
+  border-radius: var(--raggio-s);
+  background: linear-gradient(145deg, color-mix(in srgb, var(--colore-primario-chiaro) 90%, var(--colore-superficie)), var(--colore-primario));
+  color: var(--colore-superficie);
+  box-shadow: 0 3px 0 var(--colore-primario);
+  font: inherit;
+  font-weight: var(--peso-bold);
+  line-height: 1;
+  user-select: none;
+  touch-action: manipulation;
+  cursor: pointer;
+  transition: background-color var(--transizione), transform var(--transizione);
+}
+
+.casella:not(.casella--aperta):not(:disabled):hover {
+  background: linear-gradient(145deg, color-mix(in srgb, var(--colore-primario-chiaro) 85%, var(--colore-superficie)), var(--colore-primario-chiaro));
+  transform: translateY(-1px);
+}
+
+.casella:disabled {
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+/* Caselle aperte: fondo chiaro per il contrasto dei numeri */
+.casella.casella--aperta {
+  background: var(--colore-superficie);
+  border-color: var(--colore-bordo);
+  box-shadow: none;
+}
+
+.casella--aperta[data-vicine="1"] {
+  color: var(--colore-info);
+}
+
+.casella--aperta[data-vicine="2"] {
+  color: var(--colore-successo);
+}
+
+.casella--aperta[data-vicine="3"] {
+  color: var(--colore-errore);
+}
+
+.casella--aperta[data-vicine="4"] {
+  color: var(--colore-primario);
+}
+
+.casella--aperta[data-vicine="5"] {
+  color: var(--colore-avviso);
+}
+
+.casella--aperta[data-vicine="6"] {
+  color: var(--colore-primario-chiaro);
+}
+
+.casella--aperta[data-vicine="7"] {
+  color: var(--colore-testo);
+}
+
+.casella--aperta[data-vicine="8"] {
+  color: var(--colore-testo-tenue);
+}
+
+/* La bandiera mantiene la base della casella chiusa. */
+.casella.casella--bandiera {
+  font-size: var(--testo-l);
+}
+
+/* Gli stati speciali prevalgono sullo stato aperto. */
+
+.casella.casella--mina {
+  background: var(--colore-sfondo);
+  border-color: var(--colore-bordo);
+  box-shadow: none;
+}
+
+.casella.casella--esplosa {
+  background: color-mix(in srgb, var(--colore-errore) 18%, var(--colore-superficie));
+  border-color: var(--colore-errore);
+  box-shadow: inset 0 0 0 2px var(--colore-superficie);
+}
+
+.casella.casella--sbagliata {
+  background: linear-gradient(135deg, transparent 44%, var(--colore-errore) 45% 55%, transparent 56%), var(--colore-sfondo);
+  border-color: var(--colore-errore);
+  box-shadow: none;
+}
+
+.casella:focus-visible {
+  position: relative;
+  z-index: 1;
+  outline: 3px solid var(--colore-accento);
+  outline-offset: 0;
+  box-shadow: 0 0 0 5px var(--colore-primario);
+}
+
+/* Schermi ampi */
+@media (min-width: 600px) {
+  .contenitore {
+    margin-block: var(--spazio-4);
+  }
+
+  .tabellone:not([hidden]) {
+    padding: var(--spazio-3) var(--spazio-4);
+  }
+
+  #campo.campo {
+    grid-template-columns: repeat(var(--colonne), 36px);
+  }
+
+  button.casella {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (min-width: 900px) {
+  .contenitore {
+    margin-block: var(--spazio-5);
+  }
+
+  .campo-scorrevole {
+    padding: var(--spazio-3);
+  }
+}
+
+/* Movimento ridotto */
+@media (prefers-reduced-motion: reduce) {
+  .contenitore *,
+  .contenitore *::before,
+  .contenitore *::after {
+    animation: none;
+    transition: none;
+  }
+}
