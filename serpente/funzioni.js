@@ -43,7 +43,8 @@ function gira(serpente, direzione) {
 
 // Un passo per tutti i serpenti vivi. Eventi: 'mangia' e 'morto' con indice, oppure 'grigliaPiena'.
 // Riempire la griglia conclude la partita con i serpenti rimasti vivi; dopo la fine lo stato non cambia.
-// Regole: si muore contro il muro, contro il proprio corpo o contro l'altro serpente; due teste nella stessa casella muoiono entrambe.
+// Regole: i muri si attraversano (si esce da un lato e si rientra da quello opposto); si muore mordendo il proprio corpo
+// o, a 2 giocatori, sbattendo contro l'altro serpente; due teste nella stessa casella muoiono entrambe.
 function passo(stato, casuale = Math.random) {
     const eventi = [];
     if (stato.finita) return eventi;
@@ -52,7 +53,7 @@ function passo(stato, casuale = Math.random) {
     const teste = vivi.map(({ s }) => {
         s.direzione = s.prossima;
         const d = DIREZIONI[s.direzione];
-        return { x: s.corpo[0].x + d.x, y: s.corpo[0].y + d.y };
+        return { x: (s.corpo[0].x + d.x + LATO) % LATO, y: (s.corpo[0].y + d.y + LATO) % LATO };
     });
     // la coda si sposta (e libera la sua casella) solo se il serpente non deve crescere
     const corpiDopo = vivi.map(({ s }, k) => {
@@ -63,7 +64,6 @@ function passo(stato, casuale = Math.random) {
     const morti = new Set();
     vivi.forEach(({ s, i }, k) => {
         const t = teste[k];
-        if (t.x < 0 || t.y < 0 || t.x >= LATO || t.y >= LATO) { morti.add(i); return; }
         corpiDopo.forEach((corpo, j) => {
             const parti = j === k ? corpo.slice(1) : corpo;
             if (parti.some(p => p.x === t.x && p.y === t.y)) morti.add(i);

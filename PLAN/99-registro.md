@@ -41,3 +41,4 @@ Ultima modifica: 2026-11-03
 - 2026-11-04 - Controllo completo del progetto: 28 suite verdi, 27 pagine caricate e provate in Chrome senza errori. Report in audit/2026-11-04-progetto-check.md. Nessun commit.
 - 2026-11-04 - Correzioni del controllo: 4 suite per i giochi storici con DOM minimo condiviso, README (accenti, test, anteprima), piano aggiornato con hash ed esito della prova nel browser. 32 suite verdi. Report in audit/2026-11-04-progetto-check-correzioni.md. Nessun commit.
 - 2026-11-04 - Correzioni del controllo raccolte nel commit locale b25a80e su richiesta dell'utente. Nessun push.
+- 2026-11-05 - Tappe 15–18 completate: prova su telefono eseguita dall'utente, comandi touch rimandati alla fase APK (aggiunta in Fuori MVP). Serpente: muri attraversabili, da soli si muore solo mordendosi la coda; in due resta mortale l'altro serpente. Test aggiornati.

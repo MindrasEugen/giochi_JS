@@ -1,6 +1,6 @@
 # Tappa 17 — Parole: Cinque lettere (tipo Wordle)
 
-Ultima modifica: 2026-11-04
+Ultima modifica: 2026-11-05
 
 ## Obiettivo
 
@@ -12,7 +12,7 @@ Un gioco di parole a 5 lettere.
 - [x] Lista italiana ampliata dalle 158 parole dell'impiccato a 1.376 voci uniche
 - [x] 2 giocatori: uno sceglie la parola, l'altro indovina, poi si scambiano
 - [x] Test della logica e del controller con DOM simulato
-- [ ] Screenshot e prova interattiva nel browser, anche su telefono
+- [x] Screenshot e prova interattiva nel browser, anche su telefono
 
 ## Come verificare
 
@@ -33,4 +33,4 @@ Cinque lettere disponibile dalla home, che raggiunge 23 giochi. Logica, vocabola
 
 ## Problemi aperti
 
-Controllo nel browser del 2026-11-04 (Chrome, server locale, vedi `audit/2026-11-04-progetto-check.md`): pagine caricate senza errori in console né risorse mancanti, nessuno scorrimento orizzontale a 375px, tasti e clic sulla tastiera a schermo senza errori. Resta da fare la prova su un telefono vero (tastiera a schermo, passaggio del dispositivo). Tappa raccolta nel commit `0df7b0d`; i push restano a cura dell'utente.
+Controllo nel browser del 2026-11-04 (Chrome, server locale, vedi `audit/2026-11-04-progetto-check.md`): pagine caricate senza errori in console né risorse mancanti, nessuno scorrimento orizzontale a 375px, tasti e clic sulla tastiera a schermo senza errori. Prova su telefono eseguita dall'utente il 2026-11-05 sulla maggior parte dei giochi: funzionano. I comandi touch risultano un po' scomodi: si sistemeranno nella fase APK a fine progetto (vedi [Fuori MVP](90-fuori-mvp.md)). Tappa raccolta nel commit `0df7b0d`; i push restano a cura dell'utente.

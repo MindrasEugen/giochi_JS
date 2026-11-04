@@ -1,6 +1,6 @@
 # Tappa 16 — Arcade: Blocchi, Invasione, Volo, Labirinto
 
-Ultima modifica: 2026-11-04
+Ultima modifica: 2026-11-05
 
 ## Obiettivo
 
@@ -13,7 +13,7 @@ Completare la categoria Arcade con giochi ispirati a classici famosi, ma con nom
 - [x] Volo (genere "flappy"): 1 giocatore, o 2 a turni con la stessa sequenza di ostacoli
 - [x] Labirinto (genere "mangia i puntini"): labirinto, guardiani e personaggio originali
 - [x] Pulsanti touch, pausa, riavvio e integrazione nella home
-- [ ] Screenshot e prova interattiva nel browser e sul telefono
+- [x] Screenshot e prova interattiva nel browser e sul telefono
 
 ## Come verificare
 
@@ -34,4 +34,4 @@ Quattro giochi implementati e collegati alla home, che raggiunge 22 giochi. Logi
 
 ## Problemi aperti
 
-Controllo nel browser del 2026-11-04 (Chrome, server locale, vedi `audit/2026-11-04-progetto-check.md`): pagine caricate senza errori in console né risorse mancanti, nessuno scorrimento orizzontale a 375px, partite avviate con tasti e clic senza errori. Resta da fare la prova su un telefono vero (touch, due campi di Blocchi, due turni di Volo) e con il lettore di schermo. Nessun push: viene gestito dall'utente.
+Controllo nel browser del 2026-11-04 (Chrome, server locale, vedi `audit/2026-11-04-progetto-check.md`): pagine caricate senza errori in console né risorse mancanti, nessuno scorrimento orizzontale a 375px, partite avviate con tasti e clic senza errori. Prova su telefono eseguita dall'utente il 2026-11-05 sulla maggior parte dei giochi: funzionano. I comandi touch risultano un po' scomodi: si sistemeranno nella fase APK a fine progetto (vedi [Fuori MVP](90-fuori-mvp.md)). Nessun push: viene gestito dall'utente.

@@ -37,9 +37,21 @@ S.passo(mangia); S.passo(mangia);
 controlla('dopo aver mangiato il serpente cresce di 2 (da 3 a 5)', mangia.serpenti[0].corpo.length === 5);
 
 // Muro
-const muro = stato([S.creaSerpente(19, 5, 'destra')], { x: 0, y: 0 });
+const muro = stato([S.creaSerpente(19, 5, 'destra')], { x: 10, y: 10 });
 S.passo(muro);
-controlla('contro il muro si muore e la partita a 1 giocatore finisce', !muro.serpenti[0].vivo && muro.finita);
+controlla('muro a destra: si rientra da sinistra (x 19 -> 0) senza morire', muro.serpenti[0].vivo && !muro.finita && muro.serpenti[0].corpo[0].x === 0 && muro.serpenti[0].corpo[0].y === 5);
+const bordi = [['sinistra', 0, 7, 19, 7], ['su', 7, 0, 7, 19], ['giu', 7, 19, 7, 0]];
+controlla('anche a sinistra, in alto e in basso si attraversa il bordo', bordi.every(([dir, x, y, nx, ny]) => {
+    const st = stato([S.creaSerpente(x, y, dir)], { x: 10, y: 10 });
+    S.passo(st);
+    return st.serpenti[0].vivo && st.serpenti[0].corpo[0].x === nx && st.serpenti[0].corpo[0].y === ny;
+}));
+const ciboOltre = stato([S.creaSerpente(19, 3, 'destra')], { x: 0, y: 3 });
+controlla('il cibo subito oltre il bordo si mangia', S.passo(ciboOltre).some(e => e.tipo === 'mangia'));
+const morsoOltre = stato([{ corpo: [{ x: 19, y: 4 }, { x: 19, y: 5 }, { x: 0, y: 5 }, { x: 0, y: 4 }, { x: 0, y: 3 }], direzione: 'su', prossima: 'su', vivo: true, punti: 0, daCrescere: 0 }], { x: 10, y: 10 });
+S.gira(morsoOltre.serpenti[0], 'destra');
+S.passo(morsoOltre);
+controlla('mordersi la coda attraverso il bordo fa morire', !morsoOltre.serpenti[0].vivo && morsoOltre.finita);
 
 // Sé stesso
 const lungo = S.creaSerpente(10, 10, 'destra', 6);
@@ -82,13 +94,19 @@ controlla('una partita conclusa non avanza', S.passo(pieno).length === 0 && JSON
 controlla('più punti, passo più veloce (da 160 ms fino a 70 ms)', S.intervallo(0) === 160 && S.intervallo(10) === 120 && S.intervallo(100) === 70);
 let tutteFinite = true;
 let ciboSempreLibero = true;
+// Numeri casuali ripetibili (seme diverso per ogni partita): con i muri attraversabili la fine dipende dal caso
+function casualeRipetibile(seme) {
+    let x = seme;
+    return () => (x = (x * 48271) % 2147483647) / 2147483647; // Park-Miller: prodotti esatti in JavaScript
+}
 for (let k = 0; k < 200; k++) {
-    const st = S.statoIniziale(k % 2 === 0 ? 1 : 2);
+    const casuale = casualeRipetibile(k + 1);
+    const st = S.statoIniziale(k % 2 === 0 ? 1 : 2, casuale);
     const nomi = Object.keys(S.DIREZIONI);
     let passi = 0;
     while (!st.finita && passi < 5000) {
-        st.serpenti.forEach(s => S.gira(s, nomi[Math.floor(Math.random() * 4)]));
-        S.passo(st);
+        st.serpenti.forEach(s => S.gira(s, nomi[Math.floor(casuale() * 4)]));
+        S.passo(st, casuale);
         if (st.cibo && st.serpenti.some(s => s.vivo && s.corpo.some(p => p.x === st.cibo.x && p.y === st.cibo.y))) ciboSempreLibero = false;
         passi++;
     }

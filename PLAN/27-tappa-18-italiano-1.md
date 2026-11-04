@@ -1,6 +1,6 @@
 # Tappa 18 — Mazzo italiano: Briscola, Scopa, Asso piglia tutto, Rubamazzetto
 
-Ultima modifica: 2026-11-04
+Ultima modifica: 2026-11-05
 
 ## Obiettivo
 
@@ -14,7 +14,7 @@ I primi giochi con il mazzo italiano, con le immagini delle carte già presenti.
 - [x] Rubamazzetto
 - [x] Avversario PC con una strategia semplice ma sensata per ogni gioco
 - [x] Test della logica e smazzate complete tramite i controller con DOM simulato
-- [ ] Screenshot e prova interattiva nel browser, anche su telefono
+- [x] Screenshot e prova interattiva nel browser, anche su telefono
 
 ## Come verificare
 
@@ -40,4 +40,4 @@ Riferimenti: [Briscola Modiano](https://www.modiano.it/it/gioco/briscola/), [Sco
 
 ## Problemi aperti
 
-Controllo nel browser del 2026-11-04 (Chrome, server locale, vedi `audit/2026-11-04-progetto-check.md`): pagine caricate senza errori in console né risorse mancanti, nessuno scorrimento orizzontale a 375px; una smazzata completa contro il PC giocata in automatico in tutti e quattro i giochi, senza errori. Resta da fare la prova su un telefono vero (touch, passaggio del dispositivo, mani coperte in due e in coppia). Tappa raccolta nel commit `57bc737`; i push restano a cura dell'utente.
+Controllo nel browser del 2026-11-04 (Chrome, server locale, vedi `audit/2026-11-04-progetto-check.md`): pagine caricate senza errori in console né risorse mancanti, nessuno scorrimento orizzontale a 375px; una smazzata completa contro il PC giocata in automatico in tutti e quattro i giochi, senza errori. Prova su telefono eseguita dall'utente il 2026-11-05 sulla maggior parte dei giochi: funzionano. I comandi touch risultano un po' scomodi: si sistemeranno nella fase APK a fine progetto (vedi [Fuori MVP](90-fuori-mvp.md)). Tappa raccolta nel commit `57bc737`; i push restano a cura dell'utente.
