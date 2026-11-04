@@ -2,7 +2,7 @@
 
 - **Stato:** accettata
 - **Data:** 2026-11-04
-- **Commit:** Tappa 9 (vedi `git log`)
+- **Commit:** `d75f327` (Tappa 9)
 
 ## Contesto
 

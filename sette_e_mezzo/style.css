@@ -45,7 +45,8 @@
 }
 
 /* Il riquadro di chi sta giocando ha il bordo dorato */
-.contenitore_body[data-turno="giocatore"] .contenitore_giocatore,
+.contenitore_body[data-turno="giocatore"] .contenitore_giocatore:not(.contenitore_giocatore2),
+.contenitore_body[data-turno="giocatore2"] .contenitore_giocatore2,
 .contenitore_body[data-turno="banco"] .contenitore_banco {
     border-color: var(--colore-accento);
     box-shadow: 0 0 0 4px rgba(233, 196, 106, .18);
@@ -195,4 +196,66 @@
     #carte_banco img {
         max-width: 100px;
     }
+}
+
+/* Modalita sul tavolo */
+.contenitore_body .barra-modalita {
+  color: var(--colore-sfondo);
+}
+
+.contenitore_body .turno-due {
+  background-color: var(--colore-accento);
+  color: var(--colore-primario);
+}
+
+.contenitore_body .barra-modalita select:focus-visible,
+.contenitore_body .barra-modalita .pulsante:focus-visible {
+  outline-color: var(--colore-sfondo);
+}
+
+/* Secondo giocatore */
+.campo_di_gioco > * {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+#carte_giocatore2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spazio-2);
+  min-height: 130px;
+}
+
+#carte_giocatore2 img {
+  max-width: 80px;
+  border-radius: var(--raggio-s);
+  box-shadow: var(--ombra-media);
+  animation: distribuisci 420ms var(--molla);
+}
+
+@media (min-width: 600px) {
+  .campo_di_gioco {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .campo_di_gioco .contenitore_banco {
+    grid-column: 1 / -1;
+  }
+
+  .campo_di_gioco:has(.contenitore_giocatore2[hidden]) .contenitore_banco {
+    grid-column: auto;
+  }
+
+  #carte_giocatore2 {
+    min-height: 160px;
+  }
+
+  #carte_giocatore2 img {
+    max-width: 100px;
+  }
+}
+
+[hidden] {
+  display: none;
 }

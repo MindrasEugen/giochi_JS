@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/comune.css">
+    <link rel="stylesheet" href="../css/giocatori.css">
     <link rel="stylesheet" href="./style.css">
     <title>Carta, forbici e sasso</title>
 </head>
@@ -12,15 +13,24 @@
         <a class="link-home" href="../index.html">← Tutti i giochi</a>
         <h1>Carta, forbici e sasso</h1>
         <p class="sottotitolo">Vince la partita chi arriva per primo a 5 punti.</p>
+        <div class="barra-modalita">
+            <label for="modalitaGioco" class="nascosto-visivamente">Modalità</label>
+            <select id="modalitaGioco">
+                <option value="uno">1 giocatore</option>
+                <option value="due">2 giocatori</option>
+            </select>
+            <button type="button" id="nomiGiocatori" class="pulsante pulsante--secondario" hidden>Nomi</button>
+        </div>
+        <p class="turno-due" id="turnoDue" hidden></p>
 
         <div class="tabellone" aria-label="Punteggio">
             <div class="segnapunti segnapunti--tu">
-                <span class="segnapunti__nome">Tu</span>
+                <span class="segnapunti__nome" id="nomeGiocatore">Tu</span>
                 <span class="segnapunti__punti" id="puntiGiocatore">0</span>
             </div>
             <span class="tabellone__vs" aria-hidden="true">VS</span>
             <div class="segnapunti segnapunti--pc">
-                <span class="segnapunti__nome">PC</span>
+                <span class="segnapunti__nome" id="nomeComputer">PC</span>
                 <span class="segnapunti__punti" id="puntiComputer">0</span>
             </div>
         </div>
@@ -53,6 +63,7 @@
             </ol>
         </details>
     </div>
+    <script src="../js/giocatori.js"></script>
     <script src="./main.js"></script>
 </body>
 </html>

@@ -13,7 +13,7 @@ Ultima modifica: 2026-11-04
 | 7 | [Restyling moderno di Sasso carta forbici e Tris](16-tappa-07-restyling-moderno.md) | ☑ completata |
 | 8 | [Stesso stile per Impiccato, Indovina il numero e Sette e mezzo](17-tappa-08-restyling-altri-giochi.md) | ☑ completata |
 | 9 | [Fondamenta per la nuova raccolta](18-tappa-09-fondamenta.md) | ☑ completata |
-| 10 | [Modalità 2 giocatori nei giochi già scritti](19-tappa-10-due-giocatori-esistenti.md) | ☐ da fare |
+| 10 | [Modalità 2 giocatori nei giochi già scritti](19-tappa-10-due-giocatori-esistenti.md) | ☑ completata |
 | 11 | [Logica: Forza 4, Memory, Campo minato](20-tappa-11-logica-1.md) | ☐ da fare |
 | 12 | [Logica: Raddoppia (tipo 2048) e Sudoku](21-tappa-12-logica-2.md) | ☐ da fare |
 | 13 | [Da tavolo: Dama, Filetto (Mulino), Battaglia navale](22-tappa-13-tavolo-1.md) | ☐ da fare |

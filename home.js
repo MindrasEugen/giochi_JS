@@ -13,16 +13,16 @@ const CATEGORIE = [
 ];
 
 const GIOCHI = [
-    { nome: 'Sasso carta forbici', cartella: 'sasso_carta_forbici', categoria: 'classici', emoji: '✊', dueGiocatori: false,
-      descrizione: 'Sfida il computer: vince chi arriva per primo a 5 punti.' },
-    { nome: 'Indovina il numero', cartella: 'indovina_il_numero', categoria: 'classici', emoji: '🔢', dueGiocatori: false,
-      descrizione: 'Il computer pensa a un numero da 1 a 100: trovalo con meno tentativi possibili.' },
-    { nome: 'Sette e mezzo', cartella: 'sette_e_mezzo', categoria: 'italiano', emoji: '🃏', dueGiocatori: false,
-      descrizione: 'Il classico gioco di carte contro il banco: avvicinati a 7,5 senza sballare.' },
+    { nome: 'Sasso carta forbici', cartella: 'sasso_carta_forbici', categoria: 'classici', emoji: '✊', dueGiocatori: true,
+      descrizione: 'Contro il computer o contro un amico: vince chi arriva per primo a 5 punti.' },
+    { nome: 'Indovina il numero', cartella: 'indovina_il_numero', categoria: 'classici', emoji: '🔢', dueGiocatori: true,
+      descrizione: 'Trova il numero da 1 a 100 con meno tentativi possibili, da solo o sfidando un amico.' },
+    { nome: 'Sette e mezzo', cartella: 'sette_e_mezzo', categoria: 'italiano', emoji: '🃏', dueGiocatori: true,
+      descrizione: 'Il classico gioco di carte contro il banco, da soli o in due: avvicinati a 7,5 senza sballare.' },
     { nome: 'Tris', cartella: 'tris', categoria: 'tavolo', emoji: '⭕', dueGiocatori: true,
       descrizione: 'Allinea tre simboli: in due giocatori oppure contro il computer.' },
-    { nome: 'L’impiccato', cartella: 'il_impiccato', categoria: 'parole', emoji: '🪢', dueGiocatori: false,
-      descrizione: 'Indovina la parola segreta una lettera alla volta, prima di fare 6 errori.' }
+    { nome: 'L’impiccato', cartella: 'il_impiccato', categoria: 'parole', emoji: '🪢', dueGiocatori: true,
+      descrizione: 'Indovina la parola segreta una lettera alla volta; in due, la parola la sceglie l’altro giocatore.' }
 ];
 
 // Toglie gli accenti e mette in minuscolo, così "piu" trova anche "più"

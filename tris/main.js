@@ -10,6 +10,8 @@ const difficolta = document.querySelector('#difficolta');
 const contenitore = document.querySelector('#contenitore_body');
 const nomeX = document.querySelector('#nome_giocatore_X');
 const nomeO = document.querySelector('#nome_giocatore_O');
+const pulsanteNomi = document.querySelector('#nomiGiocatori');
+let nomi = Giocatori.leggiNomi();
 
 // Stato della partita: la pagina viene sempre ridisegnata a partire da qui
 let caselle = ['', '', '', '', '', '', '', '', ''];
@@ -38,11 +40,22 @@ function aggiornaTurno() {
     contenitore.dataset.turno = partitaFinita ? '' : giocatoreCorrente;
 }
 
+function controPC() {
+    return modalita.value === 'controPC';
+}
+
+// Nome di chi gioca con un simbolo: a 2 giocatori X è il giocatore 1 e O il giocatore 2
+function nomeDi(simbolo) {
+    if (controPC()) {
+        return simbolo === 'X' ? 'Tu' : 'Computer';
+    }
+    return simbolo === 'X' ? nomi[0] : nomi[1];
+}
+
 // Nomi sul tabellone: contro il PC la O è il computer
 function aggiornaNomi() {
-    const controPC = modalita.value === 'controPC';
-    nomeX.textContent = controPC ? 'Tu' : 'Giocatore X';
-    nomeO.textContent = controPC ? 'Computer' : 'Giocatore O';
+    nomeX.textContent = nomeDi('X');
+    nomeO.textContent = nomeDi('O');
 }
 
 function aggiornaPunteggi() {
@@ -53,7 +66,7 @@ function aggiornaPunteggi() {
 function controllaFinePartita() {
     const vincitore = trovaVincitore(caselle);
     if (vincitore !== null) {
-        messaggi.textContent = `Il vincitore è ${vincitore}`;
+        messaggi.textContent = controPC() ? `Il vincitore è ${vincitore}` : `Vince ${nomeDi(vincitore)} (${vincitore})`;
         partitaFinita = true;
         if (vincitore === 'X') {
             vittorieX++;
@@ -73,7 +86,7 @@ function giocaMossa(indice) {
     controllaFinePartita();
     if (partitaFinita === false) {
         giocatoreCorrente === 'X' ? giocatoreCorrente = 'O' : giocatoreCorrente = 'X';
-        messaggi.textContent = `È il turno di: ${giocatoreCorrente}`;
+        messaggi.textContent = controPC() ? `È il turno di: ${giocatoreCorrente}` : `È il turno di ${nomeDi(giocatoreCorrente)} (${giocatoreCorrente})`;
     }
     aggiornaTurno();
 }
@@ -84,7 +97,7 @@ function iniziaPartita() {
     partitaFinita = false;
     disegnaGriglia();
     aggiornaTurno();
-    messaggi.textContent = 'Comincia X';
+    messaggi.textContent = controPC() ? 'Comincia X' : `Comincia ${nomeDi('X')} (X)`;
 }
 
 function azzeraPunteggi() {
@@ -118,6 +131,16 @@ modalita.addEventListener('change', () => {
     azzeraPunteggi();
 });
 difficolta.addEventListener('change', azzeraPunteggi);
+
+Giocatori.collegaBarra({
+    select: modalita,
+    pulsanteNomi,
+    valoreDue: 'dueGiocatori',
+    suCambioNomi: nuoviNomi => {
+        nomi = nuoviNomi;
+        aggiornaNomi();
+    }
+});
 
 aggiornaDifficolta();
 aggiornaNomi();

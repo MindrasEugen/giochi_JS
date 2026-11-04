@@ -155,3 +155,99 @@ body.con-copertura {
   }
 
 }
+
+/* Modalita e nomi */
+.barra-modalita {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spazio-2);
+  margin-bottom: var(--spazio-3);
+}
+
+.barra-modalita select {
+  width: min(100%, 220px);
+  min-width: 0;
+}
+
+.barra-modalita select:hover:not(:disabled) {
+  border-color: var(--colore-primario);
+}
+
+.barra-modalita .pulsante--secondario:hover:not(:disabled) {
+  background-color: var(--colore-sfondo);
+  color: var(--colore-primario);
+}
+
+.barra-modalita select:focus-visible,
+.barra-modalita .pulsante:focus-visible {
+  outline: 3px solid var(--colore-info);
+  outline-offset: 2px;
+}
+
+/* Punteggi affiancati */
+.punteggi-due {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spazio-3);
+  width: min(100%, 480px);
+  margin: 0 auto var(--spazio-3);
+  padding: var(--spazio-2) var(--spazio-3);
+  border: 1px solid var(--colore-bordo);
+  border-radius: var(--raggio-xl);
+  background-color: var(--colore-superficie);
+  color: var(--colore-primario);
+  box-shadow: var(--ombra-leggera);
+}
+
+.punteggi-due__giocatore {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spazio-2);
+  min-width: 0;
+}
+
+.punteggi-due__nome {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: var(--testo-s);
+  font-weight: var(--peso-semibold);
+  text-align: left;
+}
+
+.punteggi-due__giocatore + .punteggi-due__giocatore .punteggi-due__nome {
+  text-align: right;
+}
+
+.punteggi-due__punti {
+  flex-shrink: 0;
+  font-size: var(--testo-xl);
+  font-weight: var(--peso-bold);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+
+/* Stato del turno */
+.turno-due {
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto var(--spazio-3);
+  padding: var(--spazio-2) var(--spazio-3);
+  border: 1px solid var(--colore-accento);
+  border-radius: var(--raggio-l);
+  background-color: var(--colore-sfondo);
+  color: var(--colore-primario);
+  font-weight: var(--peso-semibold);
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.turno-due:empty {
+  display: none;
+}
+
+[hidden] {
+  display: none;
+}

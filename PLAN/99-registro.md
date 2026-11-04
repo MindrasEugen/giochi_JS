@@ -18,3 +18,4 @@ Ultima modifica: 2026-11-03
 - 2026-11-04 — L'utente ha aggiunto `carte/` con le 52 carte francesi. Le 40 carte italiane sono state spostate lì da `sette_e_mezzo/pic/` e il percorso in Sette e mezzo è stato aggiornato e verificato.
 - 2026-11-04 — Via dell'utente alla seconda parte, con la regola "per il design usa Codex". Tappa 9 avviata: `js/mazzo.js`, `js/carte.js`, `js/giocatori.js`, `js/arcade.js`, `home.js`, anteprima dei componenti; Sette e mezzo usa il mazzo condiviso. CSS affidato a Codex.
 - 2026-11-04 — Tappa 9 completata: script condivisi, home a categorie, anteprima dei componenti, carte in `carte/`; design di Codex in due giri (ventaglio corretto nel secondo). ADR 0006–0009 accettati.
+- 2026-11-04 — Tappa 10 completata: modalità 2 giocatori in Impiccato, Indovina il numero, Sasso carta forbici, Sette e mezzo e Tris; design di Codex; 42 controlli a 2 giocatori e test precedenti passati.

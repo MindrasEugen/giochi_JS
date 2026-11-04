@@ -2,7 +2,7 @@
 
 - **Stato:** accettata
 - **Data:** 2026-11-04
-- **Commit:** — (Tappe 9 e 10)
+- **Commit:** `d75f327` (Tappa 9), Tappa 10
 
 ## Contesto
 

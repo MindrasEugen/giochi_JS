@@ -218,5 +218,32 @@ const Giocatori = (() => {
         });
     }
 
-    return { leggiNomi, salvaNomi, passaDispositivo, annuncia, chiediSegreto, chiediNomi };
+    // Collega la barra della modalità che ogni gioco ha nell'HTML:
+    // un <select> (con il valore "valoreDue" per i 2 giocatori) e un pulsante "Nomi", visibile solo a 2 giocatori.
+    // - suCambioModalita(dueGiocatori): chiamata quando si cambia modalità
+    // - suCambioNomi(nomi): chiamata dopo che i nomi sono stati salvati
+    function collegaBarra({ select, pulsanteNomi, valoreDue = 'due', suCambioModalita, suCambioNomi }) {
+        function dueGiocatori() {
+            return select.value === valoreDue;
+        }
+        function aggiornaPulsante() {
+            pulsanteNomi.hidden = !dueGiocatori();
+        }
+        select.addEventListener('change', () => {
+            aggiornaPulsante();
+            if (suCambioModalita) {
+                suCambioModalita(dueGiocatori());
+            }
+        });
+        pulsanteNomi.addEventListener('click', async () => {
+            const nomi = await chiediNomi();
+            if (suCambioNomi) {
+                suCambioNomi(nomi);
+            }
+        });
+        aggiornaPulsante();
+        return { dueGiocatori };
+    }
+
+    return { leggiNomi, salvaNomi, passaDispositivo, annuncia, chiediSegreto, chiediNomi, collegaBarra };
 })();

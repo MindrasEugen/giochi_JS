@@ -29,6 +29,16 @@ const tastiera = document.querySelector('#tastiera');
 const disegno = document.querySelector('#disegno');
 const vite = document.querySelectorAll('.vita');
 const contaErrori = document.querySelector('#contaErrori');
+const selectModalita = document.querySelector('#modalitaGioco');
+const pulsanteNomi = document.querySelector('#nomiGiocatori');
+const punteggiDue = document.querySelector('#punteggiDue');
+const turnoDue = document.querySelector('#turnoDue');
+
+// Modalità 2 giocatori: a ogni round uno sceglie la parola e l'altro la indovina, poi si scambiano
+let dueGiocatori = false;
+let nomi = Giocatori.leggiNomi();
+let punti = [0, 0];
+let chiSceglie = 0; // indice del giocatore che sceglie la parola in questo round
 
 
 for (let i = 0; i < alfabeto.length; i++) {
@@ -129,8 +139,9 @@ function provaLettera(letteraScelta) {
 
     if (!lettereScoperte.includes('_')) {
         messaggi.className = 'messaggi messaggio--successo';
-        messaggi.textContent = 'Hai indovinato la parola!';
+        messaggi.textContent = dueGiocatori ? `${nomi[1 - chiSceglie]} ha indovinato la parola!` : 'Hai indovinato la parola!';
         bloccaPartita();
+        fineRound(true);
     } else if (numeroErrori >= 6) {
         messaggi.className = 'messaggi messaggio--errore';
         messaggi.innerHTML = `Hai perso! La parola segreta era:
@@ -142,6 +153,7 @@ function provaLettera(letteraScelta) {
             }
         }
         bloccaPartita();
+        fineRound(false);
     };
 }
 
@@ -159,8 +171,9 @@ lettera.addEventListener('submit', (event) => {
 
 });
 
-nuovaPartita.addEventListener('click', () => {
-    parolaSegreta = listaParole[Math.floor(Math.random() * listaParole.length)];
+// Prepara una partita con la parola indicata
+function avviaPartita(parola) {
+    parolaSegreta = parola;
     numeroErrori = 0;
     lettereUsate = [];
     preparaParola();
@@ -179,4 +192,93 @@ nuovaPartita.addEventListener('click', () => {
     prova.disabled = false;
     laTuaLettera.focus();
     laTuaLettera.value = '';
+}
+
+function parolaCasuale() {
+    return listaParole[Math.floor(Math.random() * listaParole.length)];
+}
+
+// Toglie gli accenti e mette in minuscolo: "Perché" diventa "perche"
+function pulisciParola(testo) {
+    return testo.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+}
+
+function controllaParola(testo) {
+    const parola = pulisciParola(testo);
+    if (!/^[a-z]+$/.test(parola)) {
+        return 'Usa solo lettere, senza spazi, numeri o apostrofi.';
+    }
+    if (parola.length < 3 || parola.length > 12) {
+        return 'La parola deve avere da 3 a 12 lettere.';
+    }
+    return '';
+}
+
+function aggiornaPunteggi() {
+    document.querySelector('#nomeG1').textContent = nomi[0];
+    document.querySelector('#nomeG2').textContent = nomi[1];
+    document.querySelector('#puntiG1').textContent = punti[0];
+    document.querySelector('#puntiG2').textContent = punti[1];
+}
+
+// Un round a 2 giocatori: chi sceglie scrive la parola di nascosto, poi passa il dispositivo a chi indovina
+async function avviaRoundDue() {
+    const indovina = 1 - chiSceglie;
+    bloccaPartita();
+    turnoDue.textContent = `${nomi[chiSceglie]} sceglie la parola…`;
+    const parola = await Giocatori.chiediSegreto({
+        titolo: `${nomi[chiSceglie]}, scegli la parola`,
+        testo: `${nomi[indovina]} non deve guardare lo schermo.`,
+        etichetta: 'Parola segreta (da 3 a 12 lettere)',
+        controlla: controllaParola
+    });
+    await Giocatori.passaDispositivo(nomi[indovina], `Passa il dispositivo a ${nomi[indovina]}: deve indovinare la parola scelta da ${nomi[chiSceglie]}.`);
+    turnoDue.textContent = `Indovina: ${nomi[indovina]} · Parola scelta da: ${nomi[chiSceglie]}`;
+    avviaPartita(pulisciParola(parola));
+}
+
+// Fine di una partita: a 2 giocatori il punto va a chi indovina, oppure a chi ha scelto la parola
+function fineRound(indovinata) {
+    if (!dueGiocatori) {
+        return;
+    }
+    const vincitore = indovinata ? 1 - chiSceglie : chiSceglie;
+    punti[vincitore]++;
+    aggiornaPunteggi();
+    chiSceglie = 1 - chiSceglie;
+    turnoDue.textContent = `Punto a ${nomi[vincitore]}. Nel prossimo round sceglie la parola ${nomi[chiSceglie]}.`;
+    nuovaPartita.textContent = 'Prossimo round';
+}
+
+function impostaModalita(due) {
+    dueGiocatori = due;
+    punti = [0, 0];
+    chiSceglie = 0;
+    punteggiDue.hidden = !due;
+    turnoDue.hidden = !due;
+    nuovaPartita.textContent = due ? 'Prossimo round' : 'Nuova Partita';
+    aggiornaPunteggi();
+    if (due) {
+        avviaRoundDue();
+    } else {
+        avviaPartita(parolaCasuale());
+    }
+}
+
+Giocatori.collegaBarra({
+    select: selectModalita,
+    pulsanteNomi,
+    suCambioModalita: impostaModalita,
+    suCambioNomi: nuoviNomi => {
+        nomi = nuoviNomi;
+        aggiornaPunteggi();
+    }
+});
+
+nuovaPartita.addEventListener('click', () => {
+    if (dueGiocatori) {
+        avviaRoundDue();
+    } else {
+        avviaPartita(parolaCasuale());
+    }
 });
