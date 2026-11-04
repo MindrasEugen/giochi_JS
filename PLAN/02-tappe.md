@@ -23,8 +23,8 @@ Ultima modifica: 2026-11-05
 | 16 | [Arcade: Blocchi, Invasione, Volo, Labirinto](25-tappa-16-arcade-2.md) | ☑ completata |
 | 17 | [Parole: Cinque lettere (tipo Wordle)](26-tappa-17-parole.md) | ☑ completata |
 | 18 | [Mazzo italiano: Briscola, Scopa, Asso piglia tutto, Rubamazzetto](27-tappa-18-italiano-1.md) | ☑ completata |
-| 19 | [Mazzo italiano: Scopone scientifico, Tressette, Cirulla, Briscola a 5](28-tappa-19-italiano-2.md) | ☐ da fare |
-| 20 | [Mazzo italiano: Mercante in fiera e Cucù](29-tappa-20-italiano-3.md) | ☐ da fare |
+| 19 | [Mazzo italiano: Scopone scientifico, Tressette, Cirulla, Briscola a 5](28-tappa-19-italiano-2.md) | ◐ implementata, manca la prova su telefono |
+| 20 | [Mazzo italiano: Mercante in fiera e Cucù](29-tappa-20-italiano-3.md) | ◐ implementata, manca la prova su telefono |
 | 21 | [Mazzo francese: Blackjack, Guerra, Cambio colore](30-tappa-21-francese-1.md) | ☐ da fare |
 | 22 | [Mazzo francese: Poker heads-up, Scala 40, Ramino, Burraco](31-tappa-22-francese-2.md) | ☐ da fare |
 | 23 | [Solitari: Klondike, FreeCell, Spider, Piramide, Golf](32-tappa-23-solitari-1.md) | ☐ da fare |

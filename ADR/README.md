@@ -14,6 +14,7 @@ Le decisioni prese nel progetto Giochi JS. Ogni file descrive una decisione: **c
 | [0008](0008-due-giocatori-sullo-stesso-dispositivo.md) | Due giocatori sullo stesso dispositivo | 2026-11-04 | `d75f327`, Tappa 10 |
 | [0009](0009-nomi-e-grafica-originali-per-i-giochi-famosi.md) | Nomi e grafica originali per i giochi ispirati a giochi famosi | 2026-11-04 | — |
 | [0010](0010-css-comune-delle-pagine-di-gioco.md) | CSS comune delle pagine di gioco (`css/gioco.css`) | 2026-11-04 | Tappa 13 |
+| [0011](0011-tavolo-carte-italiane-da-2-a-5-posti.md) | Tavolo condiviso delle carte italiane da 2 a 5 posti | 2026-11-05 | Tappa 19 |
 
 ## Decisioni sostituite
 

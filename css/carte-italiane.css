@@ -25,6 +25,21 @@
 #mano .carta { --larghezza-carta: clamp(62px, 18vw, 88px); }
 .opzioni-prese { display: grid; gap: var(--spazio-2); margin-top: var(--spazio-3); }
 .scelta-presa { width: 100%; white-space: normal; text-align: left; justify-content: flex-start; }
+/* Molte opzioni brevi (asta della Briscola chiamata): più colonne, testo centrato */
+.opzioni-prese--molte { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+.opzioni-prese--molte .scelta-presa { text-align: center; justify-content: center; }
+/* Posti dei giocatori attorno al tavolo (Cucù, Mercante in fiera) */
+.posti-carte { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: var(--spazio-2); padding-top: var(--spazio-3); border-top: 1px solid var(--colore-primario-chiaro); }
+.posto { display: flex; flex-direction: column; align-items: center; gap: var(--spazio-1); padding: var(--spazio-2); border: 2px solid transparent; border-radius: var(--raggio-m); background: rgba(0, 0, 0, .15); color: var(--colore-sfondo); }
+.posto p { margin: 0; }
+.posto__nome { font-size: var(--testo-s); font-weight: 700; }
+.posto__vite { font-size: .8rem; color: var(--colore-accento); letter-spacing: .1em; }
+.posto .carta { --larghezza-carta: 56px; }
+.posto__carte { display: flex; flex-wrap: wrap; justify-content: center; gap: 3px; min-height: 40px; font-size: .75rem; }
+.posto__carte .carta { --larghezza-carta: 30px; }
+.posto--turno, .posto--offerta { border-color: var(--colore-accento); }
+.posto--perde { border-color: var(--colore-errore); }
+.posto--eliminato, .posto--ritirato { opacity: .5; }
 .mazzetti-carte { display: flex; flex-wrap: wrap; justify-content: space-evenly; gap: var(--spazio-3); margin-top: var(--spazio-4); padding: var(--spazio-3); border: 1px solid var(--colore-bordo); border-radius: var(--raggio-m); }
 .mazzetto-carte { flex: 1 1 110px; min-width: 0; }
 .mazzetto-carte p { margin-block: 0 var(--spazio-2); font-size: .75rem; }
@@ -36,6 +51,8 @@
 .fonti-carte a { color: var(--colore-primario); }
 [hidden] { display: none !important; }
 @media (min-width: 600px) {
+    .posto .carta { --larghezza-carta: 72px; }
+    .posto__carte .carta { --larghezza-carta: 38px; }
     .tavolo-italiano { padding: var(--spazio-4); border-width: 8px; }
     .avversario-carte .carta { --larghezza-carta: 38px; }
     #carteTavolo .carta { --larghezza-carta: 76px; }

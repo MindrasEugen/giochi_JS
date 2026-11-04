@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mercante in fiera | Giochi JS</title>
+  <link rel="stylesheet" href="../css/comune.css"><link rel="stylesheet" href="../css/gioco.css"><link rel="stylesheet" href="../css/giocatori.css"><link rel="stylesheet" href="../css/carte.css"><link rel="stylesheet" href="../css/carte-italiane.css"><link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="contenitore" id="contenitore_gioco">
+  <a class="link-home" href="../index.html">&larr; Tutti i giochi</a>
+  <header class="intro-carte"><p class="occhiello-carte">Mazzo italiano / Mercante in fiera</p><h1>Compra all&rsquo;asta, spera nella fortuna.</h1><p class="sottotitolo">Due mazzi: con uno si fanno le aste, dall&rsquo;altro escono le carte che eliminano. Le carte che sopravvivono fino ai premi si dividono il piatto.</p></header>
+  <div class="barra-modalita"><label for="modalitaGioco">Giocatori</label><select id="modalitaGioco"><option value="uno-2">Tu + 1 PC</option><option value="uno-4" selected>Tu + 3 PC</option><option value="uno-6">Tu + 5 PC</option><option value="due-2">2 persone</option><option value="due-4">2 persone + 2 PC</option></select><button type="button" id="nomiGiocatori" class="pulsante pulsante--secondario" hidden>Nomi</button></div>
+  <div class="riepilogo-carte" aria-label="Riepilogo"><div><span id="nomeP0"></span><strong id="puntiP0">0</strong></div><div><span id="nomeP1"></span><strong id="puntiP1">0</strong></div><small id="tipoPunti"></small></div>
+  <section class="tavolo tavolo-italiano" aria-label="Tavolo di Mercante in fiera">
+    <div class="centro-italiano"><div class="mano" id="carteTavolo" aria-label="Lotto in vendita, carta estratta o premi"></div><p id="tavoloVuoto"></p></div>
+    <div class="posti-carte" id="posti" aria-label="Giocatori"></div>
+  </section>
+  <p id="messaggi" role="status" aria-live="polite"></p>
+  <div class="opzioni-prese" id="opzioniPresa" role="group" aria-label="Scelte disponibili"></div>
+  <div class="azioni"><button type="button" class="pulsante" id="automatico" hidden>Estrai fino alla fine</button><button type="button" class="pulsante pulsante--secondario" id="nuovaPartita">Nuova partita</button></div>
+  <section class="risultati-carte" id="risultati" aria-label="Risultato finale" hidden></section>
+  <details class="pannello regole"><summary>Regole e variante adottata</summary><ol><li>Si usano due mazzi italiani uguali. Ognuno parte con 50 fiches e ne mette 10 nel piatto.</li><li>Dal secondo mazzo il banditore mette da parte, coperte, le carte premio: due con 2 o 3 giocatori, tre con 4 o pi&ugrave;.</li><li>Asta: le 40 carte del primo mazzo vanno all&rsquo;asta a lotti (5 carte a lotto in 2, 3 in 3 o 4, 2 in 5 o 6). A turno si rilancia di 1 o di 5 fiches oppure si passa; chi passa non rientra per quel lotto. Il lotto va a chi resta con l&rsquo;offerta migliore; se nessuno offre resta invenduto. Le fiches spese vanno nel piatto.</li><li>Estrazione: si scoprono una alla volta le carte rimaste del secondo mazzo. Ogni carta estratta elimina la carta gemella venduta all&rsquo;asta.</li><li>Premi: alla fine restano solo le carte gemelle delle carte premio. Si scoprono i premi dall&rsquo;ultimo al primo; chi ha la carta gemella vince la sua parte del piatto (60% e 40% con due premi; 50%, 30% e 20% con tre). Un premio senza proprietario va al banco.</li><li>Vince chi alla fine ha pi&ugrave; fiches.</li><li>Variante adottata: niente baratti o compravendite tra giocatori durante l&rsquo;estrazione e nessun &laquo;premio Esposito&raquo;. Tutte le carte sono scoperte: in due persone non serve passare il dispositivo.</li></ol></details>
+  <p class="fonti-carte">Riferimenti: <a href="https://it.wikipedia.org/wiki/Mercante_in_fiera">Mercante in fiera - Wikipedia</a>.</p>
+</main>
+<script src="../js/mazzo.js"></script><script src="../js/carte.js"></script><script src="../js/giocatori.js"></script><script src="./funzioni.js"></script><script src="./main.js"></script>
+</body></html>
