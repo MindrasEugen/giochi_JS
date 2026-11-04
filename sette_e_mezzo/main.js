@@ -9,8 +9,6 @@ const punteggioB = document.querySelector('#punti_banco');
 const messaggi = document.querySelector('#messaggi');
 
 
-const semi = ['bastoni', 'coppe', 'denari', 'spade'];
-const nomiCarte = ['asso', '2', '3', '4', '5', '6', '7', 'fante', 'cavallo', 're'];
 const mazzo = [];
 let puntiGiocatore = 0;
 let puntiBanco = 0;
@@ -31,30 +29,26 @@ function mostraMessaggio(testo, tipo) {
 creaMazzo();
 
 
+// Mazzo italiano mescolato, preso dallo script condiviso js/mazzo.js
 function creaMazzo() {
     mazzo.length = 0;
-    for (let i = 0; i < semi.length; i++) {
-        for (let j = 0; j < nomiCarte.length; j++) {
-            let valore;
-            if (nomiCarte[j] === 'fante' || nomiCarte[j] === 'cavallo' || nomiCarte[j] === 're') {
-                valore = 0.5;
-            } else if (nomiCarte[j] === 'asso') {
-                valore = 1;
-            } else {
-                valore = Number(nomiCarte[j]);
-            }
-            mazzo.push({ nome: nomiCarte[j], seme: semi[i], immagine: `./pic/${nomiCarte[j]}-${semi[i]}.png`, valore: valore });
-        }
-    };
+    mazzo.push(...Mazzo.mescola(Mazzo.italiano()));
+}
+
+// Fante, cavallo e re (numeri 8, 9, 10) valgono mezzo punto; le altre carte il loro numero
+function puntiCarta(carta) {
+    return carta.numero >= 8 ? 0.5 : carta.numero;
+}
+
+// Pesca la prima carta del mazzo, la mostra nel riquadro indicato e restituisce i suoi punti
+function pescaCarta(riquadro) {
+    const carta = Mazzo.pesca(mazzo, 1)[0];
+    riquadro.appendChild(Carte.crea(carta));
+    return puntiCarta(carta);
 }
 
 function giocatorePesca() {
-    const carteEstrate = mazzo.splice(Math.floor(Math.random() * mazzo.length), 1);
-    const immagineCarta = document.createElement('img');
-    immagineCarta.src = carteEstrate[0].immagine;
-    immagineCarta.alt = `${carteEstrate[0].nome} di ${carteEstrate[0].seme}`;
-    carteGiocatore.appendChild(immagineCarta);
-    puntiGiocatore += carteEstrate[0].valore;
+    puntiGiocatore += pescaCarta(carteGiocatore);
     punteggioG.textContent = puntiGiocatore.toLocaleString('it-IT');
 
     if (puntiGiocatore > 7.5) {
@@ -67,12 +61,7 @@ function giocatorePesca() {
 
 function bancoPesca() {
     if (puntiBanco < puntiGiocatore) {
-        const carteEstrate = mazzo.splice(Math.floor(Math.random() * mazzo.length), 1);
-        const immagineCarta = document.createElement('img');
-        immagineCarta.src = carteEstrate[0].immagine;
-        immagineCarta.alt = `${carteEstrate[0].nome} di ${carteEstrate[0].seme}`;
-        carteBanco.appendChild(immagineCarta);
-        puntiBanco += carteEstrate[0].valore;
+        puntiBanco += pescaCarta(carteBanco);
         punteggioB.textContent = puntiBanco.toLocaleString('it-IT');
         timerBanco = setTimeout(bancoPesca, 1000);
     } else if (puntiBanco > 7.5) {

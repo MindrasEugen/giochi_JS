@@ -1,6 +1,6 @@
 # Tappe
 
-Ultima modifica: 2026-11-03
+Ultima modifica: 2026-11-04
 
 | # | Tappa | Stato |
 |---|---|---|
@@ -12,5 +12,21 @@ Ultima modifica: 2026-11-03
 | 6 | [Tris: modalità impossibile con minimax](15-tappa-06-tris-minimax.md) | ☑ completata |
 | 7 | [Restyling moderno di Sasso carta forbici e Tris](16-tappa-07-restyling-moderno.md) | ☑ completata |
 | 8 | [Stesso stile per Impiccato, Indovina il numero e Sette e mezzo](17-tappa-08-restyling-altri-giochi.md) | ☑ completata |
+| 9 | [Fondamenta per la nuova raccolta](18-tappa-09-fondamenta.md) | ☑ completata |
+| 10 | [Modalità 2 giocatori nei giochi già scritti](19-tappa-10-due-giocatori-esistenti.md) | ☐ da fare |
+| 11 | [Logica: Forza 4, Memory, Campo minato](20-tappa-11-logica-1.md) | ☐ da fare |
+| 12 | [Logica: Raddoppia (tipo 2048) e Sudoku](21-tappa-12-logica-2.md) | ☐ da fare |
+| 13 | [Da tavolo: Dama, Filetto (Mulino), Battaglia navale](22-tappa-13-tavolo-1.md) | ☐ da fare |
+| 14 | [Da tavolo: Ludo e Scacchi](23-tappa-14-tavolo-2.md) | ☐ da fare |
+| 15 | [Arcade: Serpente, Ping pong, Mattoncini](24-tappa-15-arcade-1.md) | ☐ da fare |
+| 16 | [Arcade: Blocchi, Invasione, Volo, Labirinto](25-tappa-16-arcade-2.md) | ☐ da fare |
+| 17 | [Parole: Cinque lettere (tipo Wordle)](26-tappa-17-parole.md) | ☐ da fare |
+| 18 | [Mazzo italiano: Briscola, Scopa, Asso piglia tutto, Rubamazzetto](27-tappa-18-italiano-1.md) | ☐ da fare |
+| 19 | [Mazzo italiano: Scopone scientifico, Tressette, Cirulla, Briscola a 5](28-tappa-19-italiano-2.md) | ☐ da fare |
+| 20 | [Mazzo italiano: Mercante in fiera e Cucù](29-tappa-20-italiano-3.md) | ☐ da fare |
+| 21 | [Mazzo francese: Blackjack, Guerra, Cambio colore](30-tappa-21-francese-1.md) | ☐ da fare |
+| 22 | [Mazzo francese: Poker heads-up, Scala 40, Ramino, Burraco](31-tappa-22-francese-2.md) | ☐ da fare |
+| 23 | [Solitari: Klondike, FreeCell, Spider, Piramide, Golf](32-tappa-23-solitari-1.md) | ☐ da fare |
+| 24 | [Solitari: TriPeaks, Yukon, Scorpione, Orologio, Le tredici](33-tappa-24-solitari-2.md) | ☐ da fare |
 
 Legenda: ☐ da fare · ◐ in corso · ☑ completata · ✗ annullata

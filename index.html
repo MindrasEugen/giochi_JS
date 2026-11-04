@@ -9,48 +9,23 @@
 </head>
 <body>
   <!-- Presentazione -->
-  <header class="contenitore">
+  <header class="contenitore intestazione">
     <h1>Giochi JS</h1>
-    <p class="presentazione">Cinque giochi da browser scritti in HTML, CSS e JavaScript.</p>
+    <p class="presentazione"><span id="totale-giochi">5</span> giochi da browser scritti in HTML, CSS e JavaScript.</p>
+    <div class="ricerca">
+      <label for="cerca" class="nascosto-visivamente">Cerca un gioco</label>
+      <input id="cerca" type="search" placeholder="Cerca un gioco…" autocomplete="off">
+    </div>
   </header>
-  <!-- Giochi -->
+  <!-- Giochi, divisi per categoria (disegnati da home.js) -->
   <main class="contenitore">
-    <ul>
-      <li class="card">
-        <span class="emoji-gioco" aria-hidden="true">🪢</span>
-        <h2>L’impiccato</h2>
-        <p>Indovina la parola segreta una lettera alla volta, prima di fare 6 errori.</p>
-        <a class="pulsante" href="./il_impiccato/index.html" aria-label="Gioca a L’impiccato">Gioca</a>
-      </li>
-      <li class="card">
-        <span class="emoji-gioco" aria-hidden="true">🔢</span>
-        <h2>Indovina il numero</h2>
-        <p>Il computer pensa a un numero da 1 a 100: trovalo con meno tentativi possibili.</p>
-        <a class="pulsante" href="./indovina_il_numero/index.html" aria-label="Gioca a Indovina il numero">Gioca</a>
-      </li>
-      <li class="card">
-        <span class="emoji-gioco" aria-hidden="true">✊</span>
-        <h2>Sasso carta forbici</h2>
-        <p>Sfida il computer: vince chi arriva per primo a 5 punti.</p>
-        <a class="pulsante" href="./sasso_carta_forbici/index.html" aria-label="Gioca a Sasso carta forbici">Gioca</a>
-      </li>
-      <li class="card">
-        <span class="emoji-gioco" aria-hidden="true">🃏</span>
-        <h2>Sette e mezzo</h2>
-        <p>Il classico gioco di carte contro il banco: avvicinati a 7,5 senza sballare.</p>
-        <a class="pulsante" href="./sette_e_mezzo/index.html" aria-label="Gioca a Sette e mezzo">Gioca</a>
-      </li>
-      <li class="card">
-        <span class="emoji-gioco" aria-hidden="true">⭕</span>
-        <h2>Tris</h2>
-        <p>Allinea tre simboli: in due giocatori oppure contro il computer.</p>
-        <a class="pulsante" href="./tris/index.html" aria-label="Gioca a Tris">Gioca</a>
-      </li>
-    </ul>
+    <div id="categorie"></div>
+    <p id="nessun-risultato" class="nessun-risultato" hidden>Nessun gioco trovato.</p>
   </main>
   <!-- Chiusura -->
   <footer class="contenitore">
     <p>Progetto di esercizio — HTML, CSS e JavaScript</p>
   </footer>
+  <script src="./home.js"></script>
 </body>
 </html>

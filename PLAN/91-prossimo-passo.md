@@ -1,6 +1,6 @@
 # Prossimo passo
 
-Ultima modifica: 2026-11-03
+Ultima modifica: 2026-11-04
 
-- **Azione successiva:** l'utente prova nel browser la home e i 5 giochi (Ctrl+F5) e fa il push quando vuole. Le idee rimaste sono in [90-fuori-mvp.md](90-fuori-mvp.md).
-- **Cosa serve dall'utente:** l'esito della prova ed eventuali nuove richieste.
+- **Azione successiva:** [Tappa 10](19-tappa-10-due-giocatori-esistenti.md), modalità 2 giocatori in Impiccato, Indovina il numero, Sasso carta forbici, Sette e mezzo e Tris. Il codice lo scrive Claude, il design lo fa Codex.
+- **Cosa serve dall'utente:** la conferma per iniziare la Tappa 10 e, quando vuole, il push del commit della Tappa 9. Il commit contiene anche lo spostamento delle carte, necessario a Sette e mezzo online.

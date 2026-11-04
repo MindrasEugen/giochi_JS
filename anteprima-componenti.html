@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anteprima dei componenti — Giochi JS</title>
+  <link rel="stylesheet" href="./css/comune.css">
+  <link rel="stylesheet" href="./css/carte.css">
+  <link rel="stylesheet" href="./css/giocatori.css">
+  <style>
+    /* solo per impaginare questa pagina di prova */
+    .anteprima { display: grid; gap: var(--spazio-4); }
+    .anteprima section { background: var(--colore-superficie); border-radius: var(--raggio-l); padding: var(--spazio-4); }
+  </style>
+</head>
+<body>
+  <!-- Pagina di servizio: mostra i componenti condivisi (carte, mani, finestre 2 giocatori).
+       Non è collegata dalla home. -->
+  <main class="contenitore anteprima">
+    <h1>Anteprima dei componenti</h1>
+
+    <section>
+      <h2>Carte singole</h2>
+      <div class="mano" id="carte-singole"></div>
+    </section>
+
+    <section>
+      <h2>Tavolo con mano a ventaglio, pila e carte giocabili</h2>
+      <div class="tavolo">
+        <div class="tavolo__zona">
+          <p class="tavolo__etichetta">Avversario</p>
+          <div class="mano mano--ventaglio" id="mano-avversario"></div>
+        </div>
+        <div class="tavolo__centro">
+          <div class="pila" id="pila"></div>
+          <div class="mano" id="carte-in-tavola"></div>
+        </div>
+        <div class="tavolo__zona">
+          <p class="tavolo__etichetta">Tu</p>
+          <div class="mano mano--ventaglio" id="mano-giocatore"></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Finestre per 2 giocatori</h2>
+      <p>
+        <button type="button" class="pulsante" id="prova-passa">Passa il dispositivo</button>
+        <button type="button" class="pulsante pulsante--secondario" id="prova-segreto">Chiedi una parola segreta</button>
+        <button type="button" class="pulsante pulsante--secondario" id="prova-nomi">Nomi dei giocatori</button>
+      </p>
+      <p id="risultato-prova"></p>
+    </section>
+  </main>
+
+  <script src="./js/mazzo.js"></script>
+  <script src="./js/carte.js"></script>
+  <script src="./js/giocatori.js"></script>
+  <script>
+    Carte.impostaCartella('./carte/');
+    const mazzo = Mazzo.mescola([...Mazzo.italiano(), ...Mazzo.francese()]);
+
+    function carteIn(id, quante, opzioni = {}) {
+      const contenitore = document.getElementById(id);
+      Mazzo.pesca(mazzo, quante).forEach((carta, i) => {
+        if (opzioni.giocabili) {
+          const pulsante = document.createElement('button');
+          pulsante.type = 'button';
+          pulsante.className = 'carta-pulsante';
+          const img = Carte.crea(carta);
+          img.classList.add('carta--giocabile');
+          if (i === 1) img.classList.add('carta--selezionata');
+          pulsante.appendChild(img);
+          contenitore.appendChild(pulsante);
+        } else {
+          const img = Carte.crea(carta, { coperta: opzioni.coperte });
+          if (opzioni.entra) img.classList.add('carta--entra');
+          contenitore.appendChild(img);
+        }
+      });
+    }
+
+    carteIn('carte-singole', 4);
+    carteIn('carte-singole', 1, { coperte: true });
+    carteIn('mano-avversario', 5, { coperte: true });
+    carteIn('carte-in-tavola', 3, { entra: true });
+    carteIn('mano-giocatore', 5, { giocabili: true });
+    Carte.aVentaglio(document.getElementById('mano-avversario'));
+    Carte.aVentaglio(document.getElementById('mano-giocatore'));
+    for (let i = 0; i < 3; i++) {
+      document.getElementById('pila').appendChild(Carte.crea({ tipo: 'italiano' }, { coperta: true }));
+    }
+
+    const risultato = document.getElementById('risultato-prova');
+    document.getElementById('prova-passa').addEventListener('click', async () => {
+      await Giocatori.passaDispositivo(Giocatori.leggiNomi()[1]);
+      risultato.textContent = 'Il giocatore è pronto.';
+    });
+    document.getElementById('prova-segreto').addEventListener('click', async () => {
+      const parola = await Giocatori.chiediSegreto({
+        titolo: 'Parola segreta',
+        testo: 'Scrivi una parola: l’altro giocatore dovrà indovinarla.',
+        etichetta: 'Parola (solo lettere)',
+        controlla: v => /^[a-z]+$/i.test(v) ? '' : 'Usa solo lettere, senza spazi né accenti.'
+      });
+      risultato.textContent = `Parola ricevuta: ${parola.length} lettere.`;
+    });
+    document.getElementById('prova-nomi').addEventListener('click', async () => {
+      const nomi = await Giocatori.chiediNomi();
+      risultato.textContent = `Nomi salvati: ${nomi.join(' e ')}.`;
+    });
+  </script>
+</body>
+</html>

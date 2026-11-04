@@ -14,3 +14,7 @@ Ultima modifica: 2026-11-03
 - 2026-11-03 — Tappa 7 completata: restyling moderno di Sasso carta forbici e Tris e ritocchi a `css/comune.css`, verificati con jsdom, test del minimax e screenshot.
 - 2026-11-03 — Aggiunta la Tappa 8 (stile moderno su Impiccato, Indovina il numero e Sette e mezzo) su richiesta dell'utente.
 - 2026-11-03 — Tappa 8 completata: stile moderno su Impiccato, Indovina il numero e Sette e mezzo, verificato con jsdom (23 controlli) e screenshot.
+- 2026-11-04 — L'utente chiede 44 giochi nuovi e la modalità 2 giocatori in tutti i giochi che lo permettono. Scritto il piano della seconda parte (Tappe 9–24) e gli ADR 0006–0009 in proposta. In attesa del via.
+- 2026-11-04 — L'utente ha aggiunto `carte/` con le 52 carte francesi. Le 40 carte italiane sono state spostate lì da `sette_e_mezzo/pic/` e il percorso in Sette e mezzo è stato aggiornato e verificato.
+- 2026-11-04 — Via dell'utente alla seconda parte, con la regola "per il design usa Codex". Tappa 9 avviata: `js/mazzo.js`, `js/carte.js`, `js/giocatori.js`, `js/arcade.js`, `home.js`, anteprima dei componenti; Sette e mezzo usa il mazzo condiviso. CSS affidato a Codex.
+- 2026-11-04 — Tappa 9 completata: script condivisi, home a categorie, anteprima dei componenti, carte in `carte/`; design di Codex in due giri (ventaglio corretto nel secondo). ADR 0006–0009 accettati.

@@ -1,0 +1,201 @@
+/* Carte: proporzioni originali di entrambi i mazzi. */
+.carta, .mano, .pila {
+  --larghezza-carta: 64px;
+}
+
+.carta {
+  display: block;
+  width: var(--larghezza-carta);
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--raggio-s);
+  box-shadow: var(--ombra-leggera);
+  user-select: none;
+  transition: transform var(--transizione), box-shadow var(--transizione);
+}
+
+.carta--coperta {
+  box-shadow: var(--ombra-media);
+}
+
+.carta--giocabile {
+  cursor: pointer;
+}
+
+.carta--giocabile:hover, .carta--giocabile:focus-visible, .carta-pulsante:focus-visible .carta {
+  transform: translateY(-8px);
+  box-shadow: var(--ombra-forte);
+}
+
+.carta.carta--selezionata {
+  transform: translateY(-14px);
+  outline: 3px solid var(--colore-accento);
+  outline-offset: 2px;
+}
+
+.carta--entra {
+  animation: distribuisci-carta 400ms var(--molla);
+}
+
+@keyframes distribuisci-carta {
+  from {
+    opacity: 0;
+    transform: translateY(-32px) rotate(-8deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+  }
+
+}
+
+.carta-pulsante {
+  display: block;
+  flex-shrink: 0;
+  min-width: var(--area-minima);
+  min-height: var(--area-minima);
+  padding: 0;
+  border: 0;
+  background: none;
+  border-radius: var(--raggio-s);
+  cursor: pointer;
+}
+
+.carta-pulsante:focus-visible {
+  outline: 3px solid var(--colore-info);
+  outline-offset: 5px;
+  position: relative;
+  z-index: 2;
+}
+
+.carta-pulsante:disabled {
+  cursor: not-allowed;
+  opacity: .5;
+}
+
+.carta-pulsante:disabled .carta {
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: var(--ombra-leggera);
+}
+
+.mano {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spazio-2);
+  min-width: 0;
+}
+
+/* Ventaglio simmetrico; sovrapposizione compatta su mobile. */
+.mano--ventaglio {
+  --passo-ventaglio: 3deg;
+  flex-wrap: nowrap;
+  gap: 0;
+  padding: var(--spazio-4) var(--spazio-2);
+}
+
+.mano--ventaglio > * {
+  flex-shrink: 0;
+  position: relative;
+  --centro-ventaglio: calc((var(--n, 1) - 1) / 2);
+  --distanza-ventaglio: calc((var(--i, var(--centro-ventaglio)) - var(--centro-ventaglio)) * clamp(0, var(--n, 1) - 1, 1));
+  --sollevamento-ventaglio: 0px;
+  rotate: calc(var(--distanza-ventaglio) * var(--passo-ventaglio));
+  translate: 0 calc(var(--distanza-ventaglio) * var(--distanza-ventaglio) * 1px - var(--sollevamento-ventaglio));
+  transform-origin: center bottom;
+}
+
+.mano--ventaglio > * + * {
+  margin-left: calc(18px - var(--larghezza-carta));
+}
+
+/* Focus e hover restano disponibili anche senza :has(). */
+.mano--ventaglio > :hover, .mano--ventaglio > :focus-within,
+.mano--ventaglio > .carta--selezionata {
+  --sollevamento-ventaglio: 8px;
+  z-index: 3;
+}
+
+.mano--ventaglio > .carta-pulsante:has(.carta--selezionata) {
+  --sollevamento-ventaglio: 14px;
+  z-index: 3;
+}
+
+.tavolo {
+  padding: var(--spazio-3);
+  border-radius: var(--raggio-xl);
+  background: linear-gradient(135deg, var(--colore-primario), var(--colore-primario-chiaro));
+  color: var(--colore-sfondo);
+  box-shadow: inset 0 0 0 1px var(--colore-accento), var(--ombra-media);
+}
+
+.tavolo__zona {
+  min-width: 0;
+  text-align: center;
+}
+
+.tavolo__etichetta {
+  margin: 0 0 var(--spazio-2);
+  color: var(--colore-sfondo);
+  font-size: var(--testo-s);
+  font-weight: var(--peso-semibold);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+.tavolo__centro {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spazio-4);
+  margin-block: var(--spazio-4);
+}
+
+.pila {
+  position: relative;
+  width: var(--larghezza-carta);
+  flex-shrink: 0;
+  margin: var(--spazio-2);
+}
+
+.pila > .carta ~ .carta {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+}
+
+.pila > .carta:nth-child(n+3) {
+  top: 4px;
+  left: 4px;
+}
+
+@media (min-width: 600px) {
+  .carta, .mano, .pila {
+    --larghezza-carta: 88px;
+  }
+
+  .mano--ventaglio {
+    --passo-ventaglio: 5deg;
+  }
+
+  .mano--ventaglio > * + * {
+    margin-left: calc(36px - var(--larghezza-carta));
+  }
+
+  .tavolo {
+    padding: var(--spazio-4);
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carta {
+    animation: none;
+    transition: none;
+  }
+
+}
