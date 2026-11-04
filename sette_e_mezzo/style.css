@@ -6,11 +6,11 @@
     margin: var(--spazio-4) auto;
     padding: var(--spazio-3);
     background:
-        radial-gradient(ellipse at 50% 30%, rgba(255, 248, 231, .08), transparent 60%),
+        radial-gradient(ellipse at 50% 30%, color-mix(in srgb, var(--colore-sfondo) 8%, transparent), transparent 60%),
         var(--colore-primario);
     color: var(--colore-sfondo);
     border-radius: var(--raggio-xl);
-    box-shadow: var(--ombra-forte), inset 0 0 0 6px rgba(233, 196, 106, .25);
+    box-shadow: var(--ombra-forte), inset 0 0 0 6px color-mix(in srgb, var(--colore-accento) 25%, transparent);
 }
 
 /* Sul fondo scuro titoli e link diventano chiari */
@@ -45,11 +45,10 @@
 }
 
 /* Il riquadro di chi sta giocando ha il bordo dorato */
-.contenitore_body[data-turno="giocatore"] .contenitore_giocatore:not(.contenitore_giocatore2),
-.contenitore_body[data-turno="giocatore2"] .contenitore_giocatore2,
+.contenitore_body[data-turno="giocatore"] .contenitore_giocatore,
 .contenitore_body[data-turno="banco"] .contenitore_banco {
     border-color: var(--colore-accento);
-    box-shadow: 0 0 0 4px rgba(233, 196, 106, .18);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--colore-accento) 18%, transparent);
 }
 
 .intestazione {
@@ -90,7 +89,7 @@
 #carte_banco img {
     max-width: 80px;
     border-radius: var(--raggio-s);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, .35);
+    box-shadow: 0 8px 16px color-mix(in srgb, var(--colore-testo) 35%, transparent);
     animation: distribuisci 420ms var(--molla);
 }
 
@@ -120,12 +119,12 @@
 
 #messaggi.messaggio--successo {
     color: var(--colore-successo);
-    background-color: #E3F1EA;
+    background-color: color-mix(in srgb, var(--colore-successo) 10%, var(--colore-superficie));
 }
 
 #messaggi.messaggio--errore {
     color: var(--colore-errore);
-    background-color: #F8E5E8;
+    background-color: color-mix(in srgb, var(--colore-errore) 10%, var(--colore-superficie));
 }
 
 #messaggi.messaggio--attesa {
@@ -162,7 +161,7 @@
 #regole {
     margin-top: var(--spazio-5);
     background-color: var(--colore-primario-chiaro);
-    border-color: rgba(255, 248, 231, .2);
+    border-color: color-mix(in srgb, var(--colore-sfondo) 20%, transparent);
 }
 
 #regole summary {
@@ -184,7 +183,7 @@
     }
 
     .campo_di_gioco {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     #carte_giocatore,
@@ -213,47 +212,10 @@
   outline-color: var(--colore-sfondo);
 }
 
-/* Secondo giocatore */
+/* Riquadri */
 .campo_di_gioco > * {
   min-width: 0;
   overflow-wrap: anywhere;
-}
-
-#carte_giocatore2 {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--spazio-2);
-  min-height: 130px;
-}
-
-#carte_giocatore2 img {
-  max-width: 80px;
-  border-radius: var(--raggio-s);
-  box-shadow: var(--ombra-media);
-  animation: distribuisci 420ms var(--molla);
-}
-
-@media (min-width: 600px) {
-  .campo_di_gioco {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .campo_di_gioco .contenitore_banco {
-    grid-column: 1 / -1;
-  }
-
-  .campo_di_gioco:has(.contenitore_giocatore2[hidden]) .contenitore_banco {
-    grid-column: auto;
-  }
-
-  #carte_giocatore2 {
-    min-height: 160px;
-  }
-
-  #carte_giocatore2 img {
-    max-width: 100px;
-  }
 }
 
 [hidden] {

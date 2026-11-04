@@ -22,6 +22,10 @@
                 </select>
                 <button type="button" id="nomiGiocatori" class="pulsante pulsante--secondario" hidden>Nomi</button>
             </div>
+            <div class="punteggi-due" id="punteggiDue" hidden>
+                <span class="punteggi-due__giocatore"><span class="punteggi-due__nome" id="nomeG1">Giocatore 1</span> <span class="punteggi-due__punti" id="puntiG1">0</span></span>
+                <span class="punteggi-due__giocatore"><span class="punteggi-due__punti" id="puntiG2">0</span> <span class="punteggi-due__nome" id="nomeG2">Giocatore 2</span></span>
+            </div>
             <p class="turno-due" id="turnoDue" hidden></p>
             <div class="campo_di_gioco">
                 <div class="contenitore_giocatore">
@@ -31,16 +35,9 @@
                     </div>
                     <div id="carte_giocatore"></div>
                 </div>
-                <div class="contenitore_giocatore contenitore_giocatore2" hidden>
-                    <div class="intestazione">
-                        <h2 id="nome_giocatore2">Giocatore 2</h2>
-                        <span class="pillola-punti" id="punti_giocatore2" aria-label="Punteggio del giocatore 2">0</span>
-                    </div>
-                    <div id="carte_giocatore2"></div>
-                </div>
                 <div class="contenitore_banco">
                     <div class="intestazione">
-                        <h2>Banco</h2>
+                        <h2 id="nome_banco">Banco</h2>
                         <span class="pillola-punti" id="punti_banco" aria-label="Punteggio del banco">0</span>
                     </div>
                     <div id="carte_banco"></div>
@@ -60,7 +57,8 @@
                     <li>L’asso vale 1 punto, le carte dal 2 al 7 valgono il loro numero. Fante, cavallo e re valgono mezzo punto.</li>
                     <li>All’inizio ricevi una carta. Puoi premere “Pesca” per chiederne un’altra oppure “Stai” per terminare il tuo turno.</li>
                     <li>Se superi 7,5 punti, sballi e perdi subito.</li>
-                    <li>Quando stai, il banco pesca finché raggiunge o supera il tuo punteggio. A 2 giocatori ognuno riceve una carta e gioca il suo turno; poi il banco pesca finché raggiunge o supera il punteggio più alto tra chi non ha sballato.</li>
+                    <li>Quando stai, il banco pesca finché raggiunge o supera il tuo punteggio.</li>
+                    <li>A 2 giocatori non c’è il banco del computer: uno dei due fa il banco. Prima gioca l’altro; poi il banco pesca le sue carte e decide da solo quando stare. A ogni mano i ruoli si scambiano e si contano le mani vinte.</li>
                     <li>Se il banco sballa, vinci. Altrimenti vince chi ha il punteggio più alto; a parità vince il banco.</li>
                     <li>Le carte pescate vengono rimosse dal mazzo: la stessa carta non può uscire due volte nella partita.</li>
                     <li>Premi “Nuova partita” per ricominciare con il mazzo completo e i punteggi azzerati.</li>

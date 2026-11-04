@@ -8,7 +8,7 @@ I primi giochi con il mazzo francese, con le immagini in `carte/` (nomi `seme-va
 
 ## Attività
 
-- [ ] Blackjack: 1 o 2 giocatori contro il banco, raddoppio, divisione, puntate con fiches finte
+- [ ] Blackjack: contro il banco del computer oppure in 2 giocatori con uno dei due che fa il banco (i ruoli si scambiano a ogni mano, [Tappa 10.1](34-tappa-10-1-banco-a-due-giocatori.md)); raddoppio, divisione, puntate con fiches finte
 - [ ] Guerra: 2 giocatori o contro il PC
 - [ ] Cambio colore (genere "Uno"): mazzo proprio con quattro colori e carte speciali disegnate da zero, da 2 a 4 giocatori (umani o PC)
 

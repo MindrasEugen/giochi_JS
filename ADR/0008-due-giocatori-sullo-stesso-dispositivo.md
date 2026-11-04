@@ -13,6 +13,7 @@ L'utente vuole la modalità 2 giocatori in tutti i giochi che lo permettono, com
 - "2 giocatori" vuol dire due persone sullo **stesso dispositivo**, a turno o sulla stessa tastiera (per gli arcade).
 - Quando c'è qualcosa di nascosto, tra un turno e l'altro compare una schermata che copre il gioco: "Passa il dispositivo a <nome>", con un pulsante "Sono pronto". Le carte del giocatore di turno si mostrano solo dopo il clic.
 - Questa schermata, la scelta della modalità e i nomi dei giocatori stanno in `js/giocatori.js`, uguali in tutti i giochi.
+- Nei giochi con il banco (Sette e mezzo, Blackjack…) a 2 giocatori non c'è il banco del computer: uno dei due giocatori fa il banco e i ruoli si scambiano a ogni mano. È una richiesta dell'utente del 2026-11-04 ([PLAN/34-tappa-10-1-banco-a-due-giocatori.md](../PLAN/34-tappa-10-1-banco-a-due-giocatori.md)).
 - I solitari, Campo minato e Sudoku restano a 1 giocatore. Raddoppia e Volo hanno una "sfida" a turni (stessa sequenza, vince il punteggio più alto).
 
 ## Conseguenze

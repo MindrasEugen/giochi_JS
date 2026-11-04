@@ -2,34 +2,34 @@
 const pesca = document.querySelector('#pesca');
 const stai = document.querySelector('#stai');
 const nuovaPartita = document.querySelector('#nuova_partita');
+const carteGiocatore = document.querySelector('#carte_giocatore');
 const carteBanco = document.querySelector('#carte_banco');
+const punteggioG = document.querySelector('#punti_giocatore');
 const punteggioB = document.querySelector('#punti_banco');
+const titoloGiocatore = document.querySelector('#nome_giocatore');
+const titoloBanco = document.querySelector('#nome_banco');
 const messaggi = document.querySelector('#messaggi');
 const contenitore = document.querySelector('.contenitore_body');
-const riquadroGiocatore2 = document.querySelector('.contenitore_giocatore2');
 const selectModalita = document.querySelector('#modalitaGioco');
 const pulsanteNomi = document.querySelector('#nomiGiocatori');
+const punteggiDue = document.querySelector('#punteggiDue');
 const turnoDue = document.querySelector('#turnoDue');
 
-// Per ogni giocatore: riquadro delle carte, pillola dei punti e titolo
-const giocatori = [
-    { carte: document.querySelector('#carte_giocatore'), punteggio: document.querySelector('#punti_giocatore'), titolo: document.querySelector('#nome_giocatore') },
-    { carte: document.querySelector('#carte_giocatore2'), punteggio: document.querySelector('#punti_giocatore2'), titolo: document.querySelector('#nome_giocatore2') }
-];
-
 const mazzo = [];
-let punti = [0, 0];          // punti di ciascun giocatore
-let sballato = [false, false];
+let puntiGiocatore = 0;
 let puntiBanco = 0;
 let timerBanco;
-let attivo = 0;              // indice del giocatore che sta pescando
+let turnoBanco = false;   // false: pesca il giocatore; true: pesca il banco
+let manoFinita = false;
 
-// Modalità 2 giocatori: i due giocatori giocano uno dopo l'altro contro lo stesso banco
+// Modalità 2 giocatori: niente banco del computer, uno dei due fa il banco e i ruoli si scambiano a ogni mano
 let dueGiocatori = false;
 let nomi = Giocatori.leggiNomi();
+let chiBanco = 1;          // indice del giocatore che fa il banco in questa mano
+let maniVinte = [0, 0];
 
-function numeroGiocatori() {
-    return dueGiocatori ? 2 : 1;
+function chiGioca() {
+    return 1 - chiBanco;
 }
 
 // Il CSS usa data-turno per evidenziare il riquadro di chi sta giocando
@@ -40,10 +40,6 @@ function impostaTurno(turno) {
 function mostraMessaggio(testo, tipo) {
     messaggi.textContent = testo;
     messaggi.className = tipo ? `messaggio--${tipo}` : '';
-}
-
-function nome(indice) {
-    return dueGiocatori ? nomi[indice] : 'Giocatore';
 }
 
 // Mazzo italiano mescolato, preso dallo script condiviso js/mazzo.js
@@ -64,136 +60,122 @@ function pescaCarta(riquadro) {
     return puntiCarta(carta);
 }
 
-function daiCarta(indice) {
-    punti[indice] += pescaCarta(giocatori[indice].carte);
-    giocatori[indice].punteggio.textContent = punti[indice].toLocaleString('it-IT');
-}
-
 function giocatorePesca() {
-    daiCarta(attivo);
-    if (punti[attivo] > 7.5) {
-        sballato[attivo] = true;
-        if (dueGiocatori) {
-            mostraMessaggio(`${nomi[attivo]} ha sballato!`, 'errore');
-            prossimoTurno();
-        } else {
-            mostraMessaggio('Hai sballato! Vince il banco.', 'errore');
-            impostaTurno('');
-            stai.disabled = true;
-            pesca.disabled = true;
-        }
+    puntiGiocatore += pescaCarta(carteGiocatore);
+    punteggioG.textContent = puntiGiocatore.toLocaleString('it-IT');
+    if (puntiGiocatore > 7.5) {
+        fineMano('banco', dueGiocatori ? `${nomi[chiGioca()]} ha sballato! Vince il banco (${nomi[chiBanco]}).` : 'Hai sballato! Vince il banco.');
     }
 }
 
-// Dopo "Stai" o uno sballo: tocca al giocatore 2, oppure al banco
-function prossimoTurno() {
-    if (dueGiocatori && attivo === 0) {
-        attivo = 1;
-        impostaTurno('giocatore2');
-        turnoDue.textContent = `Tocca a ${nomi[1]}`;
-        return;
+// A 2 giocatori il banco pesca quando vuole: si ferma con "Stai" o se sballa
+function bancoPescaUmano() {
+    puntiBanco += pescaCarta(carteBanco);
+    punteggioB.textContent = puntiBanco.toLocaleString('it-IT');
+    if (puntiBanco > 7.5) {
+        fineMano('giocatore', `Il banco (${nomi[chiBanco]}) ha sballato! Vince ${nomi[chiGioca()]}.`);
     }
-    stai.disabled = true;
-    pesca.disabled = true;
-    if (sballato.slice(0, numeroGiocatori()).every(s => s)) {
-        // hanno sballato tutti: il banco vince senza giocare
-        mostraMessaggio(dueGiocatori ? 'Avete sballato tutti e due: vince il banco!' : 'Hai sballato! Vince il banco.', 'errore');
-        impostaTurno('');
-        turnoDue.textContent = 'Mano finita';
-        return;
-    }
-    mostraMessaggio('Il banco sta giocando...', 'attesa');
-    impostaTurno('banco');
-    turnoDue.textContent = 'Gioca il banco';
-    timerBanco = setTimeout(bancoPesca, 1000);
 }
 
-// Il banco deve raggiungere il punteggio più alto tra i giocatori che non hanno sballato
-function obiettivoBanco() {
-    let obiettivo = 0;
-    for (let i = 0; i < numeroGiocatori(); i++) {
-        if (!sballato[i]) {
-            obiettivo = Math.max(obiettivo, punti[i]);
-        }
-    }
-    return obiettivo;
-}
-
-function bancoPesca() {
-    if (puntiBanco < obiettivoBanco()) {
+// A 1 giocatore il banco del computer pesca finché raggiunge o supera il giocatore
+function bancoPescaComputer() {
+    if (puntiBanco < puntiGiocatore) {
         puntiBanco += pescaCarta(carteBanco);
         punteggioB.textContent = puntiBanco.toLocaleString('it-IT');
-        timerBanco = setTimeout(bancoPesca, 1000);
+        timerBanco = setTimeout(bancoPescaComputer, 1000);
+    } else if (puntiBanco > 7.5) {
+        fineMano('giocatore', 'Il banco ha sballato, vince il giocatore!');
     } else {
-        risultati();
+        fineMano('banco', 'Vince il banco!');
     }
 }
 
-// Chi non ha sballato vince solo se il banco sballa o se ha più punti del banco (a parità vince il banco)
-function vincitori() {
-    const lista = [];
-    for (let i = 0; i < numeroGiocatori(); i++) {
-        if (!sballato[i] && (puntiBanco > 7.5 || punti[i] > puntiBanco)) {
-            lista.push(i);
-        }
-    }
-    return lista;
-}
-
-function risultati() {
-    impostaTurno('');
-    turnoDue.textContent = 'Mano finita';
-    const vinti = vincitori();
-    if (!dueGiocatori) {
-        if (puntiBanco > 7.5) {
-            mostraMessaggio('Il banco ha sballato, vince il giocatore!', 'successo');
+// "Stai": tocca al banco, oppure (se sta già pescando il banco a 2 giocatori) si confrontano i punti.
+// Vince chi ha più punti; a parità vince il banco.
+function staiClic() {
+    if (manoFinita) return;
+    if (!turnoBanco) {
+        turnoBanco = true;
+        impostaTurno('banco');
+        if (dueGiocatori) {
+            turnoDue.textContent = `Tocca al banco: ${nomi[chiBanco]}`;
+            mostraMessaggio(`${nomi[chiGioca()]} sta con ${puntiGiocatore.toLocaleString('it-IT')}. Ora pesca il banco.`, '');
         } else {
-            mostraMessaggio('Vince il banco!', 'errore');
+            stai.disabled = true;
+            pesca.disabled = true;
+            mostraMessaggio('Il banco sta giocando...', 'attesa');
+            timerBanco = setTimeout(bancoPescaComputer, 1000);
         }
         return;
     }
-    if (vinti.length === 0) {
-        mostraMessaggio('Vince il banco!', 'errore');
+    if (puntiGiocatore > puntiBanco) {
+        fineMano('giocatore', `Vince ${nomi[chiGioca()]}: ${puntiGiocatore.toLocaleString('it-IT')} contro ${puntiBanco.toLocaleString('it-IT')}.`);
     } else {
-        const chi = vinti.map(i => nomi[i]).join(' e ');
-        const inizio = puntiBanco > 7.5 ? 'Il banco ha sballato: ' : '';
-        mostraMessaggio(`${inizio}${vinti.length > 1 ? 'vincono' : 'vince'} ${chi}!`, 'successo');
+        fineMano('banco', `Vince il banco (${nomi[chiBanco]}): ${puntiBanco.toLocaleString('it-IT')} contro ${puntiGiocatore.toLocaleString('it-IT')}.`);
     }
 }
 
-function aggiornaNomi() {
-    giocatori[0].titolo.textContent = nome(0);
-    giocatori[1].titolo.textContent = nome(1);
+function pescaClic() {
+    if (manoFinita) return;
+    if (turnoBanco) {
+        if (dueGiocatori) bancoPescaUmano();
+        return;
+    }
+    giocatorePesca();
+}
+
+function fineMano(vincitore, testo) {
+    manoFinita = true;
+    stai.disabled = true;
+    pesca.disabled = true;
+    impostaTurno('');
+    const vinceGiocatore = vincitore === 'giocatore';
+    mostraMessaggio(testo, vinceGiocatore ? 'successo' : 'errore');
+    if (dueGiocatori) {
+        maniVinte[vinceGiocatore ? chiGioca() : chiBanco]++;
+        aggiornaPunteggi();
+        chiBanco = 1 - chiBanco;
+        turnoDue.textContent = `Nella prossima mano fa il banco ${nomi[chiBanco]}`;
+        nuovaPartita.textContent = 'Prossima mano';
+    }
+}
+
+function aggiornaPunteggi() {
+    document.querySelector('#nomeG1').textContent = nomi[0];
+    document.querySelector('#nomeG2').textContent = nomi[1];
+    document.querySelector('#puntiG1').textContent = maniVinte[0];
+    document.querySelector('#puntiG2').textContent = maniVinte[1];
+}
+
+function aggiornaTitoli() {
+    titoloGiocatore.textContent = dueGiocatori ? nomi[chiGioca()] : 'Giocatore';
+    titoloBanco.textContent = dueGiocatori ? `Banco: ${nomi[chiBanco]}` : 'Banco';
 }
 
 function iniziaMano() {
     clearTimeout(timerBanco);
     creaMazzo();
-    punti = [0, 0];
-    sballato = [false, false];
+    puntiGiocatore = 0;
     puntiBanco = 0;
-    attivo = 0;
+    turnoBanco = false;
+    manoFinita = false;
+    punteggioG.textContent = '0';
     punteggioB.textContent = '0';
+    carteGiocatore.textContent = '';
     carteBanco.textContent = '';
-    for (const g of giocatori) {
-        g.carte.textContent = '';
-        g.punteggio.textContent = '0';
-    }
-    riquadroGiocatore2.hidden = !dueGiocatori;
     mostraMessaggio('', '');
     impostaTurno('giocatore');
-    turnoDue.textContent = `Tocca a ${nomi[0]}`;
     stai.disabled = false;
     pesca.disabled = false;
-    // ogni giocatore riceve la prima carta
-    for (let i = 0; i < numeroGiocatori(); i++) {
-        daiCarta(i);
+    aggiornaTitoli();
+    if (dueGiocatori) {
+        turnoDue.textContent = `Tocca a ${nomi[chiGioca()]} (il banco è ${nomi[chiBanco]})`;
     }
+    giocatorePesca();
 }
 
-
-pesca.addEventListener('click', giocatorePesca);
-stai.addEventListener('click', prossimoTurno);
+pesca.addEventListener('click', pescaClic);
+stai.addEventListener('click', staiClic);
 nuovaPartita.addEventListener('click', iniziaMano);
 
 Giocatori.collegaBarra({
@@ -201,15 +183,20 @@ Giocatori.collegaBarra({
     pulsanteNomi,
     suCambioModalita: due => {
         dueGiocatori = due;
+        punteggiDue.hidden = !due;
         turnoDue.hidden = !due;
-        aggiornaNomi();
+        chiBanco = 1;
+        maniVinte = [0, 0];
+        nuovaPartita.textContent = due ? 'Prossima mano' : 'Nuova Partita';
+        aggiornaPunteggi();
         iniziaMano();
     },
     suCambioNomi: nuoviNomi => {
         nomi = nuoviNomi;
-        aggiornaNomi();
+        aggiornaPunteggi();
+        aggiornaTitoli();
     }
 });
 
-aggiornaNomi();
+aggiornaPunteggi();
 iniziaMano();

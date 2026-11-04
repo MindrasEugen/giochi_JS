@@ -21,3 +21,5 @@ Ultima modifica: 2026-11-03
 - 2026-11-04 — Tappa 10 completata: modalità 2 giocatori in Impiccato, Indovina il numero, Sasso carta forbici, Sette e mezzo e Tris; design di Codex; 42 controlli a 2 giocatori e test precedenti passati.
 - 2026-11-04 — Tappa 11 completata: Forza 4 (PC con minimax alfa-beta), Memory, Campo minato; 45 controlli con Node, 37 con jsdom; design di Codex in due giri (caselle del Campo minato rese distinguibili nel secondo).
 - 2026-11-04 — Tappa 12 completata: Raddoppia (con sfida a 2 a tessere uguali) e Sudoku (generatore con soluzione unica); 41 controlli con Node, 30 con jsdom; design di Codex al primo giro.
+- 2026-11-04 — Correzione chiesta dall'utente: a 2 giocatori in Sette e mezzo uno dei due fa il banco (Tappa 10.1). Codice e test fatti da Claude; resta il ritocco del layout su desktop, affidato a Codex. ADR 0008 e Tappa 21 aggiornati.
+- 2026-11-04 — Tappa 10.1 completata: Sette e mezzo a 2 giocatori con uno dei due che fa il banco; layout del banco su desktop corretto da Codex.
