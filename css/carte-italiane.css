@@ -1,0 +1,45 @@
+#contenitore_gioco.contenitore { max-width: 960px; }
+.intro-carte { margin-block: var(--spazio-4); text-align: left; }
+.intro-carte h1, .intro-carte .sottotitolo { text-align: left; }
+.occhiello-carte { margin: 0; font-size: var(--testo-s); font-weight: 700; text-transform: uppercase; letter-spacing: .13em; color: var(--colore-avviso); }
+.riepilogo-carte { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--spazio-2); background: var(--colore-sfondo); border: 1px solid var(--colore-bordo); border-radius: var(--raggio-l); padding: var(--spazio-3); margin-bottom: var(--spazio-3); }
+.riepilogo-carte strong { display: block; font-size: var(--testo-xl); color: var(--colore-primario); font-variant-numeric: tabular-nums; }
+.riepilogo-carte small { grid-column: 1 / -1; color: var(--colore-testo-tenue); }
+.meta-carte { display: flex; justify-content: space-between; gap: var(--spazio-2); font-size: var(--testo-s); color: var(--colore-testo-tenue); margin-bottom: var(--spazio-3); }
+.tavolo-italiano { border: 5px solid var(--colore-primario-chiaro); padding: var(--spazio-3) var(--spazio-2); }
+.tavolo-italiano h2 { margin-block: var(--spazio-2); font-size: var(--testo-s); color: var(--colore-accento); }
+#avversari { display: flex; flex-wrap: wrap; justify-content: space-evenly; gap: var(--spazio-2); padding-bottom: var(--spazio-3); border-bottom: 1px solid var(--colore-primario-chiaro); }
+.avversario-carte { display: flex; justify-content: center; flex-wrap: wrap; gap: 3px; max-width: 100%; }
+.avversario-carte span { flex-basis: 100%; font-size: .75rem; color: var(--colore-sfondo); }
+.avversario-carte .carta { --larghezza-carta: 30px; }
+.centro-italiano { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--spazio-3); min-height: 160px; padding-block: var(--spazio-4); }
+#carteTavolo { flex: 1 1 190px; }
+#carteTavolo .carta { --larghezza-carta: clamp(44px, 12vw, 68px); }
+#carteTavolo figure { margin: 0; }
+#carteTavolo figcaption { max-width: 90px; font-size: .75rem; margin-top: 5px; }
+#tavoloVuoto { color: var(--colore-bordo); font-size: var(--testo-s); margin: 0; }
+#briscola { flex: 0 0 65px; font-size: .75rem; }
+#briscola p { margin-top: 0; }
+#briscola .carta { --larghezza-carta: 48px; margin: auto; }
+#mano { padding: var(--spazio-3) 0; min-height: 112px; }
+#mano .carta { --larghezza-carta: clamp(62px, 18vw, 88px); }
+.opzioni-prese { display: grid; gap: var(--spazio-2); margin-top: var(--spazio-3); }
+.scelta-presa { width: 100%; white-space: normal; text-align: left; justify-content: flex-start; }
+.mazzetti-carte { display: flex; flex-wrap: wrap; justify-content: space-evenly; gap: var(--spazio-3); margin-top: var(--spazio-4); padding: var(--spazio-3); border: 1px solid var(--colore-bordo); border-radius: var(--raggio-m); }
+.mazzetto-carte { flex: 1 1 110px; min-width: 0; }
+.mazzetto-carte p { margin-block: 0 var(--spazio-2); font-size: .75rem; }
+.mazzetto-carte .carta { --larghezza-carta: 42px; margin: auto; }
+.risultati-carte { margin-top: var(--spazio-4); padding: var(--spazio-3); border-radius: var(--raggio-m); background: var(--colore-sfondo); text-align: left; }
+.risultati-carte h2 { font-size: var(--testo-l); margin-top: 0; }
+.risultati-carte li + li { margin-top: var(--spazio-2); }
+.fonti-carte { color: var(--colore-testo-tenue); font-size: var(--testo-s); }
+.fonti-carte a { color: var(--colore-primario); }
+[hidden] { display: none !important; }
+@media (min-width: 600px) {
+    .tavolo-italiano { padding: var(--spazio-4); border-width: 8px; }
+    .avversario-carte .carta { --larghezza-carta: 38px; }
+    #carteTavolo .carta { --larghezza-carta: 76px; }
+    .centro-italiano { min-height: 200px; }
+    #briscola { flex-basis: 85px; }
+    #briscola .carta { --larghezza-carta: 64px; }
+}

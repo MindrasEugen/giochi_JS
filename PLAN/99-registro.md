@@ -35,3 +35,6 @@ Ultima modifica: 2026-11-03
 - 2026-11-04 - Su richiesta dell'utente integrate le 12 immagini PNG di pezzi_scacco negli Scacchi: scacchiera, promozioni e catture, con descrizioni accessibili e test del controller.
 
 - 2026-11-04 - Tappa 17 implementata da Codex su richiesta: Cinque lettere con sei tentativi, vocabolario locale di 1.376 parole, lettere doppie, tastiera a schermo e sfida a due turni. Home a 23 giochi; test della logica e del controller. Prova visiva ancora da eseguire per servizio browser non disponibile. Nessun commit o push.
+
+- 2026-11-04 - Tappe 16 e 17, PNG Scacchi e palette chiara di Blocchi raccolti nel commit locale 0df7b0d su richiesta dell'utente. Nessun push.
+- 2026-11-04 - Tappa 18 implementata: Briscola a due/quattro, Scopa, Asso piglia tutto e Rubamazzetto. Home a 27 giochi, componenti carte condivisi, 900 smazzate di test e controller delle quattro pagine. Prova visiva ancora da eseguire per servizio browser non disponibile. Nessun commit o push.

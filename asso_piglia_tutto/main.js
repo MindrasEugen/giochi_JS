@@ -1,0 +1,1 @@
+CarteItalianePagina.avvia({ motore: AssoPigliaTutto });

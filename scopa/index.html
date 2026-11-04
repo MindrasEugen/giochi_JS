@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scopa | Giochi JS</title>
+  <link rel="stylesheet" href="../css/comune.css"><link rel="stylesheet" href="../css/gioco.css"><link rel="stylesheet" href="../css/giocatori.css"><link rel="stylesheet" href="../css/carte.css"><link rel="stylesheet" href="../css/carte-italiane.css"><link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="contenitore" id="contenitore_gioco">
+  <a class="link-home" href="../index.html">&larr; Tutti i giochi</a>
+  <header class="intro-carte"><p class="occhiello-carte">Mazzo italiano / Scopa</p><h1>Una somma, una bella presa.</h1><p class="sottotitolo">Scegli quali carte raccogliere, cerca il settebello e lascia poco agli avversari.</p></header>
+  <div class="barra-modalita"><label for="modalitaGioco">Modalit&agrave;</label><select id="modalitaGioco"><option value="uno">Contro il PC</option><option value="due">2 giocatori</option></select><button type="button" id="nomiGiocatori" class="pulsante pulsante--secondario" hidden>Nomi</button></div>
+  <div class="riepilogo-carte" aria-label="Punteggi"><div><span id="nomeP0">Tu</span><strong id="puntiP0">0</strong></div><div><span id="nomeP1">Computer</span><strong id="puntiP1">0</strong></div><small id="tipoPunti">Carte raccolte</small></div>
+  <div class="meta-carte"><span>Carte da pescare: <strong id="rimaste">0</strong></span><span>Una smazzata &middot; 40 carte</span></div>
+  <section class="tavolo tavolo-italiano" aria-label="Tavolo di Scopa">
+    <div id="avversari" aria-label="Mani coperte degli avversari"></div>
+    <div class="centro-italiano"><div id="briscola" hidden></div><div class="mano" id="carteTavolo" aria-label="Carte pubbliche sul tavolo"></div><p id="tavoloVuoto">Tavolo libero</p></div>
+    <h2 id="titoloMano">La tua mano</h2><div class="mano" id="mano" aria-label="Carte della tua mano"></div>
+  </section>
+  <p id="messaggi" role="status" aria-live="polite"></p>
+  <div class="opzioni-prese" id="opzioniPresa" role="group" aria-label="Scegli una presa"></div>
+  <div class="azioni"><button type="button" class="pulsante" id="continua" hidden>Raccogli presa</button><button type="button" class="pulsante pulsante--secondario" id="annullaScelta" hidden>Cambia carta</button><button type="button" class="pulsante pulsante--secondario" id="nuovaPartita">Nuova smazzata</button></div>
+  <section class="mazzetti-carte" id="mazzetti" aria-label="Mazzetti delle carte raccolte"></section>
+  <section class="risultati-carte" id="risultati" aria-label="Conteggio finale" hidden></section>
+  <details class="pannello regole"><summary>Regole e variante adottata</summary><ol><li>Tre carte a testa e quattro sul tavolo. Quando entrambe le mani sono vuote si distribuiscono altre tre carte, fino a esaurire il mazzo.</li><li>Una carta prende una carta di pari valore oppure pi&ugrave; carte la cui somma &egrave; uguale. Se sul tavolo c'&egrave; una carta di pari valore devi prendere quella. Fante vale 8, cavallo 9 e re 10.</li><li>Se ci sono pi&ugrave; prese possibili, scegli con gli appositi pulsanti. Se esiste una presa non puoi scartare la carta senza prendere.</li><li>Svuotare il tavolo vale una scopa, tranne con l'ultima carta dell'intera smazzata. Le carte rimaste vanno all'ultimo che ha preso, senza altre scope.</li><li>Un punto per ogni scopa, per il settebello, per la maggioranza di carte e di denari e per la primiera. Le parit&agrave; non assegnano il punto.</li><li>Primiera: una carta per seme, scegliendo la migliore. Il 7 vale 21, il 6 vale 18, l'asso 16, il 5/4/3/2 valgono 15/14/13/12; le figure 10. Senza tutti e quattro i semi la primiera vale zero.</li><li>Una smazzata usa tutte le 40 carte del mazzo. Premi Nuova smazzata per rimescolare e azzerare il punteggio.</li><li>Contro il PC vedi soltanto la tua mano. In due, passa il dispositivo quando compare la finestra: le carte restano coperte finch&eacute; chi deve giocare non &egrave; pronto.</li></ol></details>
+  <p class="fonti-carte">Riferimenti: <a href="https://www.modiano.it/it/gioco/scopa/">Regole Scopa - Modiano</a>.</p>
+</main>
+<script src="../js/mazzo.js"></script><script src="../js/carte.js"></script><script src="../js/giocatori.js"></script><script src="../js/prese-italiane.js"></script><script src="../js/carte-italiane-pagina.js"></script><script src="./funzioni.js"></script><script src="./main.js"></script>
+</body></html>

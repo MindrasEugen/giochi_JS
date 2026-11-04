@@ -13,6 +13,14 @@ const CATEGORIE = [
 ];
 
 const GIOCHI = [
+    { nome: 'Briscola', cartella: 'briscola', categoria: 'italiano', emoji: '🃏', dueGiocatori: true, etichettaGiocatori: '1–2 persone · 4 con PC',
+      descrizione: 'Conquista i carichi: contro il computer, in due o a quattro in coppie con giocatori PC.' },
+    { nome: 'Scopa', cartella: 'scopa', categoria: 'italiano', emoji: '🧹', dueGiocatori: true,
+      descrizione: 'Scegli le prese per somma e conquista carte, denari, settebello e primiera.' },
+    { nome: 'Asso piglia tutto', cartella: 'asso_piglia_tutto', categoria: 'italiano', emoji: '🂡', dueGiocatori: true,
+      descrizione: 'Le prese della Scopa con un asso che può raccogliere tutto il tavolo.' },
+    { nome: 'Rubamazzetto', cartella: 'rubamazzetto', categoria: 'italiano', emoji: '🗂️', dueGiocatori: true,
+      descrizione: 'Prendi le carte uguali o ruba il mazzetto avversario. Vince chi raccoglie più carte.' },
     { nome: 'Cinque lettere', cartella: 'cinque_lettere', categoria: 'parole', emoji: '🔤', dueGiocatori: true,
       descrizione: 'Trova la parola in sei tentativi. Da solo o a turni, con indizi per ogni lettera.' },
     { nome: 'Blocchi', cartella: 'blocchi', categoria: 'arcade', emoji: '🟨', dueGiocatori: true,

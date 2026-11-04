@@ -8,11 +8,13 @@ I primi giochi con il mazzo italiano, con le immagini delle carte già presenti.
 
 ## Attività
 
-- [ ] Briscola a 2 (contro il PC o 2 giocatori) e a 4 in coppie (con giocatori PC)
-- [ ] Scopa: prese per somma, scope, conteggio dei punti (carte, denari, settebello, primiera)
-- [ ] Asso piglia tutto
-- [ ] Rubamazzetto
-- [ ] Avversario PC con una strategia semplice ma sensata per ogni gioco
+- [x] Briscola a 2 (contro il PC o 2 giocatori) e a 4 in coppie (con giocatori PC)
+- [x] Scopa: prese per somma, scope, conteggio dei punti (carte, denari, settebello, primiera)
+- [x] Asso piglia tutto
+- [x] Rubamazzetto
+- [x] Avversario PC con una strategia semplice ma sensata per ogni gioco
+- [x] Test della logica e smazzate complete tramite i controller con DOM simulato
+- [ ] Screenshot e prova interattiva nel browser, anche su telefono
 
 ## Come verificare
 
@@ -21,12 +23,21 @@ I primi giochi con il mazzo italiano, con le immagini delle carte già presenti.
 
 ## Esito
 
-—
+Quattro giochi disponibili dalla home, che raggiunge 27 giochi. Riutilizzate le immagini del mazzo italiano. Aggiunti `js/prese-italiane.js`, `js/carte-italiane-pagina.js` e `css/carte-italiane.css`, senza dipendenze aggiuntive.
+
+Test: 300 smazzate di Briscola a due/quattro e 600 smazzate di Scopa, Asso piglia tutto e Rubamazzetto. Controllati conservazione delle 40 carte, 120 punti della Briscola, distribuzioni, primiera, prese alternative, furti e ultima scopa. I controller completano le partite nei modi PC e due persone, oltre alla Briscola in coppie; testati anche riservatezza delle mani e callback PC dopo un riavvio.
 
 ## Decisioni prese
 
-—
+- Una partita è una smazzata completa, con risultato e dettaglio finale. Nessun limite di tempo o puntata.
+- Briscola: pesca dal vincitore, carta di briscola per ultima, coppie alternate e mani dei PC sempre coperte. Il PC valuta solo la propria mano e le carte pubbliche.
+- Scopa: priorità alla carta uguale, niente scopa sull'ultima giocata, resti all'ultimo che prende. Tre re iniziali portano a una nuova distribuzione.
+- Asso piglia tutto: se c'è un asso in tavola si prende quello; altrimenti si raccoglie il tavolo. La pulizia con l'asso vale una scopa, eccetto sull'ultima giocata. Variante esplicitata nella pagina.
+- Rubamazzetto: nessuna somma, una carta uguale oppure furto del mazzetto con la stessa carta in cima. Se entrambe le azioni sono possibili, si sceglie.
+- Le mani vengono coperte prima di aprire il passaggio del dispositivo. I timer PC vengono cancellati e invalidati al riavvio.
+
+Riferimenti: [Briscola Modiano](https://www.modiano.it/it/gioco/briscola/), [Scopa Modiano](https://www.modiano.it/it/gioco/scopa/), [Asso piglia tutto SNAI](https://www.snai.it/giochi-di-carte/come-si-gioca), [Rubamazzo Treccani](https://www.treccani.it/vocabolario/rubamazzo/).
 
 ## Problemi aperti
 
-—
+Prova visiva ancora da eseguire: il servizio browser restituisce `The browser access host is unavailable`. Le verifiche DOM non sostituiscono il browser o il touch reale. Nessun commit o push della Tappa 18; i push restano a cura dell'utente.
