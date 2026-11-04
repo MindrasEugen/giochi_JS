@@ -1,0 +1,331 @@
+/* Configurazione */
+.configurazione {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spazio-2);
+  margin-bottom: var(--spazio-3);
+}
+
+.configurazione__riga {
+  position: relative;
+  display: grid;
+  gap: var(--spazio-1);
+  min-width: 0;
+  text-align: left;
+}
+
+.configurazione__riga label {
+  padding-left: 18px;
+  font-size: var(--testo-s);
+  overflow-wrap: anywhere;
+}
+
+.configurazione__riga select {
+  width: 100%;
+  min-width: 0;
+  padding-left: var(--spazio-2);
+  font-size: var(--testo-s);
+}
+
+.configurazione__riga::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--tinta-ludo, var(--colore-superficie));
+}
+
+.configurazione__riga--rosso,
+.segnapunti--rosso,
+.casella-ludo--base-rosso,
+.casella-ludo--posto-rosso,
+.casella-ludo--arrivo-rosso,
+.casella-ludo--meta-rosso,
+.casella-ludo--partenza-rosso,
+.pedina-ludo--rosso {
+  --tinta-ludo: var(--colore-errore);
+}
+
+.configurazione__riga--verde,
+.segnapunti--verde,
+.casella-ludo--base-verde,
+.casella-ludo--posto-verde,
+.casella-ludo--arrivo-verde,
+.casella-ludo--meta-verde,
+.casella-ludo--partenza-verde,
+.pedina-ludo--verde {
+  --tinta-ludo: var(--colore-successo);
+}
+
+.configurazione__riga--giallo,
+.segnapunti--giallo,
+.casella-ludo--base-giallo,
+.casella-ludo--posto-giallo,
+.casella-ludo--arrivo-giallo,
+.casella-ludo--meta-giallo,
+.casella-ludo--partenza-giallo,
+.pedina-ludo--giallo {
+  --tinta-ludo: var(--colore-accento);
+}
+
+.configurazione__riga--blu,
+.segnapunti--blu,
+.casella-ludo--base-blu,
+.casella-ludo--posto-blu,
+.casella-ludo--arrivo-blu,
+.casella-ludo--meta-blu,
+.casella-ludo--partenza-blu,
+.pedina-ludo--blu {
+  --tinta-ludo: var(--colore-info);
+}
+
+.configurazione__riga:first-child::before {
+  content: none;
+}
+
+.configurazione__riga:first-child label {
+  padding-left: 0;
+}
+
+/* Turno */
+.segnapunti--rosso,
+.segnapunti--verde,
+.segnapunti--giallo,
+.segnapunti--blu {
+  box-shadow: inset 0 3px var(--tinta-ludo);
+}
+
+#contenitore_gioco[data-turno="rosso"] .segnapunti--rosso,
+#contenitore_gioco[data-turno="verde"] .segnapunti--verde,
+#contenitore_gioco[data-turno="giallo"] .segnapunti--giallo,
+#contenitore_gioco[data-turno="blu"] .segnapunti--blu {
+  border-color: var(--colore-accento);
+  background: color-mix(in srgb, var(--colore-superficie) 10%, var(--colore-primario));
+}
+
+/* Tavoliere */
+#tabelloneLudo.tabellone-ludo {
+  display: grid;
+  grid-template-columns: repeat(15, minmax(0, 1fr));
+  grid-template-rows: repeat(15, minmax(0, 1fr));
+  width: 100%;
+  max-width: 520px;
+  aspect-ratio: 1;
+  margin: auto;
+  border: 6px solid var(--colore-primario);
+  border-radius: var(--raggio-m);
+  background: var(--colore-superficie);
+  box-shadow: var(--ombra-media);
+}
+
+.casella-ludo {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  aspect-ratio: 1;
+}
+
+.casella-ludo--percorso {
+  border: 1px solid var(--colore-bordo);
+  background: var(--colore-superficie);
+}
+
+.casella-ludo--base {
+  background: color-mix(in srgb, var(--tinta-ludo) 25%, var(--colore-superficie));
+}
+
+.casella-ludo--posto::before {
+  content: "";
+  position: absolute;
+  inset: 4%;
+  border: 1px solid var(--tinta-ludo);
+  border-radius: 50%;
+  background: var(--colore-superficie);
+  pointer-events: none;
+}
+
+.casella-ludo--arrivo-rosso,
+.casella-ludo--arrivo-verde,
+.casella-ludo--arrivo-giallo,
+.casella-ludo--arrivo-blu,
+.casella-ludo--partenza {
+  background: var(--tinta-ludo);
+}
+
+.casella-ludo--centro {
+  background: var(--colore-sfondo);
+}
+
+.casella-ludo--meta-rosso,
+.casella-ludo--meta-verde,
+.casella-ludo--meta-giallo,
+.casella-ludo--meta-blu {
+  background: var(--tinta-ludo);
+}
+
+.casella-ludo--sicura::after {
+  content: "\2605";
+  position: absolute;
+  color: var(--colore-testo);
+  background: var(--colore-superficie);
+  border-radius: 50%;
+  font-size: clamp(8px, 2vw, 12px);
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* Pedine */
+button.pedina-ludo {
+  appearance: none;
+  position: relative;
+  z-index: 1;
+  width: 80%;
+  min-width: 0;
+  aspect-ratio: 1;
+  margin: 0;
+  padding: 0;
+  border: 2px solid var(--colore-testo);
+  border-radius: 50%;
+  background: var(--tinta-ludo);
+  font: inherit;
+  color: var(--colore-testo);
+  box-shadow: inset 0 0 0 1px var(--colore-superficie), var(--ombra-leggera);
+  touch-action: manipulation;
+}
+
+button.pedina-ludo:disabled {
+  cursor: default;
+  opacity: .85;
+}
+
+button.pedina-ludo--mobile:not(:disabled) {
+  cursor: pointer;
+  animation: pedina-mobile 700ms ease-in-out infinite alternate;
+}
+
+button.pedina-ludo:focus-visible {
+  z-index: 3;
+  outline: 2px solid var(--colore-testo);
+  outline-offset: 1px;
+  box-shadow: 0 0 0 4px var(--colore-superficie);
+}
+
+.casella-ludo[data-pedine="2"] {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: minmax(0, 1fr);
+}
+
+.casella-ludo[data-pedine="3"],
+.casella-ludo[data-pedine="4"] {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+
+.casella-ludo[data-pedine="2"] .pedina-ludo,
+.casella-ludo[data-pedine="3"] .pedina-ludo,
+.casella-ludo[data-pedine="4"] .pedina-ludo {
+  width: 96%;
+  border-width: 1px;
+}
+
+/* Dado */
+.zona-dado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spazio-2);
+  margin-top: var(--spazio-3);
+}
+
+button#dado.dado {
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  padding: 0;
+  border: 2px solid var(--colore-primario);
+  border-radius: var(--raggio-m);
+  background: var(--colore-superficie);
+  color: var(--colore-testo);
+  font: inherit;
+  font-size: 2.5rem;
+  font-variant-emoji: text;
+  line-height: 1;
+  box-shadow: 0 4px 0 var(--colore-primario), var(--ombra-leggera);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+button#dado.dado:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.dado--lancio {
+  animation: lancio-dado 400ms ease;
+}
+
+/* Elementi nascosti */
+.configurazione[hidden],
+.configurazione__riga[hidden],
+.segnapunti[hidden],
+.tabellone-ludo[hidden],
+.casella-ludo[hidden],
+.zona-dado[hidden] {
+  display: none;
+}
+
+@keyframes pedina-mobile {
+  from {
+    box-shadow: 0 0 0 1px var(--colore-superficie), 0 0 0 2px var(--colore-testo);
+  }
+
+  to {
+    box-shadow: 0 0 0 2px var(--colore-superficie), 0 0 0 3px var(--colore-testo);
+  }
+}
+
+@keyframes lancio-dado {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-8px) rotate(15deg);
+  }
+}
+
+@media (hover: hover) {
+  button.pedina-ludo--mobile:not(:disabled):hover {
+    transform: scale(1.08);
+  }
+
+  button#dado.dado:not(:disabled):hover {
+    background: var(--colore-sfondo);
+  }
+}
+
+@media (min-width: 600px) {
+  .zona-dado {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 900px) {
+  .configurazione {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+/* Movimento ridotto */
+@media (prefers-reduced-motion: reduce) {
+  .pedina-ludo,
+  button.pedina-ludo--mobile:not(:disabled),
+  .dado--lancio {
+    animation: none;
+    transition: none;
+  }
+}

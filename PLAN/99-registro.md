@@ -24,3 +24,4 @@ Ultima modifica: 2026-11-03
 - 2026-11-04 — Correzione chiesta dall'utente: a 2 giocatori in Sette e mezzo uno dei due fa il banco (Tappa 10.1). Codice e test fatti da Claude; resta il ritocco del layout su desktop, affidato a Codex. ADR 0008 e Tappa 21 aggiornati.
 - 2026-11-04 — Tappa 10.1 completata: Sette e mezzo a 2 giocatori con uno dei due che fa il banco; layout del banco su desktop corretto da Codex.
 - 2026-11-04 — Tappa 13 completata: Dama italiana, Filetto, Battaglia navale; 61 controlli con Node, 40 con jsdom; design di Codex in due giri (il secondo crea `css/gioco.css`, ADR 0010). L'utente chiede CSS mobile-first: verificato su tutti i file.
+- 2026-11-04 — Tappa 14 completata: Scacchi (17 perft uguali ai valori pubblicati) e Ludo (da 2 a 4 giocatori, persone o computer); 57 controlli con Node, 25 con jsdom; design di Codex al primo giro.

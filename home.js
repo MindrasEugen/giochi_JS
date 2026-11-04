@@ -37,6 +37,10 @@ const GIOCHI = [
       descrizione: 'Il mulino a 9 pedine: fai tre in fila per togliere una pedina all’avversario.' },
     { nome: 'Battaglia navale', cartella: 'battaglia_navale', categoria: 'tavolo', emoji: '🚢', dueGiocatori: true,
       descrizione: 'Disponi la flotta e affonda quella nemica: contro il computer o passando il telefono a un amico.' },
+    { nome: 'Ludo', cartella: 'ludo', categoria: 'tavolo', emoji: '🎲', dueGiocatori: true,
+      descrizione: 'Il “Non t’arrabbiare” da 2 a 4 giocatori: persone o computer, porta a casa tutte le pedine.' },
+    { nome: 'Scacchi', cartella: 'scacchi', categoria: 'tavolo', emoji: '♟️', dueGiocatori: true,
+      descrizione: 'Tutte le regole degli scacchi: contro un amico o contro il computer in tre livelli.' },
     { nome: 'L’impiccato', cartella: 'il_impiccato', categoria: 'parole', emoji: '🪢', dueGiocatori: true,
       descrizione: 'Indovina la parola segreta una lettera alla volta; in due, la parola la sceglie l’altro giocatore.' }
 ];

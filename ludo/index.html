@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="it">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/comune.css">
+        <link rel="stylesheet" href="../css/giocatori.css">
+        <link rel="stylesheet" href="../css/gioco.css">
+        <link rel="stylesheet" href="./style.css">
+        <title>Ludo</title>
+    </head>
+
+    <body>
+        <div class="contenitore" id="contenitore_gioco">
+            <a class="link-home" href="../index.html">← Tutti i giochi</a>
+            <h1>Ludo</h1>
+            <p class="sottotitolo">Il “Non t’arrabbiare”: porta a casa tutte e 4 le tue pedine prima degli altri.</p>
+
+            <!-- Quanti giocatori e chi è umano o computer -->
+            <div class="configurazione">
+                <div class="configurazione__riga">
+                    <label for="numeroGiocatori">Giocatori</label>
+                    <select id="numeroGiocatori">
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4" selected>4</option>
+                    </select>
+                </div>
+                <div class="configurazione__riga configurazione__riga--rosso" data-colore="rosso">
+                    <label for="tipo-rosso">Rosso</label>
+                    <select id="tipo-rosso"><option value="umano" selected>Persona</option><option value="computer">Computer</option></select>
+                </div>
+                <div class="configurazione__riga configurazione__riga--verde" data-colore="verde">
+                    <label for="tipo-verde">Verde</label>
+                    <select id="tipo-verde"><option value="umano">Persona</option><option value="computer" selected>Computer</option></select>
+                </div>
+                <div class="configurazione__riga configurazione__riga--giallo" data-colore="giallo">
+                    <label for="tipo-giallo">Giallo</label>
+                    <select id="tipo-giallo"><option value="umano">Persona</option><option value="computer" selected>Computer</option></select>
+                </div>
+                <div class="configurazione__riga configurazione__riga--blu" data-colore="blu">
+                    <label for="tipo-blu">Blu</label>
+                    <select id="tipo-blu"><option value="umano">Persona</option><option value="computer" selected>Computer</option></select>
+                </div>
+            </div>
+
+            <div class="tabellone" aria-label="Pedine arrivate">
+                <div class="segnapunti segnapunti--rosso" data-colore="rosso"><span class="segnapunti__nome">Rosso</span><span class="segnapunti__punti" id="arrivate-rosso">0/4</span></div>
+                <div class="segnapunti segnapunti--verde" data-colore="verde"><span class="segnapunti__nome">Verde</span><span class="segnapunti__punti" id="arrivate-verde">0/4</span></div>
+                <div class="segnapunti segnapunti--giallo" data-colore="giallo"><span class="segnapunti__nome">Giallo</span><span class="segnapunti__punti" id="arrivate-giallo">0/4</span></div>
+                <div class="segnapunti segnapunti--blu" data-colore="blu"><span class="segnapunti__nome">Blu</span><span class="segnapunti__punti" id="arrivate-blu">0/4</span></div>
+            </div>
+
+            <!-- Tabellone 15 × 15, creato da main.js -->
+            <div class="tabellone-ludo" id="tabelloneLudo" aria-label="Tabellone del Ludo"></div>
+
+            <div class="zona-dado">
+                <button type="button" class="dado" id="dado" aria-label="Lancia il dado">🎲</button>
+                <p id="messaggi" aria-live="polite"></p>
+            </div>
+
+            <div class="azioni">
+                <button type="button" id="nuovaPartita" class="pulsante">Nuova partita</button>
+            </div>
+
+            <details class="pannello regole">
+                <summary>Regole del gioco</summary>
+                <ol>
+                    <li>Da 2 a 4 giocatori, ognuno con 4 pedine nella propria base. Ogni colore può essere giocato da una persona o dal computer.</li>
+                    <li>A turno si lancia il dado. Per far uscire una pedina dalla base serve un 6; la pedina va sulla casella di partenza del suo colore.</li>
+                    <li>Le pedine girano in senso orario per tutto il percorso e poi entrano nella colonna del proprio colore fino al centro. Per arrivare al centro serve il numero esatto.</li>
+                    <li>Chi arriva su una casella occupata da una pedina avversaria la rimanda in base. Sulle caselle sicure (partenze e stelle ★) non si può essere mangiati.</li>
+                    <li>Con un 6 si lancia di nuovo, ma al terzo 6 di fila il turno passa.</li>
+                    <li>Vince chi porta per primo al centro tutte e 4 le pedine.</li>
+                    <li>Per giocare: tocca il dado, poi la pedina da muovere tra quelle evidenziate.</li>
+                </ol>
+            </details>
+        </div>
+        <script src="./funzioni.js"></script>
+        <script src="./main.js"></script>
+    </body>
+
+</html>

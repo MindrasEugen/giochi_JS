@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="it">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/comune.css">
+        <link rel="stylesheet" href="../css/giocatori.css">
+        <link rel="stylesheet" href="../css/gioco.css">
+        <link rel="stylesheet" href="./style.css">
+        <title>Scacchi</title>
+    </head>
+
+    <body>
+        <div class="contenitore" id="contenitore_gioco">
+            <a class="link-home" href="../index.html">← Tutti i giochi</a>
+            <h1>Scacchi</h1>
+            <p class="sottotitolo">Dai scacco matto al re avversario: contro un amico o contro il computer.</p>
+
+            <div class="barra-modalita">
+                <label for="modalitaGioco" class="nascosto-visivamente">Modalità</label>
+                <select id="modalitaGioco">
+                    <option value="uno">Contro il computer</option>
+                    <option value="due">2 giocatori</option>
+                </select>
+                <label for="difficolta" class="nascosto-visivamente">Difficoltà</label>
+                <select id="difficolta">
+                    <option value="facile">Facile</option>
+                    <option value="media" selected>Media</option>
+                    <option value="difficile">Difficile</option>
+                </select>
+                <button type="button" id="nomiGiocatori" class="pulsante pulsante--secondario" hidden>Nomi</button>
+            </div>
+
+            <div class="tabellone" aria-label="Giocatori e pezzi catturati">
+                <div class="segnapunti segnapunti--w">
+                    <span class="segnapunti__nome" id="nomeW">Tu (bianco)</span>
+                    <span class="catturati" id="catturatiW" aria-label="Pezzi catturati dal bianco"></span>
+                </div>
+                <div class="segnapunti segnapunti--b">
+                    <span class="segnapunti__nome" id="nomeB">Computer (nero)</span>
+                    <span class="catturati" id="catturatiB" aria-label="Pezzi catturati dal nero"></span>
+                </div>
+            </div>
+
+            <!-- 64 caselle, create da main.js -->
+            <div class="scacchiera-scacchi" id="scacchiera" role="grid" aria-label="Scacchiera"></div>
+
+            <!-- Scelta del pezzo nella promozione -->
+            <div class="promozione" id="promozione" hidden>
+                <p class="promozione__titolo">Promozione: scegli il pezzo</p>
+                <div class="promozione__scelte">
+                    <button type="button" class="promozione__pezzo" data-pezzo="Q" aria-label="Donna"></button>
+                    <button type="button" class="promozione__pezzo" data-pezzo="R" aria-label="Torre"></button>
+                    <button type="button" class="promozione__pezzo" data-pezzo="B" aria-label="Alfiere"></button>
+                    <button type="button" class="promozione__pezzo" data-pezzo="N" aria-label="Cavallo"></button>
+                </div>
+            </div>
+
+            <p id="messaggi" aria-live="polite"></p>
+
+            <div class="azioni">
+                <button type="button" id="nuovaPartita" class="pulsante">Nuova partita</button>
+                <button type="button" id="annulla" class="pulsante pulsante--secondario">↶ Annulla mossa</button>
+                <button type="button" id="gira" class="pulsante pulsante--secondario">⇅ Gira la scacchiera</button>
+            </div>
+
+            <details class="pannello elenco-mosse" open>
+                <summary>Mosse della partita</summary>
+                <ol class="mosse" id="mosse"></ol>
+            </details>
+
+            <details class="pannello regole">
+                <summary>Regole del gioco</summary>
+                <ol>
+                    <li>Il bianco muove per primo. Ogni pezzo ha il suo movimento: il re di una casa, la donna in tutte le direzioni, la torre in orizzontale e verticale, l’alfiere in diagonale, il cavallo a “L” saltando gli altri pezzi, il pedone avanti di una casa (due alla prima mossa) e mangia in diagonale.</li>
+                    <li>Non si può lasciare il proprio re sotto scacco. Se il re è sotto scacco e non ci sono mosse per salvarlo, è scacco matto e la partita è persa.</li>
+                    <li>Arrocco: re e torre mai mossi, case in mezzo libere, il re non deve essere sotto scacco né passare su case attaccate.</li>
+                    <li>Presa en passant: un pedone che avanza di due case accanto a un pedone avversario può essere mangiato come se fosse avanzato di una, ma solo subito.</li>
+                    <li>Il pedone che arriva in fondo diventa a scelta donna, torre, alfiere o cavallo.</li>
+                    <li>Patta: stallo (nessuna mossa ma re non sotto scacco), 50 mosse a testa senza prese né mosse di pedone, la stessa posizione ripetuta 3 volte, materiale insufficiente per dare matto.</li>
+                    <li>Per muovere tocca un tuo pezzo e poi la casa di arrivo evidenziata. Nell’elenco delle mosse: R re, D donna, T torre, A alfiere, C cavallo.</li>
+                </ol>
+            </details>
+        </div>
+        <script src="../js/giocatori.js"></script>
+        <script src="./funzioni.js"></script>
+        <script src="./main.js"></script>
+    </body>
+
+</html>
