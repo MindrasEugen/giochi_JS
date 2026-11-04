@@ -31,6 +31,12 @@ const GIOCHI = [
       descrizione: 'Il classico rompicapo dei numeri, con tre difficoltà, note a matita e soluzione sempre unica.' },
     { nome: 'Tris', cartella: 'tris', categoria: 'tavolo', emoji: '⭕', dueGiocatori: true,
       descrizione: 'Allinea tre simboli: in due giocatori oppure contro il computer.' },
+    { nome: 'Dama', cartella: 'dama', categoria: 'tavolo', emoji: '⚪', dueGiocatori: true,
+      descrizione: 'La dama italiana con presa obbligatoria: contro un amico o contro il computer in tre livelli.' },
+    { nome: 'Filetto', cartella: 'filetto', categoria: 'tavolo', emoji: '🔵', dueGiocatori: true,
+      descrizione: 'Il mulino a 9 pedine: fai tre in fila per togliere una pedina all’avversario.' },
+    { nome: 'Battaglia navale', cartella: 'battaglia_navale', categoria: 'tavolo', emoji: '🚢', dueGiocatori: true,
+      descrizione: 'Disponi la flotta e affonda quella nemica: contro il computer o passando il telefono a un amico.' },
     { nome: 'L’impiccato', cartella: 'il_impiccato', categoria: 'parole', emoji: '🪢', dueGiocatori: true,
       descrizione: 'Indovina la parola segreta una lettera alla volta; in due, la parola la sceglie l’altro giocatore.' }
 ];

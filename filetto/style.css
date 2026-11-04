@@ -1,0 +1,194 @@
+/* Turno e pedine */
+#contenitore_gioco[data-turno="B"] .segnapunti--B,
+#contenitore_gioco[data-turno="N"] .segnapunti--N {
+  border-color: var(--colore-accento);
+  background: color-mix(in srgb, var(--colore-superficie) 10%, transparent);
+  box-shadow: var(--ombra-leggera);
+}
+
+.pedina-icona--B {
+  background: var(--colore-superficie);
+  border-color: var(--colore-bordo);
+}
+
+.pedina-icona--N {
+  background: var(--colore-testo);
+  border-color: var(--colore-superficie);
+}
+
+.segnapunti__mano {
+  color: color-mix(in srgb, var(--colore-superficie) 85%, var(--colore-primario));
+  font-size: var(--testo-s);
+}
+
+/* Tavoliere: coordinate coerenti con il viewBox */
+.tavoliere {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  min-width: 0;
+  aspect-ratio: 1;
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--colore-bordo);
+  border-radius: var(--raggio-l);
+  background: linear-gradient(135deg, var(--colore-superficie), var(--colore-sfondo));
+  box-shadow: var(--ombra-media);
+}
+
+svg.tavoliere__linee {
+  position: absolute;
+  left: 6%;
+  top: 6%;
+  width: 88%;
+  height: 88%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.tavoliere__linee rect,
+.tavoliere__linee line {
+  fill: none;
+  stroke: var(--colore-primario);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+}
+
+button.punto {
+  position: absolute;
+  left: calc(6% + (var(--x) + 4%) * 0.814815);
+  top: calc(6% + (var(--y) + 4%) * 0.814815);
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: max(32px, 11%);
+  aspect-ratio: 1;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: filter var(--transizione);
+}
+
+.punto:not([data-pedina])::before {
+  content: "";
+  width: 28%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--colore-primario);
+  pointer-events: none;
+}
+
+.punto[data-pedina="B"] {
+  background: var(--colore-superficie);
+  border: 2px solid var(--colore-primario);
+  box-shadow: inset 0 0 0 3px var(--colore-bordo), var(--ombra-leggera);
+  animation: comparsa-pedina 220ms var(--molla);
+}
+
+.punto[data-pedina="N"] {
+  background: var(--colore-testo);
+  border: 2px solid var(--colore-primario);
+  box-shadow: inset 0 0 0 3px color-mix(in srgb, var(--colore-superficie) 55%, var(--colore-testo)), var(--ombra-leggera);
+  animation: comparsa-pedina 220ms var(--molla);
+}
+
+/* Stati: gli anelli restano indipendenti dalla pedina */
+.punto.punto--mulino {
+  border: 3px solid var(--colore-accento);
+  outline: 2px solid var(--colore-primario);
+  outline-offset: 0;
+}
+
+.punto.punto--selezionato {
+  outline: 3px solid var(--colore-primario);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px var(--colore-accento);
+}
+
+.punto.punto--destinazione:not([data-pedina]) {
+  border: 2px dashed var(--colore-accento);
+  background: var(--colore-primario);
+}
+
+.punto--destinazione:not([data-pedina])::before {
+  background: var(--colore-accento);
+}
+
+.punto.punto--rimovibile {
+  animation: pedina-rimovibile 900ms ease-in-out infinite alternate;
+}
+
+.punto--ultimo::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30%;
+  aspect-ratio: 1;
+  border: 2px solid var(--colore-primario);
+  border-radius: 50%;
+  background: var(--colore-accento);
+  pointer-events: none;
+}
+
+button.punto:focus-visible {
+  z-index: 2;
+  outline: 3px solid var(--colore-info);
+  outline-offset: 5px;
+}
+
+button.punto:disabled {
+  cursor: default;
+}
+
+#contenitore_gioco[data-fase="rimuovi"] .tavoliere {
+  border-color: var(--colore-avviso);
+  box-shadow: 0 0 0 2px var(--colore-avviso), var(--ombra-media);
+}
+
+@keyframes comparsa-pedina {
+  from {
+    transform: translate(-50%, -50%) scale(.4);
+  }
+
+  to {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes pedina-rimovibile {
+  from {
+    box-shadow: 0 0 0 3px var(--colore-errore);
+  }
+
+  to {
+    box-shadow: 0 0 0 6px var(--colore-errore);
+  }
+}
+
+@media (hover: hover) {
+  .punto:not([data-pedina]):not(:disabled):hover {
+    box-shadow: 0 0 0 3px var(--colore-primario);
+  }
+
+  .punto[data-pedina]:not(:disabled):hover {
+    filter: brightness(1.12);
+  }
+}
+
+/* Schermi ampi */
+@media (min-width: 600px) {
+  .tavoliere {
+    margin-block: var(--spazio-4);
+  }
+}
+
+@media (min-width: 900px) {
+  .tavoliere {
+    margin-block: var(--spazio-5);
+  }
+}

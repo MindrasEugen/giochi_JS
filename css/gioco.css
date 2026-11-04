@@ -1,0 +1,164 @@
+/* Layout */
+#contenitore_gioco.contenitore {
+  width: 100%;
+  max-width: calc(var(--spazio-5) * 20);
+  margin-block: var(--spazio-3);
+  background: var(--colore-superficie);
+  border-radius: var(--raggio-xl);
+  box-shadow: var(--ombra-forte);
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: var(--spazio-1);
+}
+
+.sottotitolo {
+  text-align: center;
+  margin-top: 0;
+  color: var(--colore-testo-tenue);
+}
+
+/* Punteggio */
+.tabellone:not([hidden]) {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: var(--spazio-2);
+  margin-bottom: var(--spazio-4);
+  padding: var(--spazio-3) var(--spazio-2);
+  border-radius: var(--raggio-l);
+  background: linear-gradient(135deg, var(--colore-primario), var(--colore-primario-chiaro));
+  color: var(--colore-superficie);
+}
+
+.segnapunti {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spazio-1);
+  min-width: 0;
+  padding: var(--spazio-1);
+  border: 2px solid transparent;
+  border-radius: var(--raggio-m);
+}
+
+.segnapunti__nome {
+  overflow-wrap: anywhere;
+  font-size: var(--testo-s);
+  font-weight: var(--peso-semibold);
+}
+
+.segnapunti__punti {
+  color: var(--colore-accento);
+  font-size: var(--testo-xl);
+  font-weight: var(--peso-bold);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+
+/* Messaggi e comandi */
+#messaggi {
+  width: fit-content;
+  max-width: 100%;
+  margin: var(--spazio-3) auto;
+  padding: var(--spazio-2) var(--spazio-3);
+  border: 1px solid var(--colore-bordo);
+  border-radius: var(--raggio-xl);
+  background: var(--colore-sfondo);
+  font-weight: var(--peso-semibold);
+}
+
+#messaggi:empty {
+  display: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+#nuovaPartita:not(.azioni *) {
+  display: flex;
+  width: fit-content;
+  margin-inline: auto;
+  max-width: 100%;
+  min-height: var(--area-minima);
+  margin-top: var(--spazio-3);
+}
+
+.contenitore .pulsante:focus-visible {
+  outline-offset: 4px;
+}
+
+.regole {
+  margin-top: var(--spazio-4);
+}
+
+#messaggi.messaggio--successo {
+  color: var(--colore-successo);
+  border-color: var(--colore-successo);
+  background: color-mix(in srgb, var(--colore-successo) 10%, var(--colore-superficie));
+}
+
+#messaggi.messaggio--errore {
+  color: var(--colore-errore);
+  border-color: var(--colore-errore);
+  background: color-mix(in srgb, var(--colore-errore) 10%, var(--colore-superficie));
+}
+
+/* Azioni */
+.azioni {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spazio-2);
+  margin-top: var(--spazio-3);
+}
+
+.azioni .pulsante {
+  max-width: 100%;
+}
+
+.azioni .pulsante--secondario:hover:not(:disabled) {
+  background: var(--colore-sfondo);
+  color: var(--colore-primario);
+}
+
+.barra-modalita select:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+/* Schermi ampi */
+@media (min-width: 600px) {
+  #contenitore_gioco.contenitore {
+    margin-block: var(--spazio-4);
+  }
+
+  .tabellone:not([hidden]) {
+    padding: var(--spazio-3) var(--spazio-4);
+  }
+}
+
+@media (min-width: 900px) {
+  #contenitore_gioco.contenitore {
+    margin-block: var(--spazio-5);
+  }
+
+  .segnapunti__punti {
+    font-size: var(--testo-xxl);
+  }
+}
+
+/* Movimento ridotto */
+@media (prefers-reduced-motion: reduce) {
+  #contenitore_gioco *,
+  #contenitore_gioco *::before,
+  #contenitore_gioco *::after {
+    animation: none;
+    transition: none;
+  }
+}

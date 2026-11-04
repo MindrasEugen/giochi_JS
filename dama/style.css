@@ -1,0 +1,160 @@
+/* Turno e pedine */
+#contenitore_gioco[data-turno="bianco"] .segnapunti--bianco,
+#contenitore_gioco[data-turno="nero"] .segnapunti--nero {
+  border-color: var(--colore-accento);
+  background: color-mix(in srgb, var(--colore-superficie) 10%, transparent);
+  box-shadow: var(--ombra-leggera);
+}
+
+.pezzo-icona {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--colore-bordo);
+  border-radius: 50%;
+}
+
+.pezzo-icona--bianco {
+  background: var(--colore-superficie);
+}
+
+.pezzo-icona--nero {
+  background: var(--colore-testo);
+  border-color: var(--colore-superficie);
+}
+
+/* Scacchiera */
+#scacchiera.scacchiera {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 0;
+  width: 100%;
+  max-width: 480px;
+  min-width: 0;
+  aspect-ratio: 1;
+  margin: auto;
+  padding: var(--spazio-2);
+  border-radius: var(--raggio-m);
+  background: var(--colore-primario);
+  box-shadow: var(--ombra-media);
+}
+
+.casella-dama {
+  min-width: 0;
+  aspect-ratio: 1;
+}
+
+.casella-dama--chiara {
+  background: var(--colore-sfondo);
+}
+
+button.casella-dama--scura {
+  position: relative;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: var(--colore-primario-chiaro);
+  font: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background-color var(--transizione);
+}
+
+.pezzo {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 78%;
+  aspect-ratio: 1;
+  border: 2px solid var(--colore-bordo);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 3px color-mix(in srgb, var(--colore-primario) 25%, transparent), var(--ombra-leggera);
+  pointer-events: none;
+}
+
+.pezzo--bianco {
+  background: var(--colore-superficie);
+}
+
+.pezzo--nero {
+  background: var(--colore-testo);
+  border-color: var(--colore-superficie);
+  box-shadow: inset 0 0 0 3px color-mix(in srgb, var(--colore-superficie) 40%, transparent), var(--ombra-leggera);
+}
+
+.pezzo--dama::after {
+  content: "\265B";
+  display: grid;
+  place-items: center;
+  width: 72%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--colore-testo);
+  color: var(--colore-accento);
+  font-size: clamp(14px, 4vw, 26px);
+  line-height: 1;
+}
+
+/* Mosse */
+button.casella-dama--scura.casella-dama--ultima {
+  background: color-mix(in srgb, var(--colore-accento) 18%, var(--colore-primario-chiaro));
+}
+
+button.casella-dama--scura.casella-dama--selezionata {
+  box-shadow: inset 0 0 0 4px var(--colore-accento);
+}
+
+button.casella-dama--scura.casella-dama--destinazione::before {
+  content: "";
+  position: absolute;
+  width: 30%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--colore-accento);
+  pointer-events: none;
+}
+
+button.casella-dama--scura.casella-dama--obbligata {
+  animation: presa-obbligata 900ms ease-in-out infinite alternate;
+}
+
+button.casella-dama--scura:focus-visible {
+  z-index: 1;
+  outline-color: var(--colore-accento);
+  outline-offset: -3px;
+}
+
+button.casella-dama--scura:disabled {
+  cursor: default;
+}
+
+@keyframes presa-obbligata {
+  from {
+    box-shadow: inset 0 0 0 2px var(--colore-accento);
+  }
+
+  to {
+    box-shadow: inset 0 0 0 5px var(--colore-accento);
+  }
+}
+
+@media (hover: hover) {
+  button.casella-dama--scura:not(:disabled):hover {
+    background: color-mix(in srgb, var(--colore-superficie) 12%, var(--colore-primario-chiaro));
+  }
+}
+
+/* Schermi ampi */
+@media (min-width: 600px) {
+  #scacchiera.scacchiera {
+    margin-block: var(--spazio-4);
+  }
+}
+
+@media (min-width: 900px) {
+  #scacchiera.scacchiera {
+    padding: var(--spazio-3);
+  }
+}

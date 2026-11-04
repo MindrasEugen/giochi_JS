@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="it">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/comune.css">
+        <link rel="stylesheet" href="../css/giocatori.css">
+        <link rel="stylesheet" href="../css/gioco.css">
+        <link rel="stylesheet" href="./style.css">
+        <title>Filetto</title>
+    </head>
+
+    <body>
+        <div class="contenitore" id="contenitore_gioco">
+            <a class="link-home" href="../index.html">← Tutti i giochi</a>
+            <h1>Filetto</h1>
+            <p class="sottotitolo">Il mulino a 9 pedine: metti tre pedine in fila per togliere una pedina all’avversario.</p>
+
+            <div class="barra-modalita">
+                <label for="modalitaGioco" class="nascosto-visivamente">Modalità</label>
+                <select id="modalitaGioco">
+                    <option value="uno">Contro il computer</option>
+                    <option value="due">2 giocatori</option>
+                </select>
+                <label for="difficolta" class="nascosto-visivamente">Difficoltà</label>
+                <select id="difficolta">
+                    <option value="facile">Facile</option>
+                    <option value="media" selected>Media</option>
+                    <option value="difficile">Difficile</option>
+                </select>
+                <button type="button" id="nomiGiocatori" class="pulsante pulsante--secondario" hidden>Nomi</button>
+            </div>
+
+            <div class="tabellone" aria-label="Pedine">
+                <div class="segnapunti segnapunti--B">
+                    <span class="pedina-icona pedina-icona--B" aria-hidden="true"></span>
+                    <span class="segnapunti__nome" id="nomeB">Tu</span>
+                    <span class="segnapunti__punti" id="tavolaB">0</span>
+                    <span class="segnapunti__mano" id="manoB">9 in mano</span>
+                </div>
+                <div class="segnapunti segnapunti--N">
+                    <span class="pedina-icona pedina-icona--N" aria-hidden="true"></span>
+                    <span class="segnapunti__nome" id="nomeN">Computer</span>
+                    <span class="segnapunti__punti" id="tavolaN">0</span>
+                    <span class="segnapunti__mano" id="manoN">9 in mano</span>
+                </div>
+            </div>
+
+            <!-- Tavoliere: le linee sono un disegno SVG, i 24 punti sono pulsanti creati da main.js -->
+            <div class="tavoliere" id="tavoliere">
+                <svg class="tavoliere__linee" viewBox="-4 -4 108 108" aria-hidden="true" focusable="false">
+                    <rect x="0" y="0" width="100" height="100" />
+                    <rect x="16.67" y="16.67" width="66.66" height="66.66" />
+                    <rect x="33.33" y="33.33" width="33.34" height="33.34" />
+                    <line x1="50" y1="0" x2="50" y2="33.33" />
+                    <line x1="50" y1="66.67" x2="50" y2="100" />
+                    <line x1="0" y1="50" x2="33.33" y2="50" />
+                    <line x1="66.67" y1="50" x2="100" y2="50" />
+                </svg>
+            </div>
+
+            <p id="messaggi" aria-live="polite"></p>
+            <div class="azioni">
+                <button type="button" id="nuovaPartita" class="pulsante">Nuova partita</button>
+            </div>
+
+            <details class="pannello regole">
+                <summary>Regole del gioco</summary>
+                <ol>
+                    <li>Ogni giocatore ha 9 pedine. Prima si mettono a turno sul tavoliere, una alla volta, in un punto libero. Comincia il bianco.</li>
+                    <li>Quando sono state messe tutte, a turno si sposta una propria pedina in un punto libero vicino, lungo una linea.</li>
+                    <li>Tre pedine dello stesso colore in fila su una linea formano un “mulino”: chi lo fa toglie una pedina all’avversario, scegliendola tra quelle che non sono in un mulino (se lo sono tutte, una qualsiasi).</li>
+                    <li>Chi resta con 3 pedine può “volare”: spostare una pedina in qualsiasi punto libero.</li>
+                    <li>Perde chi resta con 2 pedine o non può più muovere. Dopo 50 mosse senza togliere pedine (finito il piazzamento) la partita è patta.</li>
+                    <li>Per giocare tocca un punto libero (piazzamento) oppure una tua pedina e poi il punto di arrivo. Se fai mulino, tocca la pedina avversaria da togliere (evidenziata).</li>
+                </ol>
+            </details>
+        </div>
+        <script src="../js/giocatori.js"></script>
+        <script src="./funzioni.js"></script>
+        <script src="./main.js"></script>
+    </body>
+
+</html>

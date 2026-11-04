@@ -17,7 +17,7 @@ Ultima modifica: 2026-11-04
 | 10.1 | [Sette e mezzo: a 2 giocatori uno dei due fa il banco](34-tappa-10-1-banco-a-due-giocatori.md) | ☑ completata |
 | 11 | [Logica: Forza 4, Memory, Campo minato](20-tappa-11-logica-1.md) | ☑ completata |
 | 12 | [Logica: Raddoppia (tipo 2048) e Sudoku](21-tappa-12-logica-2.md) | ☑ completata |
-| 13 | [Da tavolo: Dama, Filetto (Mulino), Battaglia navale](22-tappa-13-tavolo-1.md) | ◐ in corso |
+| 13 | [Da tavolo: Dama, Filetto (Mulino), Battaglia navale](22-tappa-13-tavolo-1.md) | ☑ completata |
 | 14 | [Da tavolo: Ludo e Scacchi](23-tappa-14-tavolo-2.md) | ☐ da fare |
 | 15 | [Arcade: Serpente, Ping pong, Mattoncini](24-tappa-15-arcade-1.md) | ☐ da fare |
 | 16 | [Arcade: Blocchi, Invasione, Volo, Labirinto](25-tappa-16-arcade-2.md) | ☐ da fare |

@@ -12,4 +12,4 @@ Idee non incluse in questo lavoro, da valutare in futuro:
 - Briscola a 4 e Scopone con più giocatori umani su dispositivi diversi, per lo stesso motivo.
 - README per il portfolio GitHub e pubblicazione (per esempio GitHub Pages).
 - La consegna `indovina_il_numero/esercizio_1.md` resta com'è (testo dell'esercizio, non codice).
-- Un CSS comune dei giochi (contenitore, tabellone, messaggi, regole) per togliere le regole ripetute nei `style.css` dei giochi nuovi.
+- Spostare Forza 4, Memory, Campo minato, Raddoppia e Sudoku su `css/gioco.css` (creato nella Tappa 13, [ADR 0010](../ADR/0010-css-comune-delle-pagine-di-gioco.md)), togliendo le regole ripetute dai loro `style.css`.

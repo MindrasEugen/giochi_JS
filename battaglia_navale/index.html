@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="it">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/comune.css">
+        <link rel="stylesheet" href="../css/giocatori.css">
+        <link rel="stylesheet" href="../css/gioco.css">
+        <link rel="stylesheet" href="./style.css">
+        <title>Battaglia navale</title>
+    </head>
+
+    <body>
+        <div class="contenitore" id="contenitore_gioco">
+            <a class="link-home" href="../index.html">← Tutti i giochi</a>
+            <h1>Battaglia navale</h1>
+            <p class="sottotitolo">Disponi la tua flotta e affonda tutte le navi dell’avversario.</p>
+
+            <div class="barra-modalita">
+                <label for="modalitaGioco" class="nascosto-visivamente">Modalità</label>
+                <select id="modalitaGioco">
+                    <option value="uno">Contro il computer</option>
+                    <option value="due">2 giocatori</option>
+                </select>
+                <label for="difficolta" class="nascosto-visivamente">Difficoltà</label>
+                <select id="difficolta">
+                    <option value="facile">Facile</option>
+                    <option value="normale" selected>Normale</option>
+                </select>
+                <button type="button" id="nomiGiocatori" class="pulsante pulsante--secondario" hidden>Nomi</button>
+            </div>
+
+            <div class="tabellone" aria-label="Navi rimaste">
+                <div class="segnapunti">
+                    <span class="segnapunti__nome" id="nomeMio">La tua flotta</span>
+                    <span class="segnapunti__punti" id="naviMie">5</span>
+                </div>
+                <div class="segnapunti">
+                    <span class="segnapunti__nome" id="nomeNemico">Flotta nemica</span>
+                    <span class="segnapunti__punti" id="naviNemiche">5</span>
+                </div>
+            </div>
+
+            <!-- Disposizione delle navi -->
+            <section class="disposizione" id="disposizione" aria-label="Disposizione delle navi">
+                <p class="disposizione__istruzioni" id="istruzioniDisposizione"></p>
+                <div class="disposizione__azioni">
+                    <button type="button" id="ruota" class="pulsante pulsante--secondario">↻ Orizzontale</button>
+                    <button type="button" id="casuale" class="pulsante pulsante--secondario">🎲 A caso</button>
+                    <button type="button" id="svuota" class="pulsante pulsante--secondario">Ricomincia</button>
+                    <button type="button" id="conferma" class="pulsante" disabled>Conferma la flotta</button>
+                </div>
+            </section>
+
+            <div class="campi">
+                <section class="campo campo--mio" aria-labelledby="titoloMio">
+                    <h2 class="campo__titolo" id="titoloMio">La tua flotta</h2>
+                    <div class="griglia-mare" id="grigliaMia" role="grid"></div>
+                </section>
+                <section class="campo campo--nemico" id="campoNemico" aria-labelledby="titoloNemico">
+                    <h2 class="campo__titolo" id="titoloNemico">Flotta nemica</h2>
+                    <div class="griglia-mare griglia-mare--bersaglio" id="grigliaNemica" role="grid"></div>
+                </section>
+            </div>
+
+            <p id="messaggi" aria-live="polite"></p>
+            <div class="azioni">
+                <button type="button" id="nuovaPartita" class="pulsante">Nuova partita</button>
+            </div>
+
+            <details class="pannello regole">
+                <summary>Regole del gioco</summary>
+                <ol>
+                    <li>Ogni giocatore ha una griglia 10 × 10 e 5 navi: portaerei (5 caselle), corazzata (4), incrociatore (3), sottomarino (3) e cacciatorpediniere (2).</li>
+                    <li>Le navi si mettono in orizzontale o in verticale e non possono toccarsi, nemmeno in diagonale. Per metterle tocca la casella di partenza; “↻” cambia il verso, “A caso” le dispone tutte.</li>
+                    <li>A turno si spara un colpo in una casella della griglia avversaria: “acqua”, “colpito” oppure “colpito e affondato” quando tutte le caselle di una nave sono state colpite.</li>
+                    <li>Vince chi affonda per primo tutta la flotta avversaria.</li>
+                    <li>In due giocatori, tra un turno e l’altro compare la schermata “Passa il dispositivo”: chi non gioca non deve guardare.</li>
+                </ol>
+            </details>
+        </div>
+        <script src="../js/giocatori.js"></script>
+        <script src="./funzioni.js"></script>
+        <script src="./main.js"></script>
+    </body>
+
+</html>

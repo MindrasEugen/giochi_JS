@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="it">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/comune.css">
+        <link rel="stylesheet" href="../css/giocatori.css">
+        <link rel="stylesheet" href="../css/gioco.css">
+        <link rel="stylesheet" href="./style.css">
+        <title>Dama</title>
+    </head>
+
+    <body>
+        <div class="contenitore" id="contenitore_gioco">
+            <a class="link-home" href="../index.html">← Tutti i giochi</a>
+            <h1>Dama</h1>
+            <p class="sottotitolo">La dama italiana: mangia tutti i pezzi dell’avversario o lascialo senza mosse.</p>
+
+            <div class="barra-modalita">
+                <label for="modalitaGioco" class="nascosto-visivamente">Modalità</label>
+                <select id="modalitaGioco">
+                    <option value="uno">Contro il computer</option>
+                    <option value="due">2 giocatori</option>
+                </select>
+                <label for="difficolta" class="nascosto-visivamente">Difficoltà</label>
+                <select id="difficolta">
+                    <option value="facile">Facile</option>
+                    <option value="media" selected>Media</option>
+                    <option value="difficile">Difficile</option>
+                </select>
+                <button type="button" id="nomiGiocatori" class="pulsante pulsante--secondario" hidden>Nomi</button>
+            </div>
+
+            <div class="tabellone" aria-label="Pezzi rimasti">
+                <div class="segnapunti segnapunti--bianco">
+                    <span class="pezzo-icona pezzo-icona--bianco" aria-hidden="true"></span>
+                    <span class="segnapunti__nome" id="nomeBianco">Tu</span>
+                    <span class="segnapunti__punti" id="pezziBianco">12</span>
+                </div>
+                <div class="segnapunti segnapunti--nero">
+                    <span class="pezzo-icona pezzo-icona--nero" aria-hidden="true"></span>
+                    <span class="segnapunti__nome" id="nomeNero">Computer</span>
+                    <span class="segnapunti__punti" id="pezziNero">12</span>
+                </div>
+            </div>
+
+            <!-- 64 caselle, create da main.js -->
+            <div class="scacchiera" id="scacchiera" role="grid" aria-label="Scacchiera della dama"></div>
+
+            <p id="messaggi" aria-live="polite"></p>
+            <div class="azioni">
+                <button type="button" id="nuovaPartita" class="pulsante">Nuova partita</button>
+            </div>
+
+            <details class="pannello regole">
+                <summary>Regole del gioco (dama italiana)</summary>
+                <ol>
+                    <li>Si gioca sulle caselle scure. Il bianco comincia. Le pedine si muovono di una casella in diagonale, solo in avanti.</li>
+                    <li>Si mangia saltando un pezzo avversario vicino, se la casella dopo è libera; si può continuare a saltare con lo stesso pezzo.</li>
+                    <li>Mangiare è obbligatorio. Se ci sono più prese possibili si sceglie: quella che mangia più pezzi; a parità, quella fatta con la dama; poi quella che mangia più dame; poi quella che incontra prima una dama.</li>
+                    <li>La pedina mangia solo in avanti e non può mangiare la dama.</li>
+                    <li>La pedina che arriva sull’ultima riga diventa dama (e la mossa finisce lì). La dama si muove e mangia di una casella in tutte le diagonali.</li>
+                    <li>Perde chi resta senza pezzi o senza mosse. Dopo 40 mosse a testa senza prese la partita è patta.</li>
+                    <li>Per muovere: tocca un tuo pezzo e poi la casella di arrivo evidenziata. Contro il computer giochi con il bianco.</li>
+                </ol>
+            </details>
+        </div>
+        <script src="../js/giocatori.js"></script>
+        <script src="./funzioni.js"></script>
+        <script src="./main.js"></script>
+    </body>
+
+</html>
