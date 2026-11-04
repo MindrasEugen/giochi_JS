@@ -8,10 +8,12 @@ Completare la categoria Arcade con giochi ispirati a classici famosi, ma con nom
 
 ## Attività
 
-- [ ] Blocchi (genere "blocchi che cadono"): le righe complete si cancellano, livelli; 2 giocatori con due campi affiancati
-- [ ] Invasione (genere "sparatutto a ondate"): ondate di nemici disegnati da zero, scudi, record
-- [ ] Volo (genere "flappy"): 1 giocatore, o 2 a turni con la stessa sequenza di ostacoli
-- [ ] Labirinto (genere "mangia i puntini"): labirinto, guardiani e personaggio originali
+- [x] Blocchi (genere "blocchi che cadono"): le righe complete si cancellano, livelli; 2 giocatori con due campi affiancati
+- [x] Invasione (genere "sparatutto a ondate"): ondate di nemici disegnati da zero, scudi, record
+- [x] Volo (genere "flappy"): 1 giocatore, o 2 a turni con la stessa sequenza di ostacoli
+- [x] Labirinto (genere "mangia i puntini"): labirinto, guardiani e personaggio originali
+- [x] Pulsanti touch, pausa, riavvio e integrazione nella home
+- [ ] Screenshot e prova interattiva nel browser e sul telefono
 
 ## Come verificare
 
@@ -20,12 +22,16 @@ Completare la categoria Arcade con giochi ispirati a classici famosi, ma con nom
 
 ## Esito
 
-—
+Quattro giochi implementati e collegati alla home, che raggiunge 22 giochi. Logica senza DOM, canvas nella palette del progetto e controller condiviso. Test con Node per le quattro logiche e per il caricamento e ciclo di vita delle sette pagine arcade.
 
 ## Decisioni prese
 
-—
+- Blocchi usa un sacco di sette forme: in due entrambi ricevono la stessa sequenza, su campi indipendenti. Vince chi resta in gioco; nessuna penalità aggiunta al campo avversario.
+- Invasione ricostruisce gli scudi a ogni ondata. Gli scudi assorbono sia colpi nemici sia colpi del giocatore.
+- Volo conserva il seme tra i due turni e attende un avvio esplicito prima del secondo. I record personali non vengono aggiornati nelle sfide.
+- Labirinto usa una mappa originale generata con seme fisso, corridoi connessi, tre vite e cristalli che durano sette secondi.
+- Nessuna nuova dipendenza, asset esterno o modifica allo stack.
 
 ## Problemi aperti
 
-—
+La prova visiva resta da eseguire. In questa sessione il servizio browser ha restituito `The browser access host is unavailable`; i test con DOM simulato non verificano rendering, touch fisico o lettori di schermo. Nessun push: viene gestito dall'utente.

@@ -28,3 +28,10 @@ Ultima modifica: 2026-11-03
 - 2026-11-04 — Tappa 15 avviata: helper per i colori del canvas in `js/arcade.js`, logica e test del Serpente. Lavoro interrotto per il limite d'uso, ripartire da `PLAN/01-stato-attuale.md`.
 
 - 2026-11-04 - Codex prosegue su richiesta diretta: implementati Serpente, Ping pong e Mattoncini con pagine canvas, design mobile-first, comandi touch e controller condiviso. Home a 18 giochi, regressioni per collisioni e ciclo di vita. Tappa 15 ancora in corso solo per prova visiva browser/telefono, bloccata dal controllo nativo dell'URL. Nessun commit o push.
+
+- 2026-11-04 - Tappa 15 e correzioni raccolte nel commit locale fe8bc4d, su richiesta dell'utente; nessun push.
+- 2026-11-04 - Su richiesta dell'utente implementata la Tappa 16: Blocchi, Invasione, Volo e Labirinto. Home a 22 giochi, controlli touch, test delle quattro logiche e dei sette controller arcade. Verifica visiva ancora da eseguire per servizio browser non disponibile. Nessun commit o push della Tappa 16.
+
+- 2026-11-04 - Su richiesta dell'utente integrate le 12 immagini PNG di pezzi_scacco negli Scacchi: scacchiera, promozioni e catture, con descrizioni accessibili e test del controller.
+
+- 2026-11-04 - Tappa 17 implementata da Codex su richiesta: Cinque lettere con sei tentativi, vocabolario locale di 1.376 parole, lettere doppie, tastiera a schermo e sfida a due turni. Home a 23 giochi; test della logica e del controller. Prova visiva ancora da eseguire per servizio browser non disponibile. Nessun commit o push.

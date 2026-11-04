@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Invasione | Giochi JS</title>
+  <link rel="stylesheet" href="../css/comune.css">
+  <link rel="stylesheet" href="../css/gioco.css">
+  <link rel="stylesheet" href="../css/giocatori.css">
+  <link rel="stylesheet" href="../css/arcade.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="contenitore" id="contenitore_gioco">
+  <a class="link-home" href="../index.html">&larr; Tutti i giochi</a>
+  <header class="arcade-intro"><p class="occhiello">Sala arcade / Invasione</p><h1>Difendi l'ultimo avamposto.</h1><p class="sottotitolo">Droni in avvicinamento, scudi che cedono e un varco da tenere aperto. Quanto resisti?</p></header>
+
+  <div class="arcade-statistiche" aria-label="Tabellone">
+    <div class="arcade-statistica"><span id="etichetta1">Punti</span><strong id="punti1">0</strong></div>
+    <div class="arcade-statistica"><span id="etichetta2">Partita</span><strong id="punti2">0</strong></div>
+    <div class="arcade-statistica"><span>Obiettivo</span><strong id="fase">Pronto</strong></div>
+    <div class="arcade-statistica"><span>Record personale (solo)</span><strong id="record">0</strong></div>
+  </div>
+  <div class="arcade-campo arcade-campo--verticale">
+    <canvas width="600" height="560" tabindex="0" aria-label="Campo di Invasione. Comandi descritti nelle regole." aria-describedby="aiuto">Il gioco richiede un browser con supporto canvas.</canvas>
+    <div class="arcade-velo" id="velo"><h2 id="statoTitolo">Pronto?</h2><p id="statoTesto">Premi Gioca per iniziare.</p></div>
+  </div>
+  <div class="arcade-azioni"><button class="pulsante" type="button" id="avvia" aria-pressed="false">Gioca</button><button class="pulsante pulsante--secondario" type="button" id="nuovaPartita">Nuova partita</button></div>
+  <p id="messaggi" role="status" aria-live="polite"></p>
+  <div class="arcade-comandi" aria-label="Comandi touch"><fieldset><legend>Avamposto</legend><div class="arcade-tasti"><button class="arcade-tasto" type="button" data-tasto="ArrowLeft">Sinistra</button><button class="arcade-tasto" type="button" data-tasto="Space">Fuoco</button><button class="arcade-tasto" type="button" data-tasto="ArrowRight">Destra</button></div></fieldset></div>
+  <p class="arcade-aiuto" id="aiuto">P o Esc per la pausa. Cambiando scheda il gioco si ferma; premi Riprendi per continuare.</p>
+  <details class="pannello regole"><summary>Regole e comandi</summary><ol><li>Muoviti con frecce o A/D, oppure trascina sul campo. Tieni premuto Spazio o Fuoco per sparare.</li><li>Gli scudi hanno cinque cariche: assorbono i colpi nemici e anche i tuoi. Cerca uno spazio libero per attaccare.</li><li>Elimina tutti i droni per la prossima ondata. Gli scudi si ricostruiscono, ma il nemico diventa pi&ugrave; veloce.</li><li>Hai tre vite e una breve protezione dopo ogni colpo. Se un drone raggiunge la base, la difesa termina.</li></ol></details>
+</main>
+<script src="../js/giocatori.js"></script><script src="../js/arcade.js"></script><script src="../js/arcade-pagina.js"></script><script src="./funzioni.js"></script><script src="./main.js"></script>
+</body>
+</html>

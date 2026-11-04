@@ -12,13 +12,13 @@ class Elemento {
     getContext() { return new Proxy({}, { get: () => () => {} }); }
     emetti(k, extra = {}) { for (const f of this.listeners[k] || []) f({ target: this, preventDefault() {}, ...extra }); }
 }
-for (const gioco of ['serpente', 'ping_pong', 'mattoncini']) {
+for (const gioco of ['serpente', 'ping_pong', 'mattoncini', 'blocchi', 'invasione', 'volo', 'labirinto']) {
     const nodi = new Map(), eventi = new Elemento(), finestra = new Elemento();
     let frame, barra;
     const documento = {
         body: new Elemento(), documentElement: new Elemento(), hidden: false,
         querySelector(k) {
-            if (k === '.copertura' || (k === '#modalitaGioco' && gioco === 'mattoncini')) return null;
+            if (k === '.copertura' || (k === '#modalitaGioco' && ['mattoncini', 'invasione', 'labirinto'].includes(gioco))) return null;
             if (!nodi.has(k)) nodi.set(k, new Elemento()); return nodi.get(k);
         }, querySelectorAll: () => [],
         addEventListener: (...args) => eventi.addEventListener(...args), removeEventListener() {}
@@ -53,8 +53,19 @@ for (const gioco of ['serpente', 'ping_pong', 'mattoncini']) {
         assert.equal(nodi.get('#etichetta1').textContent, 'Prima');
         avvia.emetti('click');
         vm.runInContext('config.punti = () => 999;', c);
+        if (gioco === 'volo') vm.runInContext('config.passo = s => { s.finita = true; s.risultati[s.turno] = s.turno === 0 ? 3 : 4; };', c);
         frame(11000); frame(11020);
         assert.equal(salvati.size, 0, 'il duello non sovrascrive il record personale');
+        if (gioco === 'volo') {
+            assert.equal(avvia.textContent, 'Gioca Seconda');
+            avvia.emetti('click');
+            assert.equal(nodi.get('#fase').textContent, 'Turno 2 / 2');
+            assert.equal(nodi.get('#punti1').textContent, 3);
+            frame(12000); frame(12020);
+            assert.equal(avvia.textContent, 'Gioca ancora');
+            assert.match(nodi.get('#messaggi').textContent, /Vince Seconda/);
+            assert.equal(salvati.size, 0);
+        }
     }
     console.log(`OK pagina ${gioco}: caricamento, disegno, avvio, blur, ripresa, fine e riavvio`);
 }

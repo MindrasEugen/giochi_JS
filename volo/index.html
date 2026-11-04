@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Volo | Giochi JS</title>
+  <link rel="stylesheet" href="../css/comune.css">
+  <link rel="stylesheet" href="../css/gioco.css">
+  <link rel="stylesheet" href="../css/giocatori.css">
+  <link rel="stylesheet" href="../css/arcade.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="contenitore" id="contenitore_gioco">
+  <a class="link-home" href="../index.html">&larr; Tutti i giochi</a>
+  <header class="arcade-intro"><p class="occhiello">Sala arcade / Volo</p><h1>Trova il ritmo del vento.</h1><p class="sottotitolo">Un aliante di carta, varchi dorati e un battito alla volta. Sfida te stesso o un amico, a turni.</p></header>
+
+  <div class="barra-modalita"><label for="modalitaGioco">Modalit&agrave;</label><select id="modalitaGioco"><option value="uno">1 giocatore</option><option value="due">Sfida a turni</option></select><button type="button" id="nomiGiocatori" class="pulsante pulsante--secondario" hidden>Nomi</button></div>
+  <div class="arcade-statistiche" aria-label="Tabellone">
+    <div class="arcade-statistica"><span id="etichetta1">Punti</span><strong id="punti1">0</strong></div>
+    <div class="arcade-statistica"><span id="etichetta2">Partita</span><strong id="punti2">0</strong></div>
+    <div class="arcade-statistica"><span>Obiettivo</span><strong id="fase">Pronto</strong></div>
+    <div class="arcade-statistica"><span>Record personale (solo)</span><strong id="record">0</strong></div>
+  </div>
+  <div class="arcade-campo arcade-campo--verticale">
+    <canvas width="600" height="480" tabindex="0" aria-label="Campo di Volo. Comandi descritti nelle regole." aria-describedby="aiuto">Il gioco richiede un browser con supporto canvas.</canvas>
+    <div class="arcade-velo" id="velo"><h2 id="statoTitolo">Pronto?</h2><p id="statoTesto">Premi Gioca per iniziare.</p></div>
+  </div>
+  <div class="arcade-azioni"><button class="pulsante" type="button" id="avvia" aria-pressed="false">Gioca</button><button class="pulsante pulsante--secondario" type="button" id="nuovaPartita">Nuova partita</button></div>
+  <p id="messaggi" role="status" aria-live="polite"></p>
+  <div class="arcade-comandi" aria-label="Comandi touch"><fieldset><legend>Aliante</legend><div class="arcade-tasti"><button class="arcade-tasto" type="button" data-tasto="Space">Battito</button></div></fieldset></div>
+  <p class="arcade-aiuto" id="aiuto">P o Esc per la pausa. Cambiando scheda il gioco si ferma; premi Riprendi per continuare.</p>
+  <details class="pannello regole"><summary>Regole e comandi</summary><ol><li>Dopo Gioca, premi Spazio, freccia su o Battito per partire. Puoi anche toccare il campo.</li><li>Ogni battito ti spinge verso l'alto; tra un battito e l'altro scendi. Evita le barriere e i bordi del campo.</li><li>Un punto per ogni varco completamente superato. Il record personale riguarda le partite da soli.</li><li>Sfida a due: prima gioca uno, poi l'altro con gli stessi varchi nello stesso ordine. Alla fine del primo turno passa il dispositivo e premi Gioca per il secondo. Vince chi supera pi&ugrave; varchi.</li></ol></details>
+</main>
+<script src="../js/giocatori.js"></script><script src="../js/arcade.js"></script><script src="../js/arcade-pagina.js"></script><script src="./funzioni.js"></script><script src="./main.js"></script>
+</body>
+</html>

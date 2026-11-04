@@ -44,7 +44,11 @@ const ArcadePagina = (() => {
             tabellone();
         }
         function alterna() {
-            if (conclusa) nuova();
+            if (conclusa && config.prossimo?.(stato)) {
+                stato = config.avanza(stato);
+                tasti.clear(); iniziata = false; conclusa = false;
+                tabellone();
+            } else if (conclusa) nuova();
             if (iniziata && !ciclo.inPausa()) { pausa(); return; }
             iniziata = true;
             velo.hidden = true;
@@ -68,7 +72,8 @@ const ArcadePagina = (() => {
                     }
                     const esito = config.esito(stato, due(), nome);
                     avviso('Partita finita', esito); messaggi.textContent = esito;
-                    pulsante.textContent = 'Gioca ancora'; pulsante.setAttribute('aria-pressed', 'false');
+                    pulsante.textContent = config.prossimo?.(stato) ? `Gioca ${nome(1)}` : 'Gioca ancora';
+                    pulsante.setAttribute('aria-pressed', 'false');
                 }
                 tabellone();
             },

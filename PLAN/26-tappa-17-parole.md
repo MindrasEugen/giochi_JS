@@ -8,9 +8,11 @@ Un gioco di parole a 5 lettere.
 
 ## Attività
 
-- [ ] Cinque lettere: 6 tentativi, lettere verdi, gialle e grigie, tastiera a schermo, regola corretta per le lettere doppie
-- [ ] Lista di parole italiane da 5 lettere: oggi la lista dell'impiccato ne ha 158, va ampliata
-- [ ] 2 giocatori: uno sceglie la parola, l'altro indovina, poi si scambiano
+- [x] Cinque lettere: 6 tentativi, lettere verdi, gialle e grigie, tastiera a schermo, regola corretta per le lettere doppie
+- [x] Lista italiana ampliata dalle 158 parole dell'impiccato a 1.376 voci uniche
+- [x] 2 giocatori: uno sceglie la parola, l'altro indovina, poi si scambiano
+- [x] Test della logica e del controller con DOM simulato
+- [ ] Screenshot e prova interattiva nel browser, anche su telefono
 
 ## Come verificare
 
@@ -19,12 +21,16 @@ Un gioco di parole a 5 lettere.
 
 ## Esito
 
-—
+Cinque lettere disponibile dalla home, che raggiunge 23 giochi. Logica, vocabolario, pagina e stile separati. Nessuna nuova dipendenza. La colorazione è stata verificata su 59.049 coppie, oltre ai test di validazione, tastiera e fine partita. Il controller è stato verificato per i due turni, riservatezza della parola e riavvio della sfida.
 
 ## Decisioni prese
 
-—
+- Vocabolario locale: parole comuni, plurali e forme flesse; non un dizionario esaustivo. Le parole non riconosciute e quelle ripetute non consumano tentativi.
+- Accenti ignorati; maiuscole e minuscole equivalenti. Segni distintivi oltre ai colori e descrizioni testuali per i lettori di schermo.
+- Si assegnano prima tutte le lettere verdi, poi quelle gialle in base alle copie rimaste. La tastiera conserva sempre l'indizio migliore.
+- La sfida dura due turni. Chi non trova la parola conta come sette tentativi; vince il totale inferiore, con pareggio possibile.
+- Il tabellone del turno precedente viene cancellato prima di chiedere la nuova parola e di passare il dispositivo.
 
 ## Problemi aperti
 
-—
+Prova visiva ancora da eseguire: il servizio browser restituisce `The browser access host is unavailable`. I test del DOM non verificano rendering o tastiera mobile reale. Nessun commit o push della Tappa 17; i push restano a cura dell'utente.

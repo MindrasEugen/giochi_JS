@@ -2,5 +2,5 @@
 
 Ultima modifica: 2026-11-04
 
-- **Azione successiva:** completare la prova visiva della [Tappa 15](24-tappa-15-arcade-1.md) su browser e telefono. Poi passare alla [Tappa 16](25-tappa-16-arcade-2.md).
-- **Stato:** sviluppo della Tappa 15 autorizzato e implementato da Codex. L'accesso nativo a Edge è stato fermato dallo strumento perché non riusciva a verificare l'URL. Commit e push non eseguiti.
+- **Azione successiva:** completare la prova visiva delle Tappe 15–17 su browser e telefono. La prossima implementazione prevista è la [Tappa 18: mazzo italiano](27-tappa-18-italiano-1.md).
+- **Stato:** Tappe 16 e 17 implementate su richiesta dell'utente e raccolte nel presente commit locale. Tappa 15 nel commit locale `fe8bc4d`. I push vengono eseguiti dall'utente. Il servizio browser non è disponibile in questa sessione.

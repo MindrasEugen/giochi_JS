@@ -10,9 +10,13 @@ Non occorre installare dipendenze. I record e i nomi sono salvati nel browser; i
 ## Giochi disponibili
 
 Sasso carta forbici, Indovina il numero, Sette e mezzo, Forza 4, Memory, Campo minato, Raddoppia, Sudoku, Tris, Dama, Filetto, Battaglia navale, Ludo e Scacchi, oltre a L'impiccato.
-La sala arcade include anche Serpente, Ping pong e Mattoncini: 18 giochi disponibili nella home.
+La sala arcade include Serpente, Ping pong, Mattoncini, Blocchi, Invasione, Volo e Labirinto. Con Cinque lettere, la home contiene 23 giochi.
 
 Serpente e Ping pong supportano due giocatori sullo stesso dispositivo, con tastiera o pulsanti touch. Mattoncini offre tre livelli, bonus temporanei e record. Tutti gli arcade hanno avvio esplicito, pausa, riavvio e pausa automatica al cambio di scheda.
+
+Blocchi offre righe, livelli e due campi affiancati con la stessa sequenza di pezzi. Invasione ha ondate e scudi distruttibili. Volo permette una sfida a due turni con gli stessi ostacoli. Labirinto propone una mappa originale con luci, cristalli e guardiani. Anche questi giochi hanno pulsanti touch e record personali separati dalle sfide.
+
+Cinque lettere offre sei tentativi, indizi corretti per le lettere doppie e un vocabolario locale di 1.376 parole. Si gioca da soli oppure in due, scegliendo a turno una parola segreta. La tastiera a schermo conserva l'indizio migliore per ogni lettera; parole non valide o ripetute non consumano tentativi.
 
 ## Verifiche
 
@@ -32,6 +36,7 @@ Non sono necessari npm, build o librerie aggiuntive. Alcuni test storici usano c
 - Una cartella per gioco: `index.html`, `main.js`, `style.css`; i giochi piu' recenti separano la logica in `funzioni.js`.
 - `js/`: strumenti condivisi per carte, giocatori e arcade.
 - `css/`: stili e componenti comuni.
+- `pezzi_scacco/`: i 12 PNG forniti dall'utente, usati su scacchiera, promozioni e pezzi catturati.
 - `ADR/`: decisioni tecniche.
 - `PLAN/`: stato e tappe di sviluppo.
 - `audit/`: rapporti storici; la data identifica lo stato esaminato.
@@ -42,4 +47,6 @@ Controllare su desktop e telefono: cambio modalita', nuova partita durante l'att
 Verificare tastiera, focus nelle finestre, scorrimento delle griglie e lettore di schermo.
 Per Sette e mezzo controllare i titoli dopo cambio nomi a mano conclusa e lo scambio del banco alla mano successiva.
 Per Scacchi controllare promozione, catture e annullamento.
+Per Blocchi provare i due campi contemporaneamente e i comandi su schermo piccolo. Per Volo completare entrambi i turni e verificare il passaggio del dispositivo prima di iniziare il secondo.
+Per Cinque lettere provare tastiera del computer e touch, lettere ripetute, parola segreta e passaggio del dispositivo nei due turni.
 I test Node non sostituiscono queste verifiche nel browser.

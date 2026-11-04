@@ -1,0 +1,28 @@
+#contenitore_gioco.contenitore { max-width: 660px; }
+.intro-lettere { text-align: left; margin-block: var(--spazio-3) var(--spazio-4); }
+.intro-lettere h1, .intro-lettere .sottotitolo { text-align: left; }
+.occhiello-lettere { margin: 0; color: var(--colore-avviso); text-transform: uppercase; letter-spacing: .12em; font-size: var(--testo-s); font-weight: 700; }
+.progresso-lettere { display: flex; justify-content: space-between; max-width: 350px; margin: 0 auto var(--spazio-2); color: var(--colore-testo-tenue); font-size: var(--testo-s); }
+.tentativi-lettere { display: grid; gap: var(--spazio-2); max-width: 350px; margin: auto; padding: 0; list-style: none; }
+.riga-lettere { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--spazio-2); }
+.tessera-lettera { display: flex; flex-direction: column; justify-content: center; align-items: center; aspect-ratio: 1; border: 2px solid var(--colore-bordo); border-radius: var(--raggio-s); background: var(--colore-sfondo); color: var(--colore-primario); font-size: clamp(1.2rem, 6vw, 1.8rem); font-weight: 700; line-height: 1; }
+.riga-lettere--corrente .tessera-lettera { border-color: var(--colore-primario-chiaro); }
+.indizio-lettera { min-height: 10px; margin-top: 3px; font-size: .6rem; }
+[data-esito="esatta"] { background: var(--colore-successo); color: var(--colore-superficie); border-color: var(--colore-successo); }
+[data-esito="presente"] { background: var(--colore-accento); color: var(--colore-primario); border-color: var(--colore-accento); }
+[data-esito="assente"] { background: #E0E3DF; color: var(--colore-testo); border-color: #C3CCC5; }
+.legenda-lettere { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--spazio-2) var(--spazio-3); margin-block: var(--spazio-3); padding: 0; list-style: none; font-size: .75rem; color: var(--colore-testo-tenue); }
+.legenda-lettere li { display: flex; align-items: center; gap: 4px; }
+.legenda-lettere span { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 4px; font-weight: 700; }
+.modulo-lettere { display: flex; flex-wrap: wrap; gap: var(--spazio-2); max-width: 420px; margin: auto; }
+.modulo-lettere input { flex: 1 1 150px; width: 0; min-width: 0; text-transform: uppercase; }
+.tastiera-lettere { display: grid; gap: 6px; margin-block: var(--spazio-3); }
+.tastiera-riga { display: flex; justify-content: center; gap: 3px; }
+.tasto-lettera { min-width: 0; min-height: 46px; flex: 0 1 45px; padding: 0; border: 1px solid var(--colore-bordo); border-radius: var(--raggio-s); font: inherit; font-size: clamp(.75rem, 3.6vw, 1rem); font-weight: 700; background: var(--colore-sfondo); color: var(--colore-primario); cursor: pointer; touch-action: manipulation; }
+.tasto-lettera[data-esito="esatta"] { background: var(--colore-successo); color: var(--colore-superficie); }
+.tasto-lettera[data-esito="presente"] { background: var(--colore-accento); }
+.tasto-lettera[data-esito="assente"] { background: #E0E3DF; color: var(--colore-testo-tenue); }
+.tasto-lettera:disabled { cursor: default; }
+.azioni-tastiera { display: flex; justify-content: center; gap: var(--spazio-2); }
+.punteggi-due__punti { font-size: var(--testo-m); }
+@media (min-width: 600px) { .tasto-lettera { min-height: 50px; } .intro-lettere { margin-top: var(--spazio-4); } }

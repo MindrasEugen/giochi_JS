@@ -13,6 +13,16 @@ const CATEGORIE = [
 ];
 
 const GIOCHI = [
+    { nome: 'Cinque lettere', cartella: 'cinque_lettere', categoria: 'parole', emoji: '🔤', dueGiocatori: true,
+      descrizione: 'Trova la parola in sei tentativi. Da solo o a turni, con indizi per ogni lettera.' },
+    { nome: 'Blocchi', cartella: 'blocchi', categoria: 'arcade', emoji: '🟨', dueGiocatori: true,
+      descrizione: 'Incastra i pezzi e libera le righe. Da solo o su due campi con la stessa sequenza.' },
+    { nome: 'Invasione', cartella: 'invasione', categoria: 'arcade', emoji: '🛸', dueGiocatori: false,
+      descrizione: 'Difendi la base con gli scudi e resisti a ondate di droni sempre più veloci.' },
+    { nome: 'Volo', cartella: 'volo', categoria: 'arcade', emoji: '🪁', dueGiocatori: true,
+      descrizione: 'Guida un aliante tra i varchi: da solo o a turni con gli stessi ostacoli.' },
+    { nome: 'Labirinto', cartella: 'labirinto', categoria: 'arcade', emoji: '💠', dueGiocatori: false,
+      descrizione: 'Raccogli ogni luce, trova i cristalli e sfuggi ai guardiani del labirinto.' },
     { nome: 'Serpente', cartella: 'serpente', categoria: 'arcade', emoji: '🐍', dueGiocatori: true,
       descrizione: 'Raccogli il cibo e schiva le pareti: da solo o con due serpenti sullo stesso campo.' },
     { nome: 'Ping pong', cartella: 'ping_pong', categoria: 'arcade', emoji: '🏓', dueGiocatori: true,

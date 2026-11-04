@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blocchi | Giochi JS</title>
+  <link rel="stylesheet" href="../css/comune.css">
+  <link rel="stylesheet" href="../css/gioco.css">
+  <link rel="stylesheet" href="../css/giocatori.css">
+  <link rel="stylesheet" href="../css/arcade.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="contenitore" id="contenitore_gioco">
+  <a class="link-home" href="../index.html">&larr; Tutti i giochi</a>
+  <header class="arcade-intro"><p class="occhiello">Sala arcade / Blocchi</p><h1>Metti ogni pezzo al suo posto.</h1><p class="sottotitolo">Righe da liberare, incastri da inventare. Un campo per te o due campi per sfidarsi.</p></header>
+
+  <div class="barra-modalita"><label for="modalitaGioco">Modalit&agrave;</label><select id="modalitaGioco"><option value="uno">1 giocatore</option><option value="due">2 giocatori</option></select><button type="button" id="nomiGiocatori" class="pulsante pulsante--secondario" hidden>Nomi</button></div>
+  <div class="arcade-statistiche" aria-label="Tabellone">
+    <div class="arcade-statistica"><span id="etichetta1">Punti</span><strong id="punti1">0</strong></div>
+    <div class="arcade-statistica"><span id="etichetta2">Partita</span><strong id="punti2">0</strong></div>
+    <div class="arcade-statistica"><span>Obiettivo</span><strong id="fase">Pronto</strong></div>
+    <div class="arcade-statistica"><span>Record personale (solo)</span><strong id="record">0</strong></div>
+  </div>
+  <div class="arcade-campo arcade-campo--blocchi">
+    <canvas width="720" height="640" tabindex="0" aria-label="Campo di Blocchi. Comandi descritti nelle regole." aria-describedby="aiuto">Il gioco richiede un browser con supporto canvas.</canvas>
+    <div class="arcade-velo" id="velo"><h2 id="statoTitolo">Pronto?</h2><p id="statoTesto">Premi Gioca per iniziare.</p></div>
+  </div>
+  <div class="arcade-azioni"><button class="pulsante" type="button" id="avvia" aria-pressed="false">Gioca</button><button class="pulsante pulsante--secondario" type="button" id="nuovaPartita">Nuova partita</button></div>
+  <p id="messaggi" role="status" aria-live="polite"></p>
+  <div class="arcade-comandi" aria-label="Comandi touch"><fieldset><legend>Campo 1 / WASD e F</legend><div class="arcade-tasti"><button class="arcade-tasto" type="button" data-tasto="KeyA" aria-label="Sposta a sinistra">&larr;</button><button class="arcade-tasto" type="button" data-tasto="KeyD" aria-label="Sposta a destra">&rarr;</button><button class="arcade-tasto" type="button" data-tasto="KeyW" aria-label="Ruota">Ruota</button><button class="arcade-tasto" type="button" data-tasto="KeyS" aria-label="Scendi">&darr;</button><button class="arcade-tasto" type="button" data-tasto="KeyF" aria-label="Posa subito">Posa</button></div></fieldset><fieldset data-giocatore="1" hidden><legend>Campo 2 / frecce e Spazio</legend><div class="arcade-tasti"><button class="arcade-tasto" type="button" data-tasto="ArrowLeft" aria-label="Sposta a sinistra">&larr;</button><button class="arcade-tasto" type="button" data-tasto="ArrowRight" aria-label="Sposta a destra">&rarr;</button><button class="arcade-tasto" type="button" data-tasto="ArrowUp" aria-label="Ruota">Ruota</button><button class="arcade-tasto" type="button" data-tasto="ArrowDown" aria-label="Scendi">&darr;</button><button class="arcade-tasto" type="button" data-tasto="Space" aria-label="Posa subito">Posa</button></div></fieldset></div>
+  <p class="arcade-aiuto" id="aiuto">P o Esc per la pausa. Cambiando scheda il gioco si ferma; premi Riprendi per continuare.</p>
+  <details class="pannello regole"><summary>Regole e comandi</summary><ol><li>Riempi una riga senza lasciare spazi: la riga sparisce. Ogni 10 righe aumenta il livello.</li><li>Frecce sinistra/destra per spostare, su per ruotare, gi&ugrave; per accelerare e Spazio per posare subito. Da soli funzionano anche WASD e F.</li><li>L'ombra mostra dove cadr&agrave; il pezzo; in basso vedi il prossimo. Un sacco contiene tutte e sette le forme prima di ricominciare.</li><li>In due, campo sinistro con WASD e F, destro con frecce e Spazio. La sequenza dei pezzi &egrave; identica: vince chi non riempie il proprio campo.</li></ol></details>
+</main>
+<script src="../js/giocatori.js"></script><script src="../js/arcade.js"></script><script src="../js/arcade-pagina.js"></script><script src="./funzioni.js"></script><script src="./main.js"></script>
+</body>
+</html>

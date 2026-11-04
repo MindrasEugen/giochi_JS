@@ -1,0 +1,13 @@
+/* Componenti condivisi in css/arcade.css. */
+:root {
+    --colore-blocco-1: #FFE08A;
+    --colore-blocco-2: #FFF8E7;
+    --colore-blocco-3: #8EDFFF;
+    --colore-blocco-4: #A7EDBB;
+    --colore-blocco-5: #FFB2B8;
+    --colore-blocco-6: #FFD0A0;
+    --colore-blocco-7: #D8BCFF;
+}
+
+.arcade-comandi .arcade-tasti { flex-wrap: wrap; }
+.arcade-comandi fieldset { flex: 1 1 250px; max-width: 360px; }

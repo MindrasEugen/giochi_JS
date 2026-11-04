@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cinque lettere | Giochi JS</title>
+  <link rel="stylesheet" href="../css/comune.css">
+  <link rel="stylesheet" href="../css/gioco.css">
+  <link rel="stylesheet" href="../css/giocatori.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="contenitore" id="contenitore_gioco">
+  <a class="link-home" href="../index.html">← Tutti i giochi</a>
+  <header class="intro-lettere"><p class="occhiello-lettere">Parole / Cinque lettere</p><h1>Una parola. Sei possibilità.</h1><p class="sottotitolo">Segui gli indizi, cambia prospettiva e trova le cinque lettere nascoste.</p></header>
+  <div class="barra-modalita">
+    <label for="modalitaGioco" class="nascosto-visivamente">Modalità</label>
+    <select id="modalitaGioco"><option value="uno">1 giocatore</option><option value="due">Sfida a 2 giocatori</option></select>
+    <button type="button" class="pulsante pulsante--secondario" id="nomiGiocatori" hidden>Nomi</button>
+  </div>
+  <div class="punteggi-due" id="punteggiDue" hidden>
+    <span class="punteggi-due__giocatore"><span class="punteggi-due__nome" id="nomeG1">Giocatore 1</span><span class="punteggi-due__punti" id="puntiG1">–</span></span>
+    <span class="punteggi-due__giocatore"><span class="punteggi-due__nome" id="nomeG2">Giocatore 2</span><span class="punteggi-due__punti" id="puntiG2">–</span></span>
+  </div>
+  <p class="turno-due" id="turnoDue" hidden></p>
+  <div class="progresso-lettere"><span>Tentativi</span><strong id="contaTentativi">0 / 6</strong></div>
+  <ol class="tentativi-lettere" id="tentativi" aria-label="I tuoi sei tentativi"></ol>
+  <ul class="legenda-lettere" aria-label="Significato degli indizi">
+    <li><span data-esito="esatta">✓</span> Posto giusto</li>
+    <li><span data-esito="presente">↔</span> Altro posto</li>
+    <li><span data-esito="assente">–</span> Non disponibile</li>
+  </ul>
+  <form id="modulo" class="modulo-lettere">
+    <label for="parola" class="nascosto-visivamente">Il tuo tentativo di cinque lettere</label>
+    <input id="parola" type="text" maxlength="5" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Cinque lettere" aria-describedby="messaggi">
+    <button type="submit" class="pulsante" id="invia">Prova</button>
+  </form>
+  <p id="messaggi" role="status" aria-live="polite"></p>
+  <div id="tastiera" class="tastiera-lettere" role="group" aria-label="Tastiera delle lettere"></div>
+  <div class="azioni-tastiera"><button type="button" class="pulsante pulsante--secondario" id="cancella" aria-label="Cancella ultima lettera">⌫ Cancella</button><button type="button" class="pulsante" id="invioTastiera">Invio</button></div>
+  <button type="button" class="pulsante pulsante--secondario" id="nuovaPartita">Nuova parola</button>
+  <details class="pannello regole"><summary>Regole e lettere doppie</summary><ol>
+    <li>Trova la parola in sei tentativi. Ogni parola deve essere nel vocabolario del gioco; un tentativo non valido non viene contato.</li>
+    <li>Verde ✓: lettera nel posto giusto. Giallo ↔: lettera presente in un altro posto. Grigio –: questa copia della lettera non è disponibile.</li>
+    <li>Le lettere doppie contano una volta per ogni copia nella parola segreta: prima si assegnano le verdi, poi le gialle. Un tasto conserva sempre l’indizio migliore.</li>
+    <li>Puoi scrivere nel campo, usare la tastiera a schermo oppure la tastiera del computer. Invio conferma e Backspace cancella.</li>
+    <li>Il vocabolario contiene <span id="numeroParole"></span> parole italiane, compresi plurali e forme flesse. Gli accenti vengono ignorati; niente nomi propri, spazi o apostrofi. La raccolta non è un dizionario completo.</li>
+    <li>In due: il primo sceglie la parola e il secondo indovina, poi si scambiano. Vince chi indovina con meno tentativi. Chi non indovina conta come sette tentativi; se falliscono entrambi è pareggio.</li>
+  </ol></details>
+</main>
+<script src="../js/giocatori.js"></script><script src="./parole.js"></script><script src="./funzioni.js"></script><script src="./main.js"></script>
+</body>
+</html>

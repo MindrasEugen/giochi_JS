@@ -10,8 +10,7 @@ const elencoMosse = document.querySelector('#mosse');
 
 const COLORE_PC = 'b';
 const NOMI_COLORI = { w: 'bianco', b: 'nero' };
-// Simboli dei pezzi (sempre la versione piena; il colore lo dà il CSS). ︎ chiede la versione "testo", non emoji
-const SIMBOLI = { K: '♚', Q: '♛', R: '♜', B: '♝', N: '♞', P: '♟' };
+const FILE_PEZZI = { K: 'king', Q: 'queen', R: 'rook', B: 'bishop', N: 'knight', P: 'pawn' };
 const NOMI_PEZZI = { K: 're', Q: 'donna', R: 'torre', B: 'alfiere', N: 'cavallo', P: 'pedone' };
 const LETTERE_ITALIANE = { K: 'R', Q: 'D', R: 'T', B: 'A', N: 'C' };
 
@@ -29,8 +28,23 @@ let girata = false;
 let dueGiocatori = false;
 let nomi = Giocatori.leggiNomi();
 
-function simbolo(pezzo) {
-    return `${SIMBOLI[pezzo.toUpperCase()]}︎`;
+function descrizionePezzo(pezzo) {
+    const femminile = ['Q', 'R'].includes(pezzo.toUpperCase());
+    const tinta = femminile ? (colore(pezzo) === 'w' ? 'bianca' : 'nera') : NOMI_COLORI[colore(pezzo)];
+    return `${NOMI_PEZZI[pezzo.toUpperCase()]} ${tinta}`;
+}
+
+function immaginePezzo(pezzo, decorativa = true) {
+    const immagine = document.createElement('img');
+    const lato = colore(pezzo) === 'w' ? 'white' : 'black';
+    immagine.src = `../pezzi_scacco/${lato}-${FILE_PEZZI[pezzo.toUpperCase()]}.png`;
+    immagine.className = 'pezzo-scacchi';
+    immagine.width = 512;
+    immagine.height = 512;
+    immagine.draggable = false;
+    immagine.alt = decorativa ? '' : descrizionePezzo(pezzo);
+    if (decorativa) immagine.setAttribute('aria-hidden', 'true');
+    return immagine;
 }
 
 // Notazione italiana: K→R (re), Q→D (donna), R→T (torre), B→A (alfiere), N→C (cavallo)
@@ -78,11 +92,7 @@ function disegna() {
         const pezzo = stato.scacchiera[i];
         casella.textContent = '';
         if (pezzo) {
-            const segno = document.createElement('span');
-            segno.className = `pezzo-scacchi pezzo-scacchi--${colore(pezzo)}`;
-            segno.textContent = simbolo(pezzo);
-            segno.setAttribute('aria-hidden', 'true');
-            casella.appendChild(segno);
+            casella.appendChild(immaginePezzo(pezzo));
         }
         // coordinate sul bordo (lettere in basso, numeri a sinistra), secondo il verso della scacchiera
         const r = Math.floor(i / 8), c = i % 8;
@@ -106,13 +116,15 @@ function disegna() {
         casella.classList.toggle('casella-scacchi--presa', Boolean(destinazione) && Boolean(destinazione.presa));
         casella.classList.toggle('casella-scacchi--ultima', ultimaMossa !== null && (ultimaMossa.da === i || ultimaMossa.a === i));
         casella.classList.toggle('casella-scacchi--scacco', scacco && i === re);
-        const descrizione = pezzo ? `${NOMI_PEZZI[pezzo.toUpperCase()]} ${colore(pezzo) === 'w' ? 'bianco' : 'nero'}` : 'vuota';
+        const descrizione = pezzo ? descrizionePezzo(pezzo) : 'vuota';
         casella.setAttribute('aria-label', `${nomeCasa(i)}: ${descrizione}${destinazione ? ', puoi muovere qui' : ''}`);
     }
     const presi = catturati();
     for (const c of ['w', 'b']) {
         document.querySelector(`#nome${c.toUpperCase()}`).textContent = nome(c);
-        document.querySelector(`#catturati${c.toUpperCase()}`).textContent = presi[c].map(simbolo).join('');
+        const catture = document.querySelector(`#catturati${c.toUpperCase()}`);
+        catture.textContent = '';
+        presi[c].forEach(pezzo => catture.appendChild(immaginePezzo(pezzo, false)));
     }
     contenitore.dataset.turno = finita ? '' : stato.tocca;
     document.querySelector('#annulla').disabled = storiaStati.length === 0 || pcPensa;
@@ -161,8 +173,8 @@ function clicCasella(i) {
             // promozione: si sceglie il pezzo
             inSospeso = scelte;
             pannelloPromozione.querySelectorAll('.promozione__pezzo').forEach(b => {
-                b.textContent = simbolo(stato.tocca === 'w' ? b.dataset.pezzo : b.dataset.pezzo.toLowerCase());
-                b.classList.toggle('promozione__pezzo--nero', stato.tocca === 'b');
+                b.textContent = '';
+                b.appendChild(immaginePezzo(stato.tocca === 'w' ? b.dataset.pezzo : b.dataset.pezzo.toLowerCase()));
             });
             pannelloPromozione.hidden = false;
             pannelloPromozione.querySelector('button').focus();
