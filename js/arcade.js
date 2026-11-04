@@ -50,6 +50,7 @@ const Arcade = (() => {
             if (!inPausa) {
                 const { passi, resto } = passiDaFare(accumulato, adesso - ultimo);
                 for (let i = 0; i < passi; i++) {
+                    if (inPausa || fermo) break;
                     aggiorna(PASSO / 1000);
                 }
                 accumulato = resto;
@@ -70,7 +71,7 @@ const Arcade = (() => {
 
         return {
             pausa() { inPausa = true; },
-            riprendi() { inPausa = false; },
+            riprendi() { inPausa = false; ultimo = null; accumulato = 0; },
             alterna() { inPausa = !inPausa; return inPausa; },
             inPausa() { return inPausa; },
             ferma() {
@@ -116,7 +117,29 @@ const Arcade = (() => {
         return contesto;
     }
 
-    return { PASSO, avvia, premuto, passiDaFare, record, salvaRecord, adattaCanvas };
+    // Colori del design system (le variabili CSS di css/comune.css), da usare per disegnare sul canvas:
+    // così i giochi arcade hanno la stessa palette delle pagine e nel JS non ci sono colori scritti a mano
+    function colori() {
+        const stile = getComputedStyle(document.documentElement);
+        const leggi = nome => stile.getPropertyValue(`--colore-${nome}`).trim();
+        return {
+            sfondo: leggi('sfondo'), superficie: leggi('superficie'), primario: leggi('primario'),
+            primarioChiaro: leggi('primario-chiaro'), accento: leggi('accento'), testo: leggi('testo'),
+            testoTenue: leggi('testo-tenue'), bordo: leggi('bordo'), successo: leggi('successo'),
+            errore: leggi('errore'), avviso: leggi('avviso'), info: leggi('info')
+        };
+    }
+
+    // Posizione del puntatore (mouse o dito) nelle coordinate logiche del gioco, anche se il canvas è ridimensionato dal CSS
+    function puntoCanvas(canvas, evento, larghezza, altezza) {
+        const rettangolo = canvas.getBoundingClientRect();
+        return {
+            x: (evento.clientX - rettangolo.left) * larghezza / rettangolo.width,
+            y: (evento.clientY - rettangolo.top) * altezza / rettangolo.height
+        };
+    }
+
+    return { PASSO, avvia, premuto, passiDaFare, record, salvaRecord, adattaCanvas, colori, puntoCanvas };
 })();
 
 if (typeof module !== 'undefined') {

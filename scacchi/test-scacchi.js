@@ -74,6 +74,20 @@ controlla(`promozione: 4 scelte (${promozioni.join(', ')})`, promozioni.join() =
 const due = S.daFEN('4k3/8/8/8/8/8/4K3/R6R w - - 0 1');
 controlla('notazione: due torri possono andare in d1 -> Rad1 e Rhd1', S.mosseLegali(due).filter(m => S.casaDaNome('d1') === m.a && due.scacchiera[m.da] === 'R').map(m => S.notazione(due, m)).sort().join() === 'Rad1,Rhd1');
 
+// Regressioni audit: ripetizione, en passant legale e catture effettive.
+const dopoE4 = giocate(S.FEN_INIZIALE, ['e4', 'Nf6', 'Nf3', 'Ng8', 'Ng1', 'Nf6', 'Nf3', 'Ng8', 'Ng1']);
+controlla('ripetizione dopo doppio passo senza presa en passant disponibile', S.situazione(dopoE4).esito === 'ripetizione');
+const senzaEp = s => S.chiave({ ...s, enPassant: -1 });
+controlla('en passant legale distingue due posizioni', S.chiave(ep) !== senzaEp(ep));
+const inchiodato = S.daFEN('k3r3/8/8/3pP3/8/8/8/4K3 w - d6 0 1');
+controlla('en passant che espone il re non distingue le posizioni', S.chiave(inchiodato) === senzaEp(inchiodato));
+const primaPromo = S.daFEN('7r/4P2k/8/8/8/8/8/4K3 w - - 0 1');
+const promossa = S.applica(primaPromo, S.mosseLegali(primaPromo).find(m => m.promozione === 'Q'));
+controlla('la promozione non aggiunge catture', promossa.catturati.w.length === 0 && promossa.catturati.b.length === 0);
+const presaPromossa = S.applica(promossa, S.mosseLegali(promossa).find(m => m.presa === 'Q'));
+controlla('la cattura del pezzo promosso registra la donna e non cambia lo stato precedente', presaPromossa.catturati.b.join() === 'Q' && promossa.catturati.b.length === 0);
+controlla('en passant registra il pedone catturato', dopoEp.catturati.w.includes('p'));
+
 // Computer
 controlla('il PC (media) mangia la donna lasciata in presa', (() => {
     const s = S.daFEN('4k3/8/8/3q4/8/8/3R4/4K3 w - - 0 1');

@@ -25,3 +25,6 @@ Ultima modifica: 2026-11-03
 - 2026-11-04 — Tappa 10.1 completata: Sette e mezzo a 2 giocatori con uno dei due che fa il banco; layout del banco su desktop corretto da Codex.
 - 2026-11-04 — Tappa 13 completata: Dama italiana, Filetto, Battaglia navale; 61 controlli con Node, 40 con jsdom; design di Codex in due giri (il secondo crea `css/gioco.css`, ADR 0010). L'utente chiede CSS mobile-first: verificato su tutti i file.
 - 2026-11-04 — Tappa 14 completata: Scacchi (17 perft uguali ai valori pubblicati) e Ludo (da 2 a 4 giocatori, persone o computer); 57 controlli con Node, 25 con jsdom; design di Codex al primo giro.
+- 2026-11-04 — Tappa 15 avviata: helper per i colori del canvas in `js/arcade.js`, logica e test del Serpente. Lavoro interrotto per il limite d'uso, ripartire da `PLAN/01-stato-attuale.md`.
+
+- 2026-11-04 - Codex prosegue su richiesta diretta: implementati Serpente, Ping pong e Mattoncini con pagine canvas, design mobile-first, comandi touch e controller condiviso. Home a 18 giochi, regressioni per collisioni e ciclo di vita. Tappa 15 ancora in corso solo per prova visiva browser/telefono, bloccata dal controllo nativo dell'URL. Nessun commit o push.

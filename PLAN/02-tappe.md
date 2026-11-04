@@ -19,7 +19,7 @@ Ultima modifica: 2026-11-04
 | 12 | [Logica: Raddoppia (tipo 2048) e Sudoku](21-tappa-12-logica-2.md) | ☑ completata |
 | 13 | [Da tavolo: Dama, Filetto (Mulino), Battaglia navale](22-tappa-13-tavolo-1.md) | ☑ completata |
 | 14 | [Da tavolo: Ludo e Scacchi](23-tappa-14-tavolo-2.md) | ☑ completata |
-| 15 | [Arcade: Serpente, Ping pong, Mattoncini](24-tappa-15-arcade-1.md) | ☐ da fare |
+| 15 | [Arcade: Serpente, Ping pong, Mattoncini](24-tappa-15-arcade-1.md) | ◐ in corso |
 | 16 | [Arcade: Blocchi, Invasione, Volo, Labirinto](25-tappa-16-arcade-2.md) | ☐ da fare |
 | 17 | [Parole: Cinque lettere (tipo Wordle)](26-tappa-17-parole.md) | ☐ da fare |
 | 18 | [Mazzo italiano: Briscola, Scopa, Asso piglia tutto, Rubamazzetto](27-tappa-18-italiano-1.md) | ☐ da fare |

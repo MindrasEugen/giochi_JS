@@ -64,19 +64,9 @@ function puoGiocareUmano() {
     return !finita && !pcPensa && !inSospeso && (dueGiocatori || stato.tocca !== COLORE_PC);
 }
 
-// Pezzi catturati da ciascun colore: quelli dell'avversario che mancano rispetto alla posizione iniziale
+// Catture registrate nelle mosse: le promozioni non sono catture.
 function catturati() {
-    const iniziali = { P: 8, N: 2, B: 2, R: 2, Q: 1 };
-    const presi = { w: [], b: [] };
-    for (const tipo of Object.keys(iniziali)) {
-        for (const c of ['w', 'b']) {
-            const pezzo = c === 'w' ? tipo : tipo.toLowerCase();
-            const rimasti = stato.scacchiera.filter(p => p === pezzo).length;
-            // i pezzi in più (promozioni) non contano come catturati
-            for (let k = rimasti; k < iniziali[tipo]; k++) presi[c === 'w' ? 'b' : 'w'].push(pezzo);
-        }
-    }
-    return presi;
+    return stato.catturati;
 }
 
 function disegna() {

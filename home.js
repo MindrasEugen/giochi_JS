@@ -13,6 +13,12 @@ const CATEGORIE = [
 ];
 
 const GIOCHI = [
+    { nome: 'Serpente', cartella: 'serpente', categoria: 'arcade', emoji: '🐍', dueGiocatori: true,
+      descrizione: 'Raccogli il cibo e schiva le pareti: da solo o con due serpenti sullo stesso campo.' },
+    { nome: 'Ping pong', cartella: 'ping_pong', categoria: 'arcade', emoji: '🏓', dueGiocatori: true,
+      descrizione: 'Rimanda la palla al computer o a un amico. Vince chi arriva per primo a 7 punti.' },
+    { nome: 'Mattoncini', cartella: 'mattoncini', categoria: 'arcade', emoji: '🧱', dueGiocatori: false,
+      descrizione: 'Tre livelli, tre vite e bonus da raccogliere: libera il campo e supera il tuo record.' },
     { nome: 'Sasso carta forbici', cartella: 'sasso_carta_forbici', categoria: 'classici', emoji: '✊', dueGiocatori: true,
       descrizione: 'Contro il computer o contro un amico: vince chi arriva per primo a 5 punti.' },
     { nome: 'Indovina il numero', cartella: 'indovina_il_numero', categoria: 'classici', emoji: '🔢', dueGiocatori: true,
@@ -37,7 +43,7 @@ const GIOCHI = [
       descrizione: 'Il mulino a 9 pedine: fai tre in fila per togliere una pedina all’avversario.' },
     { nome: 'Battaglia navale', cartella: 'battaglia_navale', categoria: 'tavolo', emoji: '🚢', dueGiocatori: true,
       descrizione: 'Disponi la flotta e affonda quella nemica: contro il computer o passando il telefono a un amico.' },
-    { nome: 'Ludo', cartella: 'ludo', categoria: 'tavolo', emoji: '🎲', dueGiocatori: true,
+    { nome: 'Ludo', cartella: 'ludo', etichettaGiocatori: '1\u20134 giocatori', categoria: 'tavolo', emoji: '🎲', dueGiocatori: true,
       descrizione: 'Il “Non t’arrabbiare” da 2 a 4 giocatori: persone o computer, porta a casa tutte le pedine.' },
     { nome: 'Scacchi', cartella: 'scacchi', categoria: 'tavolo', emoji: '♟️', dueGiocatori: true,
       descrizione: 'Tutte le regole degli scacchi: contro un amico o contro il computer in tre livelli.' },
@@ -71,7 +77,7 @@ function creaScheda(gioco) {
     etichette.className = 'scheda__etichette';
     const giocatori = document.createElement('span');
     giocatori.className = gioco.dueGiocatori ? 'etichetta etichetta--due' : 'etichetta';
-    giocatori.textContent = gioco.dueGiocatori ? '1–2 giocatori' : '1 giocatore';
+    giocatori.textContent = gioco.etichettaGiocatori || (gioco.dueGiocatori ? '1\u20132 giocatori' : '1 giocatore');
     etichette.appendChild(giocatori);
 
     const link = document.createElement('a');

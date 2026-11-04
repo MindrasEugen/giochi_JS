@@ -1,0 +1,31 @@
+const assert = require('node:assert/strict');
+const P = require('./funzioni');
+const s = P.crea(true);
+s.attesa = 0;
+s.palla = { x: 200, y: 9, vx: 0, vy: -350 };
+P.passo(s, 1 / 60);
+assert.ok(s.palla.vy > 0 && s.palla.y >= P.RAGGIO);
+s.palla = { x: 54, y: s.racchette[0] + 44, vx: -600, vy: 0 };
+P.passo(s, 1 / 30);
+assert.ok(s.palla.vx > 0);
+assert.deepEqual(s.punti, [0, 0]);
+s.palla = { x: 2, y: 5, vx: -500, vy: 0 };
+P.passo(s, 1 / 30);
+assert.deepEqual(s.punti, [0, 1]);
+assert.ok(s.attesa > 0);
+for (let k = 0; k < 6; k++) {
+    s.attesa = 0; s.palla = { x: -7, y: 5, vx: -500, vy: 0 };
+    P.passo(s, 1 / 60);
+}
+assert.equal(s.finita, true);
+assert.equal(s.punti[1], 7);
+const prima = JSON.stringify(s);
+P.passo(s, 1);
+assert.equal(JSON.stringify(s), prima);
+const pc = P.crea(); pc.attesa = 0; pc.palla.y = 410;
+P.passo(pc, 1 / 60);
+assert.ok(pc.racchette[1] > 176 && pc.racchette[1] - 176 <= 265 / 60 + 1e-9);
+for (let i = 0; i < 200; i++) P.passo(pc, 1 / 60, [-1, 0]);
+assert.equal(pc.racchette[0], 0);
+assert.ok(pc.racchette[1] >= 0 && pc.racchette[1] <= P.ALTEZZA - P.RACCHETTA);
+console.log('OK Ping pong: muri, racchetta veloce, punti, servizio, fine a 7, limiti e velocita del PC');

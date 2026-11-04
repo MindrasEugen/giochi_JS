@@ -38,6 +38,9 @@ const Giocatori = (() => {
     function apri(titolo, testo, contenuto) {
         return new Promise(risolvi => {
             const primaDiAprire = document.activeElement;
+            // Isola lo sfondo anche per tecnologie assistive e focus programmatico.
+            const sfondo = [...document.body.children].map(elemento => ({ elemento, inert: elemento.inert }));
+            sfondo.forEach(({ elemento }) => { elemento.inert = true; });
 
             const copertura = document.createElement('div');
             copertura.className = 'copertura';
@@ -63,6 +66,7 @@ const Giocatori = (() => {
 
             function chiudi(valore) {
                 copertura.remove();
+                sfondo.forEach(({ elemento, inert }) => { elemento.inert = inert; });
                 document.body.classList.remove('con-copertura');
                 if (primaDiAprire && typeof primaDiAprire.focus === 'function') {
                     primaDiAprire.focus();

@@ -134,8 +134,7 @@ function fineMano(vincitore, testo) {
     if (dueGiocatori) {
         maniVinte[vinceGiocatore ? chiGioca() : chiBanco]++;
         aggiornaPunteggi();
-        chiBanco = 1 - chiBanco;
-        turnoDue.textContent = `Nella prossima mano fa il banco ${nomi[chiBanco]}`;
+        turnoDue.textContent = `Nella prossima mano fa il banco ${nomi[1 - chiBanco]}`;
         nuovaPartita.textContent = 'Prossima mano';
     }
 }
@@ -153,6 +152,7 @@ function aggiornaTitoli() {
 }
 
 function iniziaMano() {
+    if (dueGiocatori && manoFinita) chiBanco = 1 - chiBanco;
     clearTimeout(timerBanco);
     creaMazzo();
     puntiGiocatore = 0;
@@ -186,6 +186,7 @@ Giocatori.collegaBarra({
         punteggiDue.hidden = !due;
         turnoDue.hidden = !due;
         chiBanco = 1;
+        manoFinita = false;
         maniVinte = [0, 0];
         nuovaPartita.textContent = due ? 'Prossima mano' : 'Nuova Partita';
         aggiornaPunteggi();

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Serpente | Giochi JS</title>
+  <link rel="stylesheet" href="../css/comune.css">
+  <link rel="stylesheet" href="../css/gioco.css">
+  <link rel="stylesheet" href="../css/giocatori.css">
+  <link rel="stylesheet" href="../css/arcade.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="contenitore" id="contenitore_gioco">
+  <a class="link-home" href="../index.html">&larr; Tutti i giochi</a>
+  <header class="arcade-intro"><p class="occhiello">Sala arcade / Serpente</p><h1>Una curva alla volta.</h1><p class="sottotitolo">Raccogli il cibo, allunga il serpente e trova la strada. Da solo o in un duello sullo stesso campo.</p></header>
+  <div class="barra-modalita"><label for="modalitaGioco">Modalit&agrave;</label><select id="modalitaGioco"><option value="uno">1 giocatore</option><option value="due">2 giocatori</option></select><button type="button" id="nomiGiocatori" class="pulsante pulsante--secondario" hidden>Nomi</button></div>
+  <div class="arcade-statistiche" aria-label="Tabellone">
+    <div class="arcade-statistica"><span id="etichetta1">Punti</span><strong id="punti1">0</strong></div>
+    <div class="arcade-statistica"><span id="etichetta2">Partita</span><strong id="punti2">0</strong></div>
+    <div class="arcade-statistica"><span>Obiettivo</span><strong id="fase">Pronto</strong></div>
+    <div class="arcade-statistica"><span>Record personale (solo)</span><strong id="record">0</strong></div>
+  </div>
+  <div class="arcade-campo arcade-campo--quadrato">
+    <canvas width="480" height="480" tabindex="0" aria-label="Campo di Serpente. Comandi descritti nelle regole." aria-describedby="aiuto">Il gioco richiede un browser con supporto canvas.</canvas>
+    <div class="arcade-velo" id="velo"><h2 id="statoTitolo">Pronto?</h2><p id="statoTesto">Premi Gioca per iniziare.</p></div>
+  </div>
+  <div class="arcade-azioni"><button class="pulsante" type="button" id="avvia" aria-pressed="false">Gioca</button><button class="pulsante pulsante--secondario" type="button" id="nuovaPartita">Nuova partita</button></div>
+  <p id="messaggi" role="status" aria-live="polite"></p>
+  <div class="arcade-comandi" aria-label="Comandi touch"><fieldset><legend>Serpente verde / frecce</legend><div class="arcade-pad"><button class="arcade-tasto" type="button" data-tasto="ArrowUp" data-direzione="su" aria-label="Su">Su</button><button class="arcade-tasto" type="button" data-tasto="ArrowLeft" data-direzione="sinistra" aria-label="Sin.">Sin.</button><button class="arcade-tasto" type="button" data-tasto="ArrowDown" data-direzione="giu" aria-label="Giu">Giu</button><button class="arcade-tasto" type="button" data-tasto="ArrowRight" data-direzione="destra" aria-label="Des.">Des.</button></div></fieldset><fieldset data-giocatore="1" hidden><legend>Serpente dorato / WASD</legend><div class="arcade-pad"><button class="arcade-tasto" type="button" data-tasto="KeyW" data-direzione="su" aria-label="Su">Su</button><button class="arcade-tasto" type="button" data-tasto="KeyA" data-direzione="sinistra" aria-label="Sin.">Sin.</button><button class="arcade-tasto" type="button" data-tasto="KeyS" data-direzione="giu" aria-label="Giu">Giu</button><button class="arcade-tasto" type="button" data-tasto="KeyD" data-direzione="destra" aria-label="Des.">Des.</button></div></fieldset></div>
+  <p class="arcade-aiuto" id="aiuto">P o Esc per la pausa. Cambiando scheda il gioco si ferma; premi Riprendi per continuare.</p>
+  <details class="pannello regole"><summary>Regole e comandi</summary><ol><li>Il serpente avanza da solo: scegli la direzione con frecce, WASD o pulsanti. Non puoi invertire la marcia.</li><li>Ogni cibo vale un punto e allunga il corpo di due caselle. La velocit&agrave; aumenta con i punti.</li><li>Contro un muro o un corpo si perde. In due vince chi sopravvive; se le due teste si scontrano &egrave; pareggio.</li><li>Se la griglia si riempie la partita termina: da soli &egrave; vittoria, in due si confrontano i punti.</li></ol></details>
+</main>
+<script src="../js/giocatori.js"></script><script src="../js/arcade.js"></script><script src="../js/arcade-pagina.js"></script><script src="./funzioni.js"></script><script src="./main.js"></script>
+</body>
+</html>

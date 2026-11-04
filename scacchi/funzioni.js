@@ -35,7 +35,8 @@ function daFEN(fen) {
         enPassant: ep === '-' ? -1 : casaDaNome(ep),
         mezzeMosse: Number(mezze || 0),
         numeroMossa: Number(numero || 1),
-        storia: []
+        storia: [],
+        catturati: { w: [], b: [] }
     };
     stato.storia = [chiave(stato)];
     return stato;
@@ -50,7 +51,16 @@ function statoIniziale() {
 // Chiave della posizione per la ripetizione: pezzi, chi muove, arrocchi ed en passant
 function chiave(stato) {
     const ar = ['K', 'Q', 'k', 'q'].filter(k => stato.arrocco[k]).join('') || '-';
-    return `${stato.scacchiera.map(p => p || '.').join('')} ${stato.tocca} ${ar} ${stato.enPassant}`;
+    // Conta l'en passant solo se esiste una presa legale, anche con un pedone inchiodato.
+    const epLegale = stato.enPassant !== -1 && mossePseudo(stato).some(m => {
+        if (!m.enPassant) return false;
+        const scacchiera = [...stato.scacchiera];
+        scacchiera[m.a] = scacchiera[m.da];
+        scacchiera[m.da] = '';
+        scacchiera[m.a + (stato.tocca === 'w' ? 8 : -8)] = '';
+        return !sottoScacco({ ...stato, scacchiera }, stato.tocca);
+    });
+    return `${stato.scacchiera.map(p => p || '.').join('')} ${stato.tocca} ${ar} ${epLegale ? stato.enPassant : -1}`;
 }
 
 const CAVALLO = [[-2, -1], [-2, 1], [-1, -2], [-1, 2], [1, -2], [1, 2], [2, -1], [2, 1]];
@@ -210,7 +220,11 @@ function applica(stato, m) {
         enPassant: m.doppio ? (m.da + m.a) / 2 : -1,
         mezzeMosse: pezzo.toUpperCase() === 'P' || m.presa ? 0 : stato.mezzeMosse + 1,
         numeroMossa: stato.numeroMossa + (io === 'b' ? 1 : 0),
-        storia: stato.storia
+        storia: stato.storia,
+        catturati: {
+            w: [...(stato.catturati?.w || []), ...(io === 'w' && m.presa ? [m.presa] : [])],
+            b: [...(stato.catturati?.b || []), ...(io === 'b' && m.presa ? [m.presa] : [])]
+        }
     };
     nuovo.storia = [...stato.storia, chiave(nuovo)];
     return nuovo;

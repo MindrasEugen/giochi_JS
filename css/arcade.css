@@ -1,0 +1,38 @@
+/* Sale arcade: campo centrale, statistiche leggibili e comandi sempre disponibili. */
+#contenitore_gioco.contenitore { max-width: 880px; }
+.arcade-intro { text-align: left; margin-block: var(--spazio-4); }
+.arcade-intro h1 { text-align: left; margin: var(--spazio-1) 0; }
+.arcade-intro .sottotitolo { text-align: left; max-width: 58ch; }
+.occhiello { margin: 0; color: var(--colore-avviso); font-size: var(--testo-s); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.arcade-statistiche { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--spazio-2); margin-bottom: var(--spazio-3); }
+.arcade-statistica { padding: var(--spazio-2) var(--spazio-3); background: var(--colore-sfondo); border: 1px solid var(--colore-bordo); border-radius: var(--raggio-m); text-align: left; min-width: 0; }
+.arcade-statistica span { display: block; font-size: var(--testo-s); color: var(--colore-testo-tenue); }
+.arcade-statistica strong { display: block; font-size: var(--testo-l); color: var(--colore-primario); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.arcade-campo { position: relative; background: var(--colore-primario); border: 6px solid var(--colore-primario-chiaro); border-radius: var(--raggio-l); box-shadow: var(--ombra-media); overflow: hidden; isolation: isolate; }
+.arcade-campo canvas { display: block; width: 100%; height: auto; touch-action: none; }
+.arcade-campo canvas:focus-visible { outline: 3px solid var(--colore-accento); outline-offset: -4px; }
+.arcade-campo--quadrato { max-width: 520px; margin-inline: auto; }
+.arcade-campo--verticale { max-width: 600px; margin-inline: auto; }
+.arcade-velo { position: absolute; inset: 0; display: grid; place-content: center; gap: var(--spazio-2); padding: var(--spazio-4); background: color-mix(in srgb, var(--colore-primario) 90%, transparent); color: var(--colore-superficie); pointer-events: none; text-align: center; }
+.arcade-velo h2 { margin: 0; font-size: clamp(1.5rem, 5vw, 2.5rem); color: var(--colore-accento); }
+.arcade-velo p { margin: 0 auto; max-width: 42ch; }
+.arcade-azioni { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--spazio-2); margin-block: var(--spazio-3); }
+.arcade-azioni .pulsante { flex: 1 1 130px; max-width: 260px; }
+.arcade-comandi { display: flex; flex-wrap: wrap; justify-content: space-around; gap: var(--spazio-3); }
+.arcade-comandi fieldset { min-width: 0; border: 1px solid var(--colore-bordo); border-radius: var(--raggio-m); padding: var(--spazio-2); }
+.arcade-comandi legend { padding-inline: var(--spazio-2); font-size: var(--testo-s); font-weight: 600; color: var(--colore-primario); }
+.arcade-pad { display: grid; grid-template-columns: repeat(3, minmax(44px, 54px)); gap: 5px; justify-content: center; }
+.arcade-pad [data-direzione="su"] { grid-column: 2; }
+.arcade-pad [data-direzione="sinistra"] { grid-column: 1; grid-row: 2; }
+.arcade-pad [data-direzione="giu"] { grid-column: 2; grid-row: 2; }
+.arcade-pad [data-direzione="destra"] { grid-column: 3; grid-row: 2; }
+.arcade-tasti { display: flex; gap: var(--spazio-2); justify-content: center; }
+.arcade-tasto { min-width: 48px; min-height: 48px; border: 1px solid var(--colore-bordo); border-radius: var(--raggio-s); background: var(--colore-sfondo); color: var(--colore-primario); font: inherit; font-size: var(--testo-l); font-weight: 700; cursor: pointer; touch-action: none; user-select: none; -webkit-user-select: none; }
+.arcade-tasto:active { background: var(--colore-accento); }
+.arcade-aiuto { color: var(--colore-testo-tenue); font-size: var(--testo-s); }
+[hidden] { display: none !important; }
+@media (min-width: 600px) {
+    .arcade-statistiche { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .arcade-intro { margin-block: var(--spazio-5) var(--spazio-4); }
+    .arcade-campo { border-width: 10px; }
+}

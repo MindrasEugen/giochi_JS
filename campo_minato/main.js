@@ -25,8 +25,9 @@ function chiaveRecord() {
 
 function leggiRecord() {
     try {
-        const valore = Number(localStorage.getItem(chiaveRecord()));
-        return valore > 0 ? valore : null;
+        const salvato = localStorage.getItem(chiaveRecord());
+        const valore = Number(salvato);
+        return salvato !== null && salvato.trim() !== '' && Number.isFinite(valore) && valore >= 0 ? valore : null;
     } catch (errore) {
         return null;
     }
