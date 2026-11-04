@@ -19,10 +19,10 @@ Ultima modifica: 2026-11-04
 | 12 | [Logica: Raddoppia (tipo 2048) e Sudoku](21-tappa-12-logica-2.md) | ☑ completata |
 | 13 | [Da tavolo: Dama, Filetto (Mulino), Battaglia navale](22-tappa-13-tavolo-1.md) | ☑ completata |
 | 14 | [Da tavolo: Ludo e Scacchi](23-tappa-14-tavolo-2.md) | ☑ completata |
-| 15 | [Arcade: Serpente, Ping pong, Mattoncini](24-tappa-15-arcade-1.md) | ◐ in corso |
-| 16 | [Arcade: Blocchi, Invasione, Volo, Labirinto](25-tappa-16-arcade-2.md) | ◐ implementata, verifica visiva da fare |
-| 17 | [Parole: Cinque lettere (tipo Wordle)](26-tappa-17-parole.md) | ◐ implementata, verifica visiva da fare |
-| 18 | [Mazzo italiano: Briscola, Scopa, Asso piglia tutto, Rubamazzetto](27-tappa-18-italiano-1.md) | ◐ implementata, verifica visiva da fare |
+| 15 | [Arcade: Serpente, Ping pong, Mattoncini](24-tappa-15-arcade-1.md) | ◐ implementata, manca la prova su telefono |
+| 16 | [Arcade: Blocchi, Invasione, Volo, Labirinto](25-tappa-16-arcade-2.md) | ◐ implementata, manca la prova su telefono |
+| 17 | [Parole: Cinque lettere (tipo Wordle)](26-tappa-17-parole.md) | ◐ implementata, manca la prova su telefono |
+| 18 | [Mazzo italiano: Briscola, Scopa, Asso piglia tutto, Rubamazzetto](27-tappa-18-italiano-1.md) | ◐ implementata, manca la prova su telefono |
 | 19 | [Mazzo italiano: Scopone scientifico, Tressette, Cirulla, Briscola a 5](28-tappa-19-italiano-2.md) | ☐ da fare |
 | 20 | [Mazzo italiano: Mercante in fiera e Cucù](29-tappa-20-italiano-3.md) | ☐ da fare |
 | 21 | [Mazzo francese: Blackjack, Guerra, Cambio colore](30-tappa-21-francese-1.md) | ☐ da fare |

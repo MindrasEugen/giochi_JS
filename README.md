@@ -31,21 +31,23 @@ node scripts/check.js
 Il comando controlla la sintassi JavaScript ed esegue tutti i file `test-*.js`; restituisce un codice diverso da zero in caso di errori.
 Per la sola sintassi: `node scripts/check.js --syntax-only`.
 Per una suite singola: `node scacchi/test-scacchi.js`.
-Non sono necessari npm, build o librerie aggiuntive. Alcuni test storici usano casualita' e soglie temporali: un fallimento va analizzato conservando l'output.
+Non sono necessari npm, build o librerie aggiuntive. I test che dipendono dal caso usano un seme ripetibile, oppure controllano proprietà valide per qualunque estrazione. Alcuni test misurano il tempo di risposta del PC (Forza 4, Dama, Filetto, Scacchi, Sudoku) con un margine ampio: su un computer molto lento un fallimento va analizzato conservando l'output.
+I test delle pagine usano un DOM minimo senza librerie (`scripts/dom-minimo.js`): verificano la logica dei controller, non il rendering.
 
 ## Struttura
 
-- Una cartella per gioco: `index.html`, `main.js`, `style.css`; i giochi piu' recenti separano la logica in `funzioni.js`.
+- Una cartella per gioco: `index.html`, `main.js`, `style.css`; i giochi più recenti separano la logica in `funzioni.js`.
 - `js/`: strumenti condivisi per carte, giocatori e arcade.
 - `css/`: stili e componenti comuni.
 - `pezzi_scacco/`: i 12 PNG forniti dall'utente, usati su scacchiera, promozioni e pezzi catturati.
 - `ADR/`: decisioni tecniche.
 - `PLAN/`: stato e tappe di sviluppo.
 - `audit/`: rapporti storici; la data identifica lo stato esaminato.
+- `anteprima-componenti.html`: pagina di sviluppo con i componenti comuni (carte singole, tavolo con mano a ventaglio, finestre per 2 giocatori); non è collegata dalla home.
 
 ## Verifica manuale prima della pubblicazione
 
-Controllare su desktop e telefono: cambio modalita', nuova partita durante l'attesa del PC, passaggio del dispositivo, modifica nomi e record dopo il ricaricamento.
+Controllare su desktop e telefono: cambio modalità, nuova partita durante l'attesa del PC, passaggio del dispositivo, modifica nomi e record dopo il ricaricamento.
 Verificare tastiera, focus nelle finestre, scorrimento delle griglie e lettore di schermo.
 Per Sette e mezzo controllare i titoli dopo cambio nomi a mano conclusa e lo scambio del banco alla mano successiva.
 Per Scacchi controllare promozione, catture e annullamento.

@@ -40,4 +40,4 @@ Riferimenti: [Briscola Modiano](https://www.modiano.it/it/gioco/briscola/), [Sco
 
 ## Problemi aperti
 
-Prova visiva ancora da eseguire: il servizio browser restituisce `The browser access host is unavailable`. Le verifiche DOM non sostituiscono il browser o il touch reale. Nessun commit o push della Tappa 18; i push restano a cura dell'utente.
+Controllo nel browser del 2026-11-04 (Chrome, server locale, vedi `audit/2026-11-04-progetto-check.md`): pagine caricate senza errori in console né risorse mancanti, nessuno scorrimento orizzontale a 375px; una smazzata completa contro il PC giocata in automatico in tutti e quattro i giochi, senza errori. Resta da fare la prova su un telefono vero (touch, passaggio del dispositivo, mani coperte in due e in coppia). Tappa raccolta nel commit `57bc737`; i push restano a cura dell'utente.

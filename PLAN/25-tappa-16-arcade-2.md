@@ -34,4 +34,4 @@ Quattro giochi implementati e collegati alla home, che raggiunge 22 giochi. Logi
 
 ## Problemi aperti
 
-La prova visiva resta da eseguire. In questa sessione il servizio browser ha restituito `The browser access host is unavailable`; i test con DOM simulato non verificano rendering, touch fisico o lettori di schermo. Nessun push: viene gestito dall'utente.
+Controllo nel browser del 2026-11-04 (Chrome, server locale, vedi `audit/2026-11-04-progetto-check.md`): pagine caricate senza errori in console né risorse mancanti, nessuno scorrimento orizzontale a 375px, partite avviate con tasti e clic senza errori. Resta da fare la prova su un telefono vero (touch, due campi di Blocchi, due turni di Volo) e con il lettore di schermo. Nessun push: viene gestito dall'utente.

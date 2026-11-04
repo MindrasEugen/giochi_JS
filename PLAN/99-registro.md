@@ -38,3 +38,5 @@ Ultima modifica: 2026-11-03
 
 - 2026-11-04 - Tappe 16 e 17, PNG Scacchi e palette chiara di Blocchi raccolti nel commit locale 0df7b0d su richiesta dell'utente. Nessun push.
 - 2026-11-04 - Tappa 18 implementata: Briscola a due/quattro, Scopa, Asso piglia tutto e Rubamazzetto. Home a 27 giochi, componenti carte condivisi, 900 smazzate di test e controller delle quattro pagine. Prova visiva ancora da eseguire per servizio browser non disponibile. Nessun commit o push.
+- 2026-11-04 - Controllo completo del progetto: 28 suite verdi, 27 pagine caricate e provate in Chrome senza errori. Report in audit/2026-11-04-progetto-check.md. Nessun commit.
+- 2026-11-04 - Correzioni del controllo: 4 suite per i giochi storici con DOM minimo condiviso, README (accenti, test, anteprima), piano aggiornato con hash ed esito della prova nel browser. 32 suite verdi. Report in audit/2026-11-04-progetto-check-correzioni.md. Nessun commit.

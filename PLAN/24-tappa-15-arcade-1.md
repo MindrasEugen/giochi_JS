@@ -29,4 +29,4 @@ Ping pong termina a 7 punti; il PC ha una velocità limitata. Mattoncini ha tre 
 
 ## Problemi aperti
 
-La verifica visiva è ancora da eseguire. Il controllo nativo di Edge è stato fermato dallo strumento perché non riusciva a determinare l'URL corrente con sufficiente certezza per applicare le proprie regole. Nessun risultato visivo dichiarato come verificato.
+Controllo nel browser del 2026-11-04 (Chrome, server locale, vedi `audit/2026-11-04-progetto-check.md`): pagine caricate senza errori in console né risorse mancanti, nessuno scorrimento orizzontale a 375px, partite avviate con tasti e clic senza errori. Resta da fare la prova su un telefono vero (pulsanti touch, due giocatori, pausa al cambio scheda): la tappa resta aperta finché non è eseguita.

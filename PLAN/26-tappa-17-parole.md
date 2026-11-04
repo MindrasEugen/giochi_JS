@@ -33,4 +33,4 @@ Cinque lettere disponibile dalla home, che raggiunge 23 giochi. Logica, vocabola
 
 ## Problemi aperti
 
-Prova visiva ancora da eseguire: il servizio browser restituisce `The browser access host is unavailable`. I test del DOM non verificano rendering o tastiera mobile reale. Nessun commit o push della Tappa 17; i push restano a cura dell'utente.
+Controllo nel browser del 2026-11-04 (Chrome, server locale, vedi `audit/2026-11-04-progetto-check.md`): pagine caricate senza errori in console né risorse mancanti, nessuno scorrimento orizzontale a 375px, tasti e clic sulla tastiera a schermo senza errori. Resta da fare la prova su un telefono vero (tastiera a schermo, passaggio del dispositivo). Tappa raccolta nel commit `0df7b0d`; i push restano a cura dell'utente.
