@@ -10,7 +10,7 @@ Completare la categoria Solitari.
 
 - [x] TriPeaks, Yukon, Scorpione, Orologio, Le tredici, con gli stessi comandi della tappa precedente
 - [x] Screenshot e prova nel browser (disposizioni di TriPeaks, Orologio, Le tredici)
-- [ ] Prova su telefono (utente)
+- [x] Prova su telefono (utente, 2026-11-05: funzionano; carte poco leggibili, vedi la Tappa 24.1)
 
 ## Come verificare
 
@@ -38,5 +38,5 @@ Cinque solitari nuovi dalla home, che arriva a 50 giochi. Ogni gioco ha solo il 
 
 ## Problemi aperti
 
-- Prova su telefono da fare (utente).
+- Prova su telefono eseguita dall'utente il 2026-11-05: i giochi funzionano, ma le carte sono poco leggibili. Correzione nella [Tappa 24.1](35-tappa-24-1-carte-leggibili.md).
 - TriPeaks ha 10 carte nella riga in basso: sul telefono le carte sono piccole come nello Spider. Da ripensare nella fase APK.

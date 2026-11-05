@@ -52,3 +52,4 @@ Ultima modifica: 2026-11-03
 - 2026-11-05 - Tappa 22 completata: prova su telefono dell'utente passata. Avviata la Tappa 23 (solitari).
 - 2026-11-05 - Tappa 23 implementata: Klondike, FreeCell (con risolutore), Spider, Piramide e Golf con pagina comune (trascinamento, tocco-tocco, annulla, tempo, mosse). CSS di Codex. Home a 45 giochi.
 - 2026-11-05 - Tappa 24 implementata: TriPeaks, Yukon, Scorpione, Orologio e Le tredici (Baker's Dozen) con la pagina comune dei solitari. Home a 50 giochi. Tutte le tappe del piano implementate; mancano le prove su telefono delle Tappe 23 e 24.
+- 2026-11-05 - Tappe 23 e 24 completate: prova su telefono passata, ma carte poco leggibili. Aggiunta la Tappa 24.1 (carte semplificate e più spazio, scelta dell'utente).

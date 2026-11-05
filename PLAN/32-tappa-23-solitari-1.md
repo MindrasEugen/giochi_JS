@@ -12,7 +12,7 @@ I primi cinque solitari, a 1 giocatore.
 - [x] Annulla mossa, tempo, contatore delle mosse
 - [x] Klondike (pesca 1 o 3), FreeCell, Spider (1, 2 o 4 semi), Piramide, Golf
 - [x] CSS comune dei solitari (Codex, primo giro) e prova del trascinamento nel browser (asso trascinato sulla base, carta sotto girata)
-- [ ] Prova su telefono (utente)
+- [x] Prova su telefono (utente, 2026-11-05: funzionano; carte poco leggibili, vedi la Tappa 24.1)
 
 ## Come verificare
 
@@ -35,6 +35,6 @@ Cinque solitari nuovi dalla home, che arriva a 45 giochi. Ogni solitario ha solo
 
 ## Problemi aperti
 
-- Prova su telefono da fare (utente).
+- Prova su telefono eseguita dall'utente il 2026-11-05: i giochi funzionano, ma le carte sono poco leggibili. Correzione nella [Tappa 24.1](35-tappa-24-1-carte-leggibili.md).
 - A 375px le carte sono larghe 38px (7 colonne), 33px (FreeCell) e 26px (Spider, 10 colonne): giocabili ma piccole. Da ripensare nella fase APK insieme ai comandi touch ([Fuori MVP](90-fuori-mvp.md)).
 - Difetti trovati nel controllo e corretti: la carta trascinata passava sotto le altre (z-index in linea, segnalato da Codex), il gioco non era centrato, e la larghezza delle carte veniva fissata da css/carte.css invece che dal tavolo.
