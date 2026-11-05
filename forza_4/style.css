@@ -296,3 +296,34 @@ button.colonna {
     transition: none;
   }
 }
+
+/* Tavola sul telefono */
+body.con-tavola #griglia.griglia {
+  margin-block: 0;
+}
+
+/* Ripristino degli schermi ampi */
+@media (min-width: 600px) {
+  body.con-tavola #griglia.griglia {
+    margin-block: var(--spazio-4);
+  }
+  body.con-tavola #contenitore_gioco.contenitore {
+    width: 100%;
+    border: 0;
+  }
+  body.con-tavola .tabellone:not([hidden]) {
+    margin: 0 0 var(--spazio-4);
+    padding: var(--spazio-3) var(--spazio-4);
+  }
+  body.con-tavola .segnapunti__punti {
+    font-size: var(--testo-xl);
+  }
+  body.con-tavola:has(#contenitore_gioco > .tabellone) .azioni {
+    padding-top: 0;
+  }
+}
+@media (min-width: 900px) {
+  body.con-tavola .segnapunti__punti {
+    font-size: var(--testo-xxl);
+  }
+}

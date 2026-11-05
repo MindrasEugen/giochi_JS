@@ -312,3 +312,63 @@ button.cella-sudoku:focus-visible {
   }
 }
 
+
+/* Tavola sul telefono */
+body.con-tavola #griglia.griglia-sudoku {
+  margin-block: 0;
+}
+body.con-tavola #nuovaPartita {
+  width: 100%;
+  height: var(--area-minima);
+  margin-top: 0;
+  padding: var(--spazio-1) var(--spazio-2);
+}
+body.con-tavola .tastierino {
+  margin-top: 0;
+  gap: var(--spazio-2);
+}
+body.con-tavola .tastierino__azioni {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--spazio-1);
+}
+body.con-tavola .tastierino__azioni .pulsante {
+  height: var(--area-minima);
+  padding: var(--spazio-1);
+  font-size: var(--testo-s);
+}
+
+/* Ripristino degli schermi ampi */
+@media (min-width: 600px) {
+  body.con-tavola #griglia.griglia-sudoku {
+    margin-block: var(--spazio-4);
+  }
+  body.con-tavola #nuovaPartita {
+    width: auto;
+    height: auto;
+    margin-top: var(--spazio-3);
+    padding: var(--spazio-2) var(--spazio-4);
+  }
+  body.con-tavola .tastierino {
+    margin-top: var(--spazio-3);
+    gap: var(--spazio-3);
+  }
+  body.con-tavola .tastierino__azioni {
+    gap: var(--spazio-2);
+  }
+  body.con-tavola .tastierino__azioni .pulsante {
+    height: auto;
+    padding: var(--spazio-2);
+    font-size: var(--testo-m);
+  }
+  body.con-tavola #contenitore_gioco.contenitore {
+    width: 100%;
+    border: 0;
+  }
+  body.con-tavola .tabellone:not([hidden]) {
+    margin: 0 0 var(--spazio-4);
+    padding: var(--spazio-3) var(--spazio-4);
+  }
+  body.con-tavola .segnapunti__punti {
+    font-size: var(--testo-xl);
+  }
+}

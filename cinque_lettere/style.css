@@ -26,3 +26,105 @@
 .azioni-tastiera { display: flex; justify-content: center; gap: var(--spazio-2); }
 .punteggi-due__punti { font-size: var(--testo-m); }
 @media (min-width: 600px) { .tasto-lettera { min-height: 50px; } .intro-lettere { margin-top: var(--spazio-4); } }
+
+/* Tavola sul telefono */
+body.con-tavola #contenitore_gioco.contenitore {
+  gap: var(--spazio-1);
+}
+body.con-tavola .progresso-lettere {
+  justify-content: center;
+  gap: var(--spazio-2);
+  margin-bottom: 0;
+}
+body.con-tavola .tentativi-lettere {
+  width: min(100%, 256px);
+  gap: var(--spazio-1);
+  margin-block: 0;
+}
+body.con-tavola .riga-lettere {
+  gap: var(--spazio-1);
+}
+body.con-tavola #modulo {
+  width: 100%;
+  flex-wrap: nowrap;
+}
+body.con-tavola #modulo input,
+body.con-tavola #modulo .pulsante {
+  height: var(--area-minima);
+  padding-block: var(--spazio-1);
+}
+body.con-tavola #messaggi:not(:empty) {
+  margin-block: 0;
+  padding: var(--spazio-1) var(--spazio-2);
+  font-size: var(--testo-s);
+}
+body.con-tavola #tastiera {
+  width: 100%;
+  gap: var(--spazio-1);
+  margin-block: 0;
+}
+body.con-tavola .tasto-lettera {
+  min-height: var(--area-minima);
+}
+body.con-tavola .azioni-tastiera .pulsante,
+body.con-tavola #nuovaPartita {
+  height: var(--area-minima);
+  padding: var(--spazio-1) var(--spazio-2);
+  font-size: var(--testo-s);
+}
+body.con-tavola #nuovaPartita {
+  width: 100%;
+  margin-top: 0;
+}
+
+/* Ripristino degli schermi ampi */
+@media (min-width: 600px) {
+  body.con-tavola #contenitore_gioco.contenitore {
+    gap: normal;
+  }
+  body.con-tavola .progresso-lettere {
+    justify-content: space-between;
+    gap: normal;
+    margin-bottom: var(--spazio-2);
+  }
+  body.con-tavola .tentativi-lettere {
+    width: auto;
+    gap: var(--spazio-2);
+    margin-block: auto;
+  }
+  body.con-tavola .riga-lettere {
+    gap: var(--spazio-2);
+  }
+  body.con-tavola #modulo {
+    width: auto;
+    flex-wrap: wrap;
+  }
+  body.con-tavola #modulo input,
+  body.con-tavola #modulo .pulsante {
+    height: auto;
+    padding-block: var(--spazio-2);
+  }
+  body.con-tavola #messaggi:not(:empty) {
+    margin-block: var(--spazio-3);
+    padding: var(--spazio-2) var(--spazio-3);
+    font-size: var(--testo-m);
+  }
+  body.con-tavola #tastiera {
+    width: auto;
+    gap: 6px;
+    margin-block: var(--spazio-3);
+  }
+  body.con-tavola .tasto-lettera {
+    min-height: 50px;
+  }
+  body.con-tavola .azioni-tastiera .pulsante,
+  body.con-tavola #nuovaPartita {
+    height: auto;
+    padding: var(--spazio-2) var(--spazio-4);
+    font-size: var(--testo-m);
+  }
+  body.con-tavola #nuovaPartita {
+    width: fit-content;
+    margin-top: var(--spazio-3);
+  }
+}

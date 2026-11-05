@@ -1,10 +1,10 @@
 /* Layout */
 #contenitore_gioco.contenitore {
-  width: calc(100% - 32px);
+  width: calc(100% - 16px);
   max-width: calc(var(--spazio-5) * 20);
-  margin-block: var(--spazio-3);
+  margin-block: var(--spazio-2);
   background: var(--colore-superficie);
-  border-radius: var(--raggio-xl);
+  border-radius: calc(var(--raggio-m) * 1.5);
   box-shadow: var(--ombra-forte);
   border: 1px solid var(--colore-bordo);
   text-align: center;
@@ -124,6 +124,10 @@ h1 {
   border-top: 1px solid var(--colore-bordo);
 }
 
+.azioni > .pulsante {
+  flex: 1 1 130px;
+}
+
 .azioni .pulsante {
   max-width: 100%;
 }
@@ -155,15 +159,16 @@ h1 {
 .barra-modalita select { max-width: 100%; min-width: 0; }
 .regole li + li { margin-top: var(--spazio-2); }
 
-@media (max-width: 599px) {
-  #contenitore_gioco.contenitore { width: calc(100% - 16px); margin-block: 8px; border-radius: 18px; }
-  .azioni > .pulsante { flex: 1 1 130px; }
-}
-
 /* Schermi ampi */
 @media (min-width: 600px) {
   #contenitore_gioco.contenitore {
+    width: calc(100% - 32px);
     margin-block: var(--spazio-4);
+    border-radius: var(--raggio-xl);
+  }
+
+  .azioni > .pulsante {
+    flex: 0 1 auto;
   }
 
   .tabellone:not([hidden]) {

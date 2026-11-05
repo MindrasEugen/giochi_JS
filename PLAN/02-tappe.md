@@ -35,8 +35,8 @@ Ultima modifica: 2026-11-05
 | 27 | [Schermo intero in tutti gli altri giochi](38-tappa-27-schermo-intero-tutti.md) (prima della 26) | ◐ in corso |
 | 27.1 | [Carte italiane](39-tappa-27-1-carte-italiane.md) | ☑ completata |
 | 27.2 | [Carte francesi](40-tappa-27-2-carte-francesi.md) | ☑ completata |
-| 27.3 | [Tavolo](41-tappa-27-3-tavolo.md) | ◐ in corso |
-| 27.4 | [Logica e parole](42-tappa-27-4-logica-parole.md) | ☐ da fare |
+| 27.3 | [Tavolo](41-tappa-27-3-tavolo.md) | ☑ completata |
+| 27.4 | [Logica e parole](42-tappa-27-4-logica-parole.md) | ◐ in corso |
 | 27.5 | [Giochi storici](43-tappa-27-5-storici.md) | ☐ da fare |
 
 Legenda: ☐ da fare · ◐ in corso · ☑ completata · ✗ annullata

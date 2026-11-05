@@ -14,7 +14,7 @@ Dama, Filetto, Battaglia navale, Ludo, Scacchi: scacchiera o tabellone grande qu
 - [x] Test: `js/test-tavolo-pannello.js` (Dama, Filetto, Scacchi)
 - [x] CSS (Codex): segnapunti in una riga, tabellone a tutta larghezza, Ludo con dado accanto al messaggio, Battaglia navale con la propria flotta piccola durante la partita
 - [x] Verifiche nel browser (375×667, 390×844) e confronto degli stili a 600/900/1280px
-- [ ] Prova su telefono (utente)
+- [x] Prova su telefono (utente): «tutto okay» (2026-11-05)
 
 ## Come verificare
 
@@ -33,5 +33,4 @@ Vedi [Tappa 27](38-tappa-27-schermo-intero-tutti.md#come-verificare).
 
 ## Problemi aperti
 
-- Prova su telefono dell'utente da fare.
 - Battaglia navale durante la partita resta alta 791px a 375×667: per vedere «Nuova partita» si scorre un poco.

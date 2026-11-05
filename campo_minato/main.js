@@ -60,6 +60,11 @@ function fermaTempo() {
     timer = null;
 }
 
+// Con il pannello del telefono aperto (js/tavola.js) il tempo si ferma e riparte alla chiusura
+let tempoInPausa = false;
+document.addEventListener('tavola:aperta', () => { if (timer !== null) { fermaTempo(); tempoInPausa = true; } });
+document.addEventListener('tavola:chiusa', () => { if (tempoInPausa) { tempoInPausa = false; avviaTempo(); } });
+
 function aggiornaTabellone() {
     document.querySelector('#mineRimaste').textContent = stato.mine - bandiereMesse(stato);
     document.querySelector('#tempo').textContent = formattaTempo(secondi);
@@ -172,6 +177,7 @@ function fineVittoria() {
 
 function iniziaPartita() {
     fermaTempo();
+    tempoInPausa = false;
     secondi = 0;
     const livello = LIVELLI[selectLivello.value];
     stato = crea(livello.righe, livello.colonne, livello.mine);

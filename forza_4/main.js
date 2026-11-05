@@ -18,6 +18,13 @@ let chiComincia = 'R';
 let finita = false;
 let pcPensa = false;
 let timerPC;
+// Mentre il pannello del telefono (js/tavola.js) è aperto il computer aspetta; una nuova partita annulla l'attesa
+let partita = 0;
+function dopoPannello(fn) {
+    const questa = partita;
+    const esegui = () => { if (questa === partita) fn(); };
+    if (typeof Tavola !== 'undefined') Tavola.quandoChiuso(esegui); else esegui();
+}
 let punti = { R: 0, G: 0 };
 let dueGiocatori = false;
 let nomi = Giocatori.leggiNomi();
@@ -132,10 +139,10 @@ function gioca(colonna) {
 function turnoComputer() {
     pcPensa = true;
     disegna();
-    timerPC = setTimeout(() => {
+    timerPC = setTimeout(() => dopoPannello(() => {
         pcPensa = false;
         gioca(mossaPC(caselle, difficolta.value, PEDINA_PC));
-    }, 450);
+    }), 450);
 }
 
 function sceltaColonna(colonna) {
@@ -147,6 +154,7 @@ function sceltaColonna(colonna) {
 
 // A ogni nuova partita comincia l'altro giocatore
 function iniziaPartita(alterna = true) {
+    partita++;
     clearTimeout(timerPC);
     pcPensa = false;
     if (alterna) {

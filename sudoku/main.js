@@ -186,6 +186,11 @@ function fermaTempo() {
     timer = null;
 }
 
+// Con il pannello del telefono aperto (js/tavola.js) il tempo si ferma e riparte alla chiusura
+let tempoInPausa = false;
+document.addEventListener('tavola:aperta', () => { if (timer !== null) { fermaTempo(); tempoInPausa = true; } });
+document.addEventListener('tavola:chiusa', () => { if (tempoInPausa) { tempoInPausa = false; avviaTempo(); } });
+
 function fine() {
     finita = true;
     fermaTempo();
@@ -206,6 +211,7 @@ function iniziaPartita() {
     storia = [];
     sbagliateMostrate = new Set();
     selezionata = null;
+    tempoInPausa = false;
     secondi = 0;
     finita = false;
     messaggi.textContent = '';

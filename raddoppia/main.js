@@ -236,6 +236,13 @@ document.querySelectorAll('.comando').forEach(pulsante => {
     pulsante.addEventListener('click', () => mossa(pulsante.dataset.direzione));
 });
 
+// Sul telefono si gioca scorrendo il dito: le frecce sullo schermo si nascondono (CSS) e un'opzione del pannello
+// (js/tavola.js) le fa ricomparire con la classe mostra-pulsanti, come negli arcade
+if (typeof Tavola !== 'undefined') {
+    Tavola.opzione({ chiave: 'giochi_js_mostra_pulsanti', etichetta: 'Mostra i pulsanti sullo schermo',
+        suCambio: v => document.body.classList.toggle('mostra-pulsanti', v) });
+}
+
 Giocatori.collegaBarra({
     select: selectModalita,
     pulsanteNomi,

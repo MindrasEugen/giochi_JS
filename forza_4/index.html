@@ -6,17 +6,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/comune.css">
         <link rel="stylesheet" href="../css/giocatori.css">
+        <link rel="stylesheet" href="../css/tavola.css">
         <link rel="stylesheet" href="./style.css">
         <title>Forza 4</title>
     </head>
 
     <body>
         <div class="contenitore" id="contenitore_gioco">
-            <a class="link-home" href="../index.html">← Tutti i giochi</a>
-            <h1>Forza 4</h1>
-            <p class="sottotitolo">Fai scendere le pedine: vince chi ne allinea 4 in orizzontale, in verticale o in diagonale.</p>
+            <a class="link-home" data-pannello href="../index.html">← Tutti i giochi</a>
+            <h1 data-pannello>Forza 4</h1>
+            <p class="sottotitolo" data-pannello>Fai scendere le pedine: vince chi ne allinea 4 in orizzontale, in verticale o in diagonale.</p>
 
-            <div class="barra-modalita">
+            <div class="barra-modalita" data-pannello>
                 <label for="modalitaGioco" class="nascosto-visivamente">Modalità</label>
                 <select id="modalitaGioco">
                     <option value="uno">Contro il computer</option>
@@ -54,7 +55,7 @@
                 <button type="button" id="azzera" class="pulsante pulsante--secondario">Azzera il punteggio</button>
             </div>
 
-            <details class="pannello regole">
+            <details class="pannello regole" data-pannello>
                 <summary>Regole del gioco</summary>
                 <ol>
                     <li>Si gioca su una griglia verticale di 7 colonne e 6 righe.</li>
@@ -67,6 +68,7 @@
                 </ol>
             </details>
         </div>
+        <script src="../js/tavola.js"></script>
         <script src="../js/giocatori.js"></script>
         <script src="./funzioni.js"></script>
         <script src="./main.js"></script>

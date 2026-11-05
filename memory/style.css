@@ -226,3 +226,56 @@ button.carta-memory {
     transition: none;
   }
 }
+
+/* Tavola sul telefono */
+body.con-tavola #tavolo.tavolo-memory {
+  margin-block: 0;
+}
+body.con-tavola #nuovaPartita {
+  width: 100%;
+  height: var(--area-minima);
+  margin-top: 0;
+  padding: var(--spazio-1) var(--spazio-2);
+}
+body.con-tavola .punteggi-due,
+body.con-tavola .turno-due {
+  margin-bottom: 0;
+  padding: var(--spazio-1) var(--spazio-2);
+  font-size: var(--testo-s);
+}
+body.con-tavola .punteggi-due__punti {
+  font-size: var(--testo-s);
+}
+
+/* Ripristino degli schermi ampi */
+@media (min-width: 600px) {
+  body.con-tavola #tavolo.tavolo-memory {
+    margin-block: var(--spazio-4);
+  }
+  body.con-tavola #nuovaPartita {
+    width: auto;
+    height: auto;
+    margin-top: var(--spazio-3);
+    padding: var(--spazio-2) var(--spazio-4);
+  }
+  body.con-tavola .punteggi-due,
+  body.con-tavola .turno-due {
+    margin-bottom: var(--spazio-3);
+    padding: var(--spazio-2) var(--spazio-3);
+    font-size: inherit;
+  }
+  body.con-tavola .punteggi-due__punti {
+    font-size: var(--testo-xl);
+  }
+  body.con-tavola #contenitore_gioco.contenitore {
+    width: 100%;
+    border: 0;
+  }
+  body.con-tavola .tabellone:not([hidden]) {
+    margin: 0 0 var(--spazio-4);
+    padding: var(--spazio-3) var(--spazio-4);
+  }
+  body.con-tavola .segnapunti__punti {
+    font-size: var(--testo-xl);
+  }
+}
