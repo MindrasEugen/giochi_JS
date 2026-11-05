@@ -1,7 +1,32 @@
 // Pagina comune dei solitari: disegna le pile secondo motore.disposizione(), gestisce trascinamento (mouse e dito),
 // tocco-tocco (seleziona una carta, poi tocca la pila di destinazione), doppio tocco per mandare la carta alla base,
 // annulla, tempo e mosse. Ogni solitario fornisce solo il motore delle regole.
+// Sul telefono le carte strette (meno di 60px) diventano carte semplificate: valore e seme grandi, disegnati in CSS
+// (Tappa 25); un'opzione del pannello (js/tavola.js) riporta le immagini.
 const SolitarioPagina = (() => {
+    const SIMBOLI = { hearts: '♥', diamonds: '♦', clubs: '♣', spades: '♠' };
+    const LARGHEZZA_SEMPLICI = 60;
+    function cartaSemplice(carta, coperta) {
+        const el = document.createElement('div');
+        el.className = 'carta carta-semplice';
+        el.setAttribute('role', 'img');
+        if (coperta) {
+            el.classList.add('carta--coperta', 'carta-semplice--coperta');
+            el.setAttribute('aria-label', 'Carta coperta');
+            return el;
+        }
+        el.classList.add(Mazzo.colore(carta) === 'rosso' ? 'carta-semplice--rossa' : 'carta-semplice--nera');
+        el.setAttribute('aria-label', Mazzo.nome(carta));
+        const angolo = document.createElement('span'), valore = document.createElement('span'), piccolo = document.createElement('span'), centro = document.createElement('span');
+        angolo.className = 'carta-semplice__angolo';
+        valore.className = 'carta-semplice__valore'; valore.textContent = carta.valore.toUpperCase();
+        piccolo.className = 'carta-semplice__seme'; piccolo.textContent = SIMBOLI[carta.seme];
+        centro.className = 'carta-semplice__centro'; centro.textContent = SIMBOLI[carta.seme];
+        centro.setAttribute('aria-hidden', 'true');
+        angolo.append(valore, piccolo);
+        el.append(angolo, centro);
+        return el;
+    }
     function avvia(config) {
         const motore = config.motore;
         const tavolo = document.querySelector('#tavoloSolitario');
@@ -11,7 +36,8 @@ const SolitarioPagina = (() => {
         const nuova = document.querySelector('#nuovaPartita');
         const messaggi = document.querySelector('#messaggi');
         let stato, storia = [], inizio = null, cronometro = null, selezione = null, trascina = null, ultimoTocco = { t: 0, chiave: '' }, finita = false;
-        let misure = { w: 60, h: 84, passo: 67 };
+        let misure = { w: 60, h: 84, passo: 67, semplici: false };
+        let immagini = false, pausaDa = null;
         const scrivi = testo => { messaggi.textContent = testo; };
         const tempo = () => { if (!inizio) return '0:00'; const s = Math.floor((Date.now() - inizio) / 1000); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; };
         function aggiornaRiepilogo() {
@@ -22,15 +48,19 @@ const SolitarioPagina = (() => {
         // Misure in pixel: la larghezza della carta dipende da quante colonne ci sono e dallo spazio disponibile
         function calcolaMisure() {
             const larghezza = tavolo.clientWidth || 320;
-            const w = Math.min(96, Math.floor(larghezza / (motore.colonne * 1.12)));
-            const passo = w * 1.12;
+            // Con le carte semplificate lo spazio tra le colonne si stringe: ogni pixel va alla carta
+            let spazio = 1.12, w = Math.min(96, Math.floor(larghezza / (motore.colonne * spazio)));
+            const semplici = !immagini && w < LARGHEZZA_SEMPLICI;
+            if (semplici) { spazio = 1.05; w = Math.min(96, Math.floor(larghezza / (motore.colonne * spazio))); }
+            const passo = w * spazio;
             // Margine a sinistra per centrare le colonne sul tavolo
-            misure = { w, h: Math.round(w * 1.4), passo, sinistra: Math.max(0, (larghezza - ((motore.colonne - 1) * passo + w)) / 2) };
+            misure = { w, h: Math.round(w * 1.4), passo, semplici, sinistra: Math.max(0, (larghezza - ((motore.colonne - 1) * passo + w)) / 2) };
         }
         // Distanza verticale tra le carte di una colonna a ventaglio (più stretta per le coperte e per le colonne lunghe)
         function scostamenti(pila, tipo) {
             if (tipo !== 'colonna') return pila.map(() => 0);
-            const coperta = misure.h * 0.1, scoperta = misure.h * 0.24;
+            // Le carte semplificate mostrano valore e seme in una striscia in alto: serve un po' più di spazio
+            const coperta = misure.h * 0.1, scoperta = misure.h * (misure.semplici ? 0.3 : 0.24);
             let y = 0;
             const lista = pila.map((x, i) => { const v = y; y += x.scoperta ? scoperta : coperta; return v; });
             const massimo = misure.h * (motore.ventaglioMassimo || 3.2); // le colonne molto lunghe si stringono
@@ -41,6 +71,7 @@ const SolitarioPagina = (() => {
             calcolaMisure();
             tavolo.textContent = '';
             tavolo.style.setProperty('--larghezza-carta', `${misure.w}px`);
+            tavolo.classList?.toggle('tavolo-solitario--semplici', misure.semplici);
             let altezza = 0;
             for (const d of motore.disposizione(stato)) {
                 const x = misure.sinistra + d.x * misure.passo, y = d.y * misure.h;
@@ -58,7 +89,8 @@ const SolitarioPagina = (() => {
                 const dy = scostamenti(pila, d.tipo);
                 visibili.forEach((i, k) => {
                     const x0 = pila[i];
-                    const img = Carte.crea(x0.carta, { coperta: !x0.scoperta });
+                    const img = misure.semplici && x0.carta.tipo === 'francese' ? cartaSemplice(x0.carta, !x0.scoperta) : Carte.crea(x0.carta, { coperta: !x0.scoperta });
+                    if (misure.semplici) img.style.height = `${misure.h}px`;
                     img.classList.add('carta-solitario');
                     if (selezione && selezione.pila === d.id && i >= selezione.indice) img.classList.add('carta-solitario--selezionata');
                     if (d.tipo === 'piramide' && motore.libera && !motore.libera(stato, d.id)) img.classList.add('carta-solitario--coperta');
@@ -150,8 +182,18 @@ const SolitarioPagina = (() => {
         tavolo.addEventListener('pointercancel', () => { trascina = null; disegna(); });
         annulla.addEventListener('click', () => { if (storia.length && !finita) { stato = storia.pop(); stato.mosse++; selezione = null; disegna(); scrivi('Mossa annullata.'); } });
         completa.addEventListener('click', () => esegui(() => { motore.completa(stato); return true; }, 'Carte mandate alle basi.'));
+        // Con il pannello aperto il tempo si ferma
+        document.addEventListener('tavola:aperta', () => { if (inizio && !finita) { pausaDa = Date.now(); clearInterval(cronometro); } });
+        document.addEventListener('tavola:chiusa', () => {
+            if (pausaDa === null) return;
+            inizio += Date.now() - pausaDa; pausaDa = null;
+            if (!finita) cronometro = setInterval(aggiornaRiepilogo, 1000);
+            aggiornaRiepilogo();
+        });
+        if (typeof Tavola !== 'undefined') Tavola.opzione({ chiave: 'giochi_js_carte_immagini', etichetta: 'Carte con le immagini anche quando sono piccole',
+            suCambio: v => { immagini = v; if (stato) disegna(); } });
         function nuovaPartita() {
-            clearInterval(cronometro); cronometro = null; inizio = null; storia = []; selezione = null; finita = false;
+            clearInterval(cronometro); cronometro = null; inizio = null; pausaDa = null; storia = []; selezione = null; finita = false;
             document.querySelector('#risultati').hidden = true;
             stato = motore.crea(config.opzioni ? config.opzioni(select?.value) : {});
             disegna(); scrivi(config.benvenuto || 'Trascina le carte oppure toccane una e poi la destinazione.');

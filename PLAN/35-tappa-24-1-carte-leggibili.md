@@ -2,6 +2,8 @@
 
 Ultima modifica: 2026-11-05
 
+> **Unita alla [Tappa 25](36-tappa-25-schermo-intero.md)** per scelta dell'utente (2026-11-05): le attività sotto si svolgono lì.
+
 ## Obiettivo
 
 Dopo la prova su telefono delle Tappe 23 e 24 l'utente segnala che le carte dei solitari sono poco leggibili (larghe 26-38px a 375px). Scelta dell'utente: carte semplificate e più spazio sul tavolo.

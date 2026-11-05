@@ -15,6 +15,7 @@ Le decisioni prese nel progetto Giochi JS. Ogni file descrive una decisione: **c
 | [0009](0009-nomi-e-grafica-originali-per-i-giochi-famosi.md) | Nomi e grafica originali per i giochi ispirati a giochi famosi | 2026-11-04 | — |
 | [0010](0010-css-comune-delle-pagine-di-gioco.md) | CSS comune delle pagine di gioco (`css/gioco.css`) | 2026-11-04 | Tappa 13 |
 | [0011](0011-tavolo-carte-italiane-da-2-a-5-posti.md) | Tavolo condiviso delle carte italiane da 2 a 5 posti | 2026-11-05 | Tappa 19 |
+| [0012](0012-tavola-a-schermo-intero-sul-telefono.md) | Tavola a schermo intero sul telefono, contenuti in un pannello sopra il gioco | 2026-11-05 | Tappa 25 |
 
 ## Decisioni sostituite
 

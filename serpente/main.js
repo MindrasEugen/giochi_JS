@@ -1,6 +1,6 @@
 ArcadePagina.avvia({
     chiave: 'serpente', larghezza: 480, altezza: 480,
-    istruzioni: 'Frecce o pulsanti per il serpente verde. In due, WASD per il serpente dorato.',
+    istruzioni: 'Scorri il dito sul campo o usa le frecce. In due: metà sinistra (o frecce) per il verde, metà destra (o WASD) per il dorato.',
     tasti: ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'KeyW', 'KeyS', 'KeyA', 'KeyD'],
     crea(due) { return { ...statoIniziale(due ? 2 : 1), trascorso: 0 }; },
     comando(s, tasto, due) {
@@ -9,6 +9,8 @@ ArcadePagina.avvia({
         if (frecce[tasto]) gira(s.serpenti[0], frecce[tasto]);
         if (wasd[tasto]) gira(s.serpenti[due ? 1 : 0], wasd[tasto]);
     },
+    // Gesto sul campo: in due ogni giocatore usa la sua metà
+    scorri(s, direzione, due, lato) { gira(s.serpenti[due ? lato : 0], direzione); },
     passo(s, dt) {
         s.trascorso += dt * 1000;
         const tempo = intervallo(Math.max(...s.serpenti.map(p => p.punti)));

@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Piramide | Giochi JS</title>
-  <link rel="stylesheet" href="../css/comune.css"><link rel="stylesheet" href="../css/gioco.css"><link rel="stylesheet" href="../css/carte.css"><link rel="stylesheet" href="../css/carte-italiane.css"><link rel="stylesheet" href="../css/solitario.css"><link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="../css/comune.css"><link rel="stylesheet" href="../css/gioco.css"><link rel="stylesheet" href="../css/carte.css"><link rel="stylesheet" href="../css/carte-italiane.css"><link rel="stylesheet" href="../css/solitario.css"><link rel="stylesheet" href="../css/tavola.css"><link rel="stylesheet" href="./style.css">
 </head>
 <body>
 <main class="contenitore" id="contenitore_gioco">
-  <a class="link-home" href="../index.html">&larr; Tutti i giochi</a>
-  <header class="intro-carte"><p class="occhiello-carte">Solitari / Piramide</p><h1>Coppie che fanno tredici.</h1><p class="sottotitolo">Smonta la piramide eliminando due carte libere che insieme fanno 13. Il re se ne va da solo.</p></header>
+  <a class="link-home" data-pannello href="../index.html">&larr; Tutti i giochi</a>
+  <header class="intro-carte" data-pannello><p class="occhiello-carte">Solitari / Piramide</p><h1>Coppie che fanno tredici.</h1><p class="sottotitolo">Smonta la piramide eliminando due carte libere che insieme fanno 13. Il re se ne va da solo.</p></header>
   
   <div class="riepilogo-carte" aria-label="Tempo e mosse"><div><span id="nomeP0">Tempo</span><strong id="puntiP0">0:00</strong></div><div><span id="nomeP1">Mosse</span><strong id="puntiP1">0</strong></div><small id="tipoPunti"></small></div>
   <section class="tavolo tavolo-italiano tavolo-solitario-sfondo" aria-label="Tavolo di Piramide">
@@ -17,8 +17,8 @@
   <p id="messaggi" role="status" aria-live="polite"></p>
   <div class="azioni"><button type="button" class="pulsante pulsante--secondario" id="annulla">Annulla</button><button type="button" class="pulsante" id="completa" hidden>Completa</button><button type="button" class="pulsante pulsante--secondario" id="nuovaPartita">Nuova partita</button></div>
   <section class="risultati-carte" id="risultati" aria-label="Risultato" hidden></section>
-  <details class="pannello regole"><summary>Regole</summary><ol><li>Ventotto carte formano una piramide di sette righe; le altre sono il mazzo. Una carta &egrave; libera quando le due carte che la coprono sono state eliminate.</li><li>Si eliminano due carte libere (o una libera e quella in cima agli scarti) che sommano 13: asso 1, dal 2 al 10 il loro valore, fante 11, donna 12. Il re vale 13 e si elimina da solo (portalo sulla pila K o toccalo due volte).</li><li>Per eliminare una coppia trascina una carta sull&rsquo;altra, oppure toccale una dopo l&rsquo;altra.</li><li>Tocca il mazzo per girare una carta sugli scarti. Il mazzo si pu&ograve; passare tre volte. Si vince smontando tutta la piramide.</li><li>Come si gioca: trascina le carte con il mouse o con il dito, oppure tocca una carta e poi la pila dove vuoi metterla. Due tocchi (o doppio clic) mandano la carta alla base. Annulla torna indietro di una mossa (anche più volte).</li></ol></details>
-  <p class="fonti-carte">Riferimenti: <a href="https://it.wikipedia.org/wiki/Piramide_(solitario)">Piramide - Wikipedia</a>.</p>
+  <details class="pannello regole" data-pannello><summary>Regole</summary><ol><li>Ventotto carte formano una piramide di sette righe; le altre sono il mazzo. Una carta &egrave; libera quando le due carte che la coprono sono state eliminate.</li><li>Si eliminano due carte libere (o una libera e quella in cima agli scarti) che sommano 13: asso 1, dal 2 al 10 il loro valore, fante 11, donna 12. Il re vale 13 e si elimina da solo (portalo sulla pila K o toccalo due volte).</li><li>Per eliminare una coppia trascina una carta sull&rsquo;altra, oppure toccale una dopo l&rsquo;altra.</li><li>Tocca il mazzo per girare una carta sugli scarti. Il mazzo si pu&ograve; passare tre volte. Si vince smontando tutta la piramide.</li><li>Come si gioca: trascina le carte con il mouse o con il dito, oppure tocca una carta e poi la pila dove vuoi metterla. Due tocchi (o doppio clic) mandano la carta alla base. Annulla torna indietro di una mossa (anche più volte).</li></ol></details>
+  <p class="fonti-carte" data-pannello>Riferimenti: <a href="https://it.wikipedia.org/wiki/Piramide_(solitario)">Piramide - Wikipedia</a>.</p>
 </main>
-<script src="../js/mazzo.js"></script><script src="../js/carte.js"></script><script src="./funzioni.js"></script><script src="../js/solitario-pagina.js"></script><script src="./main.js"></script>
+<script src="../js/tavola.js"></script><script src="../js/mazzo.js"></script><script src="../js/carte.js"></script><script src="./funzioni.js"></script><script src="../js/solitario-pagina.js"></script><script src="./main.js"></script>
 </body></html>

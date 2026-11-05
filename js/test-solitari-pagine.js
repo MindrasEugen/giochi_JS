@@ -12,6 +12,8 @@ for (const [cartella, opzione] of [['klondike', '3'], ['freecell', null], ['spid
     const tocca = el => { const e = { target: el, clientX: 10, clientY: 10, pointerId: 1, preventDefault() {} }; tavolo.listeners.pointerdown(e); tavolo.listeners.pointerup(e); };
     const elementi = () => tavolo.children.filter(e => e.dataset.pila !== undefined);
     assert.ok(elementi().length > 0, `${cartella}: il tavolo è disegnato`);
+    // Il tavolo finto è largo 320px: le carte sono strette, quindi semplificate (valore e seme in CSS)
+    assert.ok(elementi().some(e => e.getAttribute('role') === 'img' && e.getAttribute('aria-label')), `${cartella}: carte semplificate`);
     const casuale = seme(cartella.length);
     let mosse = 0;
     for (let i = 0; i < 300; i++) {
@@ -26,5 +28,5 @@ for (const [cartella, opzione] of [['klondike', '3'], ['freecell', null], ['spid
     if (!a.$('#annulla').disabled) { a.$('#annulla').listeners.click(); assert.equal(a.$('#messaggi').textContent, 'Mossa annullata.'); }
     a.$('#nuovaPartita').listeners.click();
     assert.equal(a.$('#puntiP1').textContent, '0'); assert.equal(a.$('#puntiP0').textContent, '0:00');
-    console.log(`OK pagina ${cartella}: tavolo disegnato, ${mosse} mosse fatte con i tocchi, annulla e nuova partita`);
+    console.log(`OK pagina ${cartella}: tavolo disegnato, ${mosse} mosse fatte con i tocchi, annulla e nuova partita (carte semplificate)`);
 }

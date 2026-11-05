@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Golf | Giochi JS</title>
-  <link rel="stylesheet" href="../css/comune.css"><link rel="stylesheet" href="../css/gioco.css"><link rel="stylesheet" href="../css/carte.css"><link rel="stylesheet" href="../css/carte-italiane.css"><link rel="stylesheet" href="../css/solitario.css"><link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="../css/comune.css"><link rel="stylesheet" href="../css/gioco.css"><link rel="stylesheet" href="../css/carte.css"><link rel="stylesheet" href="../css/carte-italiane.css"><link rel="stylesheet" href="../css/solitario.css"><link rel="stylesheet" href="../css/tavola.css"><link rel="stylesheet" href="./style.css">
 </head>
 <body>
 <main class="contenitore" id="contenitore_gioco">
-  <a class="link-home" href="../index.html">&larr; Tutti i giochi</a>
-  <header class="intro-carte"><p class="occhiello-carte">Solitari / Golf</p><h1>Una in pi&ugrave;, una in meno.</h1><p class="sottotitolo">Svuota le sette colonne portando sulla base carte di un valore sopra o sotto. Meno carte restano, meglio &egrave;.</p></header>
+  <a class="link-home" data-pannello href="../index.html">&larr; Tutti i giochi</a>
+  <header class="intro-carte" data-pannello><p class="occhiello-carte">Solitari / Golf</p><h1>Una in pi&ugrave;, una in meno.</h1><p class="sottotitolo">Svuota le sette colonne portando sulla base carte di un valore sopra o sotto. Meno carte restano, meglio &egrave;.</p></header>
   
   <div class="riepilogo-carte" aria-label="Tempo e mosse"><div><span id="nomeP0">Tempo</span><strong id="puntiP0">0:00</strong></div><div><span id="nomeP1">Mosse</span><strong id="puntiP1">0</strong></div><small id="tipoPunti"></small></div>
   <section class="tavolo tavolo-italiano tavolo-solitario-sfondo" aria-label="Tavolo di Golf">
@@ -17,8 +17,8 @@
   <p id="messaggi" role="status" aria-live="polite"></p>
   <div class="azioni"><button type="button" class="pulsante pulsante--secondario" id="annulla">Annulla</button><button type="button" class="pulsante" id="completa" hidden>Completa</button><button type="button" class="pulsante pulsante--secondario" id="nuovaPartita">Nuova partita</button></div>
   <section class="risultati-carte" id="risultati" aria-label="Risultato" hidden></section>
-  <details class="pannello regole"><summary>Regole</summary><ol><li>Sette colonne di cinque carte scoperte; una carta va sulla base e le altre sedici formano il mazzo.</li><li>Si porta sulla base la carta in cima a una colonna se vale una in pi&ugrave; o una in meno di quella sulla base, di qualunque seme. Non si gira: niente asso sul re n&eacute; re sull&rsquo;asso.</li><li>Basta un tocco su una carta per mandarla sulla base. Quando non ci sono mosse tocca il mazzo per girare una nuova carta sulla base.</li><li>Si vince svuotando tutte le colonne; altrimenti il punteggio &egrave; il numero di carte rimaste (meno sono, meglio &egrave;).</li><li>Come si gioca: trascina le carte con il mouse o con il dito, oppure tocca una carta e poi la pila dove vuoi metterla. Due tocchi (o doppio clic) mandano la carta alla base. Annulla torna indietro di una mossa (anche più volte).</li></ol></details>
-  <p class="fonti-carte">Riferimenti: <a href="https://it.wikipedia.org/wiki/Golf_(solitario)">Golf - Wikipedia</a>.</p>
+  <details class="pannello regole" data-pannello><summary>Regole</summary><ol><li>Sette colonne di cinque carte scoperte; una carta va sulla base e le altre sedici formano il mazzo.</li><li>Si porta sulla base la carta in cima a una colonna se vale una in pi&ugrave; o una in meno di quella sulla base, di qualunque seme. Non si gira: niente asso sul re n&eacute; re sull&rsquo;asso.</li><li>Basta un tocco su una carta per mandarla sulla base. Quando non ci sono mosse tocca il mazzo per girare una nuova carta sulla base.</li><li>Si vince svuotando tutte le colonne; altrimenti il punteggio &egrave; il numero di carte rimaste (meno sono, meglio &egrave;).</li><li>Come si gioca: trascina le carte con il mouse o con il dito, oppure tocca una carta e poi la pila dove vuoi metterla. Due tocchi (o doppio clic) mandano la carta alla base. Annulla torna indietro di una mossa (anche più volte).</li></ol></details>
+  <p class="fonti-carte" data-pannello>Riferimenti: <a href="https://it.wikipedia.org/wiki/Golf_(solitario)">Golf - Wikipedia</a>.</p>
 </main>
-<script src="../js/mazzo.js"></script><script src="../js/carte.js"></script><script src="./funzioni.js"></script><script src="../js/solitario-pagina.js"></script><script src="./main.js"></script>
+<script src="../js/tavola.js"></script><script src="../js/mazzo.js"></script><script src="../js/carte.js"></script><script src="./funzioni.js"></script><script src="../js/solitario-pagina.js"></script><script src="./main.js"></script>
 </body></html>

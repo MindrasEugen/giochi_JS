@@ -61,15 +61,29 @@
 }
 
 /* Sui tavoli con molte colonne ogni pixel libero serve alle carte. */
-@media (max-width: 599px) {
+#contenitore_gioco.contenitore:has(.tavolo-solitario) {
+  width: calc(100% - 8px);
+  padding-inline: var(--spazio-2);
+}
+.tavolo-italiano:has(.tavolo-solitario) {
+  border-width: 2px;
+  padding: 12px var(--spazio-1);
+  border-radius: var(--raggio-m);
+}
+@media (min-width: 600px) {
   #contenitore_gioco.contenitore:has(.tavolo-solitario) {
-    width: calc(100% - 8px);
-    padding-inline: 8px;
+    width: calc(100% - 32px);
+    padding-inline: var(--spazio-4);
   }
   .tavolo-italiano:has(.tavolo-solitario) {
-    border-width: 2px;
-    padding: 12px 4px;
-    border-radius: 12px;
+    border-width: 8px;
+    padding: var(--spazio-4);
+    border-radius: var(--raggio-xl);
+  }
+}
+@media (min-width: 900px) {
+  #contenitore_gioco.contenitore:has(.tavolo-solitario) {
+    padding-inline: var(--spazio-5);
   }
 }
 

@@ -53,3 +53,5 @@ Ultima modifica: 2026-11-03
 - 2026-11-05 - Tappa 23 implementata: Klondike, FreeCell (con risolutore), Spider, Piramide e Golf con pagina comune (trascinamento, tocco-tocco, annulla, tempo, mosse). CSS di Codex. Home a 45 giochi.
 - 2026-11-05 - Tappa 24 implementata: TriPeaks, Yukon, Scorpione, Orologio e Le tredici (Baker's Dozen) con la pagina comune dei solitari. Home a 50 giochi. Tutte le tappe del piano implementate; mancano le prove su telefono delle Tappe 23 e 24.
 - 2026-11-05 - Tappe 23 e 24 completate: prova su telefono passata, ma carte poco leggibili. Aggiunta la Tappa 24.1 (carte semplificate e più spazio, scelta dell'utente).
+- 2026-11-05 - Nuova fase: sul telefono tavola a schermo intero, regole e altro in un pannello sopra il gioco, gesti touch al posto dei pulsanti (pulsanti con opzione nascosta). Aggiunte le Tappe 25, 26 e 27; la 24.1 è unita alla 25.
+- 2026-11-05 - Tappa 25 implementata: barra e pannello sopra il gioco (`js/tavola.js`), Serpente con gesti, solitari con carte semplificate; CSS di Codex in due giri; verificata nel browser, manca la prova su telefono.

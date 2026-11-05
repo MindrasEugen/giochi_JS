@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>FreeCell | Giochi JS</title>
-  <link rel="stylesheet" href="../css/comune.css"><link rel="stylesheet" href="../css/gioco.css"><link rel="stylesheet" href="../css/carte.css"><link rel="stylesheet" href="../css/carte-italiane.css"><link rel="stylesheet" href="../css/solitario.css"><link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="../css/comune.css"><link rel="stylesheet" href="../css/gioco.css"><link rel="stylesheet" href="../css/carte.css"><link rel="stylesheet" href="../css/carte-italiane.css"><link rel="stylesheet" href="../css/solitario.css"><link rel="stylesheet" href="../css/tavola.css"><link rel="stylesheet" href="./style.css">
 </head>
 <body>
 <main class="contenitore" id="contenitore_gioco">
-  <a class="link-home" href="../index.html">&larr; Tutti i giochi</a>
-  <header class="intro-carte"><p class="occhiello-carte">Solitari / FreeCell</p><h1>Tutto scoperto, nessuna scusa.</h1><p class="sottotitolo">Tutte le carte sono visibili: con quattro celle libere ogni partita proposta si pu&ograve; risolvere.</p></header>
+  <a class="link-home" data-pannello href="../index.html">&larr; Tutti i giochi</a>
+  <header class="intro-carte" data-pannello><p class="occhiello-carte">Solitari / FreeCell</p><h1>Tutto scoperto, nessuna scusa.</h1><p class="sottotitolo">Tutte le carte sono visibili: con quattro celle libere ogni partita proposta si pu&ograve; risolvere.</p></header>
   
   <div class="riepilogo-carte" aria-label="Tempo e mosse"><div><span id="nomeP0">Tempo</span><strong id="puntiP0">0:00</strong></div><div><span id="nomeP1">Mosse</span><strong id="puntiP1">0</strong></div><small id="tipoPunti"></small></div>
   <section class="tavolo tavolo-italiano tavolo-solitario-sfondo" aria-label="Tavolo di FreeCell">
@@ -17,8 +17,8 @@
   <p id="messaggi" role="status" aria-live="polite"></p>
   <div class="azioni"><button type="button" class="pulsante pulsante--secondario" id="annulla">Annulla</button><button type="button" class="pulsante" id="completa" hidden>Completa</button><button type="button" class="pulsante pulsante--secondario" id="nuovaPartita">Nuova partita</button></div>
   <section class="risultati-carte" id="risultati" aria-label="Risultato" hidden></section>
-  <details class="pannello regole"><summary>Regole</summary><ol><li>Le 52 carte sono scoperte in otto colonne. In alto ci sono quattro celle libere (una carta ciascuna) e quattro basi.</li><li>Nelle colonne si costruisce in ordine decrescente a colori alterni; in una colonna vuota va qualunque carta. Le basi si riempiono per seme dall&rsquo;asso al re.</li><li>Si sposta una carta alla volta, ma una sequenza si pu&ograve; spostare tutta insieme se ci sono abbastanza celle e colonne libere: (celle libere + 1) &times; 2 per ogni colonna vuota.</li><li>Ogni partita viene controllata da un risolutore automatico prima di essere proposta: si pu&ograve; sempre vincere.</li><li>Come si gioca: trascina le carte con il mouse o con il dito, oppure tocca una carta e poi la pila dove vuoi metterla. Due tocchi (o doppio clic) mandano la carta alla base. Annulla torna indietro di una mossa (anche più volte).</li></ol></details>
-  <p class="fonti-carte">Riferimenti: <a href="https://it.wikipedia.org/wiki/FreeCell">FreeCell - Wikipedia</a>.</p>
+  <details class="pannello regole" data-pannello><summary>Regole</summary><ol><li>Le 52 carte sono scoperte in otto colonne. In alto ci sono quattro celle libere (una carta ciascuna) e quattro basi.</li><li>Nelle colonne si costruisce in ordine decrescente a colori alterni; in una colonna vuota va qualunque carta. Le basi si riempiono per seme dall&rsquo;asso al re.</li><li>Si sposta una carta alla volta, ma una sequenza si pu&ograve; spostare tutta insieme se ci sono abbastanza celle e colonne libere: (celle libere + 1) &times; 2 per ogni colonna vuota.</li><li>Ogni partita viene controllata da un risolutore automatico prima di essere proposta: si pu&ograve; sempre vincere.</li><li>Come si gioca: trascina le carte con il mouse o con il dito, oppure tocca una carta e poi la pila dove vuoi metterla. Due tocchi (o doppio clic) mandano la carta alla base. Annulla torna indietro di una mossa (anche più volte).</li></ol></details>
+  <p class="fonti-carte" data-pannello>Riferimenti: <a href="https://it.wikipedia.org/wiki/FreeCell">FreeCell - Wikipedia</a>.</p>
 </main>
-<script src="../js/mazzo.js"></script><script src="../js/carte.js"></script><script src="./funzioni.js"></script><script src="../js/solitario-pagina.js"></script><script src="./main.js"></script>
+<script src="../js/tavola.js"></script><script src="../js/mazzo.js"></script><script src="../js/carte.js"></script><script src="./funzioni.js"></script><script src="../js/solitario-pagina.js"></script><script src="./main.js"></script>
 </body></html>

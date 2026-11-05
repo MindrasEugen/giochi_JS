@@ -13,6 +13,9 @@ const ArcadePagina = (() => {
         let recordPersonale = Arcade.record(config.chiave);
         let stato, iniziata = false, conclusa = false;
         const due = () => modalita?.value === 'due';
+        // Una finestra dei giocatori o il pannello della tavola (js/tavola.js) coprono il gioco
+        const coperto = () => document.querySelector('.copertura') || (typeof Tavola !== 'undefined' && Tavola.aperto());
+        const fermo = () => !iniziata || conclusa || ciclo.inPausa();
         const nome = i => due() ? nomi[i] : (i === 0 ? 'Tu' : 'Computer');
         function tabellone() {
             const dati = config.dati(stato, due(), nome);
@@ -62,7 +65,7 @@ const ArcadePagina = (() => {
         }
         const ciclo = Arcade.avvia({
             aggiorna(dt) {
-                if (document.querySelector('.copertura')) { pausa(); return; }
+                if (coperto()) { pausa(); return; }
                 config.passo(stato, dt, tasti, due());
                 if (stato.finita) {
                     conclusa = true; ciclo.pausa(); tasti.clear();
@@ -86,7 +89,7 @@ const ArcadePagina = (() => {
         });
         document.addEventListener('keydown', e => {
             if (e.target instanceof Element && e.target.matches('input, select, textarea, summary')) return;
-            if (document.querySelector('.copertura')) return;
+            if (coperto()) return;
             if (e.code === 'Escape' || e.code === 'KeyP') { e.preventDefault(); pausa(); return; }
             // Lo spazio su un bottone mantiene il comportamento nativo.
             if (e.code === 'Space' && e.target instanceof Element && e.target.matches('button, a')) return;
@@ -126,7 +129,36 @@ const ArcadePagina = (() => {
             canvas.addEventListener('pointermove', sposta);
             for (const fine of ['pointerup', 'pointercancel', 'lostpointercapture']) canvas.addEventListener(fine, () => { trascina = false; });
         }
+        // Gesti sul campo (Tappa 25, per ora Serpente): scorrere il dito dà la direzione, un tocco avvia o riprende.
+        // In due il campo è diviso a metà: sinistra primo giocatore, destra secondo. I pulsanti a schermo
+        // sul telefono restano nascosti, ma si possono mostrare dal pannello.
+        if (config.scorri) {
+            document.body.classList?.add('con-gesti');
+            if (typeof Tavola !== 'undefined') Tavola.opzione({ chiave: 'giochi_js_mostra_pulsanti', etichetta: 'Mostra i pulsanti sullo schermo',
+                suCambio: v => document.body.classList?.toggle('mostra-pulsanti', v) });
+            const SOGLIA = 24;
+            let inizio = null;
+            const lato = e => { const r = canvas.getBoundingClientRect(); return e.clientX - r.left < r.width / 2 ? 0 : 1; };
+            canvas.addEventListener('pointerdown', e => {
+                e.preventDefault?.();
+                // La cattura può fallire con eventi sintetici: il gesto funziona lo stesso
+                try { canvas.setPointerCapture?.(e.pointerId); } catch { /* nessun puntatore attivo */ }
+                if (fermo()) { inizio = null; alterna(); return; }
+                inizio = { x: e.clientX, y: e.clientY, lato: lato(e) };
+            });
+            canvas.addEventListener('pointermove', e => {
+                if (!inizio || fermo()) return;
+                const dx = e.clientX - inizio.x, dy = e.clientY - inizio.y;
+                if (Math.hypot(dx, dy) < SOGLIA) return;
+                const direzione = Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'destra' : 'sinistra') : (dy > 0 ? 'giu' : 'su');
+                config.scorri(stato, direzione, due(), inizio.lato);
+                // Si riparte da qui: con un solo gesto a "L" si gira due volte
+                inizio = { ...inizio, x: e.clientX, y: e.clientY };
+            });
+            for (const fine of ['pointerup', 'pointercancel', 'lostpointercapture']) canvas.addEventListener(fine, () => { inizio = null; });
+        }
         pulsante.addEventListener('click', alterna);
+        document.addEventListener('tavola:aperta', pausa);
         document.querySelector('#nuovaPartita').addEventListener('click', nuova);
         window.addEventListener('blur', pausa);
         document.addEventListener('visibilitychange', () => { if (document.hidden) pausa(); });

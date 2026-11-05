@@ -45,6 +45,26 @@ for (const gioco of ['serpente', 'ping_pong', 'mattoncini', 'blocchi', 'invasion
     assert.equal(avvia.textContent, 'Gioca ancora'); assert.equal(velo.hidden, false);
     nodi.get('#nuovaPartita').emetti('click'); assert.equal(avvia.textContent, 'Gioca');
     assert.equal(nodi.get('#punti1').textContent, 0);
+    if (gioco === 'serpente') {
+        // Gesti (Tappa 25): un tocco avvia, uno scorrimento gira, il pannello della tavola mette in pausa
+        const canvas = nodi.get('canvas');
+        vm.runInContext('const scorriVero = config.scorri; config.scorri = (...a) => { globalThis.ultimoGesto = a.slice(1); scorriVero(...a); };', c);
+        const punto = (k, x, y) => canvas.emetti(k, { clientX: x, clientY: y, pointerId: 1 });
+        punto('pointerdown', 100, 100); punto('pointerup', 100, 100);
+        assert.equal(avvia.textContent, 'Pausa', 'un tocco sul campo avvia la partita');
+        punto('pointerdown', 100, 100); punto('pointermove', 105, 110);
+        assert.equal(vm.runInContext('globalThis.ultimoGesto', c), undefined, 'sotto la soglia non è un gesto');
+        punto('pointermove', 104, 160);
+        assert.deepEqual([...vm.runInContext('globalThis.ultimoGesto', c)], ['giu', false, 0]);
+        punto('pointermove', 60, 162);
+        assert.deepEqual([...vm.runInContext('globalThis.ultimoGesto', c)], ['sinistra', false, 0], 'gesto a L: due svolte');
+        punto('pointerup', 60, 162);
+        eventi.emetti('tavola:aperta');
+        assert.equal(avvia.textContent, 'Riprendi', 'il pannello mette in pausa');
+        punto('pointerdown', 400, 100); punto('pointerup', 400, 100);
+        assert.equal(avvia.textContent, 'Pausa', 'un tocco riprende');
+        nodi.get('#nuovaPartita').emetti('click');
+    }
     if (barra) {
         nodi.get('#modalitaGioco').value = 'due'; barra.suCambioModalita(true);
         assert.equal(nodi.get('#etichetta1').textContent, 'Uno');
