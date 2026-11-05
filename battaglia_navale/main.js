@@ -25,6 +25,13 @@ let tocca = 0;
 let inAttesa = false;
 let coperto = false; // durante "Passa il dispositivo" le navi non si disegnano, così non si intravedono sotto il velo
 let timer;
+// Mentre il pannello del telefono (js/tavola.js) è aperto il computer aspetta; una nuova partita annulla l'attesa
+let partita = 0;
+function dopoPannello(fn) {
+    const questa = partita;
+    const esegui = () => { if (questa === partita) fn(); };
+    if (typeof Tavola !== 'undefined') Tavola.quandoChiuso(esegui); else esegui();
+}
 let dueGiocatori = false;
 let nomi = Giocatori.leggiNomi();
 
@@ -192,7 +199,7 @@ function clicNemica(i) {
     disegna();
     if (!dueGiocatori) {
         tocca = 1;
-        timer = setTimeout(colpoComputer, ATTESA_PC);
+        timer = setTimeout(() => dopoPannello(colpoComputer), ATTESA_PC);
     } else {
         timer = setTimeout(async () => {
             await passaCoperto(1 - chiSpara, `Passa il dispositivo a ${nome(1 - chiSpara)}: ora spara.`);
@@ -218,6 +225,7 @@ function colpoComputer() {
 }
 
 function iniziaPartita() {
+    partita++;
     clearTimeout(timer);
     flotte = [flottaVuota(), flottaVuota()];
     fasePartita = 'disposizione';

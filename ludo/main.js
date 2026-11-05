@@ -14,6 +14,13 @@ let tiro = null;            // valore del dado nel turno in corso (null = da lan
 let mosseOra = [];
 let finita = false;
 let timer;
+// Mentre il pannello del telefono (js/tavola.js) è aperto il computer aspetta; una nuova partita annulla l'attesa
+let partita = 0;
+function dopoPannello(fn) {
+    const questa = partita;
+    const esegui = () => { if (questa === partita) fn(); };
+    if (typeof Tavola !== 'undefined') Tavola.quandoChiuso(esegui); else esegui();
+}
 
 // Tabellone 15 × 15: ogni cella sa che cosa rappresenta
 const celle = [];
@@ -128,7 +135,7 @@ function lancia() {
     }
     if (tipo(colore) === 'computer') {
         disegna();
-        timer = setTimeout(() => esegui(mossaPC(stato, colore, tiro)), ATTESA_PC);
+        timer = setTimeout(() => dopoPannello(() => esegui(mossaPC(stato, colore, tiro))), ATTESA_PC);
         return;
     }
     messaggi.textContent = `${NOMI[colore]}: hai fatto ${tiro}. Tocca la pedina da muovere.`;
@@ -167,12 +174,13 @@ function prossimoTurno(attesa = 0) {
         annunciaTurno();
         disegna();
         if (tipo(coloreDiTurno()) === 'computer') {
-            timer = setTimeout(lancia, ATTESA_PC);
+            timer = setTimeout(() => dopoPannello(lancia), ATTESA_PC);
         }
     }, attesa);
 }
 
 function iniziaPartita() {
+    partita++;
     clearTimeout(timer);
     stato = statoIniziale(Number(selectNumero.value));
     tiro = null;

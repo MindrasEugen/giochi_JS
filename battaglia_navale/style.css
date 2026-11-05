@@ -158,3 +158,83 @@ button.cella-mare:focus-visible {
     gap: var(--spazio-3);
   }
 }
+
+/* Tavola compatta */
+body.con-tavola .disposizione:not([hidden]) {
+  gap: var(--spazio-1);
+  margin-bottom: 0;
+}
+body.con-tavola .disposizione__istruzioni {
+  font-size: var(--testo-s);
+  padding: var(--spazio-1) var(--spazio-2);
+}
+body.con-tavola .disposizione__azioni {
+  gap: var(--spazio-1);
+}
+body.con-tavola .disposizione__azioni button {
+  font-size: var(--testo-s);
+}
+body.con-tavola .campi {
+  gap: var(--spazio-2);
+}
+body.con-tavola .campo:not([hidden]) {
+  gap: var(--spazio-1);
+}
+body.con-tavola .campo__titolo {
+  font-size: var(--testo-s);
+}
+body.con-tavola .campi:has(#campoNemico:not([hidden])) {
+  grid-template-columns: 45% minmax(0, 1fr);
+}
+body.con-tavola .campi:has(#campoNemico:not([hidden])) .campo--nemico {
+  grid-column: 1 / -1;
+}
+body.con-tavola .campi:has(#campoNemico:not([hidden])) .campo--mio .griglia-mare {
+  gap: 1px;
+  padding: var(--spazio-1);
+}
+
+@media (min-width: 600px) {
+  body.con-tavola .disposizione:not([hidden]) {
+    gap: var(--spazio-3);
+    margin-bottom: var(--spazio-4);
+  }
+  body.con-tavola .disposizione__istruzioni {
+    font-size: var(--testo-m);
+    padding: var(--spazio-2) var(--spazio-3);
+  }
+  body.con-tavola .disposizione__azioni {
+    gap: var(--spazio-2);
+  }
+  body.con-tavola .disposizione__azioni button {
+    font-size: var(--testo-m);
+  }
+  body.con-tavola .campi {
+    gap: var(--spazio-4);
+  }
+  body.con-tavola .campo:not([hidden]) {
+    gap: var(--spazio-2);
+  }
+  body.con-tavola .campo__titolo {
+    font-size: var(--testo-m);
+  }
+  body.con-tavola .campi:has(#campoNemico:not([hidden])) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  body.con-tavola .campi:has(#campoNemico:not([hidden])) .campo--nemico {
+    grid-column: auto;
+  }
+  body.con-tavola .campi:has(#campoNemico:not([hidden])) .campo--mio .griglia-mare {
+    gap: 2px;
+    padding: 6px;
+  }
+}
+
+@media (min-width: 900px) {
+  body.con-tavola .campi {
+    gap: var(--spazio-3);
+  }
+  body.con-tavola .campi:has(#campoNemico:not([hidden])) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

@@ -24,6 +24,13 @@ let inSospeso = null;   // mosse di promozione in attesa della scelta del pezzo
 let finita = false;
 let pcPensa = false;
 let timerPC;
+// Mentre il pannello del telefono (js/tavola.js) è aperto il computer aspetta; una nuova partita annulla l'attesa
+let partita = 0;
+function dopoPannello(fn) {
+    const questa = partita;
+    const esegui = () => { if (questa === partita) fn(); };
+    if (typeof Tavola !== 'undefined') Tavola.quandoChiuso(esegui); else esegui();
+}
 let girata = false;
 let dueGiocatori = false;
 let nomi = Giocatori.leggiNomi();
@@ -211,11 +218,11 @@ function turnoComputer() {
     pcPensa = true;
     disegna();
     // il calcolo parte dopo un attimo, così la pagina fa in tempo a mostrare la mossa del giocatore
-    timerPC = setTimeout(() => {
+    timerPC = setTimeout(() => dopoPannello(() => {
         const m = mossaPC(stato, difficolta.value);
         pcPensa = false;
         if (m) gioca(m);
-    }, 300);
+    }), 300);
 }
 
 // Annulla l'ultima mossa; contro il computer annulla anche la sua risposta, così tocca di nuovo a te
@@ -240,6 +247,7 @@ function annulla() {
 }
 
 function iniziaPartita() {
+    partita++;
     clearTimeout(timerPC);
     pcPensa = false;
     stato = statoIniziale();

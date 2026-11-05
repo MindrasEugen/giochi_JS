@@ -7,17 +7,18 @@
         <link rel="stylesheet" href="../css/comune.css">
         <link rel="stylesheet" href="../css/giocatori.css">
         <link rel="stylesheet" href="../css/gioco.css">
+        <link rel="stylesheet" href="../css/tavola.css">
         <link rel="stylesheet" href="./style.css">
         <title>Filetto</title>
     </head>
 
     <body>
         <div class="contenitore" id="contenitore_gioco">
-            <a class="link-home" href="../index.html">← Tutti i giochi</a>
-            <h1>Filetto</h1>
-            <p class="sottotitolo">Il mulino a 9 pedine: metti tre pedine in fila per togliere una pedina all’avversario.</p>
+            <a class="link-home" data-pannello href="../index.html">← Tutti i giochi</a>
+            <h1 data-pannello>Filetto</h1>
+            <p class="sottotitolo" data-pannello>Il mulino a 9 pedine: metti tre pedine in fila per togliere una pedina all’avversario.</p>
 
-            <div class="barra-modalita">
+            <div class="barra-modalita" data-pannello>
                 <label for="modalitaGioco" class="nascosto-visivamente">Modalità</label>
                 <select id="modalitaGioco">
                     <option value="uno">Contro il computer</option>
@@ -65,7 +66,7 @@
                 <button type="button" id="nuovaPartita" class="pulsante">Nuova partita</button>
             </div>
 
-            <details class="pannello regole">
+            <details class="pannello regole" data-pannello>
                 <summary>Regole del gioco</summary>
                 <ol>
                     <li>Ogni giocatore ha 9 pedine. Prima si mettono a turno sul tavoliere, una alla volta, in un punto libero. Comincia il bianco.</li>
@@ -78,6 +79,7 @@
             </details>
         </div>
         <script src="../js/giocatori.js"></script>
+        <script src="../js/tavola.js"></script>
         <script src="./funzioni.js"></script>
         <script src="./main.js"></script>
     </body>

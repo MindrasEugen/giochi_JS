@@ -192,3 +192,28 @@ button.punto:disabled {
     margin-block: var(--spazio-5);
   }
 }
+
+/* Tavola compatta */
+body.con-tavola .tavoliere {
+  margin-block: 0;
+}
+body.con-tavola .segnapunti__mano {
+  font-size: calc(var(--testo-m) * 0.75);
+  flex-shrink: 0;
+}
+
+@media (min-width: 600px) {
+  body.con-tavola .tavoliere {
+    margin-block: var(--spazio-4);
+  }
+  body.con-tavola .segnapunti__mano {
+    font-size: var(--testo-s);
+    flex-shrink: 1;
+  }
+}
+
+@media (min-width: 900px) {
+  body.con-tavola .tavoliere {
+    margin-block: var(--spazio-5);
+  }
+}

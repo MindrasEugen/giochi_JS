@@ -225,3 +225,68 @@ button.casella-scacchi:focus-visible {
     transition: none;
   }
 }
+
+/* Tavola compatta */
+body.con-tavola #scacchiera.scacchiera-scacchi {
+  margin-block: 0;
+}
+body.con-tavola .catturati {
+  min-width: 0;
+  min-height: var(--spazio-4);
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  justify-content: start;
+}
+body.con-tavola .catturati .pezzo-scacchi {
+  width: var(--spazio-3);
+  height: var(--spazio-3);
+  flex-shrink: 0;
+}
+body.con-tavola .promozione {
+  margin-top: 0;
+  padding: var(--spazio-1);
+}
+body.con-tavola .promozione__titolo {
+  margin-bottom: var(--spazio-1);
+  font-size: var(--testo-s);
+}
+body.con-tavola .promozione__pezzo {
+  min-height: var(--area-minima);
+}
+body.con-tavola .promozione__pezzo .pezzo-scacchi {
+  width: var(--area-minima);
+  height: var(--area-minima);
+}
+
+@media (min-width: 600px) {
+  body.con-tavola #scacchiera.scacchiera-scacchi {
+    margin-block: auto;
+  }
+  body.con-tavola .catturati {
+    min-width: auto;
+    min-height: 26px;
+    flex-wrap: wrap;
+    overflow-x: visible;
+    justify-content: center;
+  }
+  body.con-tavola .catturati .pezzo-scacchi {
+    width: 26px;
+    height: 26px;
+    flex-shrink: 1;
+  }
+  body.con-tavola .promozione {
+    margin-top: var(--spazio-3);
+    padding: var(--spazio-3);
+  }
+  body.con-tavola .promozione__titolo {
+    margin-bottom: var(--spazio-2);
+    font-size: var(--testo-m);
+  }
+  body.con-tavola .promozione__pezzo {
+    min-height: 56px;
+  }
+  body.con-tavola .promozione__pezzo .pezzo-scacchi {
+    width: 56px;
+    height: 56px;
+  }
+}

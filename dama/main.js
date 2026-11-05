@@ -18,6 +18,13 @@ let ultimaMossa = null;
 let finita = false;
 let pcPensa = false;
 let timerPC;
+// Mentre il pannello del telefono (js/tavola.js) è aperto il computer aspetta; una nuova partita annulla l'attesa
+let partita = 0;
+function dopoPannello(fn) {
+    const questa = partita;
+    const esegui = () => { if (questa === partita) fn(); };
+    if (typeof Tavola !== 'undefined') Tavola.quandoChiuso(esegui); else esegui();
+}
 let mosseSenzaPresa = 0;
 let dueGiocatori = false;
 let nomi = Giocatori.leggiNomi();
@@ -153,14 +160,15 @@ function eseguiMossa(mossa) {
 function turnoComputer() {
     pcPensa = true;
     disegna();
-    timerPC = setTimeout(() => {
+    timerPC = setTimeout(() => dopoPannello(() => {
         pcPensa = false;
         const mossa = mossaPC(s, COLORE_PC, difficolta.value);
         if (mossa) eseguiMossa(mossa);
-    }, 500);
+    }), 500);
 }
 
 function iniziaPartita() {
+    partita++;
     clearTimeout(timerPC);
     pcPensa = false;
     s = scacchieraIniziale();

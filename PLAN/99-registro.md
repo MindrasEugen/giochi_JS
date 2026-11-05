@@ -60,3 +60,5 @@ Ultima modifica: 2026-11-03
 - 2026-11-05 - Tappa 27.1 implementata: 11 giochi con il mazzo italiano a schermo intero, carte più grandi, avversari compatti, PC fermi con il pannello aperto; CSS di Codex in due giri; corretta la larghezza massima di css/tavola.css. Manca la prova su telefono.
 - 2026-11-05 - Tappa 27.1 completata: prova su telefono passata («a primo colpo d'occhio sembra vada bene»). Via alla Tappa 27.2 (carte francesi).
 - 2026-11-05 - Tappa 27.2 implementata: 7 giochi con il mazzo francese a schermo intero; carte semplificate in Scala 40, Ramino e Burraco; carte più grandi in Blackjack, Guerra, Poker; avversari compatti in Cambio colore; CSS di Codex in due giri. Manca la prova su telefono.
+- 2026-11-05 - Tappa 27.2 completata (via dell'utente). Inizio Tappa 27.3 (giochi da tavolo).
+- 2026-11-05 - Tappa 27.3 implementata: Dama, Filetto, Battaglia navale, Ludo, Scacchi a schermo intero, segnapunti in una riga, computer fermo con il pannello aperto; CSS di Codex in un giro. Manca la prova su telefono.

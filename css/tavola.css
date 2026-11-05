@@ -320,6 +320,35 @@ body.con-tavola:has(.tavolo-solitario) .azioni {
   line-height: 1;
 }
 
+/* Giochi con il segnapunti di css/gioco.css */
+body.con-tavola .tabellone {
+  margin: 0;
+  padding: var(--spazio-1) var(--spazio-2);
+}
+body.con-tavola .segnapunti {
+  flex-direction: row;
+}
+body.con-tavola .segnapunti__nome {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+body.con-tavola .segnapunti__punti {
+  font-size: var(--testo-l);
+  flex-shrink: 0;
+}
+body.con-tavola:has(#contenitore_gioco > .tabellone) #messaggi:not(:empty) {
+  margin: 0;
+  padding: var(--spazio-1) var(--spazio-3);
+  font-size: var(--testo-s);
+}
+body.con-tavola:has(#contenitore_gioco > .tabellone) .azioni {
+  flex-wrap: nowrap;
+  margin-top: 0;
+  padding-top: var(--spazio-1);
+}
+
 /* Layout originale sugli schermi larghi (la larghezza massima resta quella del CSS di ogni famiglia di giochi) */
 @media (min-width: 600px) {
   .barra-tavola,
@@ -328,6 +357,7 @@ body.con-tavola:has(.tavolo-solitario) .azioni {
   }
   body.con-tavola #contenitore_gioco.contenitore {
     display: block;
+    gap: normal;
     width: calc(100% - 32px);
     min-height: auto;
     margin: var(--spazio-4) auto;
@@ -451,10 +481,45 @@ body.con-tavola:has(.tavolo-solitario) .azioni {
     font-size: var(--testo-m);
   }
 }
+@media (min-width: 600px) {
+  body.con-tavola .tabellone {
+    margin: 0 0 var(--spazio-4);
+    padding: var(--spazio-3) var(--spazio-4);
+  }
+  body.con-tavola .segnapunti {
+    flex-direction: column;
+  }
+  body.con-tavola .segnapunti__nome {
+    min-width: auto;
+    overflow: visible;
+    text-overflow: clip;
+    white-space: normal;
+  }
+  body.con-tavola .segnapunti__punti {
+    font-size: var(--testo-xl);
+    flex-shrink: 1;
+  }
+  body.con-tavola:has(#contenitore_gioco > .tabellone) #messaggi:not(:empty) {
+    margin: var(--spazio-3) auto;
+    padding: var(--spazio-2) var(--spazio-3);
+    font-size: var(--testo-m);
+  }
+  body.con-tavola:has(#contenitore_gioco > .tabellone) .azioni {
+    flex-wrap: wrap;
+    margin-top: var(--spazio-3);
+    padding-top: var(--spazio-3);
+  }
+}
 @media (min-width: 900px) {
   body.con-tavola #contenitore_gioco.contenitore {
     margin-block: var(--spazio-5);
     padding: var(--spazio-5);
+  }
+}
+
+@media (min-width: 900px) {
+  body.con-tavola .segnapunti__punti {
+    font-size: var(--testo-xxl);
   }
 }
 

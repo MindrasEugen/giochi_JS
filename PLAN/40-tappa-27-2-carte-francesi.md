@@ -17,7 +17,7 @@ Blackjack, Guerra, Cambio colore, Poker, Scala 40, Ramino, Burraco. Da valutare 
 - [x] Test: `js/test-carte-francesi-tavola.js` (carte semplificate, opzione, colonne, PC fermo), `js/test-tavola.js` (telefono, evento)
 - [x] CSS (Codex): carte semplificate in Scala 40/Ramino/Burraco, Poker, Blackjack, Guerra con carte più grandi, Cambio colore con avversari compatti
 - [x] Verifiche nel browser (375×667, 390×844) e confronto delle misure a 600/900/1280px
-- [ ] Prova su telefono (utente)
+- [x] Prova su telefono (utente): via alla tappa successiva («procedi», 2026-11-05)
 
 ## Come verificare
 
@@ -36,6 +36,5 @@ Vedi [Tappa 27](38-tappa-27-schermo-intero-tutti.md#come-verificare).
 
 ## Problemi aperti
 
-- Prova su telefono dell'utente da fare.
 - Restano più alte dello schermo (a 375×667): Burraco (827px, oltre 950 con le combinazioni sul tavolo), Cambio colore (849px), Scala 40 con le combinazioni (circa 830px): si scorre per arrivare ai pulsanti.
 - In Guerra, durante una guerra, le carte sovrapposte mostrano solo l'angolo.

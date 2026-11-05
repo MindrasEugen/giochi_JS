@@ -7,18 +7,19 @@
         <link rel="stylesheet" href="../css/comune.css">
         <link rel="stylesheet" href="../css/giocatori.css">
         <link rel="stylesheet" href="../css/gioco.css">
+        <link rel="stylesheet" href="../css/tavola.css">
         <link rel="stylesheet" href="./style.css">
         <title>Ludo</title>
     </head>
 
     <body>
         <div class="contenitore" id="contenitore_gioco">
-            <a class="link-home" href="../index.html">← Tutti i giochi</a>
-            <h1>Ludo</h1>
-            <p class="sottotitolo">Il “Non t’arrabbiare”: porta a casa tutte e 4 le tue pedine prima degli altri.</p>
+            <a class="link-home" data-pannello href="../index.html">← Tutti i giochi</a>
+            <h1 data-pannello>Ludo</h1>
+            <p class="sottotitolo" data-pannello>Il “Non t’arrabbiare”: porta a casa tutte e 4 le tue pedine prima degli altri.</p>
 
             <!-- Quanti giocatori e chi è umano o computer -->
-            <div class="configurazione">
+            <div class="configurazione" data-pannello>
                 <div class="configurazione__riga">
                     <label for="numeroGiocatori">Giocatori</label>
                     <select id="numeroGiocatori">
@@ -64,7 +65,7 @@
                 <button type="button" id="nuovaPartita" class="pulsante">Nuova partita</button>
             </div>
 
-            <details class="pannello regole">
+            <details class="pannello regole" data-pannello>
                 <summary>Regole del gioco</summary>
                 <ol>
                     <li>Da 2 a 4 giocatori, ognuno con 4 pedine nella propria base. Ogni colore può essere giocato da una persona o dal computer.</li>
@@ -77,6 +78,7 @@
                 </ol>
             </details>
         </div>
+        <script src="../js/tavola.js"></script>
         <script src="./funzioni.js"></script>
         <script src="./main.js"></script>
     </body>
