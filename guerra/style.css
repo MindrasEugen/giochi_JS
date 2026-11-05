@@ -1,0 +1,11 @@
+/* Due campi anche su telefono */
+.tavolo-guerra { min-width: 0; }
+.campi-guerra { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--spazio-3); }
+.campo-guerra { min-width: 0; text-align: center; }
+.campo-guerra h2 { font-size: var(--testo-s); }
+#carte0, #carte1 { gap: 0; row-gap: var(--spazio-2); }
+#carte0 .carta, #carte1 .carta { --larghezza-carta: 60px; flex-shrink: 0; }
+#carte0 .carta + .carta, #carte1 .carta + .carta { margin-left: -24px; }
+@media (min-width: 600px) {
+    #carte0 .carta, #carte1 .carta { --larghezza-carta: 90px; }
+}

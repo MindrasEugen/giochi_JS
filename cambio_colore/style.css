@@ -1,0 +1,39 @@
+/* Palette disponibile anche alle scelte fuori dal tavolo */
+:root { --cc-corallo: #ff8a73; --cc-sole: #f2c14e; --cc-menta: #63c5a4; --cc-notte: #3d5a9e; --cc-dorso: #24344f; }
+.tavolo-cambio { min-width: 0; }
+/* Carte originali, senza immagini */
+.carta-colore { width: 64px; aspect-ratio: 2 / 3; flex: 0 0 auto; display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--spazio-1); padding: var(--spazio-1); border: 1px solid var(--colore-superficie); border-radius: var(--raggio-s); box-shadow: var(--ombra-leggera); font-family: var(--font-base); color: var(--colore-testo); vertical-align: middle; }
+.carta-colore--corallo, .colore-attivo--corallo, .scelta-colore--corallo { --cc-fondo: var(--cc-corallo); --cc-inchiostro: var(--colore-testo); background: var(--cc-fondo); color: var(--cc-inchiostro); }
+.carta-colore--sole, .colore-attivo--sole, .scelta-colore--sole { --cc-fondo: var(--cc-sole); --cc-inchiostro: var(--colore-testo); background: var(--cc-fondo); color: var(--cc-inchiostro); }
+.carta-colore--menta, .colore-attivo--menta, .scelta-colore--menta { --cc-fondo: var(--cc-menta); --cc-inchiostro: var(--colore-testo); background: var(--cc-fondo); color: var(--cc-inchiostro); }
+.carta-colore--notte, .colore-attivo--notte, .scelta-colore--notte { --cc-fondo: var(--cc-notte); --cc-inchiostro: var(--colore-superficie); background: var(--cc-fondo); color: var(--cc-inchiostro); }
+.carta-colore--jolly { background: conic-gradient(var(--cc-corallo) 0deg 90deg, var(--cc-sole) 90deg 180deg, var(--cc-menta) 180deg 270deg, var(--cc-notte) 270deg 360deg); }
+/* Etichette rettangolari leggibili su tutti gli spicchi */
+.carta-colore--jolly > span { background: var(--cc-dorso); color: var(--colore-superficie); padding-inline: var(--spazio-1); border-radius: var(--raggio-s); }
+.carta-colore--coperta { background: repeating-linear-gradient(45deg, transparent 0 7px, rgba(255, 255, 255, .18) 7px 9px), var(--cc-dorso); }
+.carta-colore__simbolo { font-size: 1.75rem; font-weight: var(--peso-bold); line-height: 1.1; }
+.carta-colore__nome { font-size: .625rem; font-weight: var(--peso-semibold); text-transform: uppercase; line-height: 1.2; }
+.carta-colore--piccola { width: 28px; font-size: 0; }
+.carta-colore--piccola > * { display: none; }
+/* Scarti e indicazioni */
+.centro-cambio { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--spazio-3); padding-block: var(--spazio-4); }
+#scarti .carta-colore { width: 80px; }
+.centro-cambio p { margin: 0; font-size: var(--testo-s); }
+.colore-attivo { padding: var(--spazio-2) var(--spazio-3); border-radius: var(--raggio-xl); font-weight: var(--peso-bold); }
+.mano-cambio { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--spazio-2); padding-block: var(--spazio-3); }
+.mano-cambio .carta-pulsante { background: none; }
+.mano-cambio .carta-pulsante:disabled { opacity: 1; filter: saturate(.35) brightness(.75); }
+.mano-cambio .carta-pulsante:not(:disabled) .carta-colore { transform: translateY(-4px); box-shadow: 0 0 0 3px var(--colore-accento), var(--ombra-leggera); }
+.carta-pulsante--pescata { transform: translateY(-6px); outline: 3px solid var(--colore-accento); outline-offset: 2px; }
+.mano-cambio .carta-pulsante:focus-visible { outline-color: var(--colore-accento); }
+.opzioni-prese .scelta-colore, .opzioni-prese .scelta-colore:hover:not(:disabled), .opzioni-prese .scelta-colore:active:not(:disabled) { background: var(--cc-fondo); color: var(--cc-inchiostro); }
+.avversario-carte--turno span { color: var(--colore-accento); font-weight: var(--peso-bold); }
+/* Il titolo occupa una riga, i dorsi restano affiancati */
+.tavolo-cambio .avversario-carte { gap: var(--spazio-1); }
+.avversario-carte .carta-colore--piccola { flex: 0 0 28px; }
+@media (min-width: 600px) {
+    .carta-colore { width: 80px; }
+    .carta-colore__simbolo { font-size: 2rem; }
+    .carta-colore--piccola { width: 28px; }
+    #scarti .carta-colore { width: 100px; }
+}

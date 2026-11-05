@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guerra | Giochi JS</title>
+  <link rel="stylesheet" href="../css/comune.css"><link rel="stylesheet" href="../css/gioco.css"><link rel="stylesheet" href="../css/giocatori.css"><link rel="stylesheet" href="../css/carte.css"><link rel="stylesheet" href="../css/carte-italiane.css"><link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="contenitore" id="contenitore_gioco">
+  <a class="link-home" href="../index.html">&larr; Tutti i giochi</a>
+  <header class="intro-carte"><p class="occhiello-carte">Mazzo francese / Guerra</p><h1>La carta pi&ugrave; alta vince.</h1><p class="sottotitolo">Il mazzo diviso a met&agrave;: si gira una carta a testa e la pi&ugrave; alta prende tutto. A parit&agrave; scoppia la guerra.</p></header>
+  <div class="barra-modalita"><label for="modalitaGioco">Modalit&agrave;</label><select id="modalitaGioco"><option value="uno">Contro il PC</option><option value="due">2 giocatori</option></select><button type="button" id="nomiGiocatori" class="pulsante pulsante--secondario" hidden>Nomi</button></div>
+  <div class="riepilogo-carte" aria-label="Riepilogo"><div><span id="nomeP0"></span><strong id="puntiP0">0</strong></div><div><span id="nomeP1"></span><strong id="puntiP1">0</strong></div><small id="tipoPunti"></small></div>
+  <section class="tavolo tavolo-italiano tavolo-guerra" aria-label="Tavolo di Guerra">
+    <div class="campi-guerra"><div class="campo-guerra"><h2 id="titolo0">Tu</h2><div class="mano" id="carte0" aria-label="Carte girate dal primo giocatore"></div></div>
+    <div class="campo-guerra"><h2 id="titolo1">Computer</h2><div class="mano" id="carte1" aria-label="Carte girate dal secondo giocatore"></div></div></div>
+  </section>
+  <p id="messaggi" role="status" aria-live="polite"></p>
+  <div class="opzioni-prese" id="opzioniPresa" role="group" aria-label="Scelte disponibili"></div>
+  <div class="azioni"><button type="button" class="pulsante" id="gira">Gira le carte</button><button type="button" class="pulsante pulsante--secondario" id="automatico">Gioca fino alla fine</button><button type="button" class="pulsante pulsante--secondario" id="nuovaPartita">Nuova partita</button></div>
+  <section class="risultati-carte" id="risultati" aria-label="Risultato finale" hidden></section>
+  <details class="pannello regole"><summary>Regole e variante adottata</summary><ol><li>Mazzo francese da 52 carte diviso in due: 26 a testa, coperte.</li><li>A ogni battaglia si gira la prima carta del proprio mazzo: la pi&ugrave; alta prende entrambe e le mette in fondo al suo mazzo. Ordine dalla pi&ugrave; alta: asso, re, donna, fante, 10, &hellip; 2. Il seme non conta.</li><li>A parit&agrave; c&rsquo;&egrave; la guerra: ognuno mette tre carte coperte e una scoperta, e la scoperta pi&ugrave; alta prende tutto. Se c&rsquo;&egrave; ancora parit&agrave; si continua. Chi ha poche carte usa quelle che ha, scoprendo l&rsquo;ultima.</li><li>Vince chi prende tutte le carte. Per non giocare all&rsquo;infinito la partita finisce dopo 300 battaglie: vince chi ha pi&ugrave; carte.</li><li>Variante adottata: le carte vinte vanno in fondo al mazzo in ordine casuale. In due giocatori si usa lo stesso pulsante: non ci sono carte nascoste da proteggere.</li></ol></details>
+  <p class="fonti-carte">Riferimenti: <a href="https://it.wikipedia.org/wiki/Guerra_(gioco_di_carte)">Guerra - Wikipedia</a>.</p>
+</main>
+<script src="../js/mazzo.js"></script><script src="../js/carte.js"></script><script src="../js/giocatori.js"></script><script src="./funzioni.js"></script><script src="./main.js"></script>
+</body></html>

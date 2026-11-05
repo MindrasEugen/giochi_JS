@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blackjack | Giochi JS</title>
+  <link rel="stylesheet" href="../css/comune.css"><link rel="stylesheet" href="../css/gioco.css"><link rel="stylesheet" href="../css/giocatori.css"><link rel="stylesheet" href="../css/carte.css"><link rel="stylesheet" href="../css/carte-italiane.css"><link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="contenitore" id="contenitore_gioco">
+  <a class="link-home" href="../index.html">&larr; Tutti i giochi</a>
+  <header class="intro-carte"><p class="occhiello-carte">Mazzo francese / Blackjack</p><h1>Arriva a 21, non oltre.</h1><p class="sottotitolo">Punta le tue fiches e sfida il banco: carta, stai, raddoppia o dividi. In due, chi fa il banco cambia a ogni mano.</p></header>
+  <div class="barra-modalita"><label for="modalitaGioco">Modalit&agrave;</label><select id="modalitaGioco"><option value="uno">Contro il banco del PC</option><option value="due">2 giocatori (a turno uno fa il banco)</option></select><button type="button" id="nomiGiocatori" class="pulsante pulsante--secondario" hidden>Nomi</button></div>
+  <div class="riepilogo-carte" aria-label="Riepilogo"><div><span id="nomeP0"></span><strong id="puntiP0">0</strong></div><div><span id="nomeP1"></span><strong id="puntiP1">0</strong></div><small id="tipoPunti"></small></div>
+  <section class="tavolo tavolo-italiano tavolo-blackjack" aria-label="Tavolo di Blackjack">
+    <div class="zona-banco"><h2 id="titoloBanco">Banco</h2><div class="mano" id="carteBanco" aria-label="Carte del banco"></div><p class="totale-mano" id="totaleBanco"></p></div>
+    <div class="zona-giocatore"><h2 id="titoloGiocatore">La tua mano</h2><div id="maniGiocatore" aria-label="Le mani di chi punta"></div></div>
+  </section>
+  <p id="messaggi" role="status" aria-live="polite"></p>
+  <div class="opzioni-prese" id="opzioniPresa" role="group" aria-label="Scelte disponibili"></div>
+  <div class="azioni"><button type="button" class="pulsante pulsante--secondario" id="nuovaPartita">Nuova partita</button></div>
+  <section class="risultati-carte" id="risultati" aria-label="Risultato finale" hidden></section>
+  <details class="pannello regole"><summary>Regole e variante adottata</summary><ol><li>Due mazzi francesi da 52 carte, rimescolati quando stanno per finire. Le figure valgono 10, l&rsquo;asso 1 o 11 (come conviene), le altre il loro numero.</li><li>Prima di ogni mano si punta 10, 20 o 50 fiches. Si parte con 200 fiches.</li><li>Chi punta riceve due carte scoperte; il banco una scoperta e una coperta. Carta: se ne chiede un&rsquo;altra. Stai: ti fermi. Raddoppia (solo con due carte): puntata doppia e una sola carta. Dividi (due carte dello stesso valore): due mani separate con la stessa puntata; con due assi una sola carta per mano.</li><li>Chi supera 21 sballa e perde subito. Blackjack (asso e una carta da 10 con le prime due carte) si paga 3 a 2; una mano vinta 1 a 1; a parit&agrave; la puntata torna indietro. Se il banco ha blackjack la mano finisce subito.</li><li>Contro il PC il banco pesca fino a 17 e sta su ogni 17. In due, chi fa il banco decide da solo quando pescare e quando stare, e paga con le sue fiches; i ruoli si scambiano a ogni mano.</li><li>La partita finisce quando chi deve puntare non ha pi&ugrave; fiches (o, in due, quando il banco non pu&ograve; coprire la puntata minima).</li><li>Variante adottata: niente assicurazione, una sola divisione per mano, 21 dopo una divisione vale 21 e non blackjack.</li></ol></details>
+  <p class="fonti-carte">Riferimenti: <a href="https://it.wikipedia.org/wiki/Blackjack">Blackjack - Wikipedia</a>.</p>
+</main>
+<script src="../js/mazzo.js"></script><script src="../js/carte.js"></script><script src="../js/giocatori.js"></script><script src="./funzioni.js"></script><script src="./main.js"></script>
+</body></html>
