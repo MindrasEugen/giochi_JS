@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Le tredici | Giochi JS</title>
+  <link rel="stylesheet" href="../css/comune.css"><link rel="stylesheet" href="../css/gioco.css"><link rel="stylesheet" href="../css/carte.css"><link rel="stylesheet" href="../css/carte-italiane.css"><link rel="stylesheet" href="../css/solitario.css"><link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="contenitore" id="contenitore_gioco">
+  <a class="link-home" href="../index.html">&larr; Tutti i giochi</a>
+  <header class="intro-carte"><p class="occhiello-carte">Solitari / Le tredici</p><h1>Tredici colonne, una carta alla volta.</h1><p class="sottotitolo">Tutte le carte sono scoperte in tredici colonne: con pazienza le porti sulle basi, ma le colonne vuote restano vuote.</p></header>
+  
+  <div class="riepilogo-carte" aria-label="Tempo e mosse"><div><span id="nomeP0">Tempo</span><strong id="puntiP0">0:00</strong></div><div><span id="nomeP1">Mosse</span><strong id="puntiP1">0</strong></div><small id="tipoPunti"></small></div>
+  <section class="tavolo tavolo-italiano tavolo-solitario-sfondo" aria-label="Tavolo di Le tredici">
+    <div class="tavolo-solitario" id="tavoloSolitario"></div>
+  </section>
+  <p id="messaggi" role="status" aria-live="polite"></p>
+  <div class="azioni"><button type="button" class="pulsante pulsante--secondario" id="annulla">Annulla</button><button type="button" class="pulsante" id="completa" hidden>Completa</button><button type="button" class="pulsante pulsante--secondario" id="nuovaPartita">Nuova partita</button></div>
+  <section class="risultati-carte" id="risultati" aria-label="Risultato" hidden></section>
+  <details class="pannello regole"><summary>Regole</summary><ol><li>Tredici colonne di quattro carte scoperte (in inglese il gioco si chiama Baker&rsquo;s Dozen). I re vengono messi in fondo alla loro colonna.</li><li>Si sposta solo la carta in cima a una colonna: va su una carta di valore subito superiore, di qualunque seme, oppure sulla base.</li><li>Le colonne vuote non si possono riempire. Le basi si riempiono per seme dall&rsquo;asso al re. Quando tutte le colonne sono in ordine compare Completa.</li><li>Come si gioca: trascina le carte con il mouse o con il dito, oppure tocca una carta e poi la pila dove vuoi metterla. Due tocchi (o doppio clic) mandano la carta alla base. Annulla torna indietro di una mossa (anche più volte).</li></ol></details>
+  <p class="fonti-carte">Riferimenti: <a href="https://en.wikipedia.org/wiki/Baker%27s_Dozen_(card_game)">Baker's Dozen - Wikipedia (in inglese)</a>.</p>
+</main>
+<script src="../js/mazzo.js"></script><script src="../js/carte.js"></script><script src="./funzioni.js"></script><script src="../js/solitario-pagina.js"></script><script src="./main.js"></script>
+</body></html>

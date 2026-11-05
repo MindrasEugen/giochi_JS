@@ -33,7 +33,7 @@ const SolitarioPagina = (() => {
             const coperta = misure.h * 0.1, scoperta = misure.h * 0.24;
             let y = 0;
             const lista = pila.map((x, i) => { const v = y; y += x.scoperta ? scoperta : coperta; return v; });
-            const massimo = misure.h * 3.2; // le colonne molto lunghe si stringono
+            const massimo = misure.h * (motore.ventaglioMassimo || 3.2); // le colonne molto lunghe si stringono
             if (y > massimo) { const k = massimo / y; return lista.map(v => v * k); }
             return lista;
         }
@@ -62,6 +62,8 @@ const SolitarioPagina = (() => {
                     img.classList.add('carta-solitario');
                     if (selezione && selezione.pila === d.id && i >= selezione.indice) img.classList.add('carta-solitario--selezionata');
                     if (d.tipo === 'piramide' && motore.libera && !motore.libera(stato, d.id)) img.classList.add('carta-solitario--coperta');
+                    // Orologio: si evidenzia il mucchio dove va la carta girata
+                    if (motore.destinazione && motore.destinazione(stato) === d.id && i === pila.length - 1) img.classList.add('carta-solitario--selezionata');
                     // css/carte.css fissa la larghezza delle carte: qui serve quella calcolata per il tavolo
                     img.style.width = `${misure.w}px`;
                     img.dataset.pila = d.id; img.dataset.indice = String(i);

@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const { ambiente } = require('../scripts/dom-minimo.js');
 const seme = n => { let s = n; return () => { s = (Math.imul(s, 1664525) + 1013904223) >>> 0; return s / 4294967296; }; };
 
-for (const [cartella, opzione] of [['klondike', '3'], ['freecell', null], ['spider', '2'], ['piramide', null], ['golf', null]]) {
+for (const [cartella, opzione] of [['klondike', '3'], ['freecell', null], ['spider', '2'], ['piramide', null], ['golf', null], ['tripeaks', null], ['yukon', null], ['scorpione', null], ['orologio', null], ['tredici', null]]) {
     const a = ambiente();
     if (opzione) a.$('#modalitaGioco').value = opzione;
     for (const f of ['js/mazzo.js', 'js/carte.js', `${cartella}/funzioni.js`, 'js/solitario-pagina.js', `${cartella}/main.js`]) a.carica(f);

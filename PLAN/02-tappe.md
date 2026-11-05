@@ -28,6 +28,6 @@ Ultima modifica: 2026-11-05
 | 21 | [Mazzo francese: Blackjack, Guerra, Cambio colore](30-tappa-21-francese-1.md) | ☑ completata |
 | 22 | [Mazzo francese: Poker heads-up, Scala 40, Ramino, Burraco](31-tappa-22-francese-2.md) | ☑ completata |
 | 23 | [Solitari: Klondike, FreeCell, Spider, Piramide, Golf](32-tappa-23-solitari-1.md) | ◐ implementata, manca la prova su telefono |
-| 24 | [Solitari: TriPeaks, Yukon, Scorpione, Orologio, Le tredici](33-tappa-24-solitari-2.md) | ☐ da fare |
+| 24 | [Solitari: TriPeaks, Yukon, Scorpione, Orologio, Le tredici](33-tappa-24-solitari-2.md) | ◐ implementata, manca la prova su telefono |
 
 Legenda: ☐ da fare · ◐ in corso · ☑ completata · ✗ annullata
