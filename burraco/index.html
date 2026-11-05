@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Burraco | Giochi JS</title>
-  <link rel="stylesheet" href="../css/comune.css"><link rel="stylesheet" href="../css/gioco.css"><link rel="stylesheet" href="../css/giocatori.css"><link rel="stylesheet" href="../css/carte.css"><link rel="stylesheet" href="../css/carte-italiane.css"><link rel="stylesheet" href="../css/ramino.css"><link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="../css/comune.css"><link rel="stylesheet" href="../css/gioco.css"><link rel="stylesheet" href="../css/giocatori.css"><link rel="stylesheet" href="../css/carte.css"><link rel="stylesheet" href="../css/carte-italiane.css"><link rel="stylesheet" href="../css/ramino.css"><link rel="stylesheet" href="../css/tavola.css"><link rel="stylesheet" href="./style.css">
 </head>
 <body>
 <main class="contenitore" id="contenitore_gioco">
-  <a class="link-home" href="../index.html">&larr; Tutti i giochi</a>
-  <header class="intro-carte"><p class="occhiello-carte">Mazzo francese / Burraco</p><h1>Sette carte fanno burraco.</h1><p class="sottotitolo">Scale e carte uguali con jolly e pinelle: prendi il pozzetto, fai almeno un burraco e chiudi per primo.</p></header>
-  <div class="barra-modalita"><label for="modalitaGioco">Modalit&agrave;</label><select id="modalitaGioco"><option value="uno">Contro il PC</option><option value="due">2 giocatori</option></select><button type="button" id="nomiGiocatori" class="pulsante pulsante--secondario" hidden>Nomi</button></div>
+  <a class="link-home" data-pannello href="../index.html">&larr; Tutti i giochi</a>
+  <header class="intro-carte" data-pannello><p class="occhiello-carte">Mazzo francese / Burraco</p><h1>Sette carte fanno burraco.</h1><p class="sottotitolo">Scale e carte uguali con jolly e pinelle: prendi il pozzetto, fai almeno un burraco e chiudi per primo.</p></header>
+  <div class="barra-modalita" data-pannello><label for="modalitaGioco">Modalit&agrave;</label><select id="modalitaGioco"><option value="uno">Contro il PC</option><option value="due">2 giocatori</option></select><button type="button" id="nomiGiocatori" class="pulsante pulsante--secondario" hidden>Nomi</button></div>
   <div class="riepilogo-carte" aria-label="Punti"><div><span id="nomeP0"></span><strong id="puntiP0">0</strong></div><div><span id="nomeP1"></span><strong id="puntiP1">0</strong></div><small id="tipoPunti"></small></div>
   <section class="tavolo tavolo-italiano tavolo-ramino tavolo-burraco" aria-label="Tavolo del Burraco">
     <div id="avversari" aria-label="Carte dell'avversario"></div>
@@ -25,7 +25,7 @@
   <div class="opzioni-prese" id="opzioniPresa" role="group" aria-label="Azioni"></div>
   <div class="azioni"><button type="button" class="pulsante pulsante--secondario" id="nuovaPartita">Nuova partita</button></div>
   <section class="risultati-carte" id="risultati" aria-label="Conteggio della mano" hidden></section>
-  <details class="pannello regole"><summary>Regole e variante adottata</summary><ol>
+  <details class="pannello regole" data-pannello><summary>Regole e variante adottata</summary><ol>
     <li>Due mazzi francesi con 4 jolly (108 carte), due giocatori. Ognuno riceve 11 carte e ha un pozzetto di altre 11 carte coperte.</li>
     <li>Combinazioni: <strong>scala</strong> (almeno 3 carte consecutive dello stesso seme; l&rsquo;asso prima del 2 o dopo il re) e <strong>carte uguali</strong> (almeno 3 dello stesso valore, di qualsiasi seme). Le matte sono il jolly e la pinella (il 2): al massimo una per combinazione, e non si fanno combinazioni di sole pinelle. Una pinella al suo posto in una scala del suo seme &egrave; una carta normale.</li>
     <li>A ogni turno si pesca una carta dal tallone oppure si raccolgono tutti gli scarti; poi si calano combinazioni o si attaccano carte alle proprie combinazioni, e si scarta una carta. Chi raccoglie un solo scarto non pu&ograve; riscartarlo subito.</li>
@@ -35,7 +35,7 @@
     <li>Punti: le carte calate (jolly 30, pinella 20, asso 15, dal re all&rsquo;8 10, dal 7 al 3 5), pi&ugrave; burraco e chiusura; si tolgono le carte rimaste in mano e 100 punti a chi non ha preso il pozzetto. Vince chi arriva per primo a 1005 punti.</li>
     <li>Variante adottata: due giocatori, ognuno attacca solo alle proprie combinazioni. La mano finisce anche quando nel tallone restano due carte, oppure (sicurezza contro le mani infinite) dopo 10 turni di fila in cui nessuno pesca dal tallone. Dopo aver preso il pozzetto bisogna tenere almeno una carta normale per lo scarto finale e, senza burraco, almeno due carte.</li>
   </ol></details>
-  <p class="fonti-carte">Riferimenti: <a href="https://it.wikipedia.org/wiki/Burraco">Burraco - Wikipedia</a>.</p>
+  <p class="fonti-carte" data-pannello>Riferimenti: <a href="https://it.wikipedia.org/wiki/Burraco">Burraco - Wikipedia</a>.</p>
 </main>
-<script src="../js/mazzo.js"></script><script src="../js/carte.js"></script><script src="../js/giocatori.js"></script><script src="../js/combinazioni.js"></script><script src="./funzioni.js"></script><script src="./main.js"></script>
+<script src="../js/tavola.js"></script><script src="../js/mazzo.js"></script><script src="../js/carte.js"></script><script src="../js/giocatori.js"></script><script src="../js/combinazioni.js"></script><script src="./funzioni.js"></script><script src="./main.js"></script>
 </body></html>

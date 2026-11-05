@@ -68,9 +68,11 @@
         cronaca = mossa.prossima ? '' : descrivi(stato.ultimo);
         prepara();
     }
+    // Mentre il pannello (js/tavola.js) è aperto il PC aspetta
+    const dopoPannello = fn => (typeof Tavola !== 'undefined' ? Tavola.quandoChiuso(fn) : fn());
     function pianifica(azione, attesa = 900) {
         const corrente = versione;
-        timer = setTimeout(() => { timer = null; if (corrente === versione) azione(); }, attesa);
+        timer = setTimeout(() => { timer = null; dopoPannello(() => { if (corrente === versione) azione(); }); }, attesa);
     }
     async function prepara() {
         const corrente = versione, s = stato;

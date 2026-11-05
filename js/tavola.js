@@ -5,6 +5,7 @@
 // al loro posto e la pagina resta come prima. All'apertura e alla chiusura del pannello vengono emessi gli
 // eventi 'tavola:aperta' e 'tavola:chiusa' su document (i giochi li usano per la pausa).
 // Le pagine possono aggiungere opzioni (caselle da spuntare) ricordate nel browser con Tavola.opzione().
+// Tavola.telefono() dice se lo schermo è stretto (sotto i 600px).
 const Tavola = (() => {
     let pannello = null, finestra = null, contenuto = null, opzioniBox = null, chiudiBtn = null;
     let aperto = false, spostati = [], sfondo = [], primaDiAprire = null;
@@ -165,10 +166,14 @@ const Tavola = (() => {
         creaPannello(titolo);
         aggiungiSchermoIntero();
         sistema();
-        window.matchMedia?.('(min-width: 600px)').addEventListener?.('change', sistema);
+        // Quando si passa da telefono a schermo largo (o il contrario) le pagine possono ridisegnare: evento 'tavola:schermo'
+        window.matchMedia?.('(min-width: 600px)').addEventListener?.('change', () => {
+            sistema();
+            document.dispatchEvent(new CustomEvent('tavola:schermo'));
+        });
     }
 
-    return { avvia, apri, chiudi, opzione, quandoChiuso, aperto: () => aperto };
+    return { avvia, apri, chiudi, opzione, quandoChiuso, telefono, aperto: () => aperto };
 })();
 
 // Si avvia da sola: gli script dei giochi vengono dopo e trovano già il pannello pronto per le opzioni

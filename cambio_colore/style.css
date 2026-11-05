@@ -37,3 +37,102 @@
     .carta-colore--piccola { width: 28px; }
     #scarti .carta-colore { width: 100px; }
 }
+
+/* Carte e comandi sul telefono */
+body.con-tavola .avversario-carte > span:not(.carta-colore) {
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+body.con-tavola .avversario-carte .carta-colore {
+    display: inline-flex;
+    order: 0;
+    flex: 0 0 22px;
+    width: 22px;
+}
+
+body.con-tavola .avversario-carte .carta-colore ~ .carta-colore {
+    display: none;
+}
+
+body.con-tavola #mano.mano-cambio {
+    grid-template-columns: repeat(var(--colonne, 5), minmax(0, 1fr));
+}
+
+body.con-tavola #mano.mano-cambio .carta-colore {
+    width: 100%;
+    max-width: 76px;
+}
+
+body.con-tavola #scarti .carta-colore {
+    width: 68px;
+}
+
+body.con-tavola .centro-cambio {
+    gap: var(--spazio-2);
+    padding-block: var(--spazio-2);
+}
+
+body.con-tavola #opzioniPresa:has(.scelta-colore) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* Ripristino degli schermi ampi */
+@media (min-width: 600px) {
+    body.con-tavola .tavolo-cambio .avversario-carte {
+        gap: var(--spazio-1);
+    }
+
+    body.con-tavola .avversario-carte > span:not(.carta-colore) {
+        display: block;
+        white-space: normal;
+        text-overflow: clip;
+    }
+
+    body.con-tavola .avversario-carte .carta-colore {
+        display: flex;
+        order: 0;
+        flex: 0 0 28px;
+        width: 28px;
+    }
+
+    body.con-tavola .avversario-carte .carta-colore ~ .carta-colore {
+        display: flex;
+    }
+
+    body.con-tavola #mano.mano-cambio {
+        grid-template-columns: none;
+    }
+
+    body.con-tavola #mano.mano-cambio .carta-colore {
+        width: 80px;
+        max-width: none;
+    }
+
+    body.con-tavola #scarti .carta-colore {
+        width: 100px;
+    }
+
+    body.con-tavola .centro-cambio {
+        gap: var(--spazio-3);
+        padding-block: var(--spazio-4);
+    }
+
+    body.con-tavola #opzioniPresa:has(.scelta-colore) {
+        grid-template-columns: none;
+    }
+}
+
+/* Azioni vicine alla tavola */
+body.con-tavola .azioni {
+    margin-top: var(--spazio-1);
+    padding-top: var(--spazio-1);
+}
+
+@media (min-width: 600px) {
+    body.con-tavola .azioni {
+        margin-top: var(--spazio-3);
+        padding-top: var(--spazio-3);
+    }
+}

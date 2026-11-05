@@ -9,3 +9,45 @@
 @media (min-width: 600px) {
     #carte0 .carta, #carte1 .carta { --larghezza-carta: 90px; }
 }
+
+/* Carte e comandi sul telefono */
+body.con-tavola #carte0 .carta,
+body.con-tavola #carte1 .carta {
+    --larghezza-carta: 96px;
+}
+
+body.con-tavola #carte0,
+body.con-tavola #carte1 {
+    flex-wrap: nowrap;
+}
+
+body.con-tavola #carte0 .carta + .carta,
+body.con-tavola #carte1 .carta + .carta {
+    margin-left: -80px;
+}
+
+body.con-tavola .azioni {
+    flex-wrap: nowrap;
+}
+
+/* Ripristino degli schermi ampi */
+@media (min-width: 600px) {
+    body.con-tavola #carte0 .carta,
+    body.con-tavola #carte1 .carta {
+        --larghezza-carta: 90px;
+    }
+
+    body.con-tavola #carte0,
+    body.con-tavola #carte1 {
+        flex-wrap: wrap;
+    }
+
+    body.con-tavola #carte0 .carta + .carta,
+    body.con-tavola #carte1 .carta + .carta {
+        margin-left: -24px;
+    }
+
+    body.con-tavola .azioni {
+        flex-wrap: wrap;
+    }
+}

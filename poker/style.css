@@ -72,3 +72,102 @@
         --larghezza-carta: 88px;
     }
 }
+
+/* Carte e comandi sul telefono */
+body.con-tavola .tavolo-poker {
+    gap: var(--spazio-1);
+}
+
+body.con-tavola .posto-poker h2 {
+    margin-block: 0;
+}
+
+body.con-tavola .puntata-poker {
+    margin-block: 0;
+}
+
+body.con-tavola .centro-poker {
+    padding-block: var(--spazio-1);
+}
+
+body.con-tavola #carteAltro .carta {
+    --larghezza-carta: 44px;
+}
+
+body.con-tavola #carteMie .carta {
+    --larghezza-carta: 84px;
+}
+
+body.con-tavola #carteTavolo {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 4px;
+}
+
+body.con-tavola #carteTavolo .carta {
+    --larghezza-carta: 60px;
+}
+
+body.con-tavola .piatto-poker {
+    margin: var(--spazio-1) auto;
+}
+
+body.con-tavola #opzioniPresa {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* Ripristino degli schermi ampi */
+@media (min-width: 600px) {
+    body.con-tavola .tavolo-poker {
+        gap: var(--spazio-3);
+    }
+
+    body.con-tavola .posto-poker h2 {
+        margin-block: var(--spazio-2);
+    }
+
+    body.con-tavola .puntata-poker {
+        margin-block: 1em;
+    }
+
+    body.con-tavola .centro-poker {
+        padding-block: var(--spazio-3);
+    }
+
+    body.con-tavola #carteAltro .carta {
+        --larghezza-carta: 88px;
+    }
+
+    body.con-tavola #carteMie .carta {
+        --larghezza-carta: 88px;
+    }
+
+    body.con-tavola #carteTavolo {
+        grid-template-columns: none;
+        gap: var(--spazio-1);
+    }
+
+    body.con-tavola #carteTavolo .carta {
+        --larghezza-carta: 76px;
+    }
+
+    body.con-tavola .piatto-poker {
+        margin: var(--spazio-2) auto;
+    }
+
+    body.con-tavola #opzioniPresa {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+}
+
+/* Azioni vicine alla tavola */
+body.con-tavola .azioni {
+    margin-top: var(--spazio-1);
+    padding-top: var(--spazio-1);
+}
+
+@media (min-width: 600px) {
+    body.con-tavola .azioni {
+        margin-top: var(--spazio-3);
+        padding-top: var(--spazio-3);
+    }
+}

@@ -39,6 +39,38 @@ const Carte = (() => {
         return img;
     }
 
+    // Carta francese semplificata (Tappa 25): valore e seme grandi disegnati in HTML e CSS (css/tavola.css),
+    // al posto dell'immagine quando sul telefono la carta è troppo stretta per leggerla.
+    const SIMBOLI = { hearts: '♥', diamonds: '♦', clubs: '♣', spades: '♠' };
+    function semplice(carta, coperta) {
+        const el = document.createElement('div');
+        el.className = 'carta carta-semplice';
+        el.setAttribute('role', 'img');
+        if (coperta) {
+            el.classList.add('carta--coperta', 'carta-semplice--coperta');
+            el.setAttribute('aria-label', 'Carta coperta');
+            return el;
+        }
+        el.classList.add(Mazzo.colore(carta) === 'rosso' ? 'carta-semplice--rossa' : 'carta-semplice--nera');
+        el.setAttribute('aria-label', Mazzo.nome(carta));
+        const angolo = document.createElement('span'), valore = document.createElement('span'), piccolo = document.createElement('span'), centro = document.createElement('span');
+        angolo.className = 'carta-semplice__angolo';
+        valore.className = 'carta-semplice__valore'; valore.textContent = carta.valore.toUpperCase();
+        piccolo.className = 'carta-semplice__seme'; piccolo.textContent = SIMBOLI[carta.seme];
+        centro.className = 'carta-semplice__centro'; centro.textContent = SIMBOLI[carta.seme];
+        centro.setAttribute('aria-hidden', 'true');
+        angolo.append(valore, piccolo);
+        el.append(angolo, centro);
+        return el;
+    }
+
+    // Colonne per una mano disposta a griglia sul telefono (variabile CSS --colonne): righe il più possibile piene,
+    // al massimo `massimo` carte per riga. Es. con massimo 7: 13 carte -> 7, 22 carte -> 6 (4 righe).
+    function colonne(n, massimo) {
+        const righe = Math.max(1, Math.ceil(n / massimo));
+        return String(Math.max(1, Math.ceil(n / righe)));
+    }
+
     // Per la mano a ventaglio: dà a ogni carta della mano la sua posizione (--i) e il totale (--n),
     // così il CSS può inclinarle in modo simmetrico. Va richiamata ogni volta che la mano cambia.
     function aVentaglio(mano) {
@@ -49,7 +81,7 @@ const Carte = (() => {
         });
     }
 
-    return { impostaCartella, immagine, dorso, crea, aVentaglio };
+    return { impostaCartella, immagine, dorso, crea, semplice, colonne, aVentaglio };
 })();
 
 if (typeof module !== 'undefined') {

@@ -12,3 +12,106 @@
     #carteBanco .carta, .mano-blackjack .carta { --larghezza-carta: 84px; }
     .mano-blackjack { padding: var(--spazio-3); }
 }
+
+/* Carte e comandi sul telefono */
+body.con-tavola #carteBanco .carta,
+body.con-tavola .mano-blackjack .carta {
+    --larghezza-carta: 80px;
+}
+
+body.con-tavola .tavolo-blackjack {
+    gap: var(--spazio-2);
+}
+
+body.con-tavola .zona-giocatore {
+    padding-top: var(--spazio-1);
+}
+
+body.con-tavola .tavolo-blackjack h2 {
+    margin-block: var(--spazio-1);
+}
+
+body.con-tavola #maniGiocatore {
+    gap: var(--spazio-1);
+}
+
+body.con-tavola #maniGiocatore:has(> .mano-blackjack + .mano-blackjack) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+body.con-tavola #maniGiocatore:has(> .mano-blackjack + .mano-blackjack) .carta {
+    --larghezza-carta: 60px;
+}
+
+body.con-tavola .mano-blackjack {
+    padding: var(--spazio-1);
+}
+
+body.con-tavola #opzioniPresa {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+body.con-tavola #opzioniPresa .scelta-presa {
+    text-align: center;
+    justify-content: center;
+}
+
+/* Ripristino degli schermi ampi */
+@media (min-width: 600px) {
+    body.con-tavola #carteBanco .carta,
+    body.con-tavola .mano-blackjack .carta {
+        --larghezza-carta: 84px;
+    }
+
+    body.con-tavola .tavolo-blackjack {
+        gap: var(--spazio-3);
+    }
+
+    body.con-tavola .zona-giocatore {
+        padding-top: var(--spazio-3);
+    }
+
+    body.con-tavola .tavolo-blackjack h2 {
+        margin-block: var(--spazio-2);
+    }
+
+    body.con-tavola #maniGiocatore {
+        gap: var(--spazio-3);
+    }
+
+    body.con-tavola #maniGiocatore:has(> .mano-blackjack + .mano-blackjack) {
+        display: flex;
+        grid-template-columns: none;
+    }
+
+    body.con-tavola #maniGiocatore:has(> .mano-blackjack + .mano-blackjack) .carta {
+        --larghezza-carta: 84px;
+    }
+
+    body.con-tavola .mano-blackjack {
+        padding: var(--spazio-3);
+    }
+
+    body.con-tavola #opzioniPresa {
+        grid-template-columns: none;
+    }
+
+    body.con-tavola #opzioniPresa .scelta-presa {
+        text-align: left;
+        justify-content: flex-start;
+    }
+}
+
+/* Azioni vicine alla tavola */
+body.con-tavola .azioni {
+    margin-top: var(--spazio-1);
+    padding-top: var(--spazio-1);
+}
+
+@media (min-width: 600px) {
+    body.con-tavola .azioni {
+        margin-top: var(--spazio-3);
+        padding-top: var(--spazio-3);
+    }
+}

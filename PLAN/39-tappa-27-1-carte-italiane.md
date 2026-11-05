@@ -15,7 +15,7 @@ Sul telefono gli 11 giochi con il mazzo italiano usano barra e pannello della [T
 - [x] Pausa: dove c'è un tempo o un'attesa del PC, il pannello aperto non deve far perdere mosse
 - [x] CSS (Codex)
 - [x] Test: le suite delle carte italiane restano verdi; controllo che gli avversari compatti mostrino il numero di carte giusto
-- [ ] Prova su telefono (utente)
+- [x] Prova su telefono (utente): «a primo colpo d'occhio sembra vada bene» (2026-11-05)
 
 ## Come verificare
 
@@ -41,5 +41,4 @@ Sul telefono gli 11 giochi con il mazzo italiano usano barra e pannello della [T
 
 ## Problemi aperti
 
-- Prova su telefono dell'utente da fare.
 - Le pagine restano più alte dello schermo nei giochi con molte carte o molte scelte (a 375×667: Scopone 863px, Briscola a 5 durante l'asta 1039px, Mercante 870px, Cucù 808px): si scorre in verticale per arrivare alle scelte. Scopa, Briscola e gli altri a 2 giocatori sono intorno ai 740px.

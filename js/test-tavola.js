@@ -138,7 +138,10 @@ console.log('OK azioni rimandate alla chiusura del pannello');
 
 // Il telefono ruotato o la finestra allargata: tutto torna al suo posto e il pannello si chiude
 q.barra.querySelectorAll('button')[0].emetti('click');
+assert.equal(q.Tavola.telefono(), true);
 q.media.matches = true; q.media.listeners.forEach(f => f());
+assert.equal(q.Tavola.telefono(), false);
+assert.equal(q.eventi.at(-1), 'tavola:schermo', 'le pagine sanno che lo schermo è cambiato');
 assert.equal(q.Tavola.aperto(), false);
 assert.deepEqual(q.main.children.map(n => n.tag), ['nav', 'a', 'header', 'section', 'details', 'p']);
 assert.equal(q.contenuto.children.length, 0);

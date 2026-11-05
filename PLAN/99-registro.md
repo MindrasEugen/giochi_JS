@@ -58,3 +58,5 @@ Ultima modifica: 2026-11-03
 - 2026-11-05 - Tappa 25 completata: prova su telefono passata. L'utente chiede la stessa soluzione per tutti i giochi, anche con il mazzo italiano.
 - 2026-11-05 - Piano rivisto: Tappa 27 divisa in 5 sotto-tappe per famiglia e anticipata prima della 26; carte italiane con immagini più grandi e avversari compatti (scelte dell'utente).
 - 2026-11-05 - Tappa 27.1 implementata: 11 giochi con il mazzo italiano a schermo intero, carte più grandi, avversari compatti, PC fermi con il pannello aperto; CSS di Codex in due giri; corretta la larghezza massima di css/tavola.css. Manca la prova su telefono.
+- 2026-11-05 - Tappa 27.1 completata: prova su telefono passata («a primo colpo d'occhio sembra vada bene»). Via alla Tappa 27.2 (carte francesi).
+- 2026-11-05 - Tappa 27.2 implementata: 7 giochi con il mazzo francese a schermo intero; carte semplificate in Scala 40, Ramino e Burraco; carte più grandi in Blackjack, Guerra, Poker; avversari compatti in Cambio colore; CSS di Codex in due giri. Manca la prova su telefono.

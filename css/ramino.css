@@ -197,3 +197,190 @@
         margin-left: 0;
     }
 }
+
+/* Carte e comandi sul telefono */
+body.con-tavola .tavolo-ramino--semplici .carta-semplice {
+    position: relative;
+    display: block;
+    width: var(--larghezza-carta);
+    overflow: hidden;
+    flex: none;
+}
+
+body.con-tavola #mano.mano-ramino {
+    --larghezza-carta: min(60px, calc((100cqi - 4px * (var(--colonne, 7) - 1)) / var(--colonne, 7)));
+    container-type: inline-size;
+    grid-template-columns: repeat(var(--colonne, 7), minmax(0, 1fr));
+    gap: 4px;
+}
+
+body.con-tavola #mano.mano-ramino .carta {
+    --larghezza-carta: inherit;
+}
+
+body.con-tavola #mano.mano-ramino .carta-pulsante + .carta-pulsante {
+    margin-left: 0;
+}
+
+body.con-tavola #mano.mano-ramino .carta-pulsante:disabled {
+    opacity: 1;
+    cursor: default;
+}
+
+body.con-tavola #mano.mano-ramino .carta-pulsante:disabled .carta {
+    cursor: default;
+}
+
+body.con-tavola .combinazione-tavolo .carta {
+    --larghezza-carta: 36px;
+}
+
+body.con-tavola .combinazione-preparata .carta {
+    --larghezza-carta: 36px;
+}
+
+body.con-tavola .combinazione-tavolo .carta + .carta {
+    margin-left: -14px;
+}
+
+body.con-tavola .combinazione-preparata .carta + .carta {
+    margin-left: -14px;
+}
+
+body.con-tavola #tallone .carta,
+body.con-tavola #pozzo .carta {
+    --larghezza-carta: 48px;
+}
+
+body.con-tavola .mazzi-ramino {
+    gap: var(--spazio-3);
+}
+
+body.con-tavola .mazzo-ramino {
+    font-size: .75rem;
+    gap: var(--spazio-1);
+}
+
+body.con-tavola .centro-ramino {
+    padding-block: var(--spazio-2);
+}
+
+body.con-tavola #tavoloVuoto {
+    padding: var(--spazio-1);
+    font-size: .75rem;
+}
+
+body.con-tavola .tavolo-ramino {
+    gap: var(--spazio-2);
+}
+
+body.con-tavola .tavolo-ramino h2#titoloMano,
+body.con-tavola .tavolo-ramino h2 {
+    font-size: var(--testo-s);
+    margin: 0;
+}
+
+body.con-tavola #opzioniPresa {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* Ripristino degli schermi ampi */
+@media (min-width: 600px) {
+    body.con-tavola .tavolo-ramino--semplici .carta-semplice {
+        position: static;
+        display: block;
+        width: var(--larghezza-carta);
+        overflow: visible;
+        flex: 0 1 auto;
+    }
+
+    body.con-tavola #mano.mano-ramino {
+        --larghezza-carta: initial;
+        container-type: normal;
+        grid-template-columns: none;
+        gap: calc(var(--spazio-1) / 2);
+    }
+
+    body.con-tavola #mano.mano-ramino .carta {
+        --larghezza-carta: 60px;
+    }
+
+    body.con-tavola #mano.mano-ramino .carta-pulsante + .carta-pulsante {
+        margin-left: 0;
+    }
+
+    body.con-tavola #mano.mano-ramino .carta-pulsante:disabled {
+        opacity: .5;
+        cursor: not-allowed;
+    }
+
+    body.con-tavola #mano.mano-ramino .carta-pulsante:disabled .carta {
+        cursor: not-allowed;
+    }
+
+    body.con-tavola .combinazione-tavolo .carta {
+        --larghezza-carta: 44px;
+    }
+
+    body.con-tavola .combinazione-preparata .carta {
+        --larghezza-carta: 34px;
+    }
+
+    body.con-tavola .combinazione-tavolo .carta + .carta {
+        margin-left: -20px;
+    }
+
+    body.con-tavola .combinazione-preparata .carta + .carta {
+        margin-left: -18px;
+    }
+
+    body.con-tavola #tallone .carta,
+    body.con-tavola #pozzo .carta {
+        --larghezza-carta: 72px;
+    }
+
+    body.con-tavola .mazzi-ramino {
+        gap: var(--spazio-4);
+    }
+
+    body.con-tavola .mazzo-ramino {
+        font-size: var(--testo-s);
+        gap: var(--spazio-2);
+    }
+
+    body.con-tavola .centro-ramino {
+        padding-block: var(--spazio-3);
+    }
+
+    body.con-tavola #tavoloVuoto {
+        padding: var(--spazio-2);
+        font-size: var(--testo-s);
+    }
+
+    body.con-tavola .tavolo-ramino {
+        gap: var(--spazio-3);
+    }
+
+    body.con-tavola .tavolo-ramino h2#titoloMano,
+    body.con-tavola .tavolo-ramino h2 {
+        font-size: var(--testo-s);
+        margin: var(--spazio-2) 0;
+    }
+
+    body.con-tavola #opzioniPresa {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+}
+
+/* Azioni vicine alla tavola */
+body.con-tavola .azioni {
+    margin-top: var(--spazio-1);
+    padding-top: var(--spazio-1);
+}
+
+@media (min-width: 600px) {
+    body.con-tavola .azioni {
+        margin-top: var(--spazio-3);
+        padding-top: var(--spazio-3);
+    }
+}

@@ -33,8 +33,8 @@ Ultima modifica: 2026-11-05
 | 25 | [Tavola a schermo intero sul telefono (Serpente e solitari)](36-tappa-25-schermo-intero.md) | ☑ completata |
 | 26 | [Gesti touch negli arcade](37-tappa-26-gesti-arcade.md) | ☐ da fare |
 | 27 | [Schermo intero in tutti gli altri giochi](38-tappa-27-schermo-intero-tutti.md) (prima della 26) | ◐ in corso |
-| 27.1 | [Carte italiane](39-tappa-27-1-carte-italiane.md) | ◐ in corso |
-| 27.2 | [Carte francesi](40-tappa-27-2-carte-francesi.md) | ☐ da fare |
+| 27.1 | [Carte italiane](39-tappa-27-1-carte-italiane.md) | ☑ completata |
+| 27.2 | [Carte francesi](40-tappa-27-2-carte-francesi.md) | ◐ in corso |
 | 27.3 | [Tavolo](41-tappa-27-3-tavolo.md) | ☐ da fare |
 | 27.4 | [Logica e parole](42-tappa-27-4-logica-parole.md) | ☐ da fare |
 | 27.5 | [Giochi storici](43-tappa-27-5-storici.md) | ☐ da fare |

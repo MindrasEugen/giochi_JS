@@ -14,7 +14,12 @@
     const nome = g => due() ? nomi[g] : g === 0 ? 'Tu' : 'Computer';
     const umano = g => due() || g === 0;
     const scrivi = testo => { messaggi.textContent = testo; };
+    // Sul telefono le carte scoperte diventano semplificate (valore e seme grandi): un'opzione del pannello riporta le immagini
+    let immagini = false;
+    const semplici = () => !immagini && typeof Tavola !== 'undefined' && Tavola.telefono();
+    const dopoPannello = fn => (typeof Tavola !== 'undefined' ? Tavola.quandoChiuso(fn) : fn());
     function carta(c, opzioniCarta = {}) {
+        if (!c.jolly && !opzioniCarta.coperta && semplici()) return Carte.semplice(c);
         if (!c.jolly || opzioniCarta.coperta) return Carte.crea(c, opzioniCarta);
         const el = document.createElement('span'); el.className = 'carta carta--jolly'; el.setAttribute('role', 'img'); el.setAttribute('aria-label', 'jolly');
         el.textContent = '★'; return el;
@@ -64,6 +69,8 @@
         document.querySelector('#statoPozzetto').textContent = s.pozzettoPreso[io] ? (B.puoChiudere(s, io) ? 'Pozzetto preso e burraco fatto: puoi chiudere.' : 'Pozzetto preso: per chiudere serve un burraco.') : 'Pozzetto ancora da prendere: finisci le carte per prenderlo.';
         document.querySelector('#titoloMano').textContent = coperto ? 'Mano coperta' : due() ? `Mano di ${nome(io)}` : 'La tua mano';
         const mano = document.querySelector('#mano'); mano.textContent = '';
+        mano.style.setProperty('--colonne', Carte.colonne(s.mani[io].length, 7));
+        document.querySelector('.tavolo-ramino').classList.toggle('tavolo-ramino--semplici', semplici());
         ordina(s.mani[io]).forEach(c => {
             const b = document.createElement('button'); b.type = 'button'; b.className = 'carta-pulsante';
             if (selezionate.has(c.id)) b.classList.add('carta-pulsante--selezionata');
@@ -128,7 +135,7 @@
     }
     function pianifica(azione, attesa = 900) {
         const corrente = versione;
-        timer = setTimeout(() => { timer = null; if (corrente === versione) azione(); }, attesa);
+        timer = setTimeout(() => { timer = null; dopoPannello(() => { if (corrente === versione) azione(); }); }, attesa);
     }
     async function prepara() {
         const corrente = versione, s = stato;
@@ -166,6 +173,9 @@
     }
     select.addEventListener('change', nuovaPartita);
     nuova.addEventListener('click', nuovaPartita);
+    if (typeof Tavola !== 'undefined') Tavola.opzione({ chiave: 'giochi_js_carte_immagini', etichetta: 'Carte con le immagini anche quando sono piccole',
+        suCambio: v => { immagini = v; if (stato) disegna(); } });
+    document.addEventListener('tavola:schermo', () => { if (stato) disegna(); });
     nomiPulsante.addEventListener('click', async () => { nomi = await Giocatori.chiediNomi(); disegna(); });
     nuovaPartita();
 })();

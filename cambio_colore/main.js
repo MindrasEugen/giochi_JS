@@ -67,6 +67,7 @@
         const attivo = !occupato && !coperto && !s.finita && umano(s.turno);
         const legali = attivo ? C.mosseLegali(s) : [];
         mano.textContent = '';
+        mano.style.setProperty('--colonne', Carte.colonne(s.mani[vista].length, 5));
         s.mani[vista].forEach((carta, i) => {
             const bottone = document.createElement('button'); bottone.type = 'button'; bottone.className = 'carta-pulsante';
             bottone.appendChild(creaCarta(carta, { coperta: coperto }));
@@ -99,9 +100,11 @@
         cronaca = descrivi(stato.ultimo);
         prepara();
     }
+    // Mentre il pannello (js/tavola.js) è aperto il PC aspetta
+    const dopoPannello = fn => (typeof Tavola !== 'undefined' ? Tavola.quandoChiuso(fn) : fn());
     function pianifica(azione, attesa = 900) {
         const corrente = versione;
-        timer = setTimeout(() => { timer = null; if (corrente === versione) azione(); }, attesa);
+        timer = setTimeout(() => { timer = null; dopoPannello(() => { if (corrente === versione) azione(); }); }, attesa);
     }
     async function prepara() {
         const corrente = versione, s = stato;

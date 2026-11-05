@@ -51,6 +51,8 @@
         if (timer !== null) { ferma(); disegna(); return; }
         timer = setInterval(battaglia, 120); disegna();
     });
+    // Aprendo il pannello (js/tavola.js) il gioco automatico si ferma
+    document.addEventListener('tavola:aperta', () => { if (timer !== null) { ferma(); disegna(); } });
     select.addEventListener('change', nuovaPartita);
     nuova.addEventListener('click', nuovaPartita);
     nomiPulsante.addEventListener('click', async () => { nomi = await Giocatori.chiediNomi(); disegna(); messaggi.textContent = racconta(); });

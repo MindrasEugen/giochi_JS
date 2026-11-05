@@ -446,6 +446,7 @@ body.con-tavola:has(.tavolo-solitario) .azioni {
   }
   body.con-tavola .azioni > .pulsante {
     flex: 0 1 auto;
+    min-width: auto;
     padding: var(--spazio-2) var(--spazio-4);
     font-size: var(--testo-m);
   }

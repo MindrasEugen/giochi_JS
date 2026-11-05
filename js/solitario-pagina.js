@@ -4,29 +4,8 @@
 // Sul telefono le carte strette (meno di 60px) diventano carte semplificate: valore e seme grandi, disegnati in CSS
 // (Tappa 25); un'opzione del pannello (js/tavola.js) riporta le immagini.
 const SolitarioPagina = (() => {
-    const SIMBOLI = { hearts: '♥', diamonds: '♦', clubs: '♣', spades: '♠' };
     const LARGHEZZA_SEMPLICI = 60;
-    function cartaSemplice(carta, coperta) {
-        const el = document.createElement('div');
-        el.className = 'carta carta-semplice';
-        el.setAttribute('role', 'img');
-        if (coperta) {
-            el.classList.add('carta--coperta', 'carta-semplice--coperta');
-            el.setAttribute('aria-label', 'Carta coperta');
-            return el;
-        }
-        el.classList.add(Mazzo.colore(carta) === 'rosso' ? 'carta-semplice--rossa' : 'carta-semplice--nera');
-        el.setAttribute('aria-label', Mazzo.nome(carta));
-        const angolo = document.createElement('span'), valore = document.createElement('span'), piccolo = document.createElement('span'), centro = document.createElement('span');
-        angolo.className = 'carta-semplice__angolo';
-        valore.className = 'carta-semplice__valore'; valore.textContent = carta.valore.toUpperCase();
-        piccolo.className = 'carta-semplice__seme'; piccolo.textContent = SIMBOLI[carta.seme];
-        centro.className = 'carta-semplice__centro'; centro.textContent = SIMBOLI[carta.seme];
-        centro.setAttribute('aria-hidden', 'true');
-        angolo.append(valore, piccolo);
-        el.append(angolo, centro);
-        return el;
-    }
+    const cartaSemplice = (carta, coperta) => Carte.semplice(carta, coperta);
     function avvia(config) {
         const motore = config.motore;
         const tavolo = document.querySelector('#tavoloSolitario');
