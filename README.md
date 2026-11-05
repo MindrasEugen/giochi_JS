@@ -10,7 +10,7 @@ Non occorre installare dipendenze. I record e i nomi sono salvati nel browser; i
 ## Giochi disponibili
 
 Sasso carta forbici, Indovina il numero, Sette e mezzo, Forza 4, Memory, Campo minato, Raddoppia, Sudoku, Tris, Dama, Filetto, Battaglia navale, Ludo e Scacchi, oltre a L'impiccato.
-La sala arcade include Serpente, Ping pong, Mattoncini, Blocchi, Invasione, Volo e Labirinto. Con Cinque lettere, i dieci giochi del mazzo italiano e i tre della Tappa 21 (Blackjack, Guerra, Cambio colore), la home contiene 36 giochi.
+La sala arcade include Serpente, Ping pong, Mattoncini, Blocchi, Invasione, Volo e Labirinto. Con Cinque lettere, i dieci giochi del mazzo italiano i tre della Tappa 21 (Blackjack, Guerra, Cambio colore) e i quattro della Tappa 22 (Poker heads-up, Scala 40, Ramino, Burraco), la home contiene 40 giochi.
 
 Serpente e Ping pong supportano due giocatori sullo stesso dispositivo, con tastiera o pulsanti touch. Mattoncini offre tre livelli, bonus temporanei e record. Tutti gli arcade hanno avvio esplicito, pausa, riavvio e pausa automatica al cambio di scheda.
 

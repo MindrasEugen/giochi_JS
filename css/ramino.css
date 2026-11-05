@@ -1,0 +1,199 @@
+/* Tavolo compatto per sette carte per riga su mobile. */
+.tavolo-ramino {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spazio-3);
+}
+
+#avversari .carta {
+    --larghezza-carta: 26px;
+    flex: none;
+}
+
+#avversari .carta + .carta {
+    margin-left: -14px;
+}
+
+.centro-ramino {
+    border-block: 1px solid var(--colore-primario-chiaro);
+    padding-block: var(--spazio-3);
+    text-align: center;
+}
+
+.mazzi-ramino {
+    display: flex;
+    justify-content: center;
+    gap: var(--spazio-4);
+}
+
+.mazzo-ramino {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spazio-2);
+    font-size: var(--testo-s);
+}
+
+.mazzo-ramino p {
+    margin: 0;
+}
+
+#tallone .carta,
+#pozzo .carta {
+    --larghezza-carta: 56px;
+}
+
+.combinazioni-ramino {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spazio-2);
+    margin-top: var(--spazio-3);
+}
+
+.combinazione-tavolo {
+    display: inline-flex;
+    align-items: center;
+    min-width: var(--area-minima);
+    min-height: var(--area-minima);
+    padding: var(--spazio-1);
+    background: rgba(0, 0, 0, .18);
+    border: 2px solid transparent;
+    border-radius: var(--raggio-m);
+}
+
+.combinazione-tavolo:not(:disabled) {
+    border-color: var(--colore-accento);
+    cursor: pointer;
+}
+
+.combinazione-tavolo:disabled {
+    opacity: 1;
+    cursor: default;
+}
+
+.combinazione-tavolo:focus-visible {
+    outline: 3px solid var(--colore-accento);
+    outline-offset: 2px;
+}
+
+.combinazione-tavolo .carta,
+.combinazione-preparata .carta {
+    --larghezza-carta: 34px;
+    flex: none;
+}
+
+.combinazione-tavolo .carta + .carta,
+.combinazione-preparata .carta + .carta {
+    margin-left: -18px;
+}
+
+/* Il fondo chiaro mantiene leggibile il testo tenue. */
+#tavoloVuoto {
+    color: var(--colore-testo-tenue);
+    background: var(--colore-superficie);
+    border-radius: var(--raggio-s);
+    padding: var(--spazio-2);
+    font-size: var(--testo-s);
+}
+
+.preparazione-ramino {
+    border: 2px dashed var(--colore-accento);
+    border-radius: var(--raggio-m);
+    padding: var(--spazio-2);
+    font-size: var(--testo-s);
+}
+
+.combinazione-preparata {
+    display: inline-flex;
+    align-items: center;
+    margin: var(--spazio-1);
+}
+
+.mano-ramino {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2px;
+    padding-block: var(--spazio-3);
+}
+
+#mano.mano-ramino .carta {
+    --larghezza-carta: 40px;
+}
+
+#mano.mano-ramino .carta-pulsante + .carta-pulsante {
+    margin-left: -6px;
+}
+
+.mano-ramino .carta-pulsante--selezionata {
+    position: relative;
+    z-index: 1;
+}
+
+.carta-pulsante--obbligo .carta {
+    outline: 3px dashed var(--colore-avviso);
+    outline-offset: 2px;
+}
+
+.mano-ramino .carta-pulsante--selezionata .carta {
+    transform: translateY(-10px);
+    outline: 3px solid var(--colore-accento);
+    outline-offset: 2px;
+}
+
+/* Jolly in HTML, anche nella mano scoperta dell'avversario. */
+.carta.carta--jolly {
+    width: var(--larghezza-carta);
+    aspect-ratio: 5 / 7;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--colore-superficie);
+    border: 1px solid var(--colore-bordo);
+    border-radius: var(--raggio-s);
+    box-shadow: var(--ombra-leggera);
+    font-size: calc(var(--larghezza-carta) * .5);
+    line-height: 1;
+    color: var(--colore-avviso);
+}
+
+.carta--jolly::after {
+    content: "JOLLY";
+    font-size: calc(var(--larghezza-carta) * .14);
+    font-weight: var(--peso-bold);
+    color: var(--colore-testo);
+}
+
+.opzioni-prese {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.opzioni-prese .scelta-presa {
+    text-align: center;
+    justify-content: center;
+}
+
+@media (min-width: 600px) {
+    #tallone .carta,
+    #pozzo .carta {
+        --larghezza-carta: 72px;
+    }
+
+    .combinazione-tavolo .carta {
+        --larghezza-carta: 44px;
+    }
+
+    .combinazione-tavolo .carta + .carta {
+        margin-left: -20px;
+    }
+
+    #mano.mano-ramino .carta {
+        --larghezza-carta: 60px;
+    }
+
+    #mano.mano-ramino .carta-pulsante + .carta-pulsante {
+        margin-left: 0;
+    }
+}

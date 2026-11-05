@@ -1,0 +1,68 @@
+/* Bordi dei burraco, anche quando disabilitati. */
+.combinazione-tavolo.combinazione-tavolo--pulito {
+    border-color: var(--colore-successo);
+}
+
+.combinazione-tavolo.combinazione-tavolo--sporco {
+    border-color: var(--colore-avviso);
+}
+
+/* Etichette sopra le carte, su fondo chiaro per il contrasto. */
+.combinazione-tavolo--pulito,
+.combinazione-tavolo--sporco {
+    position: relative;
+}
+
+.combinazione-tavolo--pulito::before,
+.combinazione-tavolo--sporco::before {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    padding: 0 var(--spazio-1);
+    background: var(--colore-superficie);
+    border-radius: var(--raggio-s);
+    font-size: .625rem;
+    font-weight: var(--peso-bold);
+    line-height: 1.4;
+}
+
+/* Burraco senza matte. */
+.combinazione-tavolo--pulito::before {
+    content: "PULITO";
+    color: var(--colore-successo);
+}
+
+/* Burraco con una matta. */
+.combinazione-tavolo--sporco::before {
+    content: "SPORCO";
+    color: var(--colore-avviso);
+}
+
+/* Ultimi scarti sovrapposti. */
+.scarti-burraco {
+    display: flex;
+}
+
+.scarti-burraco .carta + .carta {
+    margin-left: -36px;
+}
+
+/* Stato del pozzetto sul tavolo verde. */
+.stato-pozzetto {
+    font-size: var(--testo-s);
+    text-align: center;
+    color: var(--colore-bordo);
+    margin: var(--spazio-1);
+}
+
+/* Combinazioni avversarie non interattive. */
+#combinazioniAltro .combinazione-tavolo {
+    cursor: default;
+}
+
+/* Sovrapposizione degli scarti su schermi ampi. */
+@media (min-width: 600px) {
+    .scarti-burraco .carta + .carta {
+        margin-left: -44px;
+    }
+}

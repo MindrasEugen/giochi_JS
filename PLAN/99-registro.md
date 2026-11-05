@@ -48,3 +48,4 @@ Ultima modifica: 2026-11-03
 - 2026-11-05 - Tappa 21 implementata: Blackjack (banco del PC o, in due, di uno dei giocatori a turno; raddoppio, divisione, fiches), Guerra (limite di 300 battaglie, gioco automatico) e Cambio colore (mazzo originale in CSS, 2-4 giocatori). Motori e pagine con test. Home a 36 giochi.
 - 2026-11-05 - Tappe 19, 20 e 21 completate: prova su telefono dell'utente passata. Avviata la Tappa 22, divisa in tre passi (Poker; Scala 40 e Ramino; Burraco), regole dei giochi di combinazioni verificate su Wikipedia.
 - 2026-11-05 - Tappa 22, passo 1: Poker heads-up con valutazione delle mani, puntate e PC a simulazione; CSS di Codex al primo giro. Home a 37 giochi.
+- 2026-11-05 - Tappa 22, passi 2 e 3: Scala 40, Ramino e Burraco con motore comune delle combinazioni e jolly in CSS; sicurezze contro le mani infinite trovate con le simulazioni; CSS di Codex. Home a 40 giochi.
