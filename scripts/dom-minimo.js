@@ -32,6 +32,12 @@ class Elemento {
     querySelectorAll(selettore) { return selettore === 'button' ? this.children.filter(e => e.type === 'button') : []; }
     querySelector() { return this.children[0] || null; }
     focus() {}
+    // Basta per i selettori [data-...] usati dalle pagine: l'elemento stesso o un antenato con quel dato
+    closest(selettore) {
+        const dato = /\[data-([a-z]+)\]/.exec(selettore)?.[1];
+        for (let e = this; e; e = e.parent) if (dato && e.dataset?.[dato] !== undefined) return e;
+        return null;
+    }
 }
 
 // Crea un contesto isolato: document finto, localStorage in memoria, timer registrati, eseguiti solo da svuotaTimer.
@@ -49,7 +55,7 @@ function ambiente() {
         },
         querySelectorAll: () => [], addEventListener() {}
     };
-    const contesto = vm.createContext({ document, Element: Elemento, console,
+    const contesto = vm.createContext({ document, Element: Elemento, console, structuredClone, window: {},
         setTimeout: fn => { const id = ++ultimoTimer; timer.push({ id, fn }); return id; },
         clearTimeout: id => { const i = timer.findIndex(t => t.id === id); if (i >= 0) timer.splice(i, 1); },
         setInterval: () => 1, clearInterval() {},

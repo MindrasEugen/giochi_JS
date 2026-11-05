@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Klondike | Giochi JS</title>
+  <link rel="stylesheet" href="../css/comune.css"><link rel="stylesheet" href="../css/gioco.css"><link rel="stylesheet" href="../css/carte.css"><link rel="stylesheet" href="../css/carte-italiane.css"><link rel="stylesheet" href="../css/solitario.css"><link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="contenitore" id="contenitore_gioco">
+  <a class="link-home" href="../index.html">&larr; Tutti i giochi</a>
+  <header class="intro-carte"><p class="occhiello-carte">Solitari / Klondike</p><h1>Il solitario classico.</h1><p class="sottotitolo">Metti in ordine i quattro semi dall&rsquo;asso al re, costruendo colonne a colori alterni.</p></header>
+  <div class="barra-modalita"><label for="modalitaGioco">Pesca</label><select id="modalitaGioco"><option value="1">Una carta</option><option value="3">Tre carte</option></select></div>
+  <div class="riepilogo-carte" aria-label="Tempo e mosse"><div><span id="nomeP0">Tempo</span><strong id="puntiP0">0:00</strong></div><div><span id="nomeP1">Mosse</span><strong id="puntiP1">0</strong></div><small id="tipoPunti"></small></div>
+  <section class="tavolo tavolo-italiano tavolo-solitario-sfondo" aria-label="Tavolo di Klondike">
+    <div class="tavolo-solitario" id="tavoloSolitario"></div>
+  </section>
+  <p id="messaggi" role="status" aria-live="polite"></p>
+  <div class="azioni"><button type="button" class="pulsante pulsante--secondario" id="annulla">Annulla</button><button type="button" class="pulsante" id="completa" hidden>Completa</button><button type="button" class="pulsante pulsante--secondario" id="nuovaPartita">Nuova partita</button></div>
+  <section class="risultati-carte" id="risultati" aria-label="Risultato" hidden></section>
+  <details class="pannello regole"><summary>Regole</summary><ol><li>Sette colonne: nella prima una carta, nell&rsquo;ultima sette; solo l&rsquo;ultima di ogni colonna &egrave; scoperta. Le altre 24 carte formano il mazzo.</li><li>Nelle colonne si costruisce in ordine decrescente a colori alterni (un 7 nero su un 8 rosso). Si pu&ograve; spostare una sequenza intera. In una colonna vuota va solo un re.</li><li>Le quattro basi si riempiono per seme, dall&rsquo;asso al re. Quando togli l&rsquo;ultima carta scoperta di una colonna, quella sotto si gira.</li><li>Tocca il mazzo per girare una carta (o tre); a mazzo finito tocca di nuovo per rimettere gli scarti nel mazzo, senza limiti.</li><li>Quando tutte le carte sono scoperte e il mazzo &egrave; finito compare Completa, che porta da solo tutte le carte alle basi.</li><li>Come si gioca: trascina le carte con il mouse o con il dito, oppure tocca una carta e poi la pila dove vuoi metterla. Due tocchi (o doppio clic) mandano la carta alla base. Annulla torna indietro di una mossa (anche più volte).</li></ol></details>
+  <p class="fonti-carte">Riferimenti: <a href="https://it.wikipedia.org/wiki/Klondike_(solitario)">Klondike - Wikipedia</a>.</p>
+</main>
+<script src="../js/mazzo.js"></script><script src="../js/carte.js"></script><script src="./funzioni.js"></script><script src="../js/solitario-pagina.js"></script><script src="./main.js"></script>
+</body></html>

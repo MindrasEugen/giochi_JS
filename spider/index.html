@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spider | Giochi JS</title>
+  <link rel="stylesheet" href="../css/comune.css"><link rel="stylesheet" href="../css/gioco.css"><link rel="stylesheet" href="../css/carte.css"><link rel="stylesheet" href="../css/carte-italiane.css"><link rel="stylesheet" href="../css/solitario.css"><link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="contenitore" id="contenitore_gioco">
+  <a class="link-home" href="../index.html">&larr; Tutti i giochi</a>
+  <header class="intro-carte"><p class="occhiello-carte">Solitari / Spider</p><h1>Dal re all&rsquo;asso, otto volte.</h1><p class="sottotitolo">Due mazzi e dieci colonne: completa le scale dello stesso seme per farle uscire. Scegli quanti semi usare.</p></header>
+  <div class="barra-modalita"><label for="modalitaGioco">Semi</label><select id="modalitaGioco"><option value="1">1 seme (facile)</option><option value="2">2 semi (medio)</option><option value="4">4 semi (difficile)</option></select></div>
+  <div class="riepilogo-carte" aria-label="Tempo e mosse"><div><span id="nomeP0">Tempo</span><strong id="puntiP0">0:00</strong></div><div><span id="nomeP1">Mosse</span><strong id="puntiP1">0</strong></div><small id="tipoPunti"></small></div>
+  <section class="tavolo tavolo-italiano tavolo-solitario-sfondo" aria-label="Tavolo di Spider">
+    <div class="tavolo-solitario" id="tavoloSolitario"></div>
+  </section>
+  <p id="messaggi" role="status" aria-live="polite"></p>
+  <div class="azioni"><button type="button" class="pulsante pulsante--secondario" id="annulla">Annulla</button><button type="button" class="pulsante" id="completa" hidden>Completa</button><button type="button" class="pulsante pulsante--secondario" id="nuovaPartita">Nuova partita</button></div>
+  <section class="risultati-carte" id="risultati" aria-label="Risultato" hidden></section>
+  <details class="pannello regole"><summary>Regole</summary><ol><li>Si gioca con 104 carte (due mazzi) di uno, due o quattro semi. Dieci colonne: le prime quattro con sei carte, le altre con cinque; solo l&rsquo;ultima &egrave; scoperta.</li><li>Su una carta si mette quella di valore subito inferiore, di qualunque seme. Si sposta insieme solo una sequenza decrescente dello stesso seme. In una colonna vuota va qualunque carta o sequenza.</li><li>Una scala completa dal re all&rsquo;asso dello stesso seme esce da sola. Si vince quando escono tutte e otto.</li><li>Tocca il mazzo per mettere una carta su ogni colonna (cinque volte in tutto): non si pu&ograve; fare se c&rsquo;&egrave; una colonna vuota.</li><li>Come si gioca: trascina le carte con il mouse o con il dito, oppure tocca una carta e poi la pila dove vuoi metterla. Due tocchi (o doppio clic) mandano la carta alla base. Annulla torna indietro di una mossa (anche più volte).</li></ol></details>
+  <p class="fonti-carte">Riferimenti: <a href="https://it.wikipedia.org/wiki/Spider_(solitario)">Spider - Wikipedia</a>.</p>
+</main>
+<script src="../js/mazzo.js"></script><script src="../js/carte.js"></script><script src="./funzioni.js"></script><script src="../js/solitario-pagina.js"></script><script src="./main.js"></script>
+</body></html>

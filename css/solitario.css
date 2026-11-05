@@ -1,0 +1,67 @@
+/* Tavolo dei solitari */
+.tavolo-solitario {
+  position: relative;
+  width: 100%;
+  touch-action: none;
+  user-select: none;
+}
+
+/* Segnaposto delle pile */
+.pila-solitario {
+  position: absolute;
+  border: 2px dashed var(--colore-primario-chiaro);
+  border-radius: var(--raggio-s);
+  color: rgba(255, 255, 255, .35);
+  font-size: var(--testo-xl);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pila-solitario--mazzo {
+  cursor: pointer;
+}
+
+.pila-solitario--piramide {
+  border: none;
+  background: none;
+  visibility: hidden;
+}
+
+.pila-solitario--meta {
+  border: 2px solid var(--colore-accento);
+  background: rgba(255, 255, 255, .08);
+}
+
+/* Carte e selezione */
+.carta-solitario {
+  position: absolute;
+  cursor: grab;
+  transition: top 120ms ease, left 120ms ease;
+}
+
+.carta-solitario--selezionata {
+  outline: 3px solid var(--colore-accento);
+  outline-offset: 1px;
+  box-shadow: var(--ombra-forte);
+}
+
+/* Lo z-index inline deve essere aggiornato dal JS durante il trascinamento. */
+.tavolo-solitario .carta-solitario.carta-solitario--trascinata {
+  z-index: 1000;
+  pointer-events: none;
+  box-shadow: var(--ombra-forte);
+  transition: none;
+  cursor: grabbing;
+}
+
+.carta-solitario--coperta {
+  filter: brightness(.7);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carta-solitario {
+    transition: none;
+  }
+}

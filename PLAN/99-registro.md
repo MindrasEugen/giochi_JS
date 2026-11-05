@@ -50,3 +50,4 @@ Ultima modifica: 2026-11-03
 - 2026-11-05 - Tappa 22, passo 1: Poker heads-up con valutazione delle mani, puntate e PC a simulazione; CSS di Codex al primo giro. Home a 37 giochi.
 - 2026-11-05 - Tappa 22, passi 2 e 3: Scala 40, Ramino e Burraco con motore comune delle combinazioni e jolly in CSS; sicurezze contro le mani infinite trovate con le simulazioni; CSS di Codex. Home a 40 giochi.
 - 2026-11-05 - Tappa 22 completata: prova su telefono dell'utente passata. Avviata la Tappa 23 (solitari).
+- 2026-11-05 - Tappa 23 implementata: Klondike, FreeCell (con risolutore), Spider, Piramide e Golf con pagina comune (trascinamento, tocco-tocco, annulla, tempo, mosse). CSS di Codex. Home a 45 giochi.
