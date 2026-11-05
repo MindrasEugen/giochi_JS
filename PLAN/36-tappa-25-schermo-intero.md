@@ -17,7 +17,7 @@ Sul telefono la tavola da gioco occupa tutto lo schermo. Intestazione, regole, m
 - [x] Computer: layout e tastiera come oggi (CSS mobile-first: lo schermo intero è lo stile base, il layout largo arriva con `min-width`)
 - [x] CSS della barra, del pannello, del campo a tutta altezza e delle carte semplificate (Codex)
 - [x] Test automatici: pannello apre/chiude e mette in pausa, opzione pulsanti ricordata, solitari giocabili con i tocchi (anche con carte semplificate)
-- [ ] Prova su telefono (utente)
+- [x] Prova su telefono (utente): passata il 2026-11-05, "l'esperienza è migliorata tantissimo"
 
 ## Come verificare
 
@@ -44,7 +44,6 @@ Sul telefono la tavola da gioco occupa tutto lo schermo. Intestazione, regole, m
 
 ## Problemi aperti
 
-- Prova su telefono dell'utente da fare.
 - Serpente a 375px: nei riquadri del tabellone "Record personale" ed "Esplorazione" sono tagliati con i puntini. Da rivedere nella Tappa 26, quando il layout passa a tutti gli arcade.
 - `css/gioco.css` e `css/home.css` contengono ancora media query `max-width` (non toccate in questa tappa): da riscrivere mobile-first, `gioco.css` nella [Tappa 27](38-tappa-27-schermo-intero-tutti.md).
 - Un telefono in orizzontale largo più di 600px riceve il layout del computer.

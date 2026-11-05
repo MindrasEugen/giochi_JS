@@ -30,8 +30,13 @@ Ultima modifica: 2026-11-05
 | 23 | [Solitari: Klondike, FreeCell, Spider, Piramide, Golf](32-tappa-23-solitari-1.md) | ☑ completata |
 | 24 | [Solitari: TriPeaks, Yukon, Scorpione, Orologio, Le tredici](33-tappa-24-solitari-2.md) | ☑ completata |
 | 24.1 | [Solitari: carte leggibili sul telefono](35-tappa-24-1-carte-leggibili.md) | → unita alla 25 |
-| 25 | [Tavola a schermo intero sul telefono (Serpente e solitari)](36-tappa-25-schermo-intero.md) | ◐ in corso |
+| 25 | [Tavola a schermo intero sul telefono (Serpente e solitari)](36-tappa-25-schermo-intero.md) | ☑ completata |
 | 26 | [Gesti touch negli arcade](37-tappa-26-gesti-arcade.md) | ☐ da fare |
-| 27 | [Schermo intero in tutti gli altri giochi](38-tappa-27-schermo-intero-tutti.md) | ☐ da fare |
+| 27 | [Schermo intero in tutti gli altri giochi](38-tappa-27-schermo-intero-tutti.md) (prima della 26) | ☐ da fare |
+| 27.1 | [Carte italiane](39-tappa-27-1-carte-italiane.md) | ☐ da fare |
+| 27.2 | [Carte francesi](40-tappa-27-2-carte-francesi.md) | ☐ da fare |
+| 27.3 | [Tavolo](41-tappa-27-3-tavolo.md) | ☐ da fare |
+| 27.4 | [Logica e parole](42-tappa-27-4-logica-parole.md) | ☐ da fare |
+| 27.5 | [Giochi storici](43-tappa-27-5-storici.md) | ☐ da fare |
 
 Legenda: ☐ da fare · ◐ in corso · ☑ completata · ✗ annullata

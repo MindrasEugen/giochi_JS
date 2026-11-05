@@ -4,23 +4,21 @@ Ultima modifica: 2026-11-05
 
 ## Obiettivo
 
-Estendere barra, pannello e tavola a tutta altezza della [Tappa 25](36-tappa-25-schermo-intero.md) ai giochi rimasti (carte italiane e francesi, tavolo, logica, parole, giochi storici). Se il lavoro risulta troppo grande si divide in sotto-tappe per famiglia.
+Portare barra, pannello e tavola a tutta altezza della [Tappa 25](36-tappa-25-schermo-intero.md) a tutti i giochi rimasti. Dopo la prova della Tappa 25 l'utente ha chiesto di farlo **prima** dei gesti degli arcade ([Tappa 26](37-tappa-26-gesti-arcade.md)), partendo dai giochi con il mazzo italiano. Il lavoro è diviso in sotto-tappe, una per famiglia; ognuna ha il suo file, la sua verifica e la prova su telefono.
 
-## Attività
+## Sotto-tappe
 
-- [ ] Carte italiane (Briscola, Scopa, Asso piglia tutto, Rubamazzetto, Scopone, Tressette, Cirulla, Briscola a 5, Mercante in fiera, Cucù, Sette e mezzo)
-- [ ] Carte francesi (Blackjack, Guerra, Cambio colore, Poker, Scala 40, Ramino, Burraco)
-- [ ] Tavolo (Dama, Filetto, Battaglia navale, Ludo, Scacchi)
-- [ ] Logica e parole (Forza 4, Memory, Campo minato, Raddoppia, Sudoku, Cinque lettere)
-- [ ] Giochi storici (Tris, Impiccato, Sasso carta forbici, Indovina il numero)
-- [ ] CSS per famiglia (Codex)
-- [ ] Tutti i test esistenti ancora verdi
+| # | Famiglia | File |
+|---|---|---|
+| 27.1 | Carte italiane: Scopa, Briscola, Scopone, Briscola a 5, Tressette, Cirulla, Asso piglia tutto, Rubamazzetto, Sette e mezzo, Mercante in fiera, Cucù | [39-tappa-27-1-carte-italiane.md](39-tappa-27-1-carte-italiane.md) |
+| 27.2 | Carte francesi: Blackjack, Guerra, Cambio colore, Poker, Scala 40, Ramino, Burraco | [40-tappa-27-2-carte-francesi.md](40-tappa-27-2-carte-francesi.md) |
+| 27.3 | Tavolo: Dama, Filetto, Battaglia navale, Ludo, Scacchi | [41-tappa-27-3-tavolo.md](41-tappa-27-3-tavolo.md) |
+| 27.4 | Logica e parole: Forza 4, Memory, Campo minato, Raddoppia, Sudoku, Cinque lettere | [42-tappa-27-4-logica-parole.md](42-tappa-27-4-logica-parole.md) |
+| 27.5 | Giochi storici: Tris, Impiccato, Sasso carta forbici, Indovina il numero | [43-tappa-27-5-storici.md](43-tappa-27-5-storici.md) |
 
 ## Come verificare
 
-- Tutti i `node js/test-*.js` e i test dei singoli giochi OK.
-- Nel browser a 375px: per ogni famiglia almeno due giochi senza scorrimento della pagina, pannello funzionante; a 1280px layout invariato.
-- Prova su telefono (utente).
+Vale per ogni sotto-tappa: tutti i test (`node scripts/check.js`) OK; nel browser a 375×667 e 390×844 nessuno scorrimento orizzontale, tavola visibile, pannello funzionante; a 900 e 1280px misure della pagina uguali a prima (confronto con il commit precedente); prova su telefono dell'utente.
 
 ## Esito
 
@@ -28,7 +26,7 @@ Estendere barra, pannello e tavola a tutta altezza della [Tappa 25](36-tappa-25-
 
 ## Decisioni prese
 
-—
+- Ordine: prima tutti i giochi, poi i gesti degli arcade (scelta dell'utente, 2026-11-05).
 
 ## Problemi aperti
 

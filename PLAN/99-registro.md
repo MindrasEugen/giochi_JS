@@ -55,3 +55,5 @@ Ultima modifica: 2026-11-03
 - 2026-11-05 - Tappe 23 e 24 completate: prova su telefono passata, ma carte poco leggibili. Aggiunta la Tappa 24.1 (carte semplificate e più spazio, scelta dell'utente).
 - 2026-11-05 - Nuova fase: sul telefono tavola a schermo intero, regole e altro in un pannello sopra il gioco, gesti touch al posto dei pulsanti (pulsanti con opzione nascosta). Aggiunte le Tappe 25, 26 e 27; la 24.1 è unita alla 25.
 - 2026-11-05 - Tappa 25 implementata: barra e pannello sopra il gioco (`js/tavola.js`), Serpente con gesti, solitari con carte semplificate; CSS di Codex in due giri; verificata nel browser, manca la prova su telefono.
+- 2026-11-05 - Tappa 25 completata: prova su telefono passata. L'utente chiede la stessa soluzione per tutti i giochi, anche con il mazzo italiano.
+- 2026-11-05 - Piano rivisto: Tappa 27 divisa in 5 sotto-tappe per famiglia e anticipata prima della 26; carte italiane con immagini più grandi e avversari compatti (scelte dell'utente).
