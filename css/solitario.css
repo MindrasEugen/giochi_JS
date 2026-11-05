@@ -60,6 +60,19 @@
   filter: brightness(.7);
 }
 
+/* Sui tavoli con molte colonne ogni pixel libero serve alle carte. */
+@media (max-width: 599px) {
+  #contenitore_gioco.contenitore:has(.tavolo-solitario) {
+    width: calc(100% - 8px);
+    padding-inline: 8px;
+  }
+  .tavolo-italiano:has(.tavolo-solitario) {
+    border-width: 2px;
+    padding: 12px 4px;
+    border-radius: 12px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .carta-solitario {
     transition: none;

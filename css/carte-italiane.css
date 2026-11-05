@@ -3,7 +3,9 @@
 .intro-carte h1, .intro-carte .sottotitolo { text-align: left; }
 .occhiello-carte { margin: 0; font-size: var(--testo-s); font-weight: 700; text-transform: uppercase; letter-spacing: .13em; color: var(--colore-avviso); }
 .riepilogo-carte { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--spazio-2); background: var(--colore-sfondo); border: 1px solid var(--colore-bordo); border-radius: var(--raggio-l); padding: var(--spazio-3); margin-bottom: var(--spazio-3); }
-.riepilogo-carte strong { display: block; font-size: var(--testo-xl); color: var(--colore-primario); font-variant-numeric: tabular-nums; }
+.riepilogo-carte strong { display: block; margin-top: 4px; font-size: var(--testo-xl); color: var(--colore-primario); font-variant-numeric: tabular-nums; }
+.riepilogo-carte > div { padding: var(--spazio-2); min-width: 0; }
+.riepilogo-carte > div > span { color: var(--colore-testo-tenue); font-size: var(--testo-s); }
 .riepilogo-carte small { grid-column: 1 / -1; color: var(--colore-testo-tenue); }
 .meta-carte { display: flex; justify-content: space-between; gap: var(--spazio-2); font-size: var(--testo-s); color: var(--colore-testo-tenue); margin-bottom: var(--spazio-3); }
 .tavolo-italiano { border: 5px solid var(--colore-primario-chiaro); padding: var(--spazio-3) var(--spazio-2); }
@@ -44,7 +46,7 @@
 .mazzetto-carte { flex: 1 1 110px; min-width: 0; }
 .mazzetto-carte p { margin-block: 0 var(--spazio-2); font-size: .75rem; }
 .mazzetto-carte .carta { --larghezza-carta: 42px; margin: auto; }
-.risultati-carte { margin-top: var(--spazio-4); padding: var(--spazio-3); border-radius: var(--raggio-m); background: var(--colore-sfondo); text-align: left; }
+.risultati-carte { margin-top: var(--spazio-4); padding: var(--spazio-4); border: 1px solid var(--colore-bordo); border-left: 4px solid var(--colore-primario); border-radius: var(--raggio-m); background: var(--colore-sfondo); text-align: left; }
 .risultati-carte h2 { font-size: var(--testo-l); margin-top: 0; }
 .risultati-carte li + li { margin-top: var(--spazio-2); }
 .fonti-carte { color: var(--colore-testo-tenue); font-size: var(--testo-s); }

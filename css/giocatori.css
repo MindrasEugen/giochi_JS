@@ -12,7 +12,7 @@ body.con-copertura {
   overflow-y: auto;
   padding: var(--spazio-3);
   background: color-mix(in srgb, var(--colore-primario) 75%, transparent);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(8px);
 }
 
 .copertura__finestra {
@@ -28,6 +28,7 @@ body.con-copertura {
   box-shadow: var(--ombra-forte);
   animation: apri-copertura 220ms var(--molla);
   overflow-wrap: anywhere;
+  border-top: 4px solid var(--colore-accento);
 }
 
 .copertura__titolo {

@@ -2,14 +2,14 @@
 // Per aggiungere un gioco basta aggiungere una riga a GIOCHI: la scheda compare da sola nella sua categoria.
 
 const CATEGORIE = [
-    { id: 'classici', nome: 'Classici' },
-    { id: 'italiano', nome: 'Mazzo italiano' },
-    { id: 'francese', nome: 'Mazzo francese' },
-    { id: 'solitari', nome: 'Solitari' },
-    { id: 'arcade', nome: 'Arcade' },
-    { id: 'logica', nome: 'Logica' },
-    { id: 'tavolo', nome: 'Da tavolo' },
-    { id: 'parole', nome: 'Parole' }
+    { id: 'classici', nome: 'Classici', simbolo: '✌', descrizione: 'Poche regole, una sfida che conosci già.' },
+    { id: 'italiano', nome: 'Mazzo italiano', simbolo: '✦', descrizione: 'Il piacere di una partita, come al tavolo di casa.' },
+    { id: 'francese', nome: 'Mazzo francese', simbolo: '♠', descrizione: 'Una buona mano e la mossa giusta al momento giusto.' },
+    { id: 'solitari', nome: 'Solitari', simbolo: '♣', descrizione: 'Il tuo ritmo, le tue carte. Una pausa tutta per te.' },
+    { id: 'arcade', nome: 'Arcade', simbolo: '↯', descrizione: 'Riflessi pronti? Punta al prossimo record.' },
+    { id: 'logica', nome: 'Logica', simbolo: '◈', descrizione: 'Metti insieme gli indizi e trova la soluzione.' },
+    { id: 'tavolo', nome: 'Da tavolo', simbolo: '♞', descrizione: 'Strategia, intuito e una mossa di vantaggio.' },
+    { id: 'parole', nome: 'Parole', simbolo: 'Aa', descrizione: 'Lettera dopo lettera, ogni parola è una scoperta.' }
 ];
 
 const GIOCHI = [
@@ -123,6 +123,7 @@ function normalizza(testo) {
 function creaScheda(gioco) {
     const li = document.createElement('li');
     li.className = 'card scheda';
+    li.dataset.categoria = gioco.categoria;
 
     const emoji = document.createElement('span');
     emoji.className = 'emoji-gioco';
@@ -159,10 +160,12 @@ function disegnaHome(filtro = '') {
     const nessuno = document.querySelector('#nessun-risultato');
     const cercato = normalizza(filtro.trim());
     contenitore.textContent = '';
+    const navigazione = document.querySelector('#navigazione-categorie');
+    navigazione.textContent = '';
     let trovati = 0;
 
     for (const categoria of CATEGORIE) {
-        const giochi = GIOCHI.filter(g => g.categoria === categoria.id && normalizza(`${g.nome} ${g.descrizione}`).includes(cercato));
+        const giochi = GIOCHI.filter(g => g.categoria === categoria.id && normalizza(`${g.nome} ${g.descrizione} ${categoria.nome}`).includes(cercato));
         if (giochi.length === 0) {
             continue;
         }
@@ -170,8 +173,17 @@ function disegnaHome(filtro = '') {
 
         const sezione = document.createElement('section');
         sezione.className = 'categoria';
+        sezione.id = `sezione-${categoria.id}`;
+        sezione.dataset.categoria = categoria.id;
         sezione.setAttribute('aria-labelledby', `categoria-${categoria.id}`);
 
+        const testata = document.createElement('div');
+        testata.className = 'categoria__testata';
+        const simbolo = document.createElement('span');
+        simbolo.className = 'categoria__simbolo';
+        simbolo.setAttribute('aria-hidden', 'true');
+        simbolo.textContent = categoria.simbolo;
+        const introduzione = document.createElement('div');
         const titolo = document.createElement('h2');
         titolo.className = 'categoria__titolo';
         titolo.id = `categoria-${categoria.id}`;
@@ -181,18 +193,38 @@ function disegnaHome(filtro = '') {
         conteggio.className = 'categoria__conteggio';
         conteggio.textContent = giochi.length;
         titolo.appendChild(conteggio);
+        const descrizione = document.createElement('p');
+        descrizione.className = 'categoria__descrizione';
+        descrizione.textContent = categoria.descrizione;
+        introduzione.append(titolo, descrizione);
+        testata.append(simbolo, introduzione);
+
+        const collegamento = document.createElement('a');
+        collegamento.className = 'categoria-link';
+        collegamento.href = `#sezione-${categoria.id}`;
+        collegamento.textContent = `${categoria.nome} · ${giochi.length}`;
+        navigazione.appendChild(collegamento);
 
         const lista = document.createElement('ul');
         lista.className = 'griglia-giochi';
         giochi.forEach(g => lista.appendChild(creaScheda(g)));
 
-        sezione.append(titolo, lista);
+        sezione.append(testata, lista);
         contenitore.appendChild(sezione);
     }
 
     nessuno.hidden = trovati > 0;
     document.querySelector('#totale-giochi').textContent = GIOCHI.length;
+    document.querySelector('#stato-ricerca').textContent = cercato
+        ? `${trovati} ${trovati === 1 ? 'gioco trovato' : 'giochi trovati'} per “${filtro.trim()}”`
+        : `${GIOCHI.length} giochi, ${CATEGORIE.length} modi di divertirsi.`;
 }
 
 document.querySelector('#cerca').addEventListener('input', evento => disegnaHome(evento.target.value));
+document.querySelector('#azzera-ricerca').addEventListener('click', () => {
+    const cerca = document.querySelector('#cerca');
+    cerca.value = '';
+    disegnaHome();
+    cerca.focus();
+});
 disegnaHome();

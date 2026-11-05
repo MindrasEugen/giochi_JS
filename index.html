@@ -7,24 +7,43 @@
   <link rel="stylesheet" href="./css/comune.css">
   <link rel="stylesheet" href="./css/home.css">
 </head>
-<body>
-  <!-- Presentazione -->
+<body class="pagina-home">
+  <a class="salta-contenuto" href="#raccolta">Vai ai giochi</a>
   <header class="contenitore intestazione">
-    <h1>Giochi JS</h1>
-    <p class="presentazione"><span id="totale-giochi">50</span> giochi da browser scritti in HTML, CSS e JavaScript.</p>
-    <div class="ricerca">
-      <label for="cerca" class="nascosto-visivamente">Cerca un gioco</label>
-      <input id="cerca" type="search" placeholder="Cerca un gioco…" autocomplete="off">
+    <div class="marchio"><span class="marchio__simbolo" aria-hidden="true">✳</span> Giochi JS <span class="marchio__nota">La tua sala giochi</span></div>
+    <div class="hero">
+      <div class="hero__testo">
+        <p class="sopratitolo">Una pausa. Una nuova sfida.</p>
+        <h1>Il bello di<br>mettersi in gioco.</h1>
+        <p class="presentazione">Carte, rompicapi e grandi classici. Scegli il tuo prossimo gioco, da solo o in compagnia.</p>
+        <a class="pulsante hero__invito" href="#raccolta">Esplora i giochi <span aria-hidden="true">↗</span></a>
+        <p class="hero__dettagli"><span><strong id="totale-giochi">50</strong> giochi</span><span>Nessuna installazione</span></p>
+      </div>
+      <div class="hero__illustrazione" aria-hidden="true">
+        <div class="tessera-decorativa tessera-decorativa--scacchi">♞<span>La prossima mossa è tua.</span></div>
+        <div class="tessera-decorativa tessera-decorativa--carte"><span>A<br>♥</span><b>♥</b><span>A<br>♥</span></div>
+        <div class="tessera-decorativa tessera-decorativa--numero">2048</div>
+        <span class="hero__stella">✳</span>
+      </div>
     </div>
   </header>
-  <!-- Giochi, divisi per categoria (disegnati da home.js) -->
-  <main class="contenitore">
+  <main class="contenitore raccolta" id="raccolta" tabindex="-1">
+    <div class="raccolta__testata">
+      <div><p class="sopratitolo">Trova il tuo preferito</p><h2>Che voglia di giocare hai?</h2></div>
+      <div class="ricerca">
+        <label for="cerca" class="nascosto-visivamente">Cerca un gioco</label>
+        <input id="cerca" type="search" placeholder="Cerca tra i giochi…" autocomplete="off" aria-controls="categorie" aria-describedby="stato-ricerca">
+      </div>
+    </div>
+    <nav class="navigazione-categorie" aria-label="Sezioni dei giochi" id="navigazione-categorie"></nav>
+    <p id="stato-ricerca" class="stato-ricerca" role="status" aria-live="polite" aria-atomic="true"></p>
     <div id="categorie"></div>
-    <p id="nessun-risultato" class="nessun-risultato" hidden>Nessun gioco trovato.</p>
+    <div id="nessun-risultato" class="nessun-risultato" hidden><span aria-hidden="true">⌕</span><h2>Nessun gioco trovato</h2><p>Prova un altro nome oppure torna alla raccolta completa.</p><button type="button" class="pulsante pulsante--secondario" id="azzera-ricerca">Mostra tutti i giochi</button></div>
+    <noscript><p class="pannello">Per visualizzare la raccolta e giocare, attiva JavaScript nel browser.</p></noscript>
   </main>
-  <!-- Chiusura -->
-  <footer class="contenitore">
-    <p>Progetto di esercizio — HTML, CSS e JavaScript</p>
+  <footer class="contenitore footer-home">
+    <p><strong>✳ Giochi JS</strong><br>Un piccolo spazio per il piacere di giocare.</p>
+    <a href="#raccolta">Torna alla raccolta <span aria-hidden="true">↑</span></a>
   </footer>
   <script src="./home.js"></script>
 </body>

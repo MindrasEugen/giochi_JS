@@ -70,10 +70,37 @@ banco.esegui("fineMano('banco', 'Fine'); barra.suCambioModalita(false); barra.su
 assert.equal(banco.document.querySelector('#nome_banco').textContent, 'Banco: Secondo');
 console.log('OK sette e mezzo: cambio nomi a mano conclusa, scambio banco e cambio modalita');
 
-const home = ambiente();
+// Per il ridisegno della home serve il DOM condiviso: textContent svuota i figli.
+const home = require('./dom-minimo.js').ambiente();
 home.carica('home.js');
 assert.equal(home.esegui("creaScheda(GIOCHI.find(g => g.cartella === 'ludo')).children[3].children[0].textContent"), '1\u20134 giocatori');
 console.log('OK home: Ludo mostra fino a quattro giocatori');
+
+// Le categorie e i collegamenti devono restare coerenti anche durante la ricerca.
+const sezioniHome = () => home.document.querySelector('#categorie').children;
+const linkCategorie = () => home.document.querySelector('#navigazione-categorie').children;
+assert.equal(sezioniHome().length, 8);
+assert.equal(sezioniHome().reduce((n, s) => n + s.children[1].children.length, 0), 50);
+assert.equal(new Set(sezioniHome().map(s => s.id)).size, 8);
+assert.ok(linkCategorie().every(a => sezioniHome().some(s => a.href === `#${s.id}`)));
+home.esegui("disegnaHome('  MAZZO ITALIANO  ')");
+assert.equal(sezioniHome().length, 1);
+assert.equal(sezioniHome()[0].id, 'sezione-italiano');
+assert.equal(sezioniHome()[0].children[1].children.length, 11);
+assert.equal(linkCategorie().length, 1);
+home.esegui("disegnaHome('cucu')");
+assert.equal(sezioniHome()[0].children[1].children[0].children[1].textContent, 'Cucù');
+home.esegui("disegnaHome('zzzzzzzzzz')");
+assert.equal(sezioniHome().length, 0);
+assert.equal(linkCategorie().length, 0);
+assert.equal(home.document.querySelector('#nessun-risultato').hidden, false);
+assert.ok(home.document.querySelector('#stato-ricerca').textContent.startsWith('0 giochi trovati'));
+home.document.querySelector('#cerca').value = 'zzzzzzzzzz';
+home.document.querySelector('#azzera-ricerca').listeners.click();
+assert.equal(home.document.querySelector('#cerca').value, '');
+assert.equal(sezioniHome().length, 8);
+assert.equal(home.document.querySelector('#nessun-risultato').hidden, true);
+console.log('OK home: 50 giochi in 8 sezioni, ancore valide, ricerca categoria e accenti, nessun risultato e ripristino');
 
 const finestre = ambiente();
 const sfondo = new Elemento();

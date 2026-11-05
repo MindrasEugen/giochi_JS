@@ -1,11 +1,12 @@
 /* Layout */
 #contenitore_gioco.contenitore {
-  width: 100%;
+  width: calc(100% - 32px);
   max-width: calc(var(--spazio-5) * 20);
   margin-block: var(--spazio-3);
   background: var(--colore-superficie);
   border-radius: var(--raggio-xl);
   box-shadow: var(--ombra-forte);
+  border: 1px solid var(--colore-bordo);
   text-align: center;
   overflow-wrap: anywhere;
 }
@@ -19,6 +20,9 @@ h1 {
   text-align: center;
   margin-top: 0;
   color: var(--colore-testo-tenue);
+  line-height: 1.7;
+  max-width: 60ch;
+  margin-inline: auto;
 }
 
 /* Punteggio */
@@ -116,6 +120,8 @@ h1 {
   align-items: center;
   gap: var(--spazio-2);
   margin-top: var(--spazio-3);
+  padding-top: var(--spazio-3);
+  border-top: 1px solid var(--colore-bordo);
 }
 
 .azioni .pulsante {
@@ -130,6 +136,28 @@ h1 {
 .barra-modalita select:disabled {
   opacity: .5;
   cursor: not-allowed;
+}
+
+/* La barra resta un componente comune anche nei solitari, senza giocatori.css. */
+.barra-modalita {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spazio-2);
+  margin-block: var(--spazio-3);
+  padding: 12px;
+  border: 1px solid var(--colore-bordo);
+  border-radius: var(--raggio-m);
+  background: var(--colore-sfondo);
+}
+.barra-modalita label { font-size: var(--testo-s); font-weight: var(--peso-semibold); }
+.barra-modalita select { max-width: 100%; min-width: 0; }
+.regole li + li { margin-top: var(--spazio-2); }
+
+@media (max-width: 599px) {
+  #contenitore_gioco.contenitore { width: calc(100% - 16px); margin-block: 8px; border-radius: 18px; }
+  .azioni > .pulsante { flex: 1 1 130px; }
 }
 
 /* Schermi ampi */
