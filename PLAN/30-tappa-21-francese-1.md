@@ -12,7 +12,7 @@ I primi giochi con il mazzo francese, con le immagini in `carte/` (nomi `seme-va
 - [x] Guerra: 2 giocatori o contro il PC
 - [x] Cambio colore (genere "Uno"): mazzo proprio con quattro colori e carte speciali disegnate da zero, da 2 a 4 giocatori (umani o PC)
 - [x] CSS delle tre pagine (Codex, circa un minuto; secondo giro per le carte non giocabili di Cambio colore, viste spente e confuse nello screenshot)
-- [ ] Prova su telefono (utente)
+- [x] Prova su telefono (utente, 2026-11-05: tutto a posto)
 
 ## Come verificare
 
@@ -32,5 +32,5 @@ Tre giochi nuovi dalla home, che arriva a 36 giochi: cartelle `blackjack/`, `gue
 
 ## Problemi aperti
 
-- Prova su telefono da fare (utente).
+- Prova su telefono eseguita dall'utente il 2026-11-05: passata.
 - Controllo visivo fatto da Claude negli screenshot (Blackjack con carta del banco coperta, Guerra dopo una guerra, Cambio colore con carte giocabili evidenziate). Regole `.link-home` aggiunte da Codex senza richiesta e duplicate di css/comune.css: tolte.

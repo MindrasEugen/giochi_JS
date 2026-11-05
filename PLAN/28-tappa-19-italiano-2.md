@@ -14,7 +14,7 @@ I giochi di carte italiani più complessi.
 - [x] Briscola a 5, con la chiamata del compagno
 - [x] Motore delle prese e pagina condivisa estesi da 2 a 5 posti ([ADR 0011](../ADR/0011-tavolo-carte-italiane-da-2-a-5-posti.md))
 - [x] CSS: opzioni dell'asta su più colonne (scritto da Claude: Codex bloccato oltre 20 minuti senza scrivere, annotato in failures.md)
-- [ ] Prova su telefono (utente)
+- [x] Prova su telefono (utente, 2026-11-05: tutto a posto)
 
 ## Come verificare
 
@@ -42,4 +42,4 @@ Quattro giochi nuovi dalla home, che arriva a 31 giochi: cartelle `scopone/`, `c
 ## Problemi aperti
 
 - La strategia del PC è semplice: nella Briscola chiamata il chiamante PC vince circa 8 volte su 10 nelle simulazioni, perché gli avversari collaborano poco prima che il socio si scopra.
-- Prova su telefono da fare (utente). I comandi touch si sistemeranno nella fase APK ([Fuori MVP](90-fuori-mvp.md)).
+- Prova su telefono eseguita dall'utente il 2026-11-05: passata.

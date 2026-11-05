@@ -11,7 +11,7 @@ Giochi di gruppo con il mazzo italiano.
 - [x] Mercante in fiera: da 2 a 6 giocatori (umani o PC), asta delle carte ed estrazione, con due mazzi italiani
 - [x] Cucù: da 2 a 6 giocatori, scambio delle carte e vite
 - [x] CSS dei posti dei giocatori in `css/carte-italiane.css` (scritto da Claude: Codex bloccato nella Tappa 19)
-- [ ] Prova su telefono (utente)
+- [x] Prova su telefono (utente, 2026-11-05: tutto a posto)
 
 ## Come verificare
 
@@ -33,4 +33,4 @@ Due giochi nuovi dalla home, che arriva a 33 giochi: cartelle `cucu/` e `mercant
 ## Problemi aperti
 
 - Nel Mercante i PC tendono a spendere quasi tutte le fiches: è un gioco d'azzardo, ma la strategia si può affinare.
-- Prova su telefono da fare (utente).
+- Prova su telefono eseguita dall'utente il 2026-11-05: passata.
