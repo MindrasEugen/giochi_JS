@@ -37,4 +37,4 @@ La tappa è divisa in tre passi, con un commit ciascuno.
 
 ## Problemi aperti
 
-—
+- Prova su telefono eseguita dall'utente il 2026-11-05: passata.
