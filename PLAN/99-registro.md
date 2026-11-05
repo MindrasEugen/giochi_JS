@@ -57,3 +57,4 @@ Ultima modifica: 2026-11-03
 - 2026-11-05 - Tappa 25 implementata: barra e pannello sopra il gioco (`js/tavola.js`), Serpente con gesti, solitari con carte semplificate; CSS di Codex in due giri; verificata nel browser, manca la prova su telefono.
 - 2026-11-05 - Tappa 25 completata: prova su telefono passata. L'utente chiede la stessa soluzione per tutti i giochi, anche con il mazzo italiano.
 - 2026-11-05 - Piano rivisto: Tappa 27 divisa in 5 sotto-tappe per famiglia e anticipata prima della 26; carte italiane con immagini più grandi e avversari compatti (scelte dell'utente).
+- 2026-11-05 - Tappa 27.1 implementata: 11 giochi con il mazzo italiano a schermo intero, carte più grandi, avversari compatti, PC fermi con il pannello aperto; CSS di Codex in due giri; corretta la larghezza massima di css/tavola.css. Manca la prova su telefono.

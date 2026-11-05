@@ -62,3 +62,315 @@
     #briscola { flex-basis: 85px; }
     #briscola .carta { --larghezza-carta: 64px; }
 }
+
+/* Tavolo compatto sul telefono */
+body.con-tavola div.riepilogo-carte {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.3fr);
+    overflow-wrap: normal;
+    word-break: normal;
+}
+body.con-tavola .riepilogo-carte > div > span,
+body.con-tavola .riepilogo-carte small#tipoPunti {
+    overflow-wrap: normal;
+    word-break: normal;
+    font-size: calc(var(--testo-s) * .82);
+    line-height: 1.2;
+}
+body.con-tavola:has(#opzioniPresa) #messaggi {
+    margin-block: var(--spazio-1);
+    min-height: 1lh;
+}
+body.con-tavola .opzioni-prese {
+    margin-block: var(--spazio-1);
+}
+body.con-tavola .centro-italiano:has(#carteTavolo:empty) {
+    min-height: calc(var(--spazio-4) * 2);
+}
+body.con-tavola #carteTavolo:empty {
+    display: none;
+}
+body.con-tavola .centro-italiano:has(#carteTavolo:empty) #tavoloVuoto {
+    text-align: center;
+}
+body.con-tavola #avversari {
+    gap: 6px;
+    padding-bottom: var(--spazio-2);
+}
+body.con-tavola .avversario-carte {
+    flex: 0 1 calc((100% - 6px) / 2);
+    min-width: 0;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 6px;
+    padding: var(--spazio-1);
+    background: rgba(0, 0, 0, .15);
+    border-radius: var(--raggio-m);
+}
+body.con-tavola .avversario-carte span {
+    order: 1;
+    flex: 1 1 0;
+    min-width: 0;
+    line-height: 1.2;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+body.con-tavola .avversario-carte .carta {
+    --larghezza-carta: 24px;
+    flex-shrink: 0;
+}
+body.con-tavola .avversario-carte .carta ~ .carta {
+    display: none;
+}
+body.con-tavola #mano, body.con-tavola #carteTavolo {
+    display: grid;
+    grid-template-columns: repeat(var(--colonne, 5), minmax(0, 1fr));
+    gap: 6px;
+    justify-items: center;
+}
+body.con-tavola #mano {
+    padding: var(--spazio-2) 0;
+    min-height: 110px;
+}
+body.con-tavola #mano .carta-pulsante {
+    width: 100%;
+    max-width: 96px;
+}
+body.con-tavola #mano .carta {
+    --larghezza-carta: 100%;
+    max-width: 96px;
+}
+body.con-tavola #carteTavolo .carta {
+    --larghezza-carta: 100%;
+    max-width: 80px;
+}
+body.con-tavola #carteTavolo figure {
+    width: 100%;
+    min-width: 0;
+    max-width: 80px;
+}
+body.con-tavola #carteTavolo figcaption {
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+body.con-tavola .centro-italiano {
+    min-height: 110px;
+    padding-block: var(--spazio-2);
+    gap: var(--spazio-2);
+}
+body.con-tavola #briscola {
+    flex: 0 0 56px;
+    font-size: .7rem;
+}
+body.con-tavola #briscola .carta {
+    --larghezza-carta: 44px;
+}
+body.con-tavola #titoloMano {
+    margin-block: var(--spazio-1);
+}
+body.con-tavola .meta-carte {
+    font-size: .75rem;
+    margin-bottom: var(--spazio-1);
+}
+body.con-tavola #opzioniPresa {
+    gap: 6px;
+}
+body.con-tavola #opzioniPresa .scelta-presa {
+    min-height: var(--area-minima);
+    padding: var(--spazio-1) var(--spazio-2);
+    font-size: var(--testo-s);
+    min-width: 0;
+}
+body.con-tavola #opzioniPresa.opzioni-prese--molte {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+body.con-tavola .posti-carte {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+}
+body.con-tavola .posto {
+    padding: 6px;
+    min-width: 0;
+}
+body.con-tavola .posto .carta {
+    --larghezza-carta: 60px;
+}
+body.con-tavola .posto__carte .carta {
+    --larghezza-carta: 28px;
+}
+body.con-tavola .posto__nome, body.con-tavola .posto__vite {
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Ripristino del tavolo ampio */
+@media (min-width: 600px) {
+    body.con-tavola div.riepilogo-carte {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        overflow-wrap: inherit;
+        word-break: inherit;
+    }
+    body.con-tavola .riepilogo-carte > div > span {
+        font-size: var(--testo-s);
+        line-height: inherit;
+        overflow-wrap: inherit;
+        word-break: inherit;
+    }
+    body.con-tavola .riepilogo-carte small#tipoPunti {
+        font-size: smaller;
+        line-height: inherit;
+        overflow-wrap: anywhere;
+        word-break: inherit;
+    }
+    body.con-tavola:has(#opzioniPresa) #messaggi {
+        margin-block: var(--spazio-3);
+        min-height: 0;
+    }
+    body.con-tavola:has(#opzioniPresa) #messaggi:empty {
+        margin: 0;
+    }
+    body.con-tavola .opzioni-prese {
+        margin-block: var(--spazio-3) 0;
+    }
+    body.con-tavola .centro-italiano:has(#carteTavolo:empty) {
+        min-height: 200px;
+    }
+    body.con-tavola #carteTavolo:empty {
+        display: flex;
+    }
+    body.con-tavola .centro-italiano:has(#carteTavolo:empty) #tavoloVuoto {
+        text-align: inherit;
+    }
+    body.con-tavola #avversari {
+        gap: var(--spazio-2);
+        padding-bottom: var(--spazio-3);
+    }
+    body.con-tavola .avversario-carte {
+        flex: 0 1 auto;
+        min-width: auto;
+        flex-wrap: wrap;
+        align-items: normal;
+        justify-content: center;
+        gap: 3px;
+        padding: 0;
+        background: transparent;
+        border-radius: 0;
+    }
+    body.con-tavola .avversario-carte span {
+        order: 0;
+        flex: 0 1 100%;
+        min-width: auto;
+        line-height: inherit;
+        overflow: visible;
+        display: block;
+        -webkit-line-clamp: none;
+        -webkit-box-orient: horizontal;
+    }
+    body.con-tavola .avversario-carte .carta {
+        --larghezza-carta: 38px;
+        flex-shrink: 1;
+    }
+    body.con-tavola .avversario-carte .carta ~ .carta {
+        display: block;
+    }
+    body.con-tavola #mano, body.con-tavola #carteTavolo {
+        display: flex;
+        grid-template-columns: none;
+        gap: var(--spazio-2);
+        justify-items: normal;
+    }
+    body.con-tavola #mano {
+        padding: var(--spazio-3) 0;
+        min-height: 112px;
+    }
+    body.con-tavola #mano .carta-pulsante {
+        width: auto;
+        max-width: none;
+    }
+    body.con-tavola #mano .carta {
+        --larghezza-carta: clamp(62px, 18vw, 88px);
+        max-width: 100%;
+    }
+    body.con-tavola #carteTavolo .carta {
+        --larghezza-carta: 76px;
+        max-width: 100%;
+    }
+    body.con-tavola #carteTavolo figure {
+        width: auto;
+        min-width: auto;
+        max-width: none;
+    }
+    body.con-tavola #carteTavolo figcaption {
+        max-width: 90px;
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+        text-align: inherit;
+    }
+    body.con-tavola .centro-italiano {
+        min-height: 200px;
+        padding-block: var(--spazio-4);
+        gap: var(--spazio-3);
+    }
+    body.con-tavola #briscola {
+        flex: 0 0 85px;
+        font-size: .75rem;
+    }
+    body.con-tavola #briscola .carta {
+        --larghezza-carta: 64px;
+    }
+    body.con-tavola #titoloMano {
+        margin-block: var(--spazio-2);
+    }
+    body.con-tavola .meta-carte {
+        font-size: var(--testo-s);
+        margin-bottom: var(--spazio-3);
+    }
+    body.con-tavola #opzioniPresa {
+        gap: var(--spazio-2);
+    }
+    body.con-tavola #opzioniPresa .scelta-presa {
+        min-height: var(--area-minima);
+        padding: var(--spazio-2) var(--spazio-4);
+        font-size: var(--testo-m);
+        min-width: auto;
+    }
+    body.con-tavola #opzioniPresa.opzioni-prese--molte {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+    body.con-tavola .posti-carte {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: var(--spazio-2);
+    }
+    body.con-tavola .posto {
+        padding: var(--spazio-2);
+        min-width: auto;
+    }
+    body.con-tavola .posto .carta {
+        --larghezza-carta: 72px;
+    }
+    body.con-tavola .posto__carte .carta {
+        --larghezza-carta: 38px;
+    }
+    body.con-tavola .posto__nome, body.con-tavola .posto__vite {
+        max-width: none;
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+    }
+}
+
+/* Avversario di turno */
+.avversario-carte--turno,
+body.con-tavola .avversario-carte--turno {
+    outline: 2px solid var(--colore-accento);
+    outline-offset: 2px;
+    border-radius: var(--raggio-m);
+}

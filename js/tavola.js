@@ -117,6 +117,12 @@ const Tavola = (() => {
         document.body.appendChild(pannello);
     }
 
+    // Esegue fn subito, oppure appena il pannello si chiude: le mosse dei PC non avvengono mentre si leggono le regole
+    function quandoChiuso(fn) {
+        if (!aperto) { fn(); return; }
+        document.addEventListener('tavola:chiusa', () => quandoChiuso(fn), { once: true });
+    }
+
     // Una casella nel pannello, ricordata nel browser. suCambio viene chiamata subito con il valore attuale.
     function opzione({ chiave, etichetta, predefinito = false, suCambio }) {
         let valore = leggi(chiave, predefinito);
@@ -162,7 +168,7 @@ const Tavola = (() => {
         window.matchMedia?.('(min-width: 600px)').addEventListener?.('change', sistema);
     }
 
-    return { avvia, apri, chiudi, opzione, aperto: () => aperto };
+    return { avvia, apri, chiudi, opzione, quandoChiuso, aperto: () => aperto };
 })();
 
 // Si avvia da sola: gli script dei giochi vengono dopo e trovano già il pannello pronto per le opzioni

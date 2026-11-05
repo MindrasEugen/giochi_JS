@@ -19,12 +19,15 @@ class Nodo {
 function immagini(nodo) { return nodo.children.flatMap(n => n.tag === 'img' ? [n] : immagini(n)); }
 async function verifica(cartella) {
     const nodi = new Map(), timer = new Map(), passaggi = [];
-    let barra, idTimer = 0;
+    let barra, idTimer = 0, pannelloAperto = false;
+    const inAttesa = [];
     const document = { createElement: t => new Nodo(t), querySelector: k => {
         if (!nodi.has(k)) nodi.set(k, new Nodo()); return nodi.get(k);
     } };
     const contesto = vm.createContext({ document,
         setTimeout: f => { timer.set(++idTimer, f); return idTimer; }, clearTimeout: id => timer.delete(id),
+        // Pannello della tavola finto (js/tavola.js): aperto, le azioni aspettano la chiusura
+        Tavola: { aperto: () => pannelloAperto, quandoChiuso: f => { if (pannelloAperto) inAttesa.push(f); else f(); } },
         Giocatori: { leggiNomi: () => ['Uno', 'Due'], collegaBarra: b => { barra = b; },
             passaDispositivo: nome => new Promise(resolve => passaggi.push({ nome, resolve })) }
     });
@@ -64,6 +67,15 @@ async function verifica(cartella) {
     completaMossa(); const vecchioTimer = timer.values().next().value;
     assert.ok(vecchioTimer); nodi.get('#nuovaPartita').click();
     const nuova = JSON.stringify(stato()); vecchioTimer(); assert.equal(JSON.stringify(stato()), nuova);
+    // Pannello aperto (Tappa 27.1): il PC non gioca finché non si chiude
+    if (stato().turno === 0) completaMossa();
+    const primaDelPannello = JSON.stringify(stato());
+    pannelloAperto = true; passoTimer();
+    assert.equal(JSON.stringify(stato()), primaDelPannello, 'con il pannello aperto il PC aspetta');
+    assert.equal(inAttesa.length, 1);
+    pannelloAperto = false; inAttesa.shift()();
+    assert.notEqual(JSON.stringify(stato()), primaDelPannello, 'chiuso il pannello il PC gioca');
+    nodi.get('#nuovaPartita').click(); timer.clear();
     async function termina(due) {
         let azioni = 0;
         while (!stato().finita) {
@@ -91,7 +103,7 @@ async function verifica(cartella) {
         assert.equal(stato().mani.length, 4); assert.equal(immagini(nodi.get('#avversari')).length, 9);
         await termina(false); assert.equal(stato().punti[0] + stato().punti[1], 120);
     }
-    console.log(`OK pagina ${cartella}: smazzate complete, PC, prese, mani segrete, passaggi e riavvio durante attesa`);
+    console.log(`OK pagina ${cartella}: smazzate complete, PC, prese, mani segrete, passaggi, riavvio durante attesa e pausa con il pannello`);
 }
 (async () => { for (const c of ['briscola', 'scopa', 'asso_piglia_tutto', 'rubamazzetto']) await verifica(c); })()
     .catch(errore => { console.error(errore); process.exitCode = 1; });

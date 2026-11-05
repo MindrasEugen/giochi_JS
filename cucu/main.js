@@ -56,6 +56,9 @@
         tavolo.textContent = '';
         const centro = [...stato.scartate, ...(stato.ultimo?.tipo === 'cucuMazzo' && !fine ? [stato.ultimo.carta] : [])];
         centro.forEach(c => tavolo.appendChild(Carte.crea(c)));
+        // Colonne delle carte al centro sul telefono (come js/carte-italiane-pagina.js): fino a 5 su una riga, oltre su due
+        const n = tavolo.children.length;
+        tavolo.style.setProperty('--colonne', String(n <= 5 ? Math.max(n, 1) : Math.ceil(n / 2)));
         document.querySelector('#tavoloVuoto').textContent = centro.length ? '' : `Carte nel mazzo: ${stato.mazzo.length}`;
         opzioni.textContent = '';
         const attivo = !occupato && !coperto && !stato.finita && (fine ? true : umano(stato.turno));
@@ -81,7 +84,8 @@
     }
     function pianifica(azione, attesa = 800) {
         const corrente = versione;
-        timer = setTimeout(() => { timer = null; if (corrente === versione) azione(); }, attesa);
+        // Con il pannello della tavola aperto (js/tavola.js) i PC aspettano
+        timer = setTimeout(() => { timer = null; const dopo = () => { if (corrente === versione) azione(); }; typeof Tavola !== 'undefined' ? Tavola.quandoChiuso(dopo) : dopo(); }, attesa);
     }
     function testoFine() {
         if (stato.finita) return `Vince ${nome(stato.vincitore)}!`;

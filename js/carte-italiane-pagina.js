@@ -37,6 +37,10 @@ const CarteItalianePagina = (() => {
         const vista = () => umano() ? stato.turno : ultimaVista;
         const aiuti = { nome, etichetta, due };
         function scrivi(testo) { messaggi.textContent = testo; }
+        // Con il pannello della tavola aperto (js/tavola.js) i PC aspettano
+        const dopoPannello = fn => (typeof Tavola !== 'undefined' ? Tavola.quandoChiuso(fn) : fn());
+        // Colonne per mano e tavolo sul telefono: fino a 5 carte su una riga, oltre su due righe
+        const colonne = n => String(n <= 5 ? Math.max(n, 1) : Math.ceil(n / 2));
         function etichettaMossa(m) { return (config.etichettaMossa || motore.etichettaMossa)(stato, m); }
         function disegna() {
             const risultati = motore.risultato(stato);
@@ -54,6 +58,8 @@ const CarteItalianePagina = (() => {
             stato.mani.forEach((carte, i) => {
                 if (i === vista()) return;
                 const zona = document.createElement('div'); zona.className = 'avversario-carte';
+                // Sul telefono si vede un solo dorso con nome e numero di carte; il bordo indica chi sta giocando
+                if (i === stato.turno && !stato.finita && !stato.presaCompleta) zona.classList.add('avversario-carte--turno');
                 const titolo = document.createElement('span'); titolo.textContent = `${nome(i)} · ${carte.length} carte`;
                 zona.appendChild(titolo);
                 carte.forEach(c => zona.appendChild(Carte.crea(c, { coperta: true })));
@@ -62,6 +68,7 @@ const CarteItalianePagina = (() => {
             const legali = stato.finita ? [] : motore.mosseLegali(stato);
             const giocabili = new Set(legali.map(m => m.carta).filter(c => c !== undefined));
             mano.textContent = '';
+            mano.style.setProperty('--colonne', colonne(stato.mani[vista()].length));
             stato.mani[vista()].forEach((carta, i) => {
                 const bottone = document.createElement('button'); bottone.type = 'button'; bottone.className = 'carta-pulsante';
                 const immagine = Carte.crea(carta, { coperta: coperto });
@@ -73,6 +80,7 @@ const CarteItalianePagina = (() => {
                 bottone.addEventListener('click', () => scegli(i)); mano.appendChild(bottone);
             });
             tavolo.textContent = '';
+            tavolo.style.setProperty('--colonne', colonne(stato.tavolo.length));
             if (aGiro) {
                 stato.tavolo.forEach(p => {
                     const figura = document.createElement('figure'), didascalia = document.createElement('figcaption');
@@ -162,7 +170,7 @@ const CarteItalianePagina = (() => {
         }
         function pianifica(azione, attesa = 650) {
             const corrente = versione;
-            timer = setTimeout(() => { timer = null; if (corrente === versione) azione(); }, attesa);
+            timer = setTimeout(() => { timer = null; dopoPannello(() => { if (corrente === versione) azione(); }); }, attesa);
         }
         async function preparaTurno() {
             const corrente = versione;

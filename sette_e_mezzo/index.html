@@ -6,15 +6,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/comune.css">
         <link rel="stylesheet" href="../css/giocatori.css">
+        <link rel="stylesheet" href="../css/tavola.css">
         <link rel="stylesheet" href="./style.css">
-        <title>Sette e mezzo</title>
+        <title>Sette e mezzo | Giochi JS</title>
     </head>
 
     <body>
-        <div class="contenitore_body">
-            <a class="link-home" href="../index.html">← Tutti i giochi</a>
-            <h1>Sette e mezzo</h1>
-            <div class="barra-modalita">
+        <div class="contenitore_body" id="contenitore_gioco">
+            <a class="link-home" data-pannello href="../index.html">← Tutti i giochi</a>
+            <h1 data-pannello>Sette e mezzo</h1>
+            <div class="barra-modalita" data-pannello>
                 <label for="modalitaGioco" class="nascosto-visivamente">Modalità</label>
                 <select id="modalitaGioco">
                     <option value="uno">1 giocatore</option>
@@ -49,7 +50,7 @@
                 <button type="button" id="stai" class="pulsante pulsante--secondario">Stai</button>
                 <button type="button" id="nuova_partita" class="pulsante pulsante--chiaro">Nuova Partita</button>
             </div>
-            <details id="regole" class="pannello">
+            <details id="regole" class="pannello regole" data-pannello>
                 <summary>Regole del gioco</summary>
                 <ol>
                     <li>Si gioca contro il banco con un mazzo italiano di 40 carte, senza matta.</li>
@@ -65,6 +66,7 @@
                 </ol>
             </details>
         </div>
+        <script src="../js/tavola.js"></script>
         <script src="../js/mazzo.js"></script>
         <script src="../js/carte.js"></script>
         <script src="../js/giocatori.js"></script>

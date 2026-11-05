@@ -62,8 +62,8 @@ function pagina({ largo = false, salvati = new Map() } = {}) {
         body, title: 'Serpente | Giochi JS', activeElement: body, fullscreenEnabled: false, documentElement: new Nodo('html'),
         createElement: tag => new Nodo(tag), createComment: () => new Nodo('#commento'),
         querySelector: s => body.querySelector(s), querySelectorAll: s => body.querySelectorAll(s),
-        addEventListener: (k, f) => { (ascoltatori[k] ||= []).push(f); },
-        dispatchEvent: e => { eventi.push(e.type); (ascoltatori[e.type] || []).forEach(f => f(e)); }
+        addEventListener: (k, f, o) => { const lista = (ascoltatori[k] ||= []); lista.push(o?.once ? function una(e) { lista.splice(lista.indexOf(una), 1); f(e); } : f); },
+        dispatchEvent: e => { eventi.push(e.type); [...(ascoltatori[e.type] || [])].forEach(f => f(e)); }
     };
     const c = vm.createContext({ document: documento, CustomEvent: class { constructor(t) { this.type = t; } },
         window: { matchMedia: () => media },
@@ -123,6 +123,18 @@ q.Tavola.opzione({ chiave: 'prova', etichetta: 'Mostra i pulsanti', suCambio: v 
 assert.deepEqual(cambi2, [true]);
 assert.equal(q.pannello.querySelector('input').checked, true);
 console.log('OK opzioni ricordate nel browser');
+
+// quandoChiuso: subito a pannello chiuso, dopo la chiusura a pannello aperto
+const fatti = [];
+q.Tavola.quandoChiuso(() => fatti.push('subito'));
+q.barra.querySelectorAll('button')[1].emetti('click');
+q.Tavola.quandoChiuso(() => fatti.push('dopo'));
+assert.deepEqual(fatti, ['subito']);
+q.pannello.emetti('keydown', { key: 'Escape' });
+assert.deepEqual(fatti, ['subito', 'dopo']);
+q.barra.querySelectorAll('button')[1].emetti('click'); q.pannello.emetti('keydown', { key: 'Escape' });
+assert.deepEqual(fatti, ['subito', 'dopo'], 'una sola volta');
+console.log('OK azioni rimandate alla chiusura del pannello');
 
 // Il telefono ruotato o la finestra allargata: tutto torna al suo posto e il pannello si chiude
 q.barra.querySelectorAll('button')[0].emetti('click');

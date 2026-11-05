@@ -221,3 +221,35 @@
 [hidden] {
   display: none;
 }
+
+/* Spazi compatti sul telefono */
+body.con-tavola .contenitore_body {
+    /* niente margine: il body e' gia' alto quanto lo schermo e il margine lo farebbe scorrere */
+    margin: 0 auto;
+    padding: var(--spazio-1) var(--spazio-2);
+}
+body.con-tavola .campo_di_gioco {
+    gap: var(--spazio-2);
+}
+body.con-tavola .contenitore_giocatore, body.con-tavola .contenitore_banco {
+    padding: var(--spazio-2);
+}
+body.con-tavola .intestazione {
+    margin-bottom: var(--spazio-1);
+}
+
+@media (min-width: 600px) {
+    body.con-tavola .contenitore_body {
+        margin: var(--spazio-4) auto;
+        padding: var(--spazio-4);
+    }
+    body.con-tavola .campo_di_gioco {
+        gap: var(--spazio-3);
+    }
+    body.con-tavola .contenitore_giocatore, body.con-tavola .contenitore_banco {
+        padding: var(--spazio-3);
+    }
+    body.con-tavola .intestazione {
+        margin-bottom: var(--spazio-3);
+    }
+}

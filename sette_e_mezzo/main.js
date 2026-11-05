@@ -79,6 +79,12 @@ function bancoPescaUmano() {
 
 // A 1 giocatore il banco del computer pesca finché raggiunge o supera il giocatore
 function bancoPescaComputer() {
+    // Con il pannello della tavola aperto (js/tavola.js) il banco aspetta; una nuova mano nel frattempo annulla l'attesa
+    if (typeof Tavola !== 'undefined' && Tavola.aperto()) {
+        const segno = timerBanco = {};
+        Tavola.quandoChiuso(() => { if (timerBanco === segno) bancoPescaComputer(); });
+        return;
+    }
     if (puntiBanco < puntiGiocatore) {
         puntiBanco += pescaCarta(carteBanco);
         punteggioB.textContent = puntiBanco.toLocaleString('it-IT');
@@ -154,6 +160,7 @@ function aggiornaTitoli() {
 function iniziaMano() {
     if (dueGiocatori && manoFinita) chiBanco = 1 - chiBanco;
     clearTimeout(timerBanco);
+    timerBanco = null;
     creaMazzo();
     puntiGiocatore = 0;
     puntiBanco = 0;

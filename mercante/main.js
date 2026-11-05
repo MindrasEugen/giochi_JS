@@ -52,6 +52,9 @@
             didascalia.textContent = `${i + 1}° premio`;
             figura.append(Carte.crea(c, { coperta: !scoperto }), didascalia); tavolo.appendChild(figura);
         });
+        // Colonne delle carte al centro sul telefono (come js/carte-italiane-pagina.js): fino a 5 su una riga, oltre su due
+        const n = tavolo.children.length;
+        tavolo.style.setProperty('--colonne', String(n <= 5 ? Math.max(n, 1) : Math.ceil(n / 2)));
         document.querySelector('#tavoloVuoto').textContent = vuoto;
         posti.textContent = '';
         for (let g = 0; g < s.numero; g++) {
@@ -93,7 +96,8 @@
     }
     function pianifica(azione, attesa = 700) {
         const corrente = versione;
-        timer = setTimeout(() => { timer = null; if (corrente === versione) azione(); }, attesa);
+        // Con il pannello della tavola aperto (js/tavola.js) i PC aspettano
+        timer = setTimeout(() => { timer = null; const dopo = () => { if (corrente === versione) azione(); }; typeof Tavola !== 'undefined' ? Tavola.quandoChiuso(dopo) : dopo(); }, attesa);
     }
     function prepara() {
         const s = stato;

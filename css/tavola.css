@@ -149,7 +149,6 @@ body.con-tavola #contenitore_gioco.contenitore {
   flex-direction: column;
   gap: var(--spazio-2);
   width: 100%;
-  max-width: none;
   min-height: 100dvh;
   margin: 0;
   padding: var(--spazio-1) var(--spazio-2);
@@ -321,7 +320,7 @@ body.con-tavola:has(.tavolo-solitario) .azioni {
   line-height: 1;
 }
 
-/* Layout originale sugli schermi larghi */
+/* Layout originale sugli schermi larghi (la larghezza massima resta quella del CSS di ogni famiglia di giochi) */
 @media (min-width: 600px) {
   .barra-tavola,
   .pannello-tavola {
@@ -330,15 +329,11 @@ body.con-tavola:has(.tavolo-solitario) .azioni {
   body.con-tavola #contenitore_gioco.contenitore {
     display: block;
     width: calc(100% - 32px);
-    max-width: 880px;
     min-height: auto;
     margin: var(--spazio-4) auto;
     padding: var(--spazio-4);
     border: 1px solid var(--colore-bordo);
     border-radius: var(--raggio-xl);
-  }
-  body.con-tavola #contenitore_gioco.contenitore:has(.tavolo-solitario) {
-    max-width: 960px;
   }
   body.con-tavola .arcade-statistiche {
     gap: var(--spazio-2);
