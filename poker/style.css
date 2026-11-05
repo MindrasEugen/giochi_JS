@@ -1,0 +1,74 @@
+/* Tavolo e posti */
+.tavolo-poker {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spazio-3);
+}
+.posto-poker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.posto-poker h2 {
+    font-size: var(--testo-s);
+    color: var(--colore-accento);
+}
+.centro-poker {
+    text-align: center;
+    border-block: 1px solid var(--colore-primario-chiaro);
+    padding-block: var(--spazio-3);
+}
+
+/* Carte comuni su una riga */
+#carteTavolo {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: var(--spazio-1);
+}
+#carteTavolo .carta {
+    --larghezza-carta: 54px;
+}
+#carteAltro .carta, #carteMie .carta {
+    --larghezza-carta: 64px;
+}
+
+/* Piatto e puntate */
+.piatto-poker {
+    width: fit-content;
+    margin: var(--spazio-2) auto;
+    padding: var(--spazio-1) var(--spazio-2);
+    border-radius: var(--raggio-xl);
+    background: rgba(0, 0, 0, .25);
+    color: var(--colore-sfondo);
+    font-weight: var(--peso-bold);
+}
+.puntata-poker {
+    font-size: var(--testo-s);
+    color: var(--colore-accento);
+    min-height: calc(var(--testo-s) * var(--interlinea));
+    text-align: center;
+}
+
+/* Scelte della pagina */
+.opzioni-prese {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--spazio-2);
+}
+.opzioni-prese .scelta-presa {
+    min-height: var(--area-minima);
+    text-align: center;
+    justify-content: center;
+}
+
+/* Schermi ampi */
+@media (min-width: 600px) {
+    #carteTavolo .carta {
+        --larghezza-carta: 76px;
+    }
+    #carteAltro .carta, #carteMie .carta {
+        --larghezza-carta: 88px;
+    }
+}

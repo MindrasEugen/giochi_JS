@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Poker heads-up | Giochi JS</title>
+  <link rel="stylesheet" href="../css/comune.css"><link rel="stylesheet" href="../css/gioco.css"><link rel="stylesheet" href="../css/giocatori.css"><link rel="stylesheet" href="../css/carte.css"><link rel="stylesheet" href="../css/carte-italiane.css"><link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="contenitore" id="contenitore_gioco">
+  <a class="link-home" href="../index.html">&larr; Tutti i giochi</a>
+  <header class="intro-carte"><p class="occhiello-carte">Mazzo francese / Poker Texas Hold&rsquo;em</p><h1>Due carte, cinque in tavola.</h1><p class="sottotitolo">Testa a testa con fiches finte: vedi, rilancia o lascia, e fai la migliore combinazione di cinque carte.</p></header>
+  <div class="barra-modalita"><label for="modalitaGioco">Modalit&agrave;</label><select id="modalitaGioco"><option value="uno">Contro il PC</option><option value="due">2 giocatori</option></select><button type="button" id="nomiGiocatori" class="pulsante pulsante--secondario" hidden>Nomi</button></div>
+  <div class="riepilogo-carte" aria-label="Fiches"><div><span id="nomeP0"></span><strong id="puntiP0">0</strong></div><div><span id="nomeP1"></span><strong id="puntiP1">0</strong></div><small id="tipoPunti"></small></div>
+  <section class="tavolo tavolo-italiano tavolo-poker" aria-label="Tavolo del poker">
+    <div class="posto-poker"><h2 id="titoloAltro">Computer</h2><div class="mano" id="carteAltro" aria-label="Carte dell'avversario"></div><p class="puntata-poker" id="puntataAltro"></p></div>
+    <div class="centro-poker"><div class="mano" id="carteTavolo" aria-label="Carte comuni in tavola"></div><p class="piatto-poker" id="piatto"></p></div>
+    <div class="posto-poker"><h2 id="titoloMio">Le tue carte</h2><div class="mano" id="carteMie" aria-label="Le tue carte"></div><p class="puntata-poker" id="puntataMia"></p></div>
+  </section>
+  <p id="messaggi" role="status" aria-live="polite"></p>
+  <div class="opzioni-prese" id="opzioniPresa" role="group" aria-label="Scelte disponibili"></div>
+  <div class="azioni"><button type="button" class="pulsante pulsante--secondario" id="nuovaPartita">Nuova partita</button></div>
+  <section class="risultati-carte" id="risultati" aria-label="Risultato finale" hidden></section>
+  <details class="pannello regole"><summary>Regole e variante adottata</summary><ol>
+    <li>Due giocatori, 500 fiches a testa. A ogni mano il mazziere mette il piccolo buio (5) e l&rsquo;altro il grande buio (10); il mazziere cambia a ogni mano.</li>
+    <li>Ognuno riceve due carte coperte. Poi arrivano in tavola tre carte comuni (flop), una (turn) e un&rsquo;ultima (river). Prima del flop parla per primo il mazziere, dopo il flop l&rsquo;altro giocatore.</li>
+    <li>A ogni giro si pu&ograve; passare (se nessuno ha puntato), vedere, puntare o rilanciare (minimo, quanto il piatto o tutto) oppure lasciare la mano. Chi lascia perde le fiches gi&agrave; messe nel piatto.</li>
+    <li>Se si arriva alla fine, vince la migliore combinazione di cinque carte tra le proprie due e le cinque in tavola. Dalla pi&ugrave; alta: scala reale, scala colore, poker, full, colore, scala, tris, doppia coppia, coppia, carta alta. A parit&agrave; il piatto si divide.</li>
+    <li>Se un giocatore mette tutte le sue fiches, le carte in tavola si scoprono fino alla fine; le fiches non coperte dall&rsquo;altro tornano indietro.</li>
+    <li>La partita finisce quando un giocatore resta senza fiches. In due si passa il dispositivo prima di ogni scelta: le carte dell&rsquo;altro restano coperte fino al confronto finale.</li>
+  </ol></details>
+  <p class="fonti-carte">Riferimenti: <a href="https://it.wikipedia.org/wiki/Texas_hold_%27em">Texas hold &rsquo;em - Wikipedia</a>.</p>
+</main>
+<script src="../js/mazzo.js"></script><script src="../js/carte.js"></script><script src="../js/giocatori.js"></script><script src="./funzioni.js"></script><script src="./main.js"></script>
+</body></html>

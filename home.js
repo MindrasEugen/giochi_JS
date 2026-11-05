@@ -39,6 +39,8 @@ const GIOCHI = [
       descrizione: 'Gira una carta a testa: la più alta prende tutto. A parità scoppia la guerra.' },
     { nome: 'Cambio colore', cartella: 'cambio_colore', categoria: 'francese', emoji: '🎨', dueGiocatori: true, etichettaGiocatori: '2–4 giocatori, anche PC',
       descrizione: 'Genere: carte a colori con azioni. Mazzo originale con Fermo, Giro, Pesca 2 e Cambio.' },
+    { nome: 'Poker heads-up', cartella: 'poker', categoria: 'francese', emoji: '♠️', dueGiocatori: true,
+      descrizione: "Texas Hold'em testa a testa con fiches finte: vedi, rilancia o lascia contro il PC o un amico." },
     { nome: 'Cinque lettere', cartella: 'cinque_lettere', categoria: 'parole', emoji: '🔤', dueGiocatori: true,
       descrizione: 'Trova la parola in sei tentativi. Da solo o a turni, con indizi per ogni lettera.' },
     { nome: 'Blocchi', cartella: 'blocchi', categoria: 'arcade', emoji: '🟨', dueGiocatori: true,
