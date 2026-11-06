@@ -1,9 +1,12 @@
 ArcadePagina.avvia({
     chiave: 'ping_pong', larghezza: PingPong.LARGHEZZA, altezza: PingPong.ALTEZZA,
     istruzioni: 'Muovi con ↑ ↓ o i pulsanti. In due: W e S a sinistra, frecce a destra. Si arriva a 7.',
-    istruzioniGesti: 'Trascina il dito in su e in giù per muovere la racchetta. In due: ognuno nella sua metà del campo. Si arriva a 7.',
+    istruzioniGesti: 'La tua racchetta è quella in basso: trascina il dito a destra e a sinistra. In due: chi sta in basso usa la metà bassa del campo, chi sta in alto quella alta. Si arriva a 7.',
     tasti: ['ArrowUp', 'ArrowDown', 'KeyW', 'KeyS'],
-    crea: due => PingPong.crea(due),
+    // Sul telefono il campo si gira (Tappa 29.2): la tua racchetta in basso, quella dell'avversario in alto.
+    // La logica resta 720 × 440; js/arcade-pagina.js ruota il disegno e i tocchi.
+    forma: ({ telefono }) => telefono ? { larghezza: PingPong.ALTEZZA, altezza: PingPong.LARGHEZZA, girato: true } : null,
+    crea: (due, forma) => ({ ...PingPong.crea(due), girato: !!forma?.girato }),
     passo(s, dt, tasti, due) {
         const asse = (su, giu) => Number(tasti.has(giu)) - Number(tasti.has(su));
         PingPong.passo(s, dt, due ? [asse('KeyW', 'KeyS'), asse('ArrowUp', 'ArrowDown')] : [asse('ArrowUp', 'ArrowDown') || asse('KeyW', 'KeyS'), 0]);
@@ -20,6 +23,11 @@ ArcadePagina.avvia({
         ctx.fillStyle = c.superficie; ctx.fillRect(28, s.racchette[0], 14, PingPong.RACCHETTA);
         ctx.fillStyle = c.accento; ctx.fillRect(678, s.racchette[1], 14, PingPong.RACCHETTA);
         ctx.fillStyle = c.superficie; ctx.beginPath(); ctx.arc(s.palla.x, s.palla.y, PingPong.RAGGIO, 0, Math.PI * 2); ctx.fill();
-        if (s.attesa > 0) { ctx.font = '600 22px system-ui'; ctx.textAlign = 'center'; ctx.fillStyle = c.accento; ctx.fillText('Servizio…', 360, 320); }
+        if (s.attesa > 0) {
+            ctx.font = '600 22px system-ui'; ctx.textAlign = 'center'; ctx.fillStyle = c.accento;
+            if (!s.girato) ctx.fillText('Servizio…', 360, 320);
+            // Nel campo girato il testo si ruota al contrario per restare dritto, sopra la palla
+            else { ctx.save(); ctx.translate(450, 220); ctx.rotate(Math.PI / 2); ctx.fillText('Servizio…', 0, 0); ctx.restore(); }
+        }
     }
 });

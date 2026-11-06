@@ -27,3 +27,15 @@ V.passo(punto, 1 / 60); assert.equal(punto.punti, 1);
 const urto = V.crea(); V.salta(urto); urto.ostacoli = [{ x: 120, centro: 100, contato: false }];
 V.passo(urto, 1 / 60); assert.equal(urto.finita, true);
 console.log('OK Volo: seme, varchi validi, avvio, impulso, turni identici, punteggio singolo e collisioni');
+
+// Tappa 29.2: campo alto 800 sul telefono, varchi su tutta l'altezza e partenza a metà
+{
+    const V = require('./funzioni');
+    const s = V.crea(false, 12345, 800);
+    assert.equal(s.y, 400);
+    for (let i = 0; i < 200; i++) { const c = V.altezzaVarco(12345, i, 800); assert.ok(c >= 125 && c <= 675); }
+    assert.equal(V.altezzaVarco(12345, 3), V.altezzaVarco(12345, 3, 480), 'sullo schermo largo i varchi sono quelli di prima');
+    const due = V.crea(true, 999, 800); due.finita = true; V.avanza(due);
+    assert.equal(due.altezza, 800); assert.equal(due.y, 400, 'il secondo turno resta nel campo alto');
+    console.log('OK Volo con il campo alto del telefono');
+}

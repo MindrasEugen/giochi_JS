@@ -1,17 +1,20 @@
 const Invasione = (() => {
     const LARGHEZZA = 600, ALTEZZA = 560;
+    // Il campo può essere più alto sul telefono (Tappa 29.2): navetta, base e scudi si misurano dal fondo.
+    // Con il campo di 560: navetta colpita a 520, colpi che partono da 507, base a 490, scudi a 425.
+    const fondo = s => s.altezza ?? ALTEZZA;
     function ondata(s) {
         s.nemici = [];
         for (let r = 0; r < 3; r++) for (let c = 0; c < 7; c++) s.nemici.push({ x: 58 + c * 68, y: 65 + r * 43, vivo: true, tipo: r });
-        s.verso = 1; s.proiettili = []; s.tiroNemico = 1.1; s.scudi = [100, 235, 370, 505].map(x => ({ x, y: 425, vita: 5 }));
+        s.verso = 1; s.proiettili = []; s.tiroNemico = 1.1; s.scudi = [100, 235, 370, 505].map(x => ({ x, y: fondo(s) - 135, vita: 5 }));
     }
-    function crea() {
-        const s = { x: 300, punti: 0, vite: 3, livello: 1, finita: false, ricarica: 0, invulnerabile: 0 };
+    function crea(altezza = ALTEZZA) {
+        const s = { x: 300, punti: 0, vite: 3, livello: 1, finita: false, ricarica: 0, invulnerabile: 0, altezza };
         ondata(s); return s;
     }
     function spara(s) {
         if (s.finita || s.ricarica > 0) return;
-        s.proiettili.push({ x: s.x, y: 507, vy: -470, amico: true }); s.ricarica = 0.22;
+        s.proiettili.push({ x: s.x, y: fondo(s) - 53, vy: -470, amico: true }); s.ricarica = 0.22;
     }
     function passo(s, dt, asse = 0, fuoco = false, casuale = Math.random) {
         if (s.finita) return;
@@ -23,7 +26,7 @@ const Invasione = (() => {
         if (vivi.some(n => n.x + spostamento < 20 || n.x + spostamento > 580)) {
             s.verso *= -1; vivi.forEach(n => { n.y += 19; });
         } else vivi.forEach(n => { n.x += spostamento; });
-        if (vivi.some(n => n.y >= 490)) { s.finita = true; return; }
+        if (vivi.some(n => n.y >= fondo(s) - 70)) { s.finita = true; return; }
         s.tiroNemico -= dt;
         if (s.tiroNemico <= 0 && vivi.length) {
             const n = vivi[Math.floor(casuale() * vivi.length)];
@@ -38,14 +41,14 @@ const Invasione = (() => {
             if (p.amico) {
                 const n = s.nemici.find(n => n.vivo && Math.abs(p.x - n.x) < 20 && attraversa(n.y));
                 if (n) { n.vivo = false; p.morto = true; s.punti += 10 * (3 - n.tipo); }
-            } else if (Math.abs(p.x - s.x) < 21 && attraversa(520)) {
+            } else if (Math.abs(p.x - s.x) < 21 && attraversa(fondo(s) - 40)) {
                 p.morto = true;
                 if (s.invulnerabile === 0) { s.vite--; s.invulnerabile = 1.5; if (s.vite <= 0) s.finita = true; }
             }
         }
-        s.proiettili = s.proiettili.filter(p => !p.morto && p.y > -20 && p.y < 580);
+        s.proiettili = s.proiettili.filter(p => !p.morto && p.y > -20 && p.y < fondo(s) + 20);
         if (!s.finita && s.nemici.every(n => !n.vivo)) { s.livello++; ondata(s); }
     }
-    return { LARGHEZZA, ALTEZZA, crea, spara, passo };
+    return { LARGHEZZA, ALTEZZA, fondo, crea, spara, passo };
 })();
 if (typeof module !== 'undefined') module.exports = Invasione;

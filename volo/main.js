@@ -3,7 +3,12 @@ ArcadePagina.avvia({
     istruzioni: 'Premi Spazio, ↑ o il pulsante Battito per volare. Puoi anche toccare il campo. Ogni varco superato vale un punto.',
     istruzioniGesti: 'Tocca il campo per un battito d’ali. Ogni varco superato vale un punto.',
     tasti: ['ArrowUp', 'KeyW'],
-    crea: due => Volo.crea(due),
+    // Sul telefono il campo resta largo 600 e diventa alto quanto lo spazio libero (Tappa 29.2)
+    forma({ telefono, rapporto }) {
+        if (!telefono) return null;
+        return { larghezza: Volo.LARGHEZZA, altezza: Math.max(Volo.ALTEZZA, Math.min(1000, Math.round(Volo.LARGHEZZA * rapporto))) };
+    },
+    crea: (due, forma) => Volo.crea(due, undefined, forma?.altezza),
     prossimo: Volo.prossimo, avanza: Volo.avanza,
     comando(s, codice) { if (['Space', 'ArrowUp', 'KeyW'].includes(codice)) Volo.salta(s); },
     // Gesto: ogni tocco è un battito, subito, senza aspettare che il dito si alzi
@@ -21,15 +26,15 @@ ArcadePagina.avvia({
     },
     disegna(ctx, s, c) {
         ctx.strokeStyle = c.primarioChiaro; ctx.lineWidth = 2;
-        for (let i = 0; i < 5; i++) { const x = ((i * 160 - s.distanza * 0.3) % 800 + 800) % 800 - 100; ctx.beginPath(); ctx.arc(x, 120 + i % 3 * 100, 55, 0, Math.PI * 2); ctx.stroke(); }
+        for (let i = 0; i < 5; i++) { const x = ((i * 160 - s.distanza * 0.3) % 800 + 800) % 800 - 100; ctx.beginPath(); ctx.arc(x, (120 + i % 3 * 100) * s.altezza / 480, 55, 0, Math.PI * 2); ctx.stroke(); }
         s.ostacoli.forEach(o => {
             const alto = o.centro - Volo.APERTURA / 2, basso = o.centro + Volo.APERTURA / 2;
-            ctx.fillStyle = c.primarioChiaro; ctx.fillRect(o.x, 0, 60, alto); ctx.fillRect(o.x, basso, 60, 480 - basso);
+            ctx.fillStyle = c.primarioChiaro; ctx.fillRect(o.x, 0, 60, alto); ctx.fillRect(o.x, basso, 60, s.altezza - basso);
             ctx.fillStyle = c.accento; ctx.fillRect(o.x, alto - 6, 60, 6); ctx.fillRect(o.x, basso, 60, 6);
         });
         // Aliante di carta, costruito con tre triangoli.
         ctx.fillStyle = c.superficie; ctx.beginPath(); ctx.moveTo(153, s.y); ctx.lineTo(108, s.y - 14); ctx.lineTo(120, s.y + 13); ctx.closePath(); ctx.fill();
         ctx.fillStyle = c.accento; ctx.beginPath(); ctx.moveTo(153, s.y); ctx.lineTo(119, s.y); ctx.lineTo(120, s.y + 13); ctx.closePath(); ctx.fill();
-        if (!s.attivo) { ctx.font = '600 20px system-ui'; ctx.textAlign = 'center'; ctx.fillStyle = c.accento; ctx.fillText('Un battito per partire', 300, 370); }
+        if (!s.attivo) { ctx.font = '600 20px system-ui'; ctx.textAlign = 'center'; ctx.fillStyle = c.accento; ctx.fillText('Un battito per partire', 300, s.y + 130); }
     }
 });

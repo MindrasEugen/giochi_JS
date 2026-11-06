@@ -2,7 +2,10 @@
 const ArcadePagina = (() => {
     function avvia(config) {
         const canvas = document.querySelector('canvas');
-        const ctx = Arcade.adattaCanvas(canvas, config.larghezza, config.altezza);
+        const campo = canvas.closest?.('.arcade-campo') || null;
+        // Misure logiche del campo: quelle della pagina, oppure la forma scelta per il telefono (Tappa 29.2)
+        let L = config.larghezza, A = config.altezza, girato = false;
+        let ctx = Arcade.adattaCanvas(canvas, L, A);
         const colori = Arcade.colori();
         const pulsante = document.querySelector('#avvia');
         const modalita = document.querySelector('#modalitaGioco');
@@ -39,9 +42,46 @@ const ArcadePagina = (() => {
             avviso('Una pausa?', 'La partita ti aspetta. Premi Riprendi per continuare.');
             messaggi.textContent = 'Partita in pausa.';
         }
+        // Campo grande quanto lo schermo sul telefono (Tappa 29.2). spazio() misura quanto posto c'è per il campo,
+        // dal suo bordo alto al fondo dello schermo meno gli elementi che stanno sotto (pulsanti, comandi).
+        // Fuori dal telefono restituisce null e la pagina resta com'era.
+        function spazio() {
+            if (!campo || typeof Tavola === 'undefined' || !Tavola.telefono() || !window.innerHeight) return null;
+            const contenitore = campo.parentElement, stile = getComputedStyle(contenitore);
+            const spazioTra = parseFloat(stile.rowGap) || 0, bordo = parseFloat(getComputedStyle(campo).borderTopWidth) || 0;
+            let sotto = parseFloat(stile.paddingBottom) || 0;
+            for (let el = campo.nextElementSibling; el; el = el.nextElementSibling) {
+                const s = getComputedStyle(el);
+                if (el.hidden || s.display === 'none' || s.position === 'absolute' || s.position === 'fixed') continue;
+                sotto += el.getBoundingClientRect().height + spazioTra;
+            }
+            const alto = window.innerHeight - (campo.getBoundingClientRect().top + window.scrollY) - sotto - 2 * bordo;
+            const largo = contenitore.clientWidth - parseFloat(stile.paddingLeft) - parseFloat(stile.paddingRight) - 2 * bordo;
+            return alto > 120 && largo > 120 ? { alto, largo, bordo } : null;
+        }
+        // Il campo prende la larghezza che serve per riempire l'altezza libera, senza uscire dallo schermo
+        function dimensiona() {
+            const s = spazio();
+            if (!campo) return;
+            if (!s) { campo.style.width = ''; campo.style.marginInline = ''; return; }
+            campo.style.width = `${Math.floor(Math.min(s.largo, s.alto * L / A) + 2 * s.bordo)}px`;
+            campo.style.marginInline = 'auto';
+        }
+        // config.forma({ telefono, rapporto, due }) può dare al campo un'altra forma: { larghezza, altezza, girato }.
+        // rapporto = altezza libera / larghezza libera. girato: il gioco si disegna ruotato di 90 gradi (Ping pong).
+        function scegliForma() {
+            const s = spazio();
+            const forma = config.forma?.({ telefono: !!s, rapporto: s ? s.alto / s.largo : A / L, due: due() }) || null;
+            const l = forma?.larghezza ?? config.larghezza, a = forma?.altezza ?? config.altezza;
+            if (l !== L || a !== A) { L = l; A = a; ctx = Arcade.adattaCanvas(canvas, L, A); }
+            girato = !!forma?.girato;
+            return forma;
+        }
         function nuova() {
             ciclo.pausa(); tasti.clear(); iniziata = false; conclusa = false;
-            stato = config.crea(due());
+            const forma = scegliForma();
+            stato = forma ? config.crea(due(), forma) : config.crea(due());
+            dimensiona();
             pulsante.textContent = 'Gioca'; pulsante.disabled = false;
             pulsante.setAttribute('aria-pressed', 'false');
             avviso('Pronto a giocare?', istruzioni());
@@ -86,8 +126,14 @@ const ArcadePagina = (() => {
             disegna() {
                 if (!stato) return;
                 ctx.fillStyle = colori.primario;
-                ctx.fillRect(0, 0, config.larghezza, config.altezza);
+                ctx.fillRect(0, 0, L, A);
+                if (!girato) { config.disegna(ctx, stato, colori); return; }
+                // Campo girato: il gioco disegna nelle sue coordinate (larghezza A, altezza L); la sua sinistra va in basso
+                const d = window.devicePixelRatio || 1;
+                ctx.save();
+                ctx.setTransform(0, -d, d, 0, 0, A * d);
                 config.disegna(ctx, stato, colori);
+                ctx.restore();
             }
         });
         document.addEventListener('keydown', e => {
@@ -138,9 +184,16 @@ const ArcadePagina = (() => {
             const dita = new Map();
             document.body.classList?.add('con-gesti');
             if (typeof Tavola !== 'undefined') Tavola.opzione({ chiave: 'giochi_js_mostra_pulsanti', etichetta: 'Mostra i pulsanti sullo schermo',
-                suCambio: v => { document.body.classList?.toggle('mostra-pulsanti', v); if (stato && !iniziata) nuova(); } });
-            const lato = e => { const r = canvas.getBoundingClientRect(); return e.clientX - r.left < r.width / 2 ? 0 : 1; };
-            const punto = e => Arcade.puntoCanvas(canvas, e, config.larghezza, config.altezza);
+                suCambio: v => { document.body.classList?.toggle('mostra-pulsanti', v); if (stato && !iniziata) nuova(); else dimensiona(); } });
+            // Metà del campo: sinistra 0 e destra 1; nel campo girato metà bassa 0 e metà alta 1
+            const lato = e => {
+                const r = canvas.getBoundingClientRect();
+                return girato ? (e.clientY - r.top > r.height / 2 ? 0 : 1) : (e.clientX - r.left < r.width / 2 ? 0 : 1);
+            };
+            const punto = e => {
+                const p = Arcade.puntoCanvas(canvas, e, L, A);
+                return girato ? { x: A - p.y, y: p.x } : p;
+            };
             const lascia = id => {
                 const dito = dita.get(id);
                 if (!dito) return null;
@@ -181,6 +234,9 @@ const ArcadePagina = (() => {
         }
         pulsante.addEventListener('click', alterna);
         document.addEventListener('tavola:aperta', pausa);
+        // Rotazione o finestra ridimensionata: la partita ferma riparte con la forma giusta, quella in corso si adatta
+        document.addEventListener('tavola:schermo', () => { if (!iniziata || conclusa) nuova(); else dimensiona(); });
+        window.addEventListener('resize', () => { if (stato) dimensiona(); });
         document.querySelector('#nuovaPartita').addEventListener('click', nuova);
         window.addEventListener('blur', pausa);
         document.addEventListener('visibilitychange', () => { if (document.hidden) pausa(); });

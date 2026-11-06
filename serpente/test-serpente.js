@@ -115,5 +115,14 @@ for (let k = 0; k < 200; k++) {
 controlla('200 partite con mosse a caso: finiscono tutte', tutteFinite);
 controlla('il cibo non compare mai sopra un serpente', ciboSempreLibero);
 
+// Tappa 29.2: griglia più alta sul telefono (20 × 34)
+const alta = S.statoIniziale(1, Math.random, 20, 34);
+controlla('griglia 20 × 34: serpente a metà altezza, cibo dentro la griglia', alta.serpenti[0].corpo[0].y === 17 && alta.cibo.y < 34 && alta.cibo.x < 20);
+const bordoBasso = { serpenti: [S.creaSerpente(3, 33, 'giu')], cibo: { x: 10, y: 10 }, finita: false, colonne: 20, righe: 34 };
+S.passo(bordoBasso);
+controlla('griglia 20 × 34: dal bordo basso si rientra in alto (y 33 -> 0)', bordoBasso.serpenti[0].corpo[0].y === 0 && bordoBasso.serpenti[0].vivo);
+const dueAlta = S.statoIniziale(2, Math.random, 20, 34);
+controlla('griglia 20 × 34 in due: il secondo serpente parte in basso a destra', dueAlta.serpenti[1].corpo[0].x === 14 && dueAlta.serpenti[1].corpo[0].y === 28);
+
 console.log(falliti === 0 ? '\nTutti i controlli sono passati' : `\n${falliti} controlli falliti`);
 process.exit(falliti === 0 ? 0 : 1);

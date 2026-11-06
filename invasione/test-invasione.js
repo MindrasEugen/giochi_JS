@@ -21,3 +21,15 @@ assert.equal(s.x, 18);
 s.nemici[0].y = 490; I.passo(s, 1 / 60); assert.equal(s.finita, true);
 const prima = JSON.stringify(s); I.passo(s, 1); I.spara(s); assert.equal(JSON.stringify(s), prima);
 console.log('OK Invasione: fuoco limitato, colpi, scudi nei due versi, protezione, ondate, confini e invasione base');
+
+// Tappa 29.2: campo alto 900 sul telefono, navetta, scudi e base misurati dal fondo
+{
+    const I = require('./funzioni');
+    const s = I.crea(900);
+    assert.equal(s.scudi[0].y, 765); I.spara(s); assert.equal(s.proiettili[0].y, 847);
+    s.nemici.forEach(n => { n.y = 700; }); I.passo(s, 0.01, 0, false, () => 0.5);
+    assert.equal(s.finita, false, 'campo alto: a 700 i droni non hanno ancora raggiunto la base (830)');
+    s.nemici.forEach(n => { n.y = 830; }); I.passo(s, 0.01, 0, false, () => 0.5);
+    assert.equal(s.finita, true, 'campo alto: a 830 la base è raggiunta');
+    console.log('OK Invasione con il campo alto del telefono');
+}

@@ -3,7 +3,13 @@ ArcadePagina.avvia({
     istruzioni: 'Muovi con ← →, A e D o trascina sul campo. Spazio o tocco per lanciare la palla.',
     istruzioniGesti: 'Trascina il dito a destra e a sinistra per muovere la racchetta. Tocca il campo per lanciare la palla.',
     tasti: ['ArrowLeft', 'ArrowRight', 'KeyA', 'KeyD'],
-    crea: () => Mattoncini.crea(),
+    // Sul telefono il campo resta largo 600 e diventa alto quanto lo spazio libero (Tappa 29.2)
+    forma({ telefono, rapporto }) {
+        if (!telefono) return null;
+        const altezza = Math.max(Mattoncini.ALTEZZA, Math.min(1100, Math.round(Mattoncini.LARGHEZZA * rapporto)));
+        return { larghezza: Mattoncini.LARGHEZZA, altezza };
+    },
+    crea: (due, forma) => Mattoncini.crea(forma?.altezza),
     comando(s, codice) { if (codice === 'Space') Mattoncini.lancia(s); },
     passo(s, dt, tasti) { Mattoncini.passo(s, dt, Number(tasti.has('ArrowRight') || tasti.has('KeyD')) - Number(tasti.has('ArrowLeft') || tasti.has('KeyA'))); },
     punti: s => s.punti,
@@ -23,8 +29,8 @@ ArcadePagina.avvia({
             ctx.fillStyle = c.primario; ctx.font = 'bold 16px system-ui'; ctx.textAlign = 'center'; ctx.fillText('+', b.x, b.y + 6);
         }
         ctx.fillStyle = s.largo > 0 ? c.accento : c.superficie;
-        ctx.fillRect(s.racchetta - Mattoncini.larghezza(s) / 2, 484, Mattoncini.larghezza(s), 12);
+        ctx.fillRect(s.racchetta - Mattoncini.larghezza(s) / 2, Mattoncini.linea(s), Mattoncini.larghezza(s), 12);
         ctx.fillStyle = c.superficie; ctx.beginPath(); ctx.arc(s.palla.x, s.palla.y, Mattoncini.RAGGIO, 0, Math.PI * 2); ctx.fill();
-        if (s.inAttesa && !s.finita) { ctx.font = '600 20px system-ui'; ctx.textAlign = 'center'; ctx.fillStyle = c.accento; ctx.fillText('Spazio o tocco per lanciare', 300, 350); }
+        if (s.inAttesa && !s.finita) { ctx.font = '600 20px system-ui'; ctx.textAlign = 'center'; ctx.fillStyle = c.accento; ctx.fillText('Spazio o tocco per lanciare', 300, s.altezza * 0.67); }
     }
 });

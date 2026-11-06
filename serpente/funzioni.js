@@ -1,5 +1,5 @@
 // Logica del Serpente (genere "Snake", ADR 0009), senza pagina (si prova con: node serpente/test-serpente.js).
-// La griglia è LATO × LATO caselle. Un serpente è { corpo: [{ x, y }, ...] (la testa è il primo), direzione,
+// La griglia è di stato.colonne × stato.righe caselle (LATO × LATO sugli schermi larghi; sul telefono più alta, Tappa 29.2). Un serpente è { corpo: [{ x, y }, ...] (la testa è il primo), direzione,
 // prossima (direzione scelta per il passo successivo), vivo, punti, daCrescere }.
 
 const LATO = 20;
@@ -14,14 +14,17 @@ function creaSerpente(x, y, direzione, lunghezza = 3) {
 }
 
 // Uno o due serpenti: a 2 giocatori partono da lati opposti
-function statoIniziale(giocatori = 1, casuale = Math.random) {
+function statoIniziale(giocatori = 1, casuale = Math.random, colonne = LATO, righe = LATO) {
     const serpenti = giocatori === 1
-        ? [creaSerpente(5, 10, 'destra')]
-        : [creaSerpente(5, 5, 'destra'), creaSerpente(14, 14, 'sinistra')];
-    const stato = { serpenti, cibo: null, finita: false };
+        ? [creaSerpente(5, Math.floor(righe / 2), 'destra')]
+        : [creaSerpente(5, 5, 'destra'), creaSerpente(colonne - 6, righe - 6, 'sinistra')];
+    const stato = { serpenti, cibo: null, finita: false, colonne, righe };
     stato.cibo = nuovoCibo(stato, casuale);
     return stato;
 }
+
+// Misure della griglia: quelle dello stato, oppure LATO × LATO
+const colonneDi = stato => stato.colonne ?? LATO, righeDi = stato => stato.righe ?? LATO;
 
 function occupata(stato, x, y) {
     return stato.serpenti.some(s => s.vivo && s.corpo.some(p => p.x === x && p.y === y));
@@ -30,7 +33,7 @@ function occupata(stato, x, y) {
 // Il cibo compare in una casella libera a caso (null se la griglia è piena)
 function nuovoCibo(stato, casuale = Math.random) {
     const libere = [];
-    for (let y = 0; y < LATO; y++) for (let x = 0; x < LATO; x++) if (!occupata(stato, x, y)) libere.push({ x, y });
+    for (let y = 0; y < righeDi(stato); y++) for (let x = 0; x < colonneDi(stato); x++) if (!occupata(stato, x, y)) libere.push({ x, y });
     return libere.length ? libere[Math.floor(casuale() * libere.length)] : null;
 }
 
@@ -53,7 +56,8 @@ function passo(stato, casuale = Math.random) {
     const teste = vivi.map(({ s }) => {
         s.direzione = s.prossima;
         const d = DIREZIONI[s.direzione];
-        return { x: (s.corpo[0].x + d.x + LATO) % LATO, y: (s.corpo[0].y + d.y + LATO) % LATO };
+        const c = colonneDi(stato), r = righeDi(stato);
+        return { x: (s.corpo[0].x + d.x + c) % c, y: (s.corpo[0].y + d.y + r) % r };
     });
     // la coda si sposta (e libera la sua casella) solo se il serpente non deve crescere
     const corpiDopo = vivi.map(({ s }, k) => {

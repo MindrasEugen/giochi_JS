@@ -26,3 +26,16 @@ const v = L.crea(); v.guardiani.forEach(g => { g.delai = 10; }); v.puntini.clear
 L.passo(v, 0.14); assert.equal(v.finita, true); assert.equal(v.vinta, true);
 const prima = JSON.stringify(v); L.passo(v, 10); assert.equal(JSON.stringify(v), prima);
 console.log('OK Labirinto: 30 mappe connesse, bordi, movimento, luci, energia, guardiani, respawn e vittoria');
+
+// Tappa 29.2: labirinto verticale del telefono (13 colonne, righe dispari)
+for (const righe of [17, 23, 31]) {
+    const t = L.crea(13, righe);
+    assert.equal(t.griglia.length, righe); assert.equal(t.griglia[0].length, 13);
+    const raggiungibili = L.distanze(t);
+    const libere = t.griglia.flatMap((r, y) => r.map((v, x) => (v ? null : L.chiave(x, y)))).filter(Boolean);
+    assert.ok(libere.every(k => raggiungibili.has(k)), `13 × ${righe}: tutte le caselle libere sono raggiungibili`);
+    for (const g of t.guardiani) assert.ok(L.libero(t, g.x, g.y), `13 × ${righe}: guardiano su una casella libera`);
+    assert.deepEqual([...t.energie].sort(), [`1,${righe - 2}`, `11,1`, `11,${righe - 2}`].sort());
+    assert.ok([...t.energie].every(k => t.puntini.has(k)), `13 × ${righe}: le energie stanno su una luce`);
+}
+console.log('OK Labirinto verticale: 13 × 17, 13 × 23 e 13 × 31 connessi, guardiani ed energie negli angoli');

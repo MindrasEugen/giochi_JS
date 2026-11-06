@@ -3,29 +3,32 @@ const Labirinto = (() => {
     const COLONNE = 19, RIGHE = 17;
     const DIREZIONI = { su: [0, -1], giu: [0, 1], sinistra: [-1, 0], destra: [1, 0] };
     const chiave = (x, y) => `${x},${y}`;
-    function mappa(seme = 731) {
-        const griglia = Array.from({ length: RIGHE }, () => Array(COLONNE).fill(1));
+    // Misure dispari (corridoi e muri alternati): 19 × 17 sugli schermi larghi, più alto sul telefono (Tappa 29.2)
+    function mappa(seme = 731, colonne = COLONNE, righe = RIGHE) {
+        const griglia = Array.from({ length: righe }, () => Array(colonne).fill(1));
         let n = seme >>> 0;
         const casuale = () => { n = (Math.imul(n, 1664525) + 1013904223) >>> 0; return n / 4294967296; };
         const pila = [[1, 1]]; griglia[1][1] = 0;
         while (pila.length) {
             const [x, y] = pila[pila.length - 1];
             const scelte = Object.values(DIREZIONI).map(([dx, dy]) => [x + dx * 2, y + dy * 2, dx, dy])
-                .filter(([xx, yy]) => xx > 0 && yy > 0 && xx < COLONNE - 1 && yy < RIGHE - 1 && griglia[yy][xx]);
+                .filter(([xx, yy]) => xx > 0 && yy > 0 && xx < colonne - 1 && yy < righe - 1 && griglia[yy][xx]);
             if (!scelte.length) { pila.pop(); continue; }
             const [xx, yy, dx, dy] = scelte[Math.floor(casuale() * scelte.length)];
             griglia[y + dy][x + dx] = 0; griglia[yy][xx] = 0; pila.push([xx, yy]);
         }
-        for (let y = 1; y < RIGHE - 1; y++) for (let x = 1; x < COLONNE - 1; x++) {
+        for (let y = 1; y < righe - 1; y++) for (let x = 1; x < colonne - 1; x++) {
             if (griglia[y][x] && ((griglia[y][x - 1] === 0 && griglia[y][x + 1] === 0) || (griglia[y - 1][x] === 0 && griglia[y + 1][x] === 0)) && casuale() < 0.2) griglia[y][x] = 0;
         }
         return griglia;
     }
-    function crea() {
-        const griglia = mappa(), puntini = new Set();
+    // Energie e guardiani negli altri tre angoli (con 19 × 17: 17,1 / 1,15 / 17,15)
+    function crea(colonne = COLONNE, righe = RIGHE) {
+        const griglia = mappa(731, colonne, righe), puntini = new Set();
+        const x2 = colonne - 2, y2 = righe - 2;
         griglia.forEach((r, y) => r.forEach((v, x) => { if (!v && (x !== 1 || y !== 1)) puntini.add(chiave(x, y)); }));
-        return { griglia, puntini, energie: new Set(['17,1', '1,15', '17,15']),
-            giocatore: { x: 1, y: 1 }, guardiani: [[17, 15], [17, 1], [1, 15]].map(([x, y]) => ({ x, y, casaX: x, casaY: y, delai: 0 })),
+        return { griglia, puntini, energie: new Set([chiave(x2, 1), chiave(1, y2), chiave(x2, y2)]),
+            giocatore: { x: 1, y: 1 }, guardiani: [[x2, y2], [x2, 1], [1, y2]].map(([x, y]) => ({ x, y, casaX: x, casaY: y, delai: 0 })),
             direzione: null, prossima: null, punti: 0, vite: 3, potere: 0, invulnerabile: 1.5,
             tempo: 0, tempoGuardie: 0, finita: false, vinta: false };
     }

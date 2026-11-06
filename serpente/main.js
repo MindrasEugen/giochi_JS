@@ -3,7 +3,13 @@ ArcadePagina.avvia({
     istruzioni: 'Scorri il dito sul campo o usa le frecce. In due: metà sinistra (o frecce) per il verde, metà destra (o WASD) per il dorato.',
     istruzioniGesti: 'Scorri il dito sul campo per girare. In due: chi scorre a sinistra guida il verde, chi scorre a destra il dorato.',
     tasti: ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'KeyW', 'KeyS', 'KeyA', 'KeyD'],
-    crea(due) { return { ...statoIniziale(due ? 2 : 1), trascorso: 0 }; },
+    // Sul telefono la griglia resta larga 20 caselle e diventa alta quanto lo spazio libero (Tappa 29.2)
+    forma({ telefono, rapporto }) {
+        if (!telefono) return null;
+        const righe = Math.max(LATO, Math.min(40, Math.floor(LATO * rapporto)));
+        return { larghezza: LATO * 24, altezza: righe * 24, colonne: LATO, righe };
+    },
+    crea(due, forma) { return { ...statoIniziale(due ? 2 : 1, Math.random, forma?.colonne, forma?.righe), trascorso: 0 }; },
     comando(s, tasto, due) {
         const frecce = { ArrowUp: 'su', ArrowDown: 'giu', ArrowLeft: 'sinistra', ArrowRight: 'destra' };
         const wasd = { KeyW: 'su', KeyS: 'giu', KeyA: 'sinistra', KeyD: 'destra' };
@@ -32,10 +38,9 @@ ArcadePagina.avvia({
     },
     disegna(ctx, s, c) {
         ctx.strokeStyle = c.primarioChiaro; ctx.lineWidth = 1;
-        for (let i = 0; i <= 20; i++) {
-            ctx.beginPath(); ctx.moveTo(i * 24, 0); ctx.lineTo(i * 24, 480); ctx.stroke();
-            ctx.beginPath(); ctx.moveTo(0, i * 24); ctx.lineTo(480, i * 24); ctx.stroke();
-        }
+        const largo = s.colonne * 24, alto = s.righe * 24;
+        for (let i = 0; i <= s.colonne; i++) { ctx.beginPath(); ctx.moveTo(i * 24, 0); ctx.lineTo(i * 24, alto); ctx.stroke(); }
+        for (let i = 0; i <= s.righe; i++) { ctx.beginPath(); ctx.moveTo(0, i * 24); ctx.lineTo(largo, i * 24); ctx.stroke(); }
         if (s.cibo) {
             ctx.fillStyle = c.errore; ctx.beginPath(); ctx.arc(s.cibo.x * 24 + 12, s.cibo.y * 24 + 12, 8, 0, Math.PI * 2); ctx.fill();
             ctx.fillStyle = c.superficie; ctx.fillRect(s.cibo.x * 24 + 10, s.cibo.y * 24 + 4, 4, 4);

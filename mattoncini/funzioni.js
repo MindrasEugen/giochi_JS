@@ -1,6 +1,8 @@
 // Collisioni, livelli e bonus, senza dipendenze dalla pagina.
 const Mattoncini = (() => {
     const LARGHEZZA = 600, ALTEZZA = 520, RAGGIO = 7, LIVELLI = 3;
+    // Il campo può essere più alto sul telefono (Tappa 29.2): racchetta e fondo si misurano da s.altezza
+    const linea = s => (s.altezza ?? ALTEZZA) - 36; // altezza della racchetta (484 con il campo di 520)
     const limita = (n, min, max) => Math.max(min, Math.min(max, n));
     function preparaLivello(s) {
         s.mattoni = [];
@@ -12,11 +14,11 @@ const Mattoncini = (() => {
         preparaPalla(s);
     }
     function preparaPalla(s) {
-        s.palla = { x: s.racchetta, y: 471, vx: 170 + s.livello * 16, vy: -260 - s.livello * 22 };
+        s.palla = { x: s.racchetta, y: linea(s) - 13, vx: 170 + s.livello * 16, vy: -260 - s.livello * 22 };
         s.inAttesa = true;
     }
-    function crea() {
-        const s = { racchetta: 300, punti: 0, vite: 3, livello: 1, finita: false, vinta: false, largo: 0 };
+    function crea(altezza = ALTEZZA) {
+        const s = { racchetta: 300, punti: 0, vite: 3, livello: 1, finita: false, vinta: false, largo: 0, altezza };
         preparaLivello(s);
         return s;
     }
@@ -40,10 +42,11 @@ const Mattoncini = (() => {
             if (p.x < RAGGIO) { p.x = RAGGIO; p.vx = Math.abs(p.vx); }
             if (p.x > LARGHEZZA - RAGGIO) { p.x = LARGHEZZA - RAGGIO; p.vx = -Math.abs(p.vx); }
             if (p.y < RAGGIO) { p.y = RAGGIO; p.vy = Math.abs(p.vy); }
-            if (p.vy > 0 && precedente.y + RAGGIO <= 484 && p.y + RAGGIO >= 484 && Math.abs(p.x - s.racchetta) <= larghezza(s) / 2 + RAGGIO) {
+            const y = linea(s);
+            if (p.vy > 0 && precedente.y + RAGGIO <= y && p.y + RAGGIO >= y && Math.abs(p.x - s.racchetta) <= larghezza(s) / 2 + RAGGIO) {
                 const angolo = limita((p.x - s.racchetta) / (larghezza(s) / 2), -1, 1) * 1.05;
                 const velocita = Math.hypot(p.vx, p.vy);
-                p.y = 484 - RAGGIO; p.vx = velocita * Math.sin(angolo); p.vy = -velocita * Math.cos(angolo);
+                p.y = y - RAGGIO; p.vx = velocita * Math.sin(angolo); p.vy = -velocita * Math.cos(angolo);
             }
             const mattone = s.mattoni.find(m => m.vivo && cerchioRettangolo(p, m));
             if (mattone) {
@@ -58,7 +61,7 @@ const Mattoncini = (() => {
                     return;
                 }
             }
-            if (p.y > ALTEZZA + RAGGIO) {
+            if (p.y > (s.altezza ?? ALTEZZA) + RAGGIO) {
                 s.vite--; s.finita = s.vite === 0;
                 s.bonus = []; s.largo = 0;
                 preparaPalla(s);
@@ -67,10 +70,10 @@ const Mattoncini = (() => {
         }
         s.bonus = s.bonus.filter(b => {
             b.y += 140 * dt;
-            if (b.y >= 478 && b.y <= 500 && Math.abs(b.x - s.racchetta) <= larghezza(s) / 2 + 9) { s.largo = 10; return false; }
-            return b.y < ALTEZZA;
+            if (b.y >= linea(s) - 6 && b.y <= linea(s) + 16 && Math.abs(b.x - s.racchetta) <= larghezza(s) / 2 + 9) { s.largo = 10; return false; }
+            return b.y < (s.altezza ?? ALTEZZA);
         });
     }
-    return { LARGHEZZA, ALTEZZA, RAGGIO, LIVELLI, crea, passo, muovi, lancia, larghezza, cerchioRettangolo };
+    return { LARGHEZZA, ALTEZZA, RAGGIO, LIVELLI, linea, crea, passo, muovi, lancia, larghezza, cerchioRettangolo };
 })();
 if (typeof module !== 'undefined') module.exports = Mattoncini;

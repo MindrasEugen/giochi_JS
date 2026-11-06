@@ -9,7 +9,9 @@ ArcadePagina.avvia({
     istruzioni: 'Frecce per muovere e ruotare, Spazio per posare. In due: WASD e F a sinistra, frecce e Spazio a destra.',
     istruzioniGesti: 'Scorri a destra e a sinistra per spostare il pezzo, tocca per ruotarlo, scorri in giù per farlo cadere. In due: ognuno nel suo campo.',
     tasti: ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'KeyA', 'KeyD', 'KeyW', 'KeyS', 'KeyF'],
-    crea: due => Blocchi.crea(due),
+    // Da soli sul telefono il canvas si stringe intorno all'unico campo: alto quanto lo schermo (Tappa 29.2)
+    forma: ({ telefono, due }) => telefono && !due ? { larghezza: 280, altezza: 640, stretto: true } : null,
+    crea: (due, forma) => ({ ...Blocchi.crea(due), stretto: !!forma?.stretto }),
     comando(s, codice, due) {
         const i = due && ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Space'].includes(codice) ? 1 : 0;
         if (codice === 'ArrowUp' || codice === 'KeyW') Blocchi.gira(s.campi[i]);
@@ -44,7 +46,7 @@ ArcadePagina.avvia({
     disegna(ctx, s, c) {
         const colori = COLORI_BLOCCHI;
         s.campi.forEach((campo, i) => {
-            const lato = 26, x0 = s.campi.length === 1 ? 230 : 45 + i * 370, y0 = 85;
+            const lato = 26, x0 = s.campi.length === 1 ? (s.stretto ? 10 : 230) : 45 + i * 370, y0 = 85;
             ctx.fillStyle = c.superficie; ctx.font = '600 20px system-ui'; ctx.textAlign = 'left';
             ctx.fillText(s.campi.length === 1 ? 'IL TUO CAMPO' : `CAMPO ${i + 1}`, x0, 35);
             ctx.font = '16px system-ui'; ctx.fillStyle = c.accento;

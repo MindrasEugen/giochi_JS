@@ -44,3 +44,16 @@ for (let vita = 2; vita >= 0; vita--) {
 }
 assert.equal(perso.finita, true); assert.equal(perso.vinta, false);
 console.log('OK Mattoncini: lancio, limiti, rimbalzi, punti, bonus, scadenza, tre livelli e tre vite');
+
+// Tappa 29.2: campo alto 900 sul telefono, la racchetta scende in fondo
+{
+    const M = require('./funzioni');
+    const s = M.crea(900);
+    assert.equal(M.linea(s), 864); assert.equal(s.palla.y, 851);
+    M.lancia(s); s.palla = { x: s.racchetta, y: 840, vx: 0, vy: 300 };
+    M.passo(s, 0.1);
+    assert.ok(s.palla.vy < 0, 'campo alto: la palla rimbalza sulla racchetta in fondo');
+    s.palla = { x: 20, y: 880, vx: 0, vy: 400 }; M.passo(s, 0.1);
+    assert.equal(s.vite, 2, 'campo alto: la vita si perde solo oltre il fondo di 900');
+    console.log('OK Mattoncini con il campo alto del telefono');
+}

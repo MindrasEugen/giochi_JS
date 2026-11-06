@@ -3,7 +3,13 @@ ArcadePagina.avvia({
     istruzioni: 'Frecce, WASD o pulsanti per esplorare. Raccogli le luci; i cristalli grandi allontanano i guardiani per 7 secondi.',
     istruzioniGesti: 'Scorri il dito sul campo per cambiare strada. Raccogli le luci; i cristalli grandi allontanano i guardiani per 7 secondi.',
     tasti: ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'KeyW', 'KeyA', 'KeyS', 'KeyD'],
-    crea: () => Labirinto.crea(),
+    // Sul telefono un labirinto verticale: 13 colonne e righe dispari fino a riempire lo spazio libero (Tappa 29.2)
+    forma({ telefono, rapporto }) {
+        if (!telefono) return null;
+        const righe = Math.max(17, Math.min(31, Math.floor(13 * rapporto) | 1));
+        return { larghezza: 13 * 32, altezza: righe * 32, colonne: 13, righe };
+    },
+    crea: (due, forma) => Labirinto.crea(forma?.colonne, forma?.righe),
     comando(s, codice) {
         const m = { ArrowUp: 'su', KeyW: 'su', ArrowDown: 'giu', KeyS: 'giu', ArrowLeft: 'sinistra', KeyA: 'sinistra', ArrowRight: 'destra', KeyD: 'destra' };
         if (m[codice]) Labirinto.gira(s, m[codice]);
