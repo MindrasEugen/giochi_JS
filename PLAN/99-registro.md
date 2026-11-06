@@ -77,3 +77,5 @@ Ultima modifica: 2026-11-03
 - 2026-11-06 - Tappa 29.2 completata: prova su telefono passata («per il resto mi sembra vada tutto bene»).
 - 2026-11-06 - Tappa 29.1 saltata (richiesta dell'utente, in Fuori MVP). Tappa 30 completata: APK di debug, sezione «App Android» nel README, .gitattributes per gradlew. Piano completato.
 - 2026-11-06 - Push fatti dall'utente; resta solo il secondo test di Mattoncini sul telefono.
+- 2026-11-06 - Prova di Mattoncini (distanze e difficoltà, nel browser): sul telefono la palla impiega più del doppio del tempo che sul PC e la difficoltà sale poco. Scritto il piano della Tappa 31 (livelli infiniti, colpi di bordo, mattoni che scendono dal livello 4, doppia palla dal 5), in attesa del via.
+- 2026-11-06 - Tappa 31: colpo di bordo, livelli infiniti, mattoni che scendono dal livello 4, doppia palla dal 5; test e prova nel browser OK, APK rigenerato. Manca la prova sul telefono.
