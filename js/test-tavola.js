@@ -59,7 +59,7 @@ function pagina({ largo = false, salvati = new Map() } = {}) {
     const eventi = [], ascoltatori = {};
     const media = { matches: largo, listeners: [], addEventListener(k, f) { this.listeners.push(f); } };
     documento = {
-        body, title: 'Serpente | Giochi JS', activeElement: body, fullscreenEnabled: false, documentElement: new Nodo('html'),
+        body, title: 'Serpente | Giochi di una volta', activeElement: body, fullscreenEnabled: false, documentElement: new Nodo('html'),
         createElement: tag => new Nodo(tag), createComment: () => new Nodo('#commento'),
         querySelector: s => body.querySelector(s), querySelectorAll: s => body.querySelectorAll(s),
         addEventListener: (k, f, o) => { const lista = (ascoltatori[k] ||= []); lista.push(o?.once ? function una(e) { lista.splice(lista.indexOf(una), 1); f(e); } : f); },

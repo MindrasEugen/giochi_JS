@@ -36,4 +36,4 @@ Preparare il progetto per l'app Android con Capacitor (scelta dell'utente del 20
 ## Problemi aperti
 
 - La WebView dell'emulatore è vecchia (Chrome 109): non conosce `color-mix()` e il velo degli arcade diventa trasparente. Sui telefoni aggiornati non succede; da controllare sul telefono dell'utente nella [Tappa 30](46-tappa-30-apk.md). Se serve, aggiungere un colore di riserva prima di ogni `color-mix()` (15 file CSS).
-- La home dice ancora «Giochi JS» e «Nessuna installazione»: da decidere con l'utente se nell'app (o anche nel sito) va il nome «Giochi di una volta».
+- ~~La home dice ancora «Giochi JS»~~: risolto il 2026-11-06, nome «Giochi di una volta» nell'app e nel sito (scelta dell'utente): titoli delle 40 pagine che lo citavano, intestazione e piè di pagina della home, README. «Nessuna installazione» diventa «Senza pubblicità», vero sia nel sito sia nell'app.

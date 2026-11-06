@@ -69,3 +69,4 @@ Ultima modifica: 2026-11-03
 - 2026-11-06 - Tappa 26 completata («perfetto, procedi»). Tutte le 27 tappe concluse. Inizio della pianificazione della fase APK.
 - 2026-11-06 - Fase APK pianificata: strumento Capacitor (scelta dell'utente), Tappe 28 (struttura), 29 (schermo intero, tasto indietro, icona), 30 (APK e prova). In attesa del via.
 - 2026-11-06 - Tappa 28 completata: Capacitor 8 con pnpm, www/ con i soli file dei giochi, progetto android/, APK di debug compilato e provato sull'emulatore. Nome «Giochi di una volta», orientamento libero (scelte dell'utente).
+- 2026-11-06 - Nome «Giochi di una volta» anche nel sito (scelta dell'utente): titoli, home, README; «Nessuna installazione» diventa «Senza pubblicità».

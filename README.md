@@ -1,4 +1,4 @@
-# Giochi JS
+# Giochi di una volta
 
 Raccolta di giochi in HTML, CSS e JavaScript, senza framework e senza compilazione.
 
