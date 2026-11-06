@@ -31,12 +31,15 @@ Ultima modifica: 2026-11-06
 | 24 | [Solitari: TriPeaks, Yukon, Scorpione, Orologio, Le tredici](33-tappa-24-solitari-2.md) | ☑ completata |
 | 24.1 | [Solitari: carte leggibili sul telefono](35-tappa-24-1-carte-leggibili.md) | → unita alla 25 |
 | 25 | [Tavola a schermo intero sul telefono (Serpente e solitari)](36-tappa-25-schermo-intero.md) | ☑ completata |
-| 26 | [Gesti touch negli arcade](37-tappa-26-gesti-arcade.md) | ◐ in corso |
+| 26 | [Gesti touch negli arcade](37-tappa-26-gesti-arcade.md) | ☑ completata |
 | 27 | [Schermo intero in tutti gli altri giochi](38-tappa-27-schermo-intero-tutti.md) (prima della 26) | ☑ completata |
 | 27.1 | [Carte italiane](39-tappa-27-1-carte-italiane.md) | ☑ completata |
 | 27.2 | [Carte francesi](40-tappa-27-2-carte-francesi.md) | ☑ completata |
 | 27.3 | [Tavolo](41-tappa-27-3-tavolo.md) | ☑ completata |
 | 27.4 | [Logica e parole](42-tappa-27-4-logica-parole.md) | ☑ completata |
 | 27.5 | [Giochi storici](43-tappa-27-5-storici.md) | ☑ completata |
+| 28 | [Capacitor: struttura del progetto Android](44-tappa-28-capacitor.md) | ☐ da fare |
+| 29 | [App Android: schermo intero, tasto indietro, icona](45-tappa-29-app-android.md) | ☐ da fare |
+| 30 | [APK e prova sul telefono](46-tappa-30-apk.md) | ☐ da fare |
 
 Legenda: ☐ da fare · ◐ in corso · ☑ completata · ✗ annullata

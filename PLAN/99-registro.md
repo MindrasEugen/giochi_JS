@@ -66,3 +66,5 @@ Ultima modifica: 2026-11-03
 - 2026-11-06 - Tappa 27.4 completata (prova su telefono: «tutto ok»). Inizio Tappa 27.5 (giochi storici): pannello sulle 4 pagine, fuoco del campo dell'Impiccato solo sugli schermi larghi; CSS a Codex.
 - 2026-11-06 - Tappa 27.5 implementata: Tris, Impiccato, Sasso carta forbici, Indovina il numero a schermo intero; Impiccato senza tastiera del telefono; CSS di Codex in un giro più un ripristino di Claude. Manca la prova su telefono.
 - 2026-11-06 - Tappa 27.5 e Tappa 27 completate (prova su telefono passata). Tappa 26 implementata: gesti comuni in js/arcade-pagina.js per i 7 arcade, due dita in due giocatori, pannello sui 6 arcade rimasti, tabellone senza puntini (Codex, un giro). Manca la prova su telefono.
+- 2026-11-06 - Tappa 26 completata («perfetto, procedi»). Tutte le 27 tappe concluse. Inizio della pianificazione della fase APK.
+- 2026-11-06 - Fase APK pianificata: strumento Capacitor (scelta dell'utente), Tappe 28 (struttura), 29 (schermo intero, tasto indietro, icona), 30 (APK e prova). In attesa del via.

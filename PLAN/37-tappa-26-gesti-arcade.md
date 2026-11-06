@@ -20,7 +20,7 @@ Negli arcade i comandi sul telefono diventano gesti sul campo, al posto dei puls
 - [x] CSS (Codex, un giro, circa 1 minuto): tabellone degli arcade sul telefono senza etichette tagliate con i puntini
 - [x] Test automatici dei gesti (eventi pointer simulati) in `js/test-arcade-pagine.js`, per tutti e 7 gli arcade
 - [x] Verifiche nel browser (375×667, 390×844) e confronto degli stili a 600/900/1280px
-- [ ] Prova su telefono (utente)
+- [x] Prova su telefono (utente): «perfetto, procedi» (2026-11-06)
 
 ## Come verificare
 
@@ -43,6 +43,5 @@ Negli arcade i comandi sul telefono diventano gesti sul campo, al posto dei puls
 
 ## Problemi aperti
 
-- Prova su telefono dell'utente da fare (comodità dei gesti in ogni arcade).
-- Blocchi da soli sul telefono: il campo è piccolo (caselle di circa 12px), perché il disegno da 720px lascia spazio per due campi. Da valutare con la prova.
-- Testo del tabellone piccolo (etichette circa 10,5px, valori circa 12,6px): da valutare con la prova.
+- Blocchi da soli sul telefono: il campo è piccolo (caselle di circa 12px), perché il disegno da 720px lascia spazio per due campi. L'utente non lo ha segnalato come problema.
+- Testo del tabellone piccolo (etichette circa 10,5px, valori circa 12,6px): non segnalato come problema.
