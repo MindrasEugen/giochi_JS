@@ -34,6 +34,13 @@
   background: rgba(255, 255, 255, .08);
 }
 
+/* visible: anche i posti vuoti della piramide (nascosti) si vedono quando sono suggeriti. */
+.pila-solitario--suggerita {
+  border: 2px solid var(--colore-info);
+  background: color-mix(in srgb, var(--colore-info) 15%, var(--colore-superficie));
+  visibility: visible;
+}
+
 /* Carte e selezione */
 .carta-solitario {
   position: absolute;
@@ -45,6 +52,32 @@
   outline: 3px solid var(--colore-accento);
   outline-offset: 1px;
   box-shadow: var(--ombra-forte);
+}
+
+/* Il suggerimento resta distinto dalla selezione. */
+.carta-solitario--suggerita {
+  outline: 3px solid var(--colore-info);
+  outline-offset: 1px;
+  animation: pulsa-suggerimento 1s ease-in-out 3;
+}
+
+@keyframes pulsa-suggerimento {
+  50% {
+    outline-offset: 3px;
+  }
+}
+
+/* Avviso durante la partita. */
+.risultati-carte--avviso {
+  border-left-color: var(--colore-avviso);
+  background: color-mix(in srgb, var(--colore-avviso) 10%, var(--colore-superficie));
+  color: var(--colore-testo);
+}
+
+.risultati-carte--avviso h2 {
+  color: var(--colore-testo);
+  font-size: var(--testo-m);
+  font-weight: var(--peso-semibold);
 }
 
 /* Lo z-index inline deve essere aggiornato dal JS durante il trascinamento. */
@@ -88,6 +121,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .carta-solitario--suggerita {
+    animation: none;
+  }
+
   .carta-solitario {
     transition: none;
   }

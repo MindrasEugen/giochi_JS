@@ -276,6 +276,15 @@ body.con-tavola:has(.tavolo-solitario) .azioni {
   padding-top: var(--spazio-2);
 }
 
+/* Quattro azioni leggibili anche sul telefono. */
+body.con-tavola:has(.tavolo-solitario) .azioni > .pulsante {
+  flex: 1 1 auto;
+  min-width: var(--area-minima);
+  align-self: stretch;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
 /* Carte leggibili */
 .carta.carta-semplice {
   --larghezza-carta: inherit;
@@ -485,6 +494,12 @@ body.con-tavola:has(#contenitore_gioco > .tabellone) .azioni {
     min-width: auto;
     padding: var(--spazio-2) var(--spazio-4);
     font-size: var(--testo-m);
+  }
+  body.con-tavola:has(.tavolo-solitario) .azioni > .pulsante {
+    flex: 0 1 auto;
+    min-width: auto;
+    align-self: auto;
+    overflow-wrap: normal;
   }
 }
 @media (min-width: 600px) {

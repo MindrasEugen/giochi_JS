@@ -17,6 +17,7 @@ Le decisioni prese nel progetto Giochi JS. Ogni file descrive una decisione: **c
 | [0011](0011-tavolo-carte-italiane-da-2-a-5-posti.md) | Tavolo condiviso delle carte italiane da 2 a 5 posti | 2026-11-05 | Tappa 19 |
 | [0012](0012-tavola-a-schermo-intero-sul-telefono.md) | Tavola a schermo intero sul telefono, contenuti in un pannello sopra il gioco | 2026-11-05 | Tappa 25 |
 | [0013](0013-app-android-con-capacitor.md) | App Android con Capacitor | 2026-11-06 | Tappa 28 |
+| [0014](0014-aiutante-comune-dei-solitari.md) | Aiutante comune dei solitari con ricerca in avanti (suggerimento e «nessuna mossa utile») | 2026-11-06 | Tappa 32 |
 
 ## Decisioni sostituite
 

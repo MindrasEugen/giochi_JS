@@ -1,6 +1,7 @@
 // Pagina comune dei solitari: disegna le pile secondo motore.disposizione(), gestisce trascinamento (mouse e dito),
 // tocco-tocco (seleziona una carta, poi tocca la pila di destinazione), doppio tocco per mandare la carta alla base,
 // annulla, tempo e mosse. Ogni solitario fornisce solo il motore delle regole.
+// Tappa 32: pulsante Suggerimento e avviso "Nessuna mossa utile" con l'aiutante comune (js/solitario-aiuto.js).
 // Sul telefono le carte strette (meno di 60px) diventano carte semplificate: valore e seme grandi, disegnati in CSS
 // (Tappa 25); un'opzione del pannello (js/tavola.js) riporta le immagini.
 const SolitarioPagina = (() => {
@@ -14,6 +15,10 @@ const SolitarioPagina = (() => {
         const completa = document.querySelector('#completa');
         const nuova = document.querySelector('#nuovaPartita');
         const messaggi = document.querySelector('#messaggi');
+        const suggerimento = document.querySelector('#suggerimento');
+        const aiuto = typeof SolitarioAiuto !== 'undefined' ? SolitarioAiuto : null;
+        // evidenza: la mossa suggerita da illuminare per qualche secondo; controllo: numero dell'ultimo controllo dell'avviso
+        let evidenza = null, timerEvidenza = null, controllo = 0;
         let stato, storia = [], inizio = null, cronometro = null, selezione = null, trascina = null, ultimoTocco = { t: 0, chiave: '' }, finita = false;
         let misure = { w: 60, h: 84, passo: 67, semplici: false };
         let immagini = false, pausaDa = null;
@@ -60,6 +65,7 @@ const SolitarioPagina = (() => {
                 posto.style.left = `${x}px`; posto.style.top = `${y}px`; posto.style.width = `${misure.w}px`; posto.style.height = `${misure.h}px`;
                 posto.textContent = d.etichetta || '';
                 if (selezione && d.id !== selezione.pila && ok(selezione, d.id)) posto.classList.add('pila-solitario--meta');
+                if (suggerita(d.id, -1)) posto.classList.add('pila-solitario--suggerita');
                 tavolo.appendChild(posto);
                 const pila = stato.pile[d.id];
                 // Mazzo e pile chiuse mostrano solo la carta in cima; gli scarti a 3 mostrano le ultime tre
@@ -72,6 +78,7 @@ const SolitarioPagina = (() => {
                     if (misure.semplici) img.style.height = `${misure.h}px`;
                     img.classList.add('carta-solitario');
                     if (selezione && selezione.pila === d.id && i >= selezione.indice) img.classList.add('carta-solitario--selezionata');
+                    if (suggerita(d.id, i, pila.length)) img.classList.add('carta-solitario--suggerita');
                     if (d.tipo === 'piramide' && motore.libera && !motore.libera(stato, d.id)) img.classList.add('carta-solitario--coperta');
                     // Orologio: si evidenzia il mucchio dove va la carta girata
                     if (motore.destinazione && motore.destinazione(stato) === d.id && i === pila.length - 1) img.classList.add('carta-solitario--selezionata');
@@ -88,9 +95,19 @@ const SolitarioPagina = (() => {
             }
             tavolo.style.height = `${Math.ceil(altezza + misure.h * 0.4)}px`;
             annulla.disabled = !storia.length || finita;
+            if (suggerimento) suggerimento.disabled = finita;
             completa.hidden = !(motore.completabile && motore.completabile(stato)) || finita;
             aggiornaRiepilogo();
         }
+        // Carta o pila della mossa suggerita: le carte da spostare, la carta in cima alla destinazione, il mazzo
+        function suggerita(pila, indice, lunghezza) {
+            if (!evidenza) return false;
+            if (evidenza.mazzo) return pila === 'mazzo' && (indice === -1 || indice === lunghezza - 1);
+            const m = evidenza.mossa;
+            if (pila === m.da) return indice >= m.indice;
+            return pila === m.a && (indice === -1 || indice === lunghezza - 1);
+        }
+        function togliEvidenza() { evidenza = null; clearTimeout(timerEvidenza); }
         const ok = (sel, meta) => { const carte = stato.pile[sel.pila].slice(sel.indice); return carte.length && motore.puoPosare(stato, carte, meta); };
         // Ogni azione riuscita si può annullare; il tempo parte alla prima mossa
         function esegui(azione, testo) {
@@ -99,9 +116,28 @@ const SolitarioPagina = (() => {
             if (!azione()) { if (stato.errore) scrivi(stato.errore); return false; }
             storia.push(prima); if (storia.length > 300) storia.shift();
             if (!inizio) { inizio = Date.now(); cronometro = setInterval(aggiornaRiepilogo, 1000); }
-            selezione = null; disegna(); scrivi(testo || '');
+            selezione = null; togliEvidenza(); disegna(); scrivi(testo || '');
             controllaFine();
+            controllaAvviso();
             return true;
+        }
+        // Avviso "Nessuna mossa utile" per i solitari senza un controllo esatto (motore.bloccata): la partita non si chiude,
+        // si può ancora annullare. Il controllo parte poco dopo il disegno, per non rallentare la mossa.
+        const avviso = () => document.querySelector('#risultati');
+        function nascondiAvviso() { const r = avviso(); if (r.classList?.contains('risultati-carte--avviso')) { r.hidden = true; r.classList.remove('risultati-carte--avviso'); } }
+        function controllaAvviso() {
+            nascondiAvviso();
+            if (!aiuto || motore.bloccata || finita) return;
+            const numero = ++controllo;
+            setTimeout(() => {
+                if (numero !== controllo || finita || !aiuto.bloccato(motore, stato)) return;
+                const r = avviso(); r.textContent = ''; r.hidden = false; r.classList?.add('risultati-carte--avviso');
+                const h = document.createElement('h2'), p = document.createElement('p');
+                h.textContent = 'Nessuna mossa utile';
+                p.textContent = 'Puoi annullare qualche mossa o iniziare una nuova partita.';
+                r.append(h, p);
+                scrivi(`${h.textContent}. ${p.textContent}`);
+            }, 60);
         }
         function controllaFine() {
             const vinto = motore.vinto(stato), bloccato = !vinto && motore.bloccata && motore.bloccata(stato);
@@ -110,7 +146,8 @@ const SolitarioPagina = (() => {
             const risultati = document.querySelector('#risultati'); risultati.hidden = false; risultati.textContent = '';
             const h = document.createElement('h2'), p = document.createElement('p');
             h.textContent = vinto ? 'Hai vinto!' : 'Nessuna mossa possibile';
-            p.textContent = `${vinto ? 'Solitario risolto' : config.punteggio ? config.punteggio(stato) : 'Partita finita'} in ${tempo()} con ${stato.mosse} mosse.`;
+            p.textContent = `${vinto ? 'Solitario risolto' : config.punteggio ? config.punteggio(stato) : 'Partita finita'} in ${tempo()} con ${stato.mosse} mosse.${vinto ? '' : ' Puoi iniziare una nuova partita.'}`;
+            risultati.classList?.remove('risultati-carte--avviso');
             risultati.append(h, p);
             scrivi(`${h.textContent} ${p.textContent}`);
         }
@@ -159,7 +196,17 @@ const SolitarioPagina = (() => {
             if (!meta || meta.pila === t.pila || !esegui(() => motore.sposta(stato, t.pila, t.indice, meta.pila))) disegna();
         });
         tavolo.addEventListener('pointercancel', () => { trascina = null; disegna(); });
-        annulla.addEventListener('click', () => { if (storia.length && !finita) { stato = storia.pop(); stato.mosse++; selezione = null; disegna(); scrivi('Mossa annullata.'); } });
+        annulla.addEventListener('click', () => { if (storia.length && !finita) { stato = storia.pop(); stato.mosse++; selezione = null; togliEvidenza(); disegna(); scrivi('Mossa annullata.'); controllaAvviso(); } });
+        // Suggerimento: si illuminano per 3 secondi la mossa consigliata (carte e destinazione) oppure il mazzo
+        suggerimento?.addEventListener('click', () => {
+            if (finita || !aiuto) return;
+            selezione = null; togliEvidenza();
+            // Al tocco del pulsante la ricerca ha più tempo che nel controllo automatico dopo ogni mossa
+            const sug = aiuto.suggerisci(motore, stato, { ms: 800, stati: 60000 });
+            evidenza = sug && (sug.mossa || sug.mazzo) ? sug : null;
+            disegna(); scrivi(aiuto.descrivi(motore, stato, sug));
+            if (evidenza) timerEvidenza = setTimeout(() => { evidenza = null; disegna(); }, 3000);
+        });
         completa.addEventListener('click', () => esegui(() => { motore.completa(stato); return true; }, 'Carte mandate alle basi.'));
         // Con il pannello aperto il tempo si ferma
         document.addEventListener('tavola:aperta', () => { if (inizio && !finita) { pausaDa = Date.now(); clearInterval(cronometro); } });
@@ -173,9 +220,12 @@ const SolitarioPagina = (() => {
             suCambio: v => { immagini = v; if (stato) disegna(); } });
         function nuovaPartita() {
             clearInterval(cronometro); cronometro = null; inizio = null; pausaDa = null; storia = []; selezione = null; finita = false;
+            togliEvidenza(); controllo++;
             document.querySelector('#risultati').hidden = true;
+            document.querySelector('#risultati').classList?.remove('risultati-carte--avviso');
             stato = motore.crea(config.opzioni ? config.opzioni(select?.value) : {});
             disegna(); scrivi(config.benvenuto || 'Trascina le carte oppure toccane una e poi la destinazione.');
+            controllaAvviso(); // anche una partita appena data può non avere mosse utili (raro)
         }
         select?.addEventListener('change', nuovaPartita);
         nuova.addEventListener('click', nuovaPartita);

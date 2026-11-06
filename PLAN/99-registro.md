@@ -81,3 +81,5 @@ Ultima modifica: 2026-11-03
 - 2026-11-06 - Tappa 31: colpo di bordo, livelli infiniti, mattoni che scendono dal livello 4, doppia palla dal 5; test e prova nel browser OK, APK rigenerato. Manca la prova sul telefono.
 - 2026-11-06 - Tappa 31, prima prova sul telefono: il dito copriva la racchetta. Nel campo alto la racchetta sale di un terzo dell'altezza in più (fascia libera per il dito); APK rigenerato.
 - 2026-11-06 - Tappa 31 completata: seconda prova sul telefono passata («ok, ora va bene»). Piano di nuovo completato.
+- 2026-11-06 - Scritto il piano della Tappa 32 (solitari: pulsante Suggerimento e avviso quando non ci sono più mosse utili), in attesa del via.
+- 2026-11-06 - Tappa 32: aiutante comune dei solitari (suggerimento e avviso «Nessuna mossa utile»), CSS di Codex, test, prova nel browser e APK. Manca la prova sul telefono.
