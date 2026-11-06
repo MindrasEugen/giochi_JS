@@ -34,6 +34,14 @@ const pulsanteNomi = document.querySelector('#nomiGiocatori');
 const punteggiDue = document.querySelector('#punteggiDue');
 const turnoDue = document.querySelector('#turnoDue');
 
+// Sul telefono (Tappa 27.5) si gioca con la tastiera sullo schermo e il campo di testo è nascosto:
+// dargli il fuoco aprirebbe la tastiera del telefono sopra il gioco
+function fuocoAlCampo() {
+    if (typeof Tavola !== 'undefined' && Tavola.telefono()) return;
+    laTuaLettera.focus();
+}
+fuocoAlCampo();
+
 // Modalità 2 giocatori: a ogni round uno sceglie la parola e l'altro la indovina, poi si scambiano
 let dueGiocatori = false;
 let nomi = Giocatori.leggiNomi();
@@ -48,7 +56,7 @@ for (let i = 0; i < alfabeto.length; i++) {
     tastiera.appendChild(tasto);
     tasto.addEventListener('click', () => {
         provaLettera(alfabeto[i]);
-        laTuaLettera.focus();
+        fuocoAlCampo();
     })
 };
 
@@ -166,7 +174,7 @@ lettera.addEventListener('submit', (event) => {
     event.preventDefault();
     const tentativo = laTuaLettera.value.toLowerCase();
     laTuaLettera.value = '';
-    laTuaLettera.focus();
+    fuocoAlCampo();
     provaLettera(tentativo);
 
 });
@@ -190,7 +198,7 @@ function avviaPartita(parola) {
     };
     laTuaLettera.disabled = false;
     prova.disabled = false;
-    laTuaLettera.focus();
+    fuocoAlCampo();
     laTuaLettera.value = '';
 }
 

@@ -278,3 +278,83 @@ h1 {
         width: 220px;
     }
 }
+
+/* Tavola a schermo intero sul telefono (Tappa 27.5) */
+body.con-tavola .form,
+body.con-tavola .lettereUsate {
+    display: none;
+}
+
+body.con-tavola .riquadro-disegno {
+    width: calc(var(--spazio-5) * 4);
+    padding: var(--spazio-2);
+}
+
+body.con-tavola .contenitore_tastiera_disegno {
+    gap: var(--spazio-2);
+    margin-top: 0;
+}
+
+body.con-tavola #tastiera {
+    grid-template-columns: repeat(7, minmax(var(--area-minima), 1fr));
+    gap: var(--spazio-1);
+}
+
+body.con-tavola .parolaVisualizzata {
+    margin: 0;
+}
+
+body.con-tavola #punteggiDue,
+body.con-tavola #turnoDue {
+    margin-bottom: 0;
+}
+
+/* Schermi larghi: valori di prima */
+@media (min-width: 600px) {
+    body.con-tavola #contenitore_gioco.contenitore {
+        width: 100%;
+        margin: var(--spazio-4) auto;
+        border: 0;
+    }
+
+    body.con-tavola .tabellone {
+        margin: var(--spazio-4) 0 0;
+        padding: var(--spazio-3) var(--spazio-4);
+    }
+
+    body.con-tavola .segnapunti__punti {
+        font-size: var(--testo-xl);
+    }
+
+    body.con-tavola .form {
+        display: block;
+    }
+
+    body.con-tavola .lettereUsate {
+        display: block;
+    }
+
+    body.con-tavola .riquadro-disegno {
+        width: 220px;
+        padding: var(--spazio-3);
+    }
+
+    body.con-tavola .contenitore_tastiera_disegno {
+        gap: var(--spazio-4);
+        margin-top: var(--spazio-3);
+    }
+
+    body.con-tavola #tastiera {
+        grid-template-columns: repeat(7, minmax(40px, 1fr));
+        gap: 6px;
+    }
+
+    body.con-tavola .parolaVisualizzata {
+        margin: var(--spazio-4) 0 var(--spazio-2);
+    }
+
+    body.con-tavola #punteggiDue,
+    body.con-tavola #turnoDue {
+        margin-bottom: var(--spazio-3);
+    }
+}

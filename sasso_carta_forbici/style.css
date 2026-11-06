@@ -218,3 +218,32 @@ h1 {
         font-size: 4rem;
     }
 }
+
+/* Tavola a schermo intero sul telefono (Tappa 27.5) */
+body.con-tavola .segnapunti {
+    gap: var(--spazio-1);
+    min-width: 0;
+}
+
+/* Schermi larghi: valori di prima */
+@media (min-width: 600px) {
+    body.con-tavola #contenitore_gioco.contenitore {
+        width: 100%;
+        margin: var(--spazio-4) auto;
+        border: 0;
+    }
+
+    body.con-tavola .tabellone {
+        margin: var(--spazio-4) 0 0;
+        padding: var(--spazio-3);
+    }
+
+    body.con-tavola .segnapunti__punti {
+        font-size: var(--testo-xxl);
+    }
+
+    body.con-tavola .segnapunti {
+        gap: normal;
+        min-width: auto;
+    }
+}

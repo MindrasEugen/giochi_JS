@@ -1,7 +1,7 @@
 /* Tris — stili del gioco (le basi sono in ../css/comune.css) */
 
 /* Layout */
-#contenitore_body {
+#contenitore_gioco {
     max-width: 560px;
     background-color: var(--colore-superficie);
     border-radius: var(--raggio-xl);
@@ -88,13 +88,13 @@
     color: var(--colore-errore);
 }
 
-#contenitore_body[data-turno="X"] .segnapunti--x {
+#contenitore_gioco[data-turno="X"] .segnapunti--x {
     border-color: var(--colore-info);
     box-shadow: var(--ombra-media);
     transform: translateY(-2px);
 }
 
-#contenitore_body[data-turno="O"] .segnapunti--o {
+#contenitore_gioco[data-turno="O"] .segnapunti--o {
     border-color: var(--colore-errore);
     box-shadow: var(--ombra-media);
     transform: translateY(-2px);
@@ -132,20 +132,20 @@
 }
 
 /* Anteprima leggera del simbolo di chi deve muovere */
-#contenitore_body[data-turno="X"] .cella:not([data-simbolo]):hover::after {
+#contenitore_gioco[data-turno="X"] .cella:not([data-simbolo]):hover::after {
     content: "X";
     color: var(--colore-info);
     opacity: 0.25;
 }
 
-#contenitore_body[data-turno="O"] .cella:not([data-simbolo]):hover::after {
+#contenitore_gioco[data-turno="O"] .cella:not([data-simbolo]):hover::after {
     content: "O";
     color: var(--colore-errore);
     opacity: 0.25;
 }
 
 /* A partita finita le caselle non sono più cliccabili */
-#contenitore_body[data-turno=""] .cella,
+#contenitore_gioco[data-turno=""] .cella,
 .cella[data-simbolo] {
     cursor: default;
 }
@@ -263,4 +263,38 @@
 
 .opzioni__nomi[hidden] {
   display: none;
+}
+
+/* Tavola a schermo intero sul telefono (Tappa 27.5) */
+body.con-tavola .segnapunti {
+    min-width: 0;
+}
+
+/* Schermi larghi: valori di prima */
+@media (min-width: 600px) {
+    body.con-tavola #contenitore_gioco.contenitore {
+        width: 100%;
+        margin: var(--spazio-4) auto;
+        border: 0;
+    }
+
+    body.con-tavola .tabellone {
+        margin: 0;
+        padding: 0;
+    }
+
+    body.con-tavola .segnapunti__punti {
+        font-size: var(--testo-xl);
+    }
+
+    body.con-tavola:has(#contenitore_gioco > .tabellone) #messaggi:not(:empty) {
+        margin: 0;
+        padding: var(--spazio-1) var(--spazio-4);
+        font-size: var(--testo-l);
+    }
+
+    body.con-tavola:has(#contenitore_gioco > .tabellone) .azioni {
+        margin-top: var(--spazio-4);
+        padding-top: 0;
+    }
 }

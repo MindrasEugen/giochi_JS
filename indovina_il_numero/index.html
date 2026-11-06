@@ -6,16 +6,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/comune.css">
         <link rel="stylesheet" href="../css/giocatori.css">
+        <link rel="stylesheet" href="../css/tavola.css">
         <link rel="stylesheet" href="./style.css">
         <title>Indovina il numero</title>
     </head>
 
     <body>
-        <div class="contenitore">
-            <a class="link-home" href="../index.html">← Tutti i giochi</a>
-            <h1>Indovina il numero</h1>
-            <p class="sottotitolo">Il computer ha pensato un numero da 1 a 100. Riesci a trovarlo?</p>
-            <div class="barra-modalita">
+        <div class="contenitore" id="contenitore_gioco">
+            <a class="link-home" data-pannello href="../index.html">← Tutti i giochi</a>
+            <h1 data-pannello>Indovina il numero</h1>
+            <p class="sottotitolo" data-pannello>Il computer ha pensato un numero da 1 a 100. Riesci a trovarlo?</p>
+            <div class="barra-modalita" data-pannello>
                 <label for="modalitaGioco" class="nascosto-visivamente">Modalità</label>
                 <select id="modalitaGioco">
                     <option value="uno">1 giocatore</option>
@@ -46,7 +47,7 @@
             <p id="contatore" class="nascosto-visivamente"></p>
 
             <form id="form">
-                <div class="campo">
+                <div class="campo campo--difficolta" data-pannello>
                     <label for="difficolta">Difficoltà</label>
                     <select name="difficolta" id="difficolta">
                         <option value="10">Facile (10 tentativi)</option>
@@ -67,13 +68,14 @@
             <p id="messaggi" aria-live="polite"></p>
             <ul class="storico" id="storico" aria-label="Tentativi fatti"></ul>
 
-            <details class="pannello regole">
+            <details class="pannello regole" data-pannello>
                 <summary>Istruzioni</summary>
                 <p>Il computer pensa a un numero intero da 1 a 100. L'utente lo scrive in un campo di testo e preme un
                     bottone. La pagina risponde con "Troppo alto", "Troppo basso" oppure "Indovinato in X tentativi!"
                 </p>
             </details>
         </div>
+        <script src="../js/tavola.js"></script>
         <script src="../js/giocatori.js"></script>
         <script src="./main.js"></script>
     </body>

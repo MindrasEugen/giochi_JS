@@ -63,3 +63,5 @@ Ultima modifica: 2026-11-03
 - 2026-11-05 - Tappa 27.2 completata (via dell'utente). Inizio Tappa 27.3 (giochi da tavolo).
 - 2026-11-05 - Tappa 27.3 implementata: Dama, Filetto, Battaglia navale, Ludo, Scacchi a schermo intero, segnapunti in una riga, computer fermo con il pannello aperto; CSS di Codex in un giro. Manca la prova su telefono.
 - 2026-11-05 - Tappa 27.3 completata (prova su telefono passata). Tappa 27.4 implementata: Forza 4, Memory, Campo minato, Raddoppia, Sudoku, Cinque lettere a schermo intero, tempo fermo con il pannello aperto, css/gioco.css mobile-first; spostamento su css/gioco.css rimandato. Manca la prova su telefono.
+- 2026-11-06 - Tappa 27.4 completata (prova su telefono: «tutto ok»). Inizio Tappa 27.5 (giochi storici): pannello sulle 4 pagine, fuoco del campo dell'Impiccato solo sugli schermi larghi; CSS a Codex.
+- 2026-11-06 - Tappa 27.5 implementata: Tris, Impiccato, Sasso carta forbici, Indovina il numero a schermo intero; Impiccato senza tastiera del telefono; CSS di Codex in un giro più un ripristino di Claude. Manca la prova su telefono.

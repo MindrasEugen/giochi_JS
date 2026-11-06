@@ -6,15 +6,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/comune.css">
         <link rel="stylesheet" href="../css/giocatori.css">
+        <link rel="stylesheet" href="../css/tavola.css">
         <link rel="stylesheet" href="./style.css">
         <title>Tris</title>
     </head>
 
     <body>
-        <div id="contenitore_body" class="contenitore">
-            <a class="link-home" href="../index.html">← Tutti i giochi</a>
-            <h1>Tris</h1>
-            <div class="opzioni">
+        <div id="contenitore_gioco" class="contenitore">
+            <a class="link-home" data-pannello href="../index.html">← Tutti i giochi</a>
+            <h1 data-pannello>Tris</h1>
+            <div class="opzioni" data-pannello>
                 <div class="opzione">
                     <label for="modalita">Modalità</label>
                     <select name="modalita" id="modalita">
@@ -60,7 +61,7 @@
                 <button id="nuovaPartita" type="button" class="pulsante">Nuova partita</button>
                 <button id="azzera" type="button" class="pulsante pulsante--secondario">Azzera il Punteggio</button>
             </div>
-            <details id="regole" class="pannello">
+            <details id="regole" class="pannello" data-pannello>
                 <summary>Regole del gioco</summary>
                 <ol>
                     <li>Si gioca in due sulla stessa griglia di 9 caselle, oppure da soli contro il computer (modalità Un giocatore)</li>
@@ -76,6 +77,7 @@
                 </ol>
             </details>
         </div>
+        <script src="../js/tavola.js"></script>
         <script src="../js/giocatori.js"></script>
         <script src="./funzioni.js"></script>
         <script src="./main.js"></script>

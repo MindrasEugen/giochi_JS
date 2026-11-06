@@ -1,6 +1,6 @@
 # Tappa 27.4 — Schermo intero: logica e parole
 
-Ultima modifica: 2026-11-05
+Ultima modifica: 2026-11-06
 
 ## Obiettivo
 
@@ -14,7 +14,7 @@ Forza 4, Memory, Campo minato, Raddoppia, Sudoku, Cinque lettere, più la riscri
 - [x] Test: `js/test-tavolo-pannello.js` esteso (Forza 4, tempo di Memory, Campo minato, Sudoku)
 - [x] CSS (Codex, un giro): i 6 `style.css` e la riscrittura mobile-first di `css/gioco.css` (tolta l'ultima media query `max-width` delle pagine di gioco)
 - [x] Verifiche nel browser (375×667, 390×844) e confronto degli stili a 600/900/1280px (e a 375/599px per i giochi storici con `css/gioco.css`)
-- [ ] Prova su telefono (utente)
+- [x] Prova su telefono (utente): «tutto ok» (2026-11-06)
 
 ## Come verificare
 
@@ -33,5 +33,4 @@ Vedi [Tappa 27](38-tappa-27-schermo-intero-tutti.md#come-verificare).
 
 ## Problemi aperti
 
-- Prova su telefono dell'utente da fare.
 - Cinque lettere (716px) e Memory con la griglia grande (745px) scorrono di poco a 375×667.

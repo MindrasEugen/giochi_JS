@@ -72,3 +72,19 @@ for (const cartella of ['memory', 'campo_minato', 'sudoku']) {
     assert.equal(a.esegui('timer'), null, `${cartella}: il pannello non fa partire il tempo`);
     console.log(`OK ${cartella}: tempo fermo con il pannello aperto`);
 }
+
+// Tappa 27.5: nell'Impiccato sul telefono il tocco sulla tastiera dello schermo non dà il fuoco al campo di testo
+// (aprirebbe la tastiera del telefono sopra il gioco); sugli schermi larghi sì, come prima
+for (const telefono of [true, false]) {
+    const a = ambiente();
+    let fuochi = 0;
+    a.$('#laTuaLettera').focus = () => { fuochi++; };
+    a.esegui(GIOCATORI_FINTI + `const Tavola = { telefono: () => ${telefono} };`);
+    a.carica('il_impiccato/doc/lista_parole.js');
+    a.carica('il_impiccato/main.js');
+    a.esegui("avviaPartita('casa')");
+    a.$('#tastiera').children[0].listeners.click();
+    a.$('#lettera').listeners.submit({ preventDefault() {} });
+    assert.equal(fuochi, telefono ? 0 : 4, `Impiccato: fuoco al campo ${telefono ? 'mai sul telefono' : 'come prima sullo schermo largo'}`);
+}
+console.log("OK il_impiccato: sul telefono la tastiera dello schermo non apre quella del telefono");

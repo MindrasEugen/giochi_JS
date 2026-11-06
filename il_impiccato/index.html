@@ -6,16 +6,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/comune.css">
         <link rel="stylesheet" href="../css/giocatori.css">
+        <link rel="stylesheet" href="../css/tavola.css">
         <link rel="stylesheet" href="./style.css">
         <title>L'impiccato!</title>
     </head>
 
     <body>
-        <div class="contenitore">
-            <a class="link-home" href="../index.html">← Tutti i giochi</a>
-            <h1>L'impiccato</h1>
-            <p class="sottotitolo">Scopri la parola segreta prima di fare 6 errori.</p>
-            <div class="barra-modalita">
+        <div class="contenitore" id="contenitore_gioco">
+            <a class="link-home" data-pannello href="../index.html">← Tutti i giochi</a>
+            <h1 data-pannello>L'impiccato</h1>
+            <p class="sottotitolo" data-pannello>Scopri la parola segreta prima di fare 6 errori.</p>
+            <div class="barra-modalita" data-pannello>
                 <label for="modalitaGioco" class="nascosto-visivamente">Modalità</label>
                 <select id="modalitaGioco">
                     <option value="uno">1 giocatore</option>
@@ -56,14 +57,14 @@
             <div class="form">
                 <form id="lettera">
                     <label for="laTuaLettera">Oppure scrivi una lettera</label>
-                    <input type="text" id="laTuaLettera" required autofocus maxlength="1" pattern="[a-zA-Z]">
+                    <input type="text" id="laTuaLettera" required maxlength="1" pattern="[a-zA-Z]">
                     <button type="submit" id="prova" class="pulsante">Prova</button>
                 </form>
             </div>
             <p class="lettereUsate"></p>
             <button type="button" id="nuovaPartita" class="pulsante pulsante--secondario">Nuova Partita</button>
 
-            <details class="pannello regole">
+            <details class="pannello regole" data-pannello>
                 <summary>Regole del gioco</summary>
                 <ol>
                     <li>Il computer sceglie una parola segreta e mostra un trattino per ogni lettera.</li>
@@ -77,6 +78,7 @@
                 </ol>
             </details>
         </div>
+        <script src="../js/tavola.js"></script>
         <script src="../js/giocatori.js"></script>
         <script src="./doc/lista_parole.js"></script>
         <script src="./main.js"></script>

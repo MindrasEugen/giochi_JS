@@ -189,3 +189,59 @@ h1 {
         grid-column: 1 / -1;
     }
 }
+
+/* Tavola a schermo intero sul telefono (Tappa 27.5) */
+body.con-tavola .segnapunti {
+    gap: var(--spazio-1);
+    min-width: 0;
+}
+
+body.con-tavola .tabellone {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: var(--spazio-1);
+}
+
+body.con-tavola .segnapunti--intervallo {
+    flex-direction: column;
+}
+
+/* Schermi larghi: valori di prima */
+@media (min-width: 600px) {
+    body.con-tavola #contenitore_gioco.contenitore {
+        width: 100%;
+        margin: var(--spazio-4) auto;
+        border: 0;
+    }
+
+    body.con-tavola .tabellone {
+        margin: var(--spazio-4) 0 0;
+        padding: var(--spazio-3);
+        grid-template-columns: 1fr 1.4fr 1fr;
+        gap: var(--spazio-2);
+    }
+
+    body.con-tavola .segnapunti__punti {
+        font-size: var(--testo-xl);
+    }
+
+    body.con-tavola .segnapunti {
+        gap: normal;
+        min-width: auto;
+    }
+
+    body.con-tavola:has(#contenitore_gioco > .tabellone) #form .azioni {
+        margin-top: 0;
+        padding-top: 0;
+    }
+
+    /* css/tavola.css rimette flex: 0 1 auto: qui i due pulsanti dividono la riga come prima */
+    body.con-tavola #form .azioni > .pulsante {
+        flex: 1 1 140px;
+    }
+
+    body.con-tavola:has(#contenitore_gioco > .tabellone) #messaggi:not(:empty) {
+        margin: var(--spazio-4) 0 0;
+        padding: var(--spazio-1) var(--spazio-4);
+        font-size: var(--testo-l);
+    }
+}
