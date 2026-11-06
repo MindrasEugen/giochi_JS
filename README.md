@@ -1,6 +1,6 @@
 # Giochi di una volta
 
-Raccolta di giochi in HTML, CSS e JavaScript, senza framework e senza compilazione.
+Raccolta di giochi in HTML, CSS e JavaScript, senza framework e senza compilazione. Gli stessi file diventano anche un'app Android con Capacitor (vedi «App Android»).
 
 ## Avvio
 
@@ -22,6 +22,29 @@ Briscola, Scopa, Asso piglia tutto e Rubamazzetto usano le immagini del mazzo it
 Scopone scientifico (in coppie, anche con due persone e due compagni PC), Cirulla (presa del 15, matta e bussate), Tressette (a 2 con la pesca o a 4 in coppie, con obbligo di rispondere al seme) e Briscola chiamata (cinque giocatori, asta e socio segreto) completano il mazzo italiano. Mercante in fiera (asta con le fiches ed estrazione) e Cucù (scambi e vite) si giocano da 2 a 6, mescolando persone e PC.
 Blackjack (in due uno dei giocatori fa il banco, a turno) e Guerra usano il mazzo francese; Cambio colore ha un mazzo originale disegnato in CSS, da 2 a 4 giocatori. Le varianti adottate e i riferimenti delle regole sono nelle singole pagine; il conteggio finale mostra tutti i punti assegnati.
 
+## App Android
+
+L'app «Giochi di una volta» (`it.giochijs.app`) contiene gli stessi giochi del sito, a schermo intero e in verticale, con il tasto indietro di Android e i campi degli arcade grandi quanto lo schermo. Le scelte sono negli [ADR 0012 e 0013](ADR/README.md).
+
+Servono Node.js, pnpm, Java 21 (JDK) e l'SDK di Android (installato con Android Studio). Dalla radice:
+
+```sh
+pnpm install          # solo la prima volta: i pacchetti di Capacitor
+pnpm sync             # copia i giochi in www/ e poi nel progetto android/
+pnpm android          # apre il progetto in Android Studio (▶ Run per emulatore o telefono)
+```
+
+Per l'APK senza aprire Android Studio (variabili `JAVA_HOME` e `ANDROID_HOME` impostate):
+
+```sh
+cd android
+./gradlew assembleDebug    # su Windows: gradlew.bat assembleDebug
+```
+
+Il file è `android/app/build/outputs/apk/debug/app-debug.apk`: si installa sul telefono con il cavo USB (`adb install -r app-debug.apk`, debug USB attivo) oppure copiandolo sul telefono e aprendolo. È un APK di debug, adatto all'uso personale; per pubblicarlo su uno store serve un APK firmato con una chiave che crea e custodisce chi lo pubblica.
+
+Dopo ogni modifica ai giochi va rifatto `pnpm sync` prima di compilare, altrimenti l'app contiene la versione precedente. Icona e schermata di avvio si rigenerano da `scripts/icona-app.svg` con `node scripts/genera-icone.mjs` (usa Chrome senza finestra).
+
 ## Verifiche
 
 Con Node.js installato, dalla radice:
@@ -33,7 +56,7 @@ node scripts/check.js
 Il comando controlla la sintassi JavaScript ed esegue tutti i file `test-*.js`; restituisce un codice diverso da zero in caso di errori.
 Per la sola sintassi: `node scripts/check.js --syntax-only`.
 Per una suite singola: `node scacchi/test-scacchi.js`.
-Non sono necessari npm, build o librerie aggiuntive. I test che dipendono dal caso usano un seme ripetibile, oppure controllano proprietà valide per qualunque estrazione. Alcuni test misurano il tempo di risposta del PC (Forza 4, Dama, Filetto, Scacchi, Sudoku) con un margine ampio: su un computer molto lento un fallimento va analizzato conservando l'output.
+Per il sito e i test non sono necessari npm, build o librerie aggiuntive (pnpm e Capacitor servono solo per l'app Android). I test che dipendono dal caso usano un seme ripetibile, oppure controllano proprietà valide per qualunque estrazione. Alcuni test misurano il tempo di risposta del PC (Forza 4, Dama, Filetto, Scacchi, Sudoku) con un margine ampio: su un computer molto lento un fallimento va analizzato conservando l'output.
 I test delle pagine usano un DOM minimo senza librerie (`scripts/dom-minimo.js`): verificano la logica dei controller, non il rendering.
 
 ## Struttura
@@ -42,6 +65,8 @@ I test delle pagine usano un DOM minimo senza librerie (`scripts/dom-minimo.js`)
 - `js/`: strumenti condivisi per carte, giocatori e arcade.
 - `css/`: stili e componenti comuni.
 - `pezzi_scacco/`: i 12 PNG forniti dall'utente, usati su scacchiera, promozioni e pezzi catturati.
+- `android/`, `capacitor.config.json`, `package.json`: progetto dell'app Android (Capacitor); `www/` è la copia generata da `pnpm build` e non è nel repository.
+- `scripts/`: controlli (`check.js`), copia per l'app (`build-www.js`), icona dell'app (`icona-app.svg`, `genera-icone.mjs`).
 - `ADR/`: decisioni tecniche.
 - `PLAN/`: stato e tappe di sviluppo.
 - `audit/`: rapporti storici; la data identifica lo stato esaminato.

@@ -40,8 +40,8 @@ Ultima modifica: 2026-11-06
 | 27.5 | [Giochi storici](43-tappa-27-5-storici.md) | ☑ completata |
 | 28 | [Capacitor: struttura del progetto Android](44-tappa-28-capacitor.md) | ☑ completata |
 | 29 | [App Android: schermo intero, tasto indietro, icona](45-tappa-29-app-android.md) | ☑ completata |
-| 29.1 | [Orizzontale per alcuni giochi](47-tappa-29-1-orizzontale.md) | ☐ da fare |
+| 29.1 | [Orizzontale per alcuni giochi](47-tappa-29-1-orizzontale.md) | ✗ annullata (saltata, in Fuori MVP) |
 | 29.2 | [Arcade: campo grande quanto lo schermo](48-tappa-29-2-campo-arcade.md) | ☑ completata |
-| 30 | [APK e prova sul telefono](46-tappa-30-apk.md) | ☐ da fare |
+| 30 | [APK e prova sul telefono](46-tappa-30-apk.md) | ☑ completata |
 
 Legenda: ☐ da fare · ◐ in corso · ☑ completata · ✗ annullata

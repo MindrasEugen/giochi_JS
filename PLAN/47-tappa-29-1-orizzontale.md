@@ -2,6 +2,8 @@
 
 Ultima modifica: 2026-11-06
 
+> **Saltata** su richiesta dell'utente il 2026-11-06 («salta la 29.1, procedi con la 30»): l'idea resta in [Fuori MVP](90-fuori-mvp.md).
+
 ## Obiettivo
 
 Nell'app, solo in alcuni giochi scelti dall'utente (non famiglie intere), la rotazione si sblocca e la pagina ha un layout orizzontale vero: gioco intero nello schermo basso e largo del telefono girato. Negli altri giochi l'app resta in verticale ([Tappa 29](45-tappa-29-app-android.md)).

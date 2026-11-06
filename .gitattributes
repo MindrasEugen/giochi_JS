@@ -1,0 +1,3 @@
+# Script di Gradle: fine riga fissi, così funzionano su Windows, Linux e macOS
+android/gradlew text eol=lf
+android/gradlew.bat text eol=crlf
