@@ -74,3 +74,4 @@ Ultima modifica: 2026-11-03
 - 2026-11-06 - L'utente ha installato l'APK e provato alcuni giochi: negli arcade il campo occupa circa metà dello schermo (misurato: 27-44%). Aggiunta la Tappa 29.2 (campi verticali sul telefono), in attesa del via.
 - 2026-11-06 - Tappa 29.2 implementata: campi verticali sul telefono misurati sullo spazio libero, Ping pong girato, Blocchi stretto; campo dal 27-44% al 71-79% dello schermo. Record unico (scelta dell'utente). Manca la prova su telefono.
 - 2026-11-06 - Tappa 29.2: su richiesta dell'utente i mattoni di Mattoncini scendono un po' nel campo alto del telefono (un quarto dell'altezza in più).
+- 2026-11-06 - Tappa 29.2 completata: prova su telefono passata («per il resto mi sembra vada tutto bene»).

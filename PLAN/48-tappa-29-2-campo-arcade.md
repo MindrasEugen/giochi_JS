@@ -17,7 +17,7 @@ Richiesta dell'utente dopo la prova dell'APK: negli arcade il campo occupa circa
 - [x] Il campo cresce fino allo spazio libero: fatto in JavaScript con la misura vera, senza CSS nuovo (vedi Decisioni prese)
 - [x] Record unico (scelta dell'utente)
 - [x] Test della logica con le nuove misure (Serpente, Labirinto, Mattoncini, Invasione, Volo); verifiche nel browser (412×880, 375×667) e sull'emulatore; confronto degli schermi larghi
-- [ ] Prova su telefono (utente)
+- [x] Prova su telefono (utente): «per il resto mi sembra vada tutto bene», con la sola richiesta di avvicinare un po' i mattoni in Mattoncini (fatto, nell'APK del commit `88f6f1a`)
 
 ## Come verificare
 
@@ -40,6 +40,5 @@ Richiesta dell'utente dopo la prova dell'APK: negli arcade il campo occupa circa
 
 ## Problemi aperti
 
-- Prova su telefono dell'utente da fare.
 - ~~Mattoncini: troppa strada fino alla racchetta~~: sistemato su richiesta dell'utente («ridurrei un po' la distanza, ma di poco»): nel campo alto i mattoni scendono di un quarto dell'altezza in più (95 unità con il campo di 900, circa 90px a 412×880); schermi larghi identici. Invasione: l'utente non ha chiesto modifiche.
 - In Ping pong girato i pulsanti sullo schermo (se mostrati dal menu ⋯) «Su» e «Giù» muovono la racchetta a sinistra e a destra.
