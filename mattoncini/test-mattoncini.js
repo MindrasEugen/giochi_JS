@@ -45,16 +45,17 @@ assert.equal(perso.finita, true);
 const prima = JSON.stringify(perso); M.passo(perso, 1); assert.equal(JSON.stringify(perso), prima, 'partita finita: nulla si muove');
 console.log('OK Mattoncini: lancio, limiti, rimbalzi, punti, bonus, scadenza, livelli e tre vite');
 
-// Tappa 29.2: campo alto 900 sul telefono, la racchetta scende in fondo
+// Tappa 29.2: campo alto 900 sul telefono (Tappa 31: racchetta alzata, fascia libera per il dito)
 {
     const M = require('./funzioni');
     const s = M.crea(900);
-    assert.equal(M.linea(s), 864); assert.equal(s.palla.y, 851);
+    assert.equal(M.linea(s), 737, 'campo alto: la racchetta sale di un terzo dei 380 in più (fascia per il dito)'); assert.equal(s.palla.y, 724);
+    assert.equal(M.linea(M.crea()), 484, 'campo di 520: racchetta dove era');
     assert.equal(s.mattoni[0].y, 56 + 95, 'campo alto: i mattoni scendono di un quarto dei 380 in più');
     assert.equal(M.crea().mattoni[0].y, 56, 'campo di 520: mattoni dove erano');
-    M.lancia(s); s.palla = { x: s.racchetta, y: 840, vx: 0, vy: 300 };
+    M.lancia(s); s.palla = { x: s.racchetta, y: 715, vx: 0, vy: 300 };
     M.passo(s, 0.1);
-    assert.ok(s.palla.vy < 0, 'campo alto: la palla rimbalza sulla racchetta in fondo');
+    assert.ok(s.palla.vy < 0, 'campo alto: la palla rimbalza sulla racchetta alzata');
     s.palla = { x: 20, y: 880, vx: 0, vy: 400 }; M.passo(s, 0.1);
     assert.equal(s.vite, 2, 'campo alto: la vita si perde solo oltre il fondo di 900');
     console.log('OK Mattoncini con il campo alto del telefono');

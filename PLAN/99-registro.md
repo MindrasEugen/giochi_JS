@@ -79,3 +79,4 @@ Ultima modifica: 2026-11-03
 - 2026-11-06 - Push fatti dall'utente; resta solo il secondo test di Mattoncini sul telefono.
 - 2026-11-06 - Prova di Mattoncini (distanze e difficoltà, nel browser): sul telefono la palla impiega più del doppio del tempo che sul PC e la difficoltà sale poco. Scritto il piano della Tappa 31 (livelli infiniti, colpi di bordo, mattoni che scendono dal livello 4, doppia palla dal 5), in attesa del via.
 - 2026-11-06 - Tappa 31: colpo di bordo, livelli infiniti, mattoni che scendono dal livello 4, doppia palla dal 5; test e prova nel browser OK, APK rigenerato. Manca la prova sul telefono.
+- 2026-11-06 - Tappa 31, prima prova sul telefono: il dito copriva la racchetta. Nel campo alto la racchetta sale di un terzo dell'altezza in più (fascia libera per il dito); APK rigenerato.

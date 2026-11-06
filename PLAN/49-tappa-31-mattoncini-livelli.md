@@ -23,7 +23,8 @@ Solo logica e testi: nessun file CSS cambia, il campo è un canvas. Sugli scherm
 - [x] **Testi:** sottotitolo e regole in `mattoncini/index.html`, riga di Mattoncini nel `README.md`.
 - [x] **Test** (`mattoncini/test-mattoncini.js`): colpo di bordo (sì ai bordi, no al centro, tetto), passaggio al livello 4 e oltre senza vittoria, mattoni fermi fino al livello 3 e in discesa dal 4, vita persa quando arrivano alla racchetta, ° solo dal livello 5 e mai sulla stessa casella del +, seconda palla per 10 secondi, nessuna vita persa se cade una sola delle due palle.
 - [x] Prova nel browser (412×880, 375×667 e schermo largo) e nuovo APK
-- [ ] Prova sul telefono (utente)
+- [x] Prima prova sul telefono (utente): «bisogna lasciare più spazio in basso, con lo spostamento del dito non si riesce a seguire la palletta». Racchetta alzata nel campo alto, con una fascia libera per il dito sotto
+- [ ] Seconda prova sul telefono (utente)
 
 ## Come verificare
 
@@ -39,6 +40,7 @@ Solo logica e testi: nessun file CSS cambia, il campo è un canvas. Sugli scherm
 - **Numeri scelti:** colpo di bordo +6% fino a 1,6 volte la velocità del livello; velocità di partenza che cresce fino al livello 12; righe fino a 8; discesa di 4 unità al secondo al livello 4, +1 a ogni livello fino a 10, in proporzione all'altezza del campo (circa 5 px al secondo sullo schermo di un telefono a 412×880); ° nelle caselle con resto 4 nella stessa regola del + (stesso numero di mattoni con + e con °).
 - **Verifiche:** `node scripts/check.js`: 58 suite, 0 controlli falliti (nuovo blocco di test per la Tappa 31). Nel browser (Chrome headless) partita al livello 5 a 412×880, 375×667 e 1280×900: mattoni che scendono (24 unità in 2 secondi a 412×880), mattoni con + e ° alternati, seconda palla e bonus ° disegnati, tabellone «Livello 5», nessun errore nella console, nessuno scorrimento sul telefono.
 - **APK:** `android/app/build/outputs/apk/debug/app-debug.apk` rigenerato (`pnpm sync` e `gradlew assembleDebug`).
+- **Dopo la prima prova sul telefono:** nel campo alto la racchetta sale di un terzo dell'altezza in più (con il campo di 900: da 864 a 737). Sotto resta una fascia libera di circa 135 px a 412×880 e 80 px a 375×667, dove il dito trascina la racchetta senza coprirla. Il campo di 520 degli schermi larghi non cambia. Test aggiornati, check OK, schermate controllate, APK rigenerato.
 
 ## Decisioni prese
 
@@ -46,10 +48,11 @@ Solo logica e testi: nessun file CSS cambia, il campo è un canvas. Sugli scherm
 - Mattoni che arrivano alla racchetta: −1 vita e mattoni di nuovo su (scelta dell'utente), invece di fine partita immediata.
 - Il ° cade come bonus da prendere, come il +, per avere una sola regola per i bonus.
 - I simboli + e ° sui mattoni sono disegnati (croce e anello) invece che scritti con il carattere: il ° di 14px quasi non si vedeva. Sulle righe scure il simbolo è chiaro.
+- Fascia per il dito: la racchetta si alza in proporzione all'altezza in più del campo, come i mattoni scendono in proporzione (Tappa 29.2), così su ogni telefono la fascia cresce con lo schermo e sul PC non cambia nulla.
 - Con 8 righe i 6 colori della palette si ripetono (le righe 7 e 8 non avevano un colore).
 - La velocità della palla non viene ancora adattata all'altezza del campo del telefono: non richiesto. Resta un'idea se sul telefono il gioco sembra ancora lento.
 
 ## Problemi aperti
 
-- Manca la prova sul telefono con l'APK nuovo (utente): la tappa resta in corso fino ad allora.
+- Manca la seconda prova sul telefono con l'APK nuovo (utente): la tappa resta in corso fino ad allora.
 - Per costruire l'APK da terminale servono `JAVA_HOME` (JBR di Android Studio) e `ANDROID_HOME` (`%LOCALAPPDATA%\Android\Sdk`): non sono impostate nel sistema, vanno date al comando.

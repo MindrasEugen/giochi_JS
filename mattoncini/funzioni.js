@@ -5,7 +5,9 @@ const Mattoncini = (() => {
     const LIVELLO_DISCESA = 4, LIVELLO_DOPPIA = 5, RIGHE_MAX = 8, DURATA_BONUS = 10;
     // Il campo può essere più alto sul telefono (Tappa 29.2): racchetta e fondo si misurano da s.altezza
     const altezza = s => s.altezza ?? ALTEZZA;
-    const linea = s => altezza(s) - 36; // altezza della racchetta (484 con il campo di 520)
+    // Altezza della racchetta: 484 con il campo di 520. Nel campo alto del telefono la racchetta sale di un terzo
+    // dell'altezza in più, così sotto resta una fascia libera per il dito che non copre racchetta e palla
+    const linea = s => altezza(s) - 36 - Math.round((altezza(s) - ALTEZZA) / 3);
     const limita = (n, min, max) => Math.max(min, Math.min(max, n));
     // Velocità di partenza della palla: cresce a ogni livello fino al dodicesimo, poi resta quella
     function velocitaLivello(livello) {
