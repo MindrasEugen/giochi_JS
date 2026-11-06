@@ -9,7 +9,7 @@ Far sembrare la raccolta una vera app sul telefono: niente barre di sistema, il 
 ## Attività
 
 - [ ] Schermo intero immersivo: barra di stato e barra di navigazione nascoste (riappaiono scorrendo dal bordo)
-- [ ] Orientamento: verticale bloccato oppure libero (da decidere con l'utente: i layout del telefono sono pensati in verticale)
+- [ ] Orientamento libero (scelta dell'utente): controllare che i giochi in orizzontale si vedano bene, soprattutto quelli sotto i 600px di altezza
 - [ ] Tasto indietro di Android: chiude prima il pannello della tavola o una finestra aperta (nomi, avvisi); se non c'è niente di aperto, da un gioco torna alla home; dalla home chiude l'app
 - [ ] Nell'app il pulsante «Schermo intero» del pannello non serve: non deve comparire
 - [ ] Icona e schermata di avvio originali, con i colori del design system

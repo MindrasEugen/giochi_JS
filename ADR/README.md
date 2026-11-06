@@ -16,6 +16,7 @@ Le decisioni prese nel progetto Giochi JS. Ogni file descrive una decisione: **c
 | [0010](0010-css-comune-delle-pagine-di-gioco.md) | CSS comune delle pagine di gioco (`css/gioco.css`) | 2026-11-04 | Tappa 13 |
 | [0011](0011-tavolo-carte-italiane-da-2-a-5-posti.md) | Tavolo condiviso delle carte italiane da 2 a 5 posti | 2026-11-05 | Tappa 19 |
 | [0012](0012-tavola-a-schermo-intero-sul-telefono.md) | Tavola a schermo intero sul telefono, contenuti in un pannello sopra il gioco | 2026-11-05 | Tappa 25 |
+| [0013](0013-app-android-con-capacitor.md) | App Android con Capacitor | 2026-11-06 | Tappa 28 |
 
 ## Decisioni sostituite
 

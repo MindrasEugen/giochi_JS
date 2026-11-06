@@ -1,0 +1,19 @@
+{
+  "name": "giochi-di-una-volta",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Giochi di una volta: raccolta di giochi in HTML, CSS e JavaScript, anche come app Android con Capacitor",
+  "scripts": {
+    "check": "node scripts/check.js",
+    "build": "node scripts/build-www.js",
+    "sync": "node scripts/build-www.js && cap sync android",
+    "android": "cap open android"
+  },
+  "dependencies": {
+    "@capacitor/android": "8.6.0",
+    "@capacitor/core": "8.6.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "8.6.0"
+  }
+}

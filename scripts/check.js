@@ -5,7 +5,8 @@ const { spawnSync } = require('node:child_process');
 const radice = path.resolve(__dirname, '..');
 function elenco(cartella) {
     return fs.readdirSync(cartella, { withFileTypes: true }).flatMap(voce => {
-        if (['.git', 'node_modules'].includes(voce.name)) return [];
+        // www/ e android/ sono copie generate per l'app (Tappa 28): i controlli guardano solo i sorgenti
+        if (['.git', 'node_modules', 'www', 'android'].includes(voce.name)) return [];
         const file = path.join(cartella, voce.name);
         return voce.isDirectory() ? elenco(file) : file.endsWith('.js') ? [file] : [];
     });
