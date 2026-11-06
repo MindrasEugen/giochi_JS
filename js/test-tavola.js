@@ -47,7 +47,7 @@ class Nodo {
 }
 
 let documento;
-function pagina({ largo = false, salvati = new Map() } = {}) {
+function pagina({ largo = false, salvati = new Map(), schermoIntero = false, app = false } = {}) {
     const body = new Nodo('body');
     const main = body.appendChild(new Nodo('main', { id: 'contenitore_gioco' }));
     const home = main.appendChild(new Nodo('a', { class: 'link-home', 'data-pannello': '' }));
@@ -59,14 +59,15 @@ function pagina({ largo = false, salvati = new Map() } = {}) {
     const eventi = [], ascoltatori = {};
     const media = { matches: largo, listeners: [], addEventListener(k, f) { this.listeners.push(f); } };
     documento = {
-        body, title: 'Serpente | Giochi di una volta', activeElement: body, fullscreenEnabled: false, documentElement: new Nodo('html'),
+        body, title: 'Serpente | Giochi di una volta', activeElement: body, fullscreenEnabled: schermoIntero, documentElement: new Nodo('html'),
         createElement: tag => new Nodo(tag), createComment: () => new Nodo('#commento'),
         querySelector: s => body.querySelector(s), querySelectorAll: s => body.querySelectorAll(s),
         addEventListener: (k, f, o) => { const lista = (ascoltatori[k] ||= []); lista.push(o?.once ? function una(e) { lista.splice(lista.indexOf(una), 1); f(e); } : f); },
         dispatchEvent: e => { eventi.push(e.type); [...(ascoltatori[e.type] || [])].forEach(f => f(e)); }
     };
+    if (schermoIntero) documento.documentElement.requestFullscreen = () => Promise.resolve();
     const c = vm.createContext({ document: documento, CustomEvent: class { constructor(t) { this.type = t; } },
-        window: { matchMedia: () => media },
+        window: { matchMedia: () => media, location: { href: 'serpente/index.html' }, ...(app ? { Capacitor: { isNativePlatform: () => true } } : {}) },
         localStorage: { getItem: k => salvati.get(k) ?? null, setItem: (k, v) => salvati.set(k, v) } });
     vm.runInContext(fs.readFileSync(path.join(__dirname, 'tavola.js'), 'utf8') + '\nglobalThis.Tavola = Tavola;', c);
     const pannello = body.querySelector('.pannello-tavola');
@@ -151,3 +152,31 @@ assert.deepEqual(q.contenuto.children.map(n => n.tag), ['a', 'header', 'details'
 const r = pagina({ largo: true });
 assert.deepEqual(r.main.children.map(n => n.tag), ['nav', 'a', 'header', 'section', 'details', 'p']);
 console.log('OK schermo largo: pagina come prima');
+
+// Tappa 29: nell'app Android lo schermo è già intero, il pulsante «Schermo intero» del pannello non compare
+for (const app of [false, true]) {
+    const q = pagina({ schermoIntero: true, app });
+    assert.equal(!!q.pannello.querySelector('.pannello-tavola__schermo'), !app, app ? 'nell\'app niente pulsante' : 'nel browser il pulsante c\'è');
+}
+console.log('OK schermo intero: pulsante nel browser, non nell\'app Android');
+
+// Tappa 29: tasto indietro dell'app (js/indietro.js): finestra dei giocatori, pannello, home del gioco, home della raccolta
+{
+    const q = pagina();
+    q.home.href = '../index.html';
+    vm.runInContext(fs.readFileSync(path.join(__dirname, 'indietro.js'), 'utf8'), q.c);
+    const indietro = () => vm.runInContext('window.indietroApp()', q.c);
+    q.Tavola.apri('regole');
+    assert.equal(indietro(), true);
+    assert.equal(q.Tavola.aperto(), false, 'il primo indietro chiude il pannello');
+    assert.equal(vm.runInContext('window.location.href', q.c), 'serpente/index.html', 'e resta nel gioco');
+    const finestra = q.body.appendChild(new Nodo('div', { class: 'copertura' }));
+    assert.equal(indietro(), true, 'con una finestra dei giocatori aperta il tasto non fa nulla');
+    assert.equal(vm.runInContext('window.location.href', q.c), 'serpente/index.html');
+    q.body.children.splice(q.body.children.indexOf(finestra), 1);
+    assert.equal(indietro(), true);
+    assert.equal(vm.runInContext('window.location.href', q.c), '../index.html', 'dal gioco si torna alla home');
+    q.home.parent.children.splice(q.home.parent.children.indexOf(q.home), 1);
+    assert.equal(indietro(), false, 'dalla home l\'app va in secondo piano');
+}
+console.log('OK tasto indietro: finestra, pannello, ritorno alla home, uscita');

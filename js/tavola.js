@@ -142,8 +142,10 @@ const Tavola = (() => {
     }
 
     // Schermo intero vero: solo dove il browser lo permette (Android sì, Safari su iPhone di solito no)
+    // Nell'app Android (Capacitor, Tappa 29) lo schermo è già intero: il pulsante non serve
     function aggiungiSchermoIntero() {
         if (!document.fullscreenEnabled || !document.documentElement.requestFullscreen) return;
+        if (typeof window !== 'undefined' && window.Capacitor?.isNativePlatform?.()) return;
         const pulsante = crea('button', 'pulsante pulsante--secondario pannello-tavola__schermo', 'Schermo intero');
         pulsante.type = 'button';
         const etichetta = () => { pulsante.textContent = document.fullscreenElement ? 'Esci dallo schermo intero' : 'Schermo intero'; };

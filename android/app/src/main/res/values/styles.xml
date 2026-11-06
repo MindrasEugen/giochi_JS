@@ -16,7 +16,12 @@
     </style>
 
 
+    <!-- Schermata di avvio (Tappa 29): fondo verde del design system e asterisco del marchio.
+         Fino ad Android 11 si vede l'immagine splash.png, da Android 12 l'icona su fondo verde. -->
     <style name="AppTheme.NoActionBarLaunch" parent="Theme.SplashScreen">
         <item name="android:background">@drawable/splash</item>
+        <item name="windowSplashScreenBackground">@color/ic_launcher_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_foreground</item>
+        <item name="postSplashScreenTheme">@style/AppTheme.NoActionBar</item>
     </style>
 </resources>

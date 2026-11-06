@@ -39,7 +39,8 @@ Ultima modifica: 2026-11-06
 | 27.4 | [Logica e parole](42-tappa-27-4-logica-parole.md) | ☑ completata |
 | 27.5 | [Giochi storici](43-tappa-27-5-storici.md) | ☑ completata |
 | 28 | [Capacitor: struttura del progetto Android](44-tappa-28-capacitor.md) | ☑ completata |
-| 29 | [App Android: schermo intero, tasto indietro, icona](45-tappa-29-app-android.md) | ☐ da fare |
+| 29 | [App Android: schermo intero, tasto indietro, icona](45-tappa-29-app-android.md) | ☑ completata |
+| 29.1 | [Orizzontale per alcuni giochi](47-tappa-29-1-orizzontale.md) | ☐ da fare |
 | 30 | [APK e prova sul telefono](46-tappa-30-apk.md) | ☐ da fare |
 
 Legenda: ☐ da fare · ◐ in corso · ☑ completata · ✗ annullata

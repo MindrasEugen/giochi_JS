@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108">
+  <!-- Icona di «Giochi di una volta» (Tappa 29): l'asterisco del marchio della home, nei colori del design system.
+       Tela da 108 come le icone adattive di Android: il disegno sta nel cerchio centrale di 66 (zona sicura). -->
+  <g fill="#EDC975" transform="translate(54 54)">
+    <rect x="-5.5" y="-27" width="11" height="54" rx="5.5"/>
+    <rect x="-5.5" y="-27" width="11" height="54" rx="5.5" transform="rotate(45)"/>
+    <rect x="-5.5" y="-27" width="11" height="54" rx="5.5" transform="rotate(90)"/>
+    <rect x="-5.5" y="-27" width="11" height="54" rx="5.5" transform="rotate(135)"/>
+  </g>
+  <circle cx="54" cy="54" r="7" fill="#234735"/>
+</svg>

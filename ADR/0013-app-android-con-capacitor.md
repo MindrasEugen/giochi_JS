@@ -23,6 +23,7 @@ Capacitor 8 (scelta dell'utente del 2026-11-06), installato con pnpm.
 - Il progetto Android generato sta in `android/` ed è nel repo; le copie dei giochi dentro `android/app/src/main/assets/public` e le cartelle di build sono escluse da git (`android/.gitignore`).
 - Ciclo: `pnpm sync` (build più `cap sync android`), poi Android Studio (`pnpm android`) o `android/gradlew assembleDebug`.
 - `scripts/check.js` ignora `www/` e `android/`: i controlli guardano solo i sorgenti.
+- Tappa 29: schermo intero e tasto indietro in `MainActivity.java`, senza plugin in più. Il tasto indietro chiede alla pagina `window.indietroApp()` (`js/indietro.js`): pannello, poi home, poi app in secondo piano. App in verticale; l'orizzontale per alcuni giochi è nella Tappa 29.1. Icona e schermata di avvio generate da `scripts/icona-app.svg` con `scripts/genera-icone.mjs` ([PLAN/45-tappa-29-app-android.md](../PLAN/45-tappa-29-app-android.md)).
 
 ## Conseguenze
 
