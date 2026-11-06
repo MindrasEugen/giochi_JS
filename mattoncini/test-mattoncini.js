@@ -50,6 +50,8 @@ console.log('OK Mattoncini: lancio, limiti, rimbalzi, punti, bonus, scadenza, tr
     const M = require('./funzioni');
     const s = M.crea(900);
     assert.equal(M.linea(s), 864); assert.equal(s.palla.y, 851);
+    assert.equal(s.mattoni[0].y, 56 + 95, 'campo alto: i mattoni scendono di un quarto dei 380 in più');
+    assert.equal(M.crea().mattoni[0].y, 56, 'campo di 520: mattoni dove erano');
     M.lancia(s); s.palla = { x: s.racchetta, y: 840, vx: 0, vy: 300 };
     M.passo(s, 0.1);
     assert.ok(s.palla.vy < 0, 'campo alto: la palla rimbalza sulla racchetta in fondo');

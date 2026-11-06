@@ -41,5 +41,5 @@ Richiesta dell'utente dopo la prova dell'APK: negli arcade il campo occupa circa
 ## Problemi aperti
 
 - Prova su telefono dell'utente da fare.
-- Mattoncini e Invasione: nel campo alto mattoni e droni restano in cima e c'è molta strada fino alla racchetta o alla navetta; da valutare con la prova (si possono abbassare).
+- ~~Mattoncini: troppa strada fino alla racchetta~~: sistemato su richiesta dell'utente («ridurrei un po' la distanza, ma di poco»): nel campo alto i mattoni scendono di un quarto dell'altezza in più (95 unità con il campo di 900, circa 90px a 412×880); schermi larghi identici. Invasione: l'utente non ha chiesto modifiche.
 - In Ping pong girato i pulsanti sullo schermo (se mostrati dal menu ⋯) «Su» e «Giù» muovono la racchetta a sinistra e a destra.

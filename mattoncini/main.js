@@ -21,7 +21,7 @@ ArcadePagina.avvia({
         const tinte = [c.accento, c.superficie, c.bordo, c.info, c.successo, c.avviso];
         for (const m of s.mattoni) {
             if (!m.vivo) continue;
-            ctx.fillStyle = tinte[Math.floor((m.y - 56) / 25)]; ctx.fillRect(m.x, m.y, m.w, m.h);
+            ctx.fillStyle = tinte[m.riga]; ctx.fillRect(m.x, m.y, m.w, m.h);
             if (m.bonus) { ctx.fillStyle = c.primario; ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'center'; ctx.fillText('+', m.x + m.w / 2, m.y + 13); }
         }
         for (const b of s.bonus) {

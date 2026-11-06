@@ -7,8 +7,10 @@ const Mattoncini = (() => {
     function preparaLivello(s) {
         s.mattoni = [];
         const righe = 3 + s.livello;
+        // Nel campo alto del telefono i mattoni scendono di un quarto dell'altezza in più: meno strada fino alla racchetta
+        const scesa = Math.round(((s.altezza ?? ALTEZZA) - ALTEZZA) / 4);
         for (let r = 0; r < righe; r++) for (let c = 0; c < 8; c++) {
-            s.mattoni.push({ x: 24 + c * 70, y: 56 + r * 25, w: 62, h: 17, vivo: true, bonus: (r * 8 + c + s.livello) % 9 === 0 });
+            s.mattoni.push({ x: 24 + c * 70, y: 56 + scesa + r * 25, w: 62, h: 17, riga: r, vivo: true, bonus: (r * 8 + c + s.livello) % 9 === 0 });
         }
         s.bonus = []; s.largo = 0;
         preparaPalla(s);
