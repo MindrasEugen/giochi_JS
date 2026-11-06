@@ -43,6 +43,6 @@ Ultima modifica: 2026-11-06
 | 29.1 | [Orizzontale per alcuni giochi](47-tappa-29-1-orizzontale.md) | ✗ annullata (saltata, in Fuori MVP) |
 | 29.2 | [Arcade: campo grande quanto lo schermo](48-tappa-29-2-campo-arcade.md) | ☑ completata |
 | 30 | [APK e prova sul telefono](46-tappa-30-apk.md) | ☑ completata |
-| 31 | [Mattoncini: livelli infiniti, colpi di bordo, mattoni che scendono, doppia palla](49-tappa-31-mattoncini-livelli.md) | ◐ in corso (manca la prova sul telefono) |
+| 31 | [Mattoncini: livelli infiniti, colpi di bordo, mattoni che scendono, doppia palla](49-tappa-31-mattoncini-livelli.md) | ☑ completata |
 
 Legenda: ☐ da fare · ◐ in corso · ☑ completata · ✗ annullata

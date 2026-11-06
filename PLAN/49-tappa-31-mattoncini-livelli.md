@@ -24,7 +24,7 @@ Solo logica e testi: nessun file CSS cambia, il campo è un canvas. Sugli scherm
 - [x] **Test** (`mattoncini/test-mattoncini.js`): colpo di bordo (sì ai bordi, no al centro, tetto), passaggio al livello 4 e oltre senza vittoria, mattoni fermi fino al livello 3 e in discesa dal 4, vita persa quando arrivano alla racchetta, ° solo dal livello 5 e mai sulla stessa casella del +, seconda palla per 10 secondi, nessuna vita persa se cade una sola delle due palle.
 - [x] Prova nel browser (412×880, 375×667 e schermo largo) e nuovo APK
 - [x] Prima prova sul telefono (utente): «bisogna lasciare più spazio in basso, con lo spostamento del dito non si riesce a seguire la palletta». Racchetta alzata nel campo alto, con una fascia libera per il dito sotto
-- [ ] Seconda prova sul telefono (utente)
+- [x] Seconda prova sul telefono (utente): «ok, ora va bene»
 
 ## Come verificare
 
@@ -54,5 +54,4 @@ Solo logica e testi: nessun file CSS cambia, il campo è un canvas. Sugli scherm
 
 ## Problemi aperti
 
-- Manca la seconda prova sul telefono con l'APK nuovo (utente): la tappa resta in corso fino ad allora.
 - Per costruire l'APK da terminale servono `JAVA_HOME` (JBR di Android Studio) e `ANDROID_HOME` (`%LOCALAPPDATA%\Android\Sdk`): non sono impostate nel sistema, vanno date al comando.
