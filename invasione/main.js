@@ -1,11 +1,13 @@
 ArcadePagina.avvia({
     chiave: 'invasione', larghezza: 600, altezza: 560,
     istruzioni: 'Frecce o A/D per muovere. Tieni Spazio o Fuoco per sparare. Gli scudi assorbono anche i tuoi colpi.',
+    istruzioniGesti: 'Trascina il dito per muovere la navetta: finché il dito resta sul campo, spara da sola. Gli scudi assorbono anche i tuoi colpi.',
     tasti: ['ArrowLeft', 'ArrowRight', 'KeyA', 'KeyD'],
     crea: () => Invasione.crea(),
     comando(s, codice) { if (codice === 'Space') Invasione.spara(s); },
     passo(s, dt, tasti) { Invasione.passo(s, dt, Number(tasti.has('ArrowRight') || tasti.has('KeyD')) - Number(tasti.has('ArrowLeft') || tasti.has('KeyA')), tasti.has('Space')); },
-    puntatore(s, p) { s.x = Math.max(18, Math.min(582, p.x)); },
+    // Gesto: la navetta segue il dito e spara finché il dito resta sul campo
+    gesti: { trascina(s, p) { s.x = Math.max(18, Math.min(582, p.x)); }, tieni: 'Space' },
     punti: s => s.punti,
     dati: s => ({ etichetta1: 'Punti', punti1: s.punti, etichetta2: 'Vite', punti2: s.vite, fase: `Ondata ${s.livello}` }),
     esito: s => `Difesa conclusa all'ondata ${s.livello}: ${s.punti} punti.`,

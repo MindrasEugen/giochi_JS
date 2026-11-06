@@ -1,6 +1,6 @@
 # Tappa 27 — Schermo intero in tutti gli altri giochi
 
-Ultima modifica: 2026-11-05
+Ultima modifica: 2026-11-06
 
 ## Obiettivo
 
@@ -22,7 +22,7 @@ Vale per ogni sotto-tappa: tutti i test (`node scripts/check.js`) OK; nel browse
 
 ## Esito
 
-—
+Tutte e 5 le sotto-tappe completate e provate sul telefono dall'utente: 27.1 `29c1260`, 27.2 `4d5a8b2`, 27.3 `6071bb7`, 27.4 `fcbc50b`, 27.5 `0dbb852`. Dettagli nei file delle sotto-tappe.
 
 ## Decisioni prese
 

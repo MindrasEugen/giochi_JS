@@ -1,6 +1,6 @@
 # Tappe
 
-Ultima modifica: 2026-11-05
+Ultima modifica: 2026-11-06
 
 | # | Tappa | Stato |
 |---|---|---|
@@ -31,12 +31,12 @@ Ultima modifica: 2026-11-05
 | 24 | [Solitari: TriPeaks, Yukon, Scorpione, Orologio, Le tredici](33-tappa-24-solitari-2.md) | ☑ completata |
 | 24.1 | [Solitari: carte leggibili sul telefono](35-tappa-24-1-carte-leggibili.md) | → unita alla 25 |
 | 25 | [Tavola a schermo intero sul telefono (Serpente e solitari)](36-tappa-25-schermo-intero.md) | ☑ completata |
-| 26 | [Gesti touch negli arcade](37-tappa-26-gesti-arcade.md) | ☐ da fare |
-| 27 | [Schermo intero in tutti gli altri giochi](38-tappa-27-schermo-intero-tutti.md) (prima della 26) | ◐ in corso |
+| 26 | [Gesti touch negli arcade](37-tappa-26-gesti-arcade.md) | ◐ in corso |
+| 27 | [Schermo intero in tutti gli altri giochi](38-tappa-27-schermo-intero-tutti.md) (prima della 26) | ☑ completata |
 | 27.1 | [Carte italiane](39-tappa-27-1-carte-italiane.md) | ☑ completata |
 | 27.2 | [Carte francesi](40-tappa-27-2-carte-francesi.md) | ☑ completata |
 | 27.3 | [Tavolo](41-tappa-27-3-tavolo.md) | ☑ completata |
 | 27.4 | [Logica e parole](42-tappa-27-4-logica-parole.md) | ☑ completata |
-| 27.5 | [Giochi storici](43-tappa-27-5-storici.md) | ◐ in corso |
+| 27.5 | [Giochi storici](43-tappa-27-5-storici.md) | ☑ completata |
 
 Legenda: ☐ da fare · ◐ in corso · ☑ completata · ✗ annullata

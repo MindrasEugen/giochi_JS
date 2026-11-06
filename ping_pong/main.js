@@ -1,6 +1,7 @@
 ArcadePagina.avvia({
     chiave: 'ping_pong', larghezza: PingPong.LARGHEZZA, altezza: PingPong.ALTEZZA,
     istruzioni: 'Muovi con ↑ ↓ o i pulsanti. In due: W e S a sinistra, frecce a destra. Si arriva a 7.',
+    istruzioniGesti: 'Trascina il dito in su e in giù per muovere la racchetta. In due: ognuno nella sua metà del campo. Si arriva a 7.',
     tasti: ['ArrowUp', 'ArrowDown', 'KeyW', 'KeyS'],
     crea: due => PingPong.crea(due),
     passo(s, dt, tasti, due) {
@@ -10,7 +11,8 @@ ArcadePagina.avvia({
     dati(s, due, nome) { return { etichetta1: nome(0), punti1: s.punti[0], etichetta2: nome(1), punti2: s.punti[1], fase: 'Primo a 7' }; },
     punti: s => s.punti[0],
     esito: (s, due, nome) => `Vince ${nome(s.punti[0] >= 7 ? 0 : 1)}: ${s.punti[0]} a ${s.punti[1]}.`,
-    puntatore(s, p) { if (!s.due) s.racchette[0] = Math.max(0, Math.min(PingPong.ALTEZZA - PingPong.RACCHETTA, p.y - PingPong.RACCHETTA / 2)); },
+    // Gesto: la racchetta segue il dito; in due ognuno muove la racchetta della sua metà
+    gesti: { trascina(s, p, due, lato) { s.racchette[due ? lato : 0] = Math.max(0, Math.min(PingPong.ALTEZZA - PingPong.RACCHETTA, p.y - PingPong.RACCHETTA / 2)); } },
     disegna(ctx, s, c) {
         ctx.strokeStyle = c.primarioChiaro; ctx.lineWidth = 3; ctx.setLineDash([10, 12]);
         ctx.beginPath(); ctx.moveTo(360, 0); ctx.lineTo(360, 440); ctx.stroke(); ctx.setLineDash([]);

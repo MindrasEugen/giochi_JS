@@ -1,12 +1,15 @@
 ArcadePagina.avvia({
     chiave: 'labirinto', larghezza: 608, altezza: 544,
     istruzioni: 'Frecce, WASD o pulsanti per esplorare. Raccogli le luci; i cristalli grandi allontanano i guardiani per 7 secondi.',
+    istruzioniGesti: 'Scorri il dito sul campo per cambiare strada. Raccogli le luci; i cristalli grandi allontanano i guardiani per 7 secondi.',
     tasti: ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'KeyW', 'KeyA', 'KeyS', 'KeyD'],
     crea: () => Labirinto.crea(),
     comando(s, codice) {
         const m = { ArrowUp: 'su', KeyW: 'su', ArrowDown: 'giu', KeyS: 'giu', ArrowLeft: 'sinistra', KeyA: 'sinistra', ArrowRight: 'destra', KeyD: 'destra' };
         if (m[codice]) Labirinto.gira(s, m[codice]);
     },
+    // Gesto: scorrere nella direzione in cui andare
+    gesti: { scorri(s, direzione) { Labirinto.gira(s, direzione); } },
     passo: (s, dt) => Labirinto.passo(s, dt), punti: s => s.punti,
     dati: s => ({ etichetta1: 'Punti', punti1: s.punti, etichetta2: 'Vite', punti2: s.vite,
         fase: s.potere > 0 ? `Energia ${Math.ceil(s.potere)} s` : `${s.puntini.size} luci` }),

@@ -7,12 +7,25 @@ const COLORI_BLOCCHI = (() => {
 ArcadePagina.avvia({
     chiave: 'blocchi', larghezza: 720, altezza: 640,
     istruzioni: 'Frecce per muovere e ruotare, Spazio per posare. In due: WASD e F a sinistra, frecce e Spazio a destra.',
+    istruzioniGesti: 'Scorri a destra e a sinistra per spostare il pezzo, tocca per ruotarlo, scorri in giù per farlo cadere. In due: ognuno nel suo campo.',
     tasti: ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'KeyA', 'KeyD', 'KeyW', 'KeyS', 'KeyF'],
     crea: due => Blocchi.crea(due),
     comando(s, codice, due) {
         const i = due && ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Space'].includes(codice) ? 1 : 0;
         if (codice === 'ArrowUp' || codice === 'KeyW') Blocchi.gira(s.campi[i]);
         if (codice === 'Space' || codice === 'KeyF') Blocchi.lascia(s.campi[i]);
+    },
+    // Gesti: scorrere sposta di una colonna per volta, in giù fa cadere il pezzo (una volta per gesto), il tocco ruota.
+    // In due il campo sinistro è del primo giocatore e quello destro del secondo, come le due metà dello schermo.
+    gesti: {
+        soglia: 20,
+        scorri(s, direzione, due, lato) {
+            const campo = s.campi[due ? lato : 0];
+            if (direzione === 'destra') Blocchi.muovi(campo, 1);
+            if (direzione === 'sinistra') Blocchi.muovi(campo, -1);
+            if (direzione === 'giu') { Blocchi.lascia(campo); return 'fine'; }
+        },
+        tocco(s, due, lato) { Blocchi.gira(s.campi[due ? lato : 0]); }
     },
     passo(s, dt, tasti, due) {
         const comandi = (sx, dx, giu) => ({ asse: Number(tasti.has(dx)) - Number(tasti.has(sx)), giu: tasti.has(giu) });

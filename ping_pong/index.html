@@ -8,13 +8,14 @@
   <link rel="stylesheet" href="../css/gioco.css">
   <link rel="stylesheet" href="../css/giocatori.css">
   <link rel="stylesheet" href="../css/arcade.css">
+  <link rel="stylesheet" href="../css/tavola.css">
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 <main class="contenitore" id="contenitore_gioco">
-  <a class="link-home" href="../index.html">&larr; Tutti i giochi</a>
-  <header class="arcade-intro"><p class="occhiello">Sala arcade / Ping pong</p><h1>Tieni vivo lo scambio.</h1><p class="sottotitolo">Riflessi, angoli e un ultimo recupero: sfida il computer o un amico fino a 7 punti.</p></header>
-  <div class="barra-modalita"><label for="modalitaGioco">Modalit&agrave;</label><select id="modalitaGioco"><option value="uno">Contro il computer</option><option value="due">2 giocatori</option></select><button type="button" id="nomiGiocatori" class="pulsante pulsante--secondario" hidden>Nomi</button></div>
+  <a class="link-home" data-pannello href="../index.html">&larr; Tutti i giochi</a>
+  <header class="arcade-intro" data-pannello><p class="occhiello">Sala arcade / Ping pong</p><h1>Tieni vivo lo scambio.</h1><p class="sottotitolo">Riflessi, angoli e un ultimo recupero: sfida il computer o un amico fino a 7 punti.</p></header>
+  <div class="barra-modalita" data-pannello><label for="modalitaGioco">Modalit&agrave;</label><select id="modalitaGioco"><option value="uno">Contro il computer</option><option value="due">2 giocatori</option></select><button type="button" id="nomiGiocatori" class="pulsante pulsante--secondario" hidden>Nomi</button></div>
   <div class="arcade-statistiche" aria-label="Tabellone">
     <div class="arcade-statistica"><span id="etichetta1">Punti</span><strong id="punti1">0</strong></div>
     <div class="arcade-statistica"><span id="etichetta2">Partita</span><strong id="punti2">0</strong></div>
@@ -28,9 +29,9 @@
   <div class="arcade-azioni"><button class="pulsante" type="button" id="avvia" aria-pressed="false">Gioca</button><button class="pulsante pulsante--secondario" type="button" id="nuovaPartita">Nuova partita</button></div>
   <p id="messaggi" role="status" aria-live="polite"></p>
   <div class="arcade-comandi" aria-label="Comandi touch"><fieldset><legend>Sinistra / W e S</legend><div class="arcade-tasti"><button class="arcade-tasto" type="button" data-tasto="KeyW" aria-label="Su">Su</button><button class="arcade-tasto" type="button" data-tasto="KeyS" aria-label="Giu">Giu</button></div></fieldset><fieldset data-giocatore="1" hidden><legend>Destra / frecce</legend><div class="arcade-tasti"><button class="arcade-tasto" type="button" data-tasto="ArrowUp" aria-label="Su">Su</button><button class="arcade-tasto" type="button" data-tasto="ArrowDown" aria-label="Giu">Giu</button></div></fieldset></div>
-  <p class="arcade-aiuto" id="aiuto">P o Esc per la pausa. Cambiando scheda il gioco si ferma; premi Riprendi per continuare.</p>
-  <details class="pannello regole"><summary>Regole e comandi</summary><ol><li>Vince chi arriva per primo a 7 punti. Il punto va a chi manda la palla oltre la racchetta avversaria.</li><li>Contro il PC usa frecce, W e S, pulsanti o trascina sul campo. In due: W/S a sinistra, frecce a destra.</li><li>Colpire vicino al bordo della racchetta cambia l'angolo. A ogni rimbalzo la palla accelera fino a un limite.</li></ol></details>
+  <p class="arcade-aiuto" id="aiuto" data-pannello>P o Esc per la pausa. Cambiando scheda il gioco si ferma; premi Riprendi per continuare.</p>
+  <details class="pannello regole" data-pannello><summary>Regole e comandi</summary><ol><li>Vince chi arriva per primo a 7 punti. Il punto va a chi manda la palla oltre la racchetta avversaria.</li><li>Trascina il dito in su e in gi&ugrave; sul campo: la racchetta lo segue. Contro il PC funzionano anche frecce, W e S e i pulsanti (sul telefono si mostrano dal menu &#8943;). In due: W/S a sinistra, frecce a destra; sul telefono ognuno trascina nella sua met&agrave; del campo, anche insieme. Un tocco sul campo avvia o riprende la partita.</li><li>Colpire vicino al bordo della racchetta cambia l'angolo. A ogni rimbalzo la palla accelera fino a un limite.</li></ol></details>
 </main>
-<script src="../js/giocatori.js"></script><script src="../js/arcade.js"></script><script src="../js/arcade-pagina.js"></script><script src="./funzioni.js"></script><script src="./main.js"></script>
+<script src="../js/tavola.js"></script><script src="../js/giocatori.js"></script><script src="../js/arcade.js"></script><script src="../js/arcade-pagina.js"></script><script src="./funzioni.js"></script><script src="./main.js"></script>
 </body>
 </html>

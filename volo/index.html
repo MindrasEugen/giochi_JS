@@ -8,14 +8,15 @@
   <link rel="stylesheet" href="../css/gioco.css">
   <link rel="stylesheet" href="../css/giocatori.css">
   <link rel="stylesheet" href="../css/arcade.css">
+  <link rel="stylesheet" href="../css/tavola.css">
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 <main class="contenitore" id="contenitore_gioco">
-  <a class="link-home" href="../index.html">&larr; Tutti i giochi</a>
-  <header class="arcade-intro"><p class="occhiello">Sala arcade / Volo</p><h1>Trova il ritmo del vento.</h1><p class="sottotitolo">Un aliante di carta, varchi dorati e un battito alla volta. Sfida te stesso o un amico, a turni.</p></header>
+  <a class="link-home" data-pannello href="../index.html">&larr; Tutti i giochi</a>
+  <header class="arcade-intro" data-pannello><p class="occhiello">Sala arcade / Volo</p><h1>Trova il ritmo del vento.</h1><p class="sottotitolo">Un aliante di carta, varchi dorati e un battito alla volta. Sfida te stesso o un amico, a turni.</p></header>
 
-  <div class="barra-modalita"><label for="modalitaGioco">Modalit&agrave;</label><select id="modalitaGioco"><option value="uno">1 giocatore</option><option value="due">Sfida a turni</option></select><button type="button" id="nomiGiocatori" class="pulsante pulsante--secondario" hidden>Nomi</button></div>
+  <div class="barra-modalita" data-pannello><label for="modalitaGioco">Modalit&agrave;</label><select id="modalitaGioco"><option value="uno">1 giocatore</option><option value="due">Sfida a turni</option></select><button type="button" id="nomiGiocatori" class="pulsante pulsante--secondario" hidden>Nomi</button></div>
   <div class="arcade-statistiche" aria-label="Tabellone">
     <div class="arcade-statistica"><span id="etichetta1">Punti</span><strong id="punti1">0</strong></div>
     <div class="arcade-statistica"><span id="etichetta2">Partita</span><strong id="punti2">0</strong></div>
@@ -29,9 +30,9 @@
   <div class="arcade-azioni"><button class="pulsante" type="button" id="avvia" aria-pressed="false">Gioca</button><button class="pulsante pulsante--secondario" type="button" id="nuovaPartita">Nuova partita</button></div>
   <p id="messaggi" role="status" aria-live="polite"></p>
   <div class="arcade-comandi" aria-label="Comandi touch"><fieldset><legend>Aliante</legend><div class="arcade-tasti"><button class="arcade-tasto" type="button" data-tasto="Space">Battito</button></div></fieldset></div>
-  <p class="arcade-aiuto" id="aiuto">P o Esc per la pausa. Cambiando scheda il gioco si ferma; premi Riprendi per continuare.</p>
-  <details class="pannello regole"><summary>Regole e comandi</summary><ol><li>Dopo Gioca, premi Spazio, freccia su o Battito per partire. Puoi anche toccare il campo.</li><li>Ogni battito ti spinge verso l'alto; tra un battito e l'altro scendi. Evita le barriere e i bordi del campo.</li><li>Un punto per ogni varco completamente superato. Il record personale riguarda le partite da soli.</li><li>Sfida a due: prima gioca uno, poi l'altro con gli stessi varchi nello stesso ordine. Alla fine del primo turno passa il dispositivo e premi Gioca per il secondo. Vince chi supera pi&ugrave; varchi.</li></ol></details>
+  <p class="arcade-aiuto" id="aiuto" data-pannello>P o Esc per la pausa. Cambiando scheda il gioco si ferma; premi Riprendi per continuare.</p>
+  <details class="pannello regole" data-pannello><summary>Regole e comandi</summary><ol><li>Tocca il campo per un battito d&rsquo;ali: il primo tocco avvia la partita, il secondo fa partire l&rsquo;aliante. Con la tastiera: Spazio o freccia su (il pulsante Battito sul telefono si mostra dal menu &#8943;).</li><li>Ogni battito ti spinge verso l'alto; tra un battito e l'altro scendi. Evita le barriere e i bordi del campo.</li><li>Un punto per ogni varco completamente superato. Il record personale riguarda le partite da soli.</li><li>Sfida a due: prima gioca uno, poi l'altro con gli stessi varchi nello stesso ordine. Alla fine del primo turno passa il dispositivo e premi Gioca per il secondo. Vince chi supera pi&ugrave; varchi.</li></ol></details>
 </main>
-<script src="../js/giocatori.js"></script><script src="../js/arcade.js"></script><script src="../js/arcade-pagina.js"></script><script src="./funzioni.js"></script><script src="./main.js"></script>
+<script src="../js/tavola.js"></script><script src="../js/giocatori.js"></script><script src="../js/arcade.js"></script><script src="../js/arcade-pagina.js"></script><script src="./funzioni.js"></script><script src="./main.js"></script>
 </body>
 </html>

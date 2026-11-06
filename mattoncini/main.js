@@ -1,6 +1,7 @@
 ArcadePagina.avvia({
     chiave: 'mattoncini', larghezza: Mattoncini.LARGHEZZA, altezza: Mattoncini.ALTEZZA,
     istruzioni: 'Muovi con ← →, A e D o trascina sul campo. Spazio o tocco per lanciare la palla.',
+    istruzioniGesti: 'Trascina il dito a destra e a sinistra per muovere la racchetta. Tocca il campo per lanciare la palla.',
     tasti: ['ArrowLeft', 'ArrowRight', 'KeyA', 'KeyD'],
     crea: () => Mattoncini.crea(),
     comando(s, codice) { if (codice === 'Space') Mattoncini.lancia(s); },
@@ -8,7 +9,8 @@ ArcadePagina.avvia({
     punti: s => s.punti,
     dati: s => ({ etichetta1: 'Punti', punti1: s.punti, etichetta2: 'Vite', punti2: s.vite, fase: `Livello ${s.livello} / 3` }),
     esito: s => s.vinta ? `Tutti i livelli completati! ${s.punti} punti.` : `Hai fatto ${s.punti} punti. Ritenta la scalata!`,
-    puntatore: (s, p) => Mattoncini.muovi(s, p.x),
+    // Gesto: la racchetta segue il dito; appoggiarlo lancia la palla
+    gesti: { premi: s => Mattoncini.lancia(s), trascina: (s, p) => Mattoncini.muovi(s, p.x) },
     disegna(ctx, s, c) {
         const tinte = [c.accento, c.superficie, c.bordo, c.info, c.successo, c.avviso];
         for (const m of s.mattoni) {

@@ -14,7 +14,7 @@ Tris, Impiccato, Sasso carta forbici, Indovina il numero. Stesso metodo della [T
 - [x] Impiccato: sul telefono il tocco sulla tastiera dello schermo non dà più il fuoco al campo di testo (apriva la tastiera del telefono sopra il gioco); tolto `autofocus`. Test in `js/test-tavolo-pannello.js`
 - [x] CSS (Codex, un giro): tabellone compatto con spazio tra nome e numero, Impiccato in uno schermo (disegno più piccolo, campo di testo nascosto), ripristini da 600px in su
 - [x] Verifiche nel browser (375×667, 390×844) e confronto degli stili a 600/900/1280px con il commit precedente
-- [ ] Prova su telefono (utente)
+- [x] Prova su telefono (utente): «i controlli sono andati a buon fine» (2026-11-06)
 
 ## Come verificare
 
@@ -33,5 +33,4 @@ Vedi [Tappa 27](38-tappa-27-schermo-intero-tutti.md#come-verificare).
 
 ## Problemi aperti
 
-- Prova su telefono dell'utente da fare.
 - Impiccato in 2 giocatori: a 375×667 la pagina è alta 683px (16px di scorrimento) per la riga dei punteggi in più.

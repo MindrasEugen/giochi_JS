@@ -1,11 +1,14 @@
 ArcadePagina.avvia({
     chiave: 'volo', larghezza: 600, altezza: 480,
     istruzioni: 'Premi Spazio, ↑ o il pulsante Battito per volare. Puoi anche toccare il campo. Ogni varco superato vale un punto.',
+    istruzioniGesti: 'Tocca il campo per un battito d’ali. Ogni varco superato vale un punto.',
     tasti: ['ArrowUp', 'KeyW'],
     crea: due => Volo.crea(due),
     prossimo: Volo.prossimo, avanza: Volo.avanza,
     comando(s, codice) { if (['Space', 'ArrowUp', 'KeyW'].includes(codice)) Volo.salta(s); },
-    passo: (s, dt) => Volo.passo(s, dt), puntatore() {},
+    // Gesto: ogni tocco è un battito, subito, senza aspettare che il dito si alzi
+    gesti: { premi: s => Volo.salta(s) },
+    passo: (s, dt) => Volo.passo(s, dt),
     punti: s => s.punti,
     dati(s, due, nome) { return { etichetta1: due ? nome(0) : 'Varchi', punti1: due ? (s.turno === 0 ? s.punti : s.risultati[0]) : s.punti,
         etichetta2: due ? nome(1) : 'Distanza', punti2: due ? (s.turno === 1 ? s.punti : '–') : `${Math.floor(s.distanza / 10)} m`,

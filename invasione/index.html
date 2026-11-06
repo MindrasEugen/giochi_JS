@@ -8,12 +8,13 @@
   <link rel="stylesheet" href="../css/gioco.css">
   <link rel="stylesheet" href="../css/giocatori.css">
   <link rel="stylesheet" href="../css/arcade.css">
+  <link rel="stylesheet" href="../css/tavola.css">
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 <main class="contenitore" id="contenitore_gioco">
-  <a class="link-home" href="../index.html">&larr; Tutti i giochi</a>
-  <header class="arcade-intro"><p class="occhiello">Sala arcade / Invasione</p><h1>Difendi l'ultimo avamposto.</h1><p class="sottotitolo">Droni in avvicinamento, scudi che cedono e un varco da tenere aperto. Quanto resisti?</p></header>
+  <a class="link-home" data-pannello href="../index.html">&larr; Tutti i giochi</a>
+  <header class="arcade-intro" data-pannello><p class="occhiello">Sala arcade / Invasione</p><h1>Difendi l'ultimo avamposto.</h1><p class="sottotitolo">Droni in avvicinamento, scudi che cedono e un varco da tenere aperto. Quanto resisti?</p></header>
 
   <div class="arcade-statistiche" aria-label="Tabellone">
     <div class="arcade-statistica"><span id="etichetta1">Punti</span><strong id="punti1">0</strong></div>
@@ -28,9 +29,9 @@
   <div class="arcade-azioni"><button class="pulsante" type="button" id="avvia" aria-pressed="false">Gioca</button><button class="pulsante pulsante--secondario" type="button" id="nuovaPartita">Nuova partita</button></div>
   <p id="messaggi" role="status" aria-live="polite"></p>
   <div class="arcade-comandi" aria-label="Comandi touch"><fieldset><legend>Avamposto</legend><div class="arcade-tasti"><button class="arcade-tasto" type="button" data-tasto="ArrowLeft">Sinistra</button><button class="arcade-tasto" type="button" data-tasto="Space">Fuoco</button><button class="arcade-tasto" type="button" data-tasto="ArrowRight">Destra</button></div></fieldset></div>
-  <p class="arcade-aiuto" id="aiuto">P o Esc per la pausa. Cambiando scheda il gioco si ferma; premi Riprendi per continuare.</p>
-  <details class="pannello regole"><summary>Regole e comandi</summary><ol><li>Muoviti con frecce o A/D, oppure trascina sul campo. Tieni premuto Spazio o Fuoco per sparare.</li><li>Gli scudi hanno cinque cariche: assorbono i colpi nemici e anche i tuoi. Cerca uno spazio libero per attaccare.</li><li>Elimina tutti i droni per la prossima ondata. Gli scudi si ricostruiscono, ma il nemico diventa pi&ugrave; veloce.</li><li>Hai tre vite e una breve protezione dopo ogni colpo. Se un drone raggiunge la base, la difesa termina.</li></ol></details>
+  <p class="arcade-aiuto" id="aiuto" data-pannello>P o Esc per la pausa. Cambiando scheda il gioco si ferma; premi Riprendi per continuare.</p>
+  <details class="pannello regole" data-pannello><summary>Regole e comandi</summary><ol><li>Trascina il dito sul campo: la navetta lo segue e spara da sola finch&eacute; il dito resta appoggiato. Con la tastiera: frecce o A/D per muoverti, Spazio o Fuoco tenuto premuto per sparare (i pulsanti sul telefono si mostrano dal menu &#8943;). Un tocco sul campo avvia o riprende la partita.</li><li>Gli scudi hanno cinque cariche: assorbono i colpi nemici e anche i tuoi. Cerca uno spazio libero per attaccare.</li><li>Elimina tutti i droni per la prossima ondata. Gli scudi si ricostruiscono, ma il nemico diventa pi&ugrave; veloce.</li><li>Hai tre vite e una breve protezione dopo ogni colpo. Se un drone raggiunge la base, la difesa termina.</li></ol></details>
 </main>
-<script src="../js/giocatori.js"></script><script src="../js/arcade.js"></script><script src="../js/arcade-pagina.js"></script><script src="./funzioni.js"></script><script src="./main.js"></script>
+<script src="../js/tavola.js"></script><script src="../js/giocatori.js"></script><script src="../js/arcade.js"></script><script src="../js/arcade-pagina.js"></script><script src="./funzioni.js"></script><script src="./main.js"></script>
 </body>
 </html>

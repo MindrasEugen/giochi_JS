@@ -195,20 +195,24 @@ body.con-gesti .arcade-comandi {
   display: none;
 }
 body.con-gesti .arcade-statistica {
-  padding: calc(var(--spazio-1) * 1.5) var(--spazio-2);
+  padding: var(--spazio-1) calc(var(--spazio-1) * 0.5);
   border-radius: var(--raggio-s);
   overflow-wrap: normal;
 }
 body.con-gesti .arcade-statistica span,
 body.con-gesti .arcade-statistica strong {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
   overflow-wrap: normal;
   word-break: normal;
 }
 body.con-gesti .arcade-statistica span {
-  font-size: calc(var(--testo-s) * 0.8);
+  font-size: calc(var(--testo-s) * 0.75);
+}
+body.con-gesti .arcade-statistica strong {
+  font-size: calc(var(--testo-s) * 0.9);
+  line-height: 1.1;
 }
 body.con-gesti.mostra-pulsanti .arcade-comandi {
   display: flex;
@@ -394,6 +398,8 @@ body.con-tavola:has(#contenitore_gioco > .tabellone) .azioni {
     overflow-wrap: anywhere;
   }
   body.con-gesti .arcade-statistica strong {
+    font-size: var(--testo-l);
+    line-height: inherit;
     overflow-wrap: anywhere;
   }
   body.con-tavola .arcade-campo--quadrato {

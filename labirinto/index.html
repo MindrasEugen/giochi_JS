@@ -8,12 +8,13 @@
   <link rel="stylesheet" href="../css/gioco.css">
   <link rel="stylesheet" href="../css/giocatori.css">
   <link rel="stylesheet" href="../css/arcade.css">
+  <link rel="stylesheet" href="../css/tavola.css">
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 <main class="contenitore" id="contenitore_gioco">
-  <a class="link-home" href="../index.html">&larr; Tutti i giochi</a>
-  <header class="arcade-intro"><p class="occhiello">Sala arcade / Labirinto</p><h1>Accendi ogni angolo.</h1><p class="sottotitolo">Esplora i corridoi, raccogli le luci e lascia i guardiani alle tue spalle. Un percorso tutto da scoprire.</p></header>
+  <a class="link-home" data-pannello href="../index.html">&larr; Tutti i giochi</a>
+  <header class="arcade-intro" data-pannello><p class="occhiello">Sala arcade / Labirinto</p><h1>Accendi ogni angolo.</h1><p class="sottotitolo">Esplora i corridoi, raccogli le luci e lascia i guardiani alle tue spalle. Un percorso tutto da scoprire.</p></header>
 
   <div class="arcade-statistiche" aria-label="Tabellone">
     <div class="arcade-statistica"><span id="etichetta1">Punti</span><strong id="punti1">0</strong></div>
@@ -28,9 +29,9 @@
   <div class="arcade-azioni"><button class="pulsante" type="button" id="avvia" aria-pressed="false">Gioca</button><button class="pulsante pulsante--secondario" type="button" id="nuovaPartita">Nuova partita</button></div>
   <p id="messaggi" role="status" aria-live="polite"></p>
   <div class="arcade-comandi" aria-label="Comandi touch"><fieldset><legend>Esploratore</legend><div class="arcade-tasti"><button class="arcade-tasto" type="button" data-tasto="ArrowUp">Su</button><button class="arcade-tasto" type="button" data-tasto="ArrowLeft">Sinistra</button><button class="arcade-tasto" type="button" data-tasto="ArrowDown">Gi&ugrave;</button><button class="arcade-tasto" type="button" data-tasto="ArrowRight">Destra</button></div></fieldset></div>
-  <p class="arcade-aiuto" id="aiuto">P o Esc per la pausa. Cambiando scheda il gioco si ferma; premi Riprendi per continuare.</p>
-  <details class="pannello regole"><summary>Regole e comandi</summary><ol><li>Frecce, WASD o pulsanti cambiano direzione. La svolta richiesta viene eseguita appena il corridoio lo permette.</li><li>Raccogli tutte le luci per vincere. Ogni luce vale 10 punti.</li><li>I tre cristalli grandi danno 40 punti extra e sette secondi di energia: i guardiani si allontanano e puoi rimandarli alla base per 100 punti.</li><li>Hai tre vite. Dopo essere stato raggiunto riparti dall'ingresso con due secondi di protezione; le luci raccolte restano tue.</li></ol></details>
+  <p class="arcade-aiuto" id="aiuto" data-pannello>P o Esc per la pausa. Cambiando scheda il gioco si ferma; premi Riprendi per continuare.</p>
+  <details class="pannello regole" data-pannello><summary>Regole e comandi</summary><ol><li>Scorri il dito sul campo nella direzione in cui vuoi andare, oppure usa frecce, WASD o pulsanti (sul telefono si mostrano dal menu &#8943;). Un tocco sul campo avvia o riprende la partita. La svolta richiesta viene eseguita appena il corridoio lo permette.</li><li>Raccogli tutte le luci per vincere. Ogni luce vale 10 punti.</li><li>I tre cristalli grandi danno 40 punti extra e sette secondi di energia: i guardiani si allontanano e puoi rimandarli alla base per 100 punti.</li><li>Hai tre vite. Dopo essere stato raggiunto riparti dall'ingresso con due secondi di protezione; le luci raccolte restano tue.</li></ol></details>
 </main>
-<script src="../js/giocatori.js"></script><script src="../js/arcade.js"></script><script src="../js/arcade-pagina.js"></script><script src="./funzioni.js"></script><script src="./main.js"></script>
+<script src="../js/tavola.js"></script><script src="../js/giocatori.js"></script><script src="../js/arcade.js"></script><script src="../js/arcade-pagina.js"></script><script src="./funzioni.js"></script><script src="./main.js"></script>
 </body>
 </html>
