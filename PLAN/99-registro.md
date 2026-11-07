@@ -83,3 +83,5 @@ Ultima modifica: 2026-11-03
 - 2026-11-06 - Tappa 31 completata: seconda prova sul telefono passata («ok, ora va bene»). Piano di nuovo completato.
 - 2026-11-06 - Scritto il piano della Tappa 32 (solitari: pulsante Suggerimento e avviso quando non ci sono più mosse utili), in attesa del via.
 - 2026-11-06 - Tappa 32: aiutante comune dei solitari (suggerimento e avviso «Nessuna mossa utile»), CSS di Codex, test, prova nel browser e APK. Manca la prova sul telefono.
+- 2026-11-07 - Scritto il piano della Tappa 33 (Meteore: nuovo gioco arcade con navicella e rocce che si spezzano), in attesa del via.
+- 2026-11-07 - Tappa 33: Meteore (logica, pagina, test, voce nella home, 51 giochi), prova nel browser e APK. Manca la prova sul telefono.

@@ -1,6 +1,6 @@
 # Fuori MVP
 
-Ultima modifica: 2026-11-06
+Ultima modifica: 2026-11-07
 
 Idee non incluse in questo lavoro, da valutare in futuro:
 
@@ -16,3 +16,4 @@ Idee non incluse in questo lavoro, da valutare in futuro:
 - Orizzontale nell'app solo per alcuni giochi scelti dall'utente, con un layout per schermi bassi e larghi: era la [Tappa 29.1](47-tappa-29-1-orizzontale.md), saltata il 2026-11-06.
 - APK firmato per pubblicare l'app su uno store: la chiave di firma la crea e la custodisce l'utente.
 - Spostare Forza 4, Memory, Campo minato, Raddoppia e Sudoku su `css/gioco.css` (creato nella Tappa 13, [ADR 0010](../ADR/0010-css-comune-delle-pagine-di-gioco.md)), togliendo le regole ripetute dai loro `style.css`.
+- Meteore: astronave nemica che spara e salto nell'iperspazio ([Tappa 33](51-tappa-33-meteore.md)).

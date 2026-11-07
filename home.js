@@ -83,6 +83,8 @@ const GIOCHI = [
       descrizione: 'Rimanda la palla al computer o a un amico. Vince chi arriva per primo a 7 punti.' },
     { nome: 'Mattoncini', cartella: 'mattoncini', categoria: 'arcade', emoji: '🧱', dueGiocatori: false,
       descrizione: 'Tre livelli, tre vite e bonus da raccogliere: libera il campo e supera il tuo record.' },
+    { nome: 'Meteore', cartella: 'meteore', categoria: 'arcade', emoji: '☄️', dueGiocatori: false,
+      descrizione: 'Pilota la navicella senza attrito e spara alle rocce: ogni colpo le spezza in pezzi più veloci.' },
     { nome: 'Sasso carta forbici', cartella: 'sasso_carta_forbici', categoria: 'classici', emoji: '✊', dueGiocatori: true,
       descrizione: 'Contro il computer o contro un amico: vince chi arriva per primo a 5 punti.' },
     { nome: 'Indovina il numero', cartella: 'indovina_il_numero', categoria: 'classici', emoji: '🔢', dueGiocatori: true,

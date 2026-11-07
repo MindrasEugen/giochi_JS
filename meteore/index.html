@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meteore | Giochi di una volta</title>
+  <link rel="stylesheet" href="../css/comune.css">
+  <link rel="stylesheet" href="../css/gioco.css">
+  <link rel="stylesheet" href="../css/giocatori.css">
+  <link rel="stylesheet" href="../css/arcade.css">
+  <link rel="stylesheet" href="../css/tavola.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="contenitore" id="contenitore_gioco">
+  <a class="link-home" data-pannello href="../index.html">&larr; Tutti i giochi</a>
+  <header class="arcade-intro" data-pannello><p class="occhiello">Sala arcade / Meteore</p><h1>Rocce in arrivo.</h1><p class="sottotitolo">Pilota la navicella e spara alle meteore: ogni roccia colpita si spezza in pezzi più piccoli e più veloci. Ondate senza fine, tre vite.</p></header>
+
+  <div class="arcade-statistiche" aria-label="Tabellone">
+    <div class="arcade-statistica"><span id="etichetta1">Punti</span><strong id="punti1">0</strong></div>
+    <div class="arcade-statistica"><span id="etichetta2">Vite</span><strong id="punti2">3</strong></div>
+    <div class="arcade-statistica"><span>Obiettivo</span><strong id="fase">Pronto</strong></div>
+    <div class="arcade-statistica"><span>Record personale (solo)</span><strong id="record">0</strong></div>
+  </div>
+  <div class="arcade-campo arcade-campo--verticale">
+    <canvas width="600" height="520" tabindex="0" aria-label="Campo di Meteore. Comandi descritti nelle regole." aria-describedby="aiuto">Il gioco richiede un browser con supporto canvas.</canvas>
+    <div class="arcade-velo" id="velo"><h2 id="statoTitolo">Pronto?</h2><p id="statoTesto">Premi Gioca per iniziare.</p></div>
+  </div>
+  <div class="arcade-azioni"><button class="pulsante" type="button" id="avvia" aria-pressed="false">Gioca</button><button class="pulsante pulsante--secondario" type="button" id="nuovaPartita">Nuova partita</button></div>
+  <p id="messaggi" role="status" aria-live="polite"></p>
+  <div class="arcade-comandi" aria-label="Comandi touch"><fieldset><legend>Navicella</legend><div class="arcade-tasti"><button class="arcade-tasto" type="button" data-tasto="ArrowLeft" aria-label="Ruota a sinistra">Sinistra</button><button class="arcade-tasto" type="button" data-tasto="ArrowUp" aria-label="Spinta">Spinta</button><button class="arcade-tasto" type="button" data-tasto="Space" aria-label="Spara">Spara</button><button class="arcade-tasto" type="button" data-tasto="ArrowRight" aria-label="Ruota a destra">Destra</button></div></fieldset></div>
+  <p class="arcade-aiuto" id="aiuto" data-pannello>P o Esc per la pausa. Cambiando scheda il gioco si ferma; premi Riprendi per continuare.</p>
+  <details class="pannello regole" data-pannello><summary>Regole e comandi</summary><ol><li>Ruota la navicella con le frecce ← →, A e D o i pulsanti Sinistra e Destra (sul telefono si mostrano dal menu &#8943;).</li><li>Accelera con ↑, W o Spinta. Nello spazio non c'è attrito: la navicella continua a scivolare e rallenta pochissimo.</li><li>Spara con Spazio o Spara; tenendo premuto spari di continuo. In volo ci sono al massimo 4 colpi alla volta.</li><li>Sul telefono tieni il dito sul campo: la navicella si gira verso il dito e spara. Se il dito è lontano dalla navicella, accelera anche verso di lui. Un tocco sul campo avvia o riprende la partita.</li><li>Chi esce da un bordo rientra dal lato opposto: navicella, colpi e rocce.</li><li>Una roccia grande colpita si spezza in due medie, una media in due piccole; le piccole spariscono. Punti: grande 20, media 50, piccola 100.</li><li>Se una roccia tocca la navicella perdi una vita: la navicella riappare al centro e per 2 secondi lampeggia e non può essere colpita. Ogni 10.000 punti guadagni una vita.</li><li>Ripulito lo schermo arriva un'ondata nuova, con una roccia in più e più veloce. Le ondate non finiscono mai: il record viene salvato alla fine della partita.</li></ol></details>
+</main>
+<script src="../js/tavola.js"></script><script src="../js/giocatori.js"></script><script src="../js/arcade.js"></script><script src="../js/arcade-pagina.js"></script><script src="./funzioni.js"></script><script src="./main.js"></script>
+<script src="../js/indietro.js"></script>
+</body>
+</html>

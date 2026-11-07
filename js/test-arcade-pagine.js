@@ -12,13 +12,13 @@ class Elemento {
     getContext() { return new Proxy({}, { get: () => () => {} }); }
     emetti(k, extra = {}) { for (const f of this.listeners[k] || []) f({ target: this, preventDefault() {}, ...extra }); }
 }
-for (const gioco of ['serpente', 'ping_pong', 'mattoncini', 'blocchi', 'invasione', 'volo', 'labirinto']) {
+for (const gioco of ['serpente', 'ping_pong', 'mattoncini', 'blocchi', 'invasione', 'volo', 'labirinto', 'meteore']) {
     const nodi = new Map(), eventi = new Elemento(), finestra = new Elemento();
     let frame, barra;
     const documento = {
         body: new Elemento(), documentElement: new Elemento(), hidden: false,
         querySelector(k) {
-            if (k === '.copertura' || (k === '#modalitaGioco' && ['mattoncini', 'invasione', 'labirinto'].includes(gioco))) return null;
+            if (k === '.copertura' || (k === '#modalitaGioco' && ['mattoncini', 'invasione', 'labirinto', 'meteore'].includes(gioco))) return null;
             if (!nodi.has(k)) nodi.set(k, new Elemento()); return nodi.get(k);
         }, querySelectorAll: () => [],
         addEventListener: (...args) => eventi.addEventListener(...args), removeEventListener() {}
@@ -104,6 +104,18 @@ for (const gioco of ['serpente', 'ping_pong', 'mattoncini', 'blocchi', 'invasion
         ev('pointerup', 300, 400, 2);
         assert.equal(fuoco(20200), false, 'invasione: dita alzate, sparo fermo');
         val('config.passo = passoVero');
+    }
+    if (gioco === 'meteore') {
+        // Il dito sul campo dà la mira (in coordinate del campo) e tiene premuto lo sparo; il passo vero qui è già sostituito
+        val('config.passo = (s, dt, t) => { globalThis.fuoco = t.has("Space"); };');
+        ev('pointerdown', 240, 100);
+        assert.deepEqual(chiamate().map(x => x[0]), ['trascina'], 'meteore: il dito sul campo dà la mira');
+        assert.equal(val('ultimoStato.dito.x'), 300, 'meteore: mira in coordinate del campo');
+        frame(30000); frame(30020);
+        assert.equal(val('globalThis.fuoco'), true, 'meteore: con il dito sul campo spara');
+        ev('pointerup', 240, 100);
+        frame(30040); frame(30060);
+        assert.equal(val('globalThis.fuoco'), false, 'meteore: dito alzato, sparo fermo');
     }
     nodi.get('#nuovaPartita').emetti('click');
     if (barra) {

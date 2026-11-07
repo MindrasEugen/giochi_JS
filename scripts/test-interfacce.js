@@ -80,7 +80,7 @@ console.log('OK home: Ludo mostra fino a quattro giocatori');
 const sezioniHome = () => home.document.querySelector('#categorie').children;
 const linkCategorie = () => home.document.querySelector('#navigazione-categorie').children;
 assert.equal(sezioniHome().length, 8);
-assert.equal(sezioniHome().reduce((n, s) => n + s.children[1].children.length, 0), 50);
+assert.equal(sezioniHome().reduce((n, s) => n + s.children[1].children.length, 0), 51);
 assert.equal(new Set(sezioniHome().map(s => s.id)).size, 8);
 assert.ok(linkCategorie().every(a => sezioniHome().some(s => a.href === `#${s.id}`)));
 home.esegui("disegnaHome('  MAZZO ITALIANO  ')");
@@ -100,7 +100,7 @@ home.document.querySelector('#azzera-ricerca').listeners.click();
 assert.equal(home.document.querySelector('#cerca').value, '');
 assert.equal(sezioniHome().length, 8);
 assert.equal(home.document.querySelector('#nessun-risultato').hidden, true);
-console.log('OK home: 50 giochi in 8 sezioni, ancore valide, ricerca categoria e accenti, nessun risultato e ripristino');
+console.log('OK home: 51 giochi in 8 sezioni, ancore valide, ricerca categoria e accenti, nessun risultato e ripristino');
 
 const finestre = ambiente();
 const sfondo = new Elemento();
