@@ -1,6 +1,6 @@
 # Tappa 32 — Solitari: suggerimento e avviso quando non ci sono più mosse
 
-Ultima modifica: 2026-11-06
+Ultima modifica: 2026-11-07
 
 ## Obiettivo
 
@@ -30,7 +30,7 @@ Oggi l'avviso esiste solo in 4 giochi (Piramide, Golf, TriPeaks, Orologio), che 
 - [x] **Regole:** una riga sul suggerimento nelle regole dei 10 giochi; riga dei solitari nel `README.md`.
 - [x] **Test** (`js/test-solitari-aiuto.js`): partite costruite a mano per ogni gioco con una mossa utile nota (il suggerimento deve trovarla), partite senza mosse utili (l'aiutante deve dirlo), Klondike con la carta utile in fondo al mazzo (suggerimento «gira dal mazzo»), Spider con mazzo pieno (mai bloccato); il suggerimento applicato non deve mai dare una mossa non valida; tempo della ricerca misurato su partite vere (obiettivo: sotto i 50 ms).
 - [x] Prova nel browser (412×880, 375×667, schermo largo) e nuovo APK
-- [ ] Prova sul telefono (utente)
+- [x] Prova sul telefono (utente): «il pulsante l'ho provato in diversi giochi e funziona bene, ed è anche abbastanza visibile»
 - [x] ADR 0014: aiutante comune con ricerca in avanti, invece di un suggerimento scritto gioco per gioco.
 
 ## Come verificare

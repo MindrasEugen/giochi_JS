@@ -34,6 +34,6 @@ ArcadePagina.avvia({
         });
         for (const p of s.proiettili) { ctx.fillStyle = p.amico ? c.accento : c.errore; ctx.fillRect(p.x - 2, p.y - 7, 4, 14); }
         ctx.globalAlpha = s.invulnerabile > 0 ? 0.5 : 1;
-        ctx.fillStyle = c.superficie; const y = Invasione.fondo(s); ctx.beginPath(); ctx.moveTo(s.x, y - 57); ctx.lineTo(s.x + 20, y - 27); ctx.lineTo(s.x, y - 35); ctx.lineTo(s.x - 20, y - 27); ctx.closePath(); ctx.fill(); ctx.globalAlpha = 1;
+        ctx.fillStyle = c.superficie; const y = Invasione.linea(s); ctx.beginPath(); ctx.moveTo(s.x, y - 57); ctx.lineTo(s.x + 20, y - 27); ctx.lineTo(s.x, y - 35); ctx.lineTo(s.x - 20, y - 27); ctx.closePath(); ctx.fill(); ctx.globalAlpha = 1;
     }
 });

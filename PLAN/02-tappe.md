@@ -44,7 +44,8 @@ Ultima modifica: 2026-11-07
 | 29.2 | [Arcade: campo grande quanto lo schermo](48-tappa-29-2-campo-arcade.md) | ☑ completata |
 | 30 | [APK e prova sul telefono](46-tappa-30-apk.md) | ☑ completata |
 | 31 | [Mattoncini: livelli infiniti, colpi di bordo, mattoni che scendono, doppia palla](49-tappa-31-mattoncini-livelli.md) | ☑ completata |
-| 32 | [Solitari: suggerimento e avviso quando non ci sono più mosse](50-tappa-32-solitari-aiuto.md) | ◐ in corso (manca la prova sul telefono) |
+| 32 | [Solitari: suggerimento e avviso quando non ci sono più mosse](50-tappa-32-solitari-aiuto.md) | ☑ completata |
 | 33 | [Meteore: nuovo gioco arcade nello spazio](51-tappa-33-meteore.md) | ☑ completata |
+| 34 | [Invasione: navetta più in alto sul telefono](52-tappa-34-invasione-fascia-dito.md) | ◐ in corso (manca la prova sul telefono) |
 
 Legenda: ☐ da fare · ◐ in corso · ☑ completata · ✗ annullata
