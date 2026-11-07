@@ -2,6 +2,6 @@
 
 Ultima modifica: 2026-11-07
 
-- **Prova sul telefono** con l'APK nuovo (`android/app/build/outputs/apk/debug/app-debug.apk`), per due tappe insieme: [Tappa 33](51-tappa-33-meteore.md) (Meteore: gesti con il dito, pulsanti dal menu ⋯, velocità) e Tappa 32 (sotto).
+- [Tappa 33](51-tappa-33-meteore.md) (Meteore) completata: prova sul telefono passata. Resta da confermare la Tappa 32 (sotto), con lo stesso APK.
 - **Azione successiva:** [Tappa 32](50-tappa-32-solitari-aiuto.md), suggerimento e avviso nei solitari. L'utente prova sul telefono l'APK nuovo (`android/app/build/outputs/apk/debug/app-debug.apk`): pulsante Suggerimento e avviso in qualche solitario.
 - **Stato:** Tappa 21 nel commit locale `a09ad34`; Tappe 19 e 20 in `d8b5604`; Serpente e Tappe 15–18 in `ef38270`; Tappa 18 in `57bc737`; correzioni del controllo del 2026-11-04 nel commit `b25a80e`. Tappe 16 e 17 nel commit locale `0df7b0d`; Tappa 15 in `fe8bc4d`. I push vengono eseguiti dall'utente.

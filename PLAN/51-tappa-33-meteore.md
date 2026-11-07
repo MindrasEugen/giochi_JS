@@ -34,7 +34,7 @@ Il gioco usa la base comune degli arcade (`js/arcade.js`, `js/arcade-pagina.js`,
 - [x] **Test** (`meteore/test-meteore.js`): rientro dai bordi, rotazione e spinta senza attrito, spaccatura grande → 2 medie → 2 piccole → niente, punti per misura, massimo 4 colpi, durata dei colpi, vita persa e invulnerabilità, vita extra a 10.000, ondata successiva con una roccia in più, fine partita a 0 vite, nessuna roccia che nasce sopra la navicella.
 - [x] Controllo dei test comuni (`js/test-arcade-pagine.js`, `scripts/test-interfacce.js`) e della lista dei file copiati per l'app (`scripts/build-www.js`).
 - [x] Prova nel browser (412×880, 375×667 e schermo largo) e nuovo APK.
-- [ ] Prova sul telefono (utente): gesti, pulsanti dal menu ⋯, velocità del gioco.
+- [x] Prova sul telefono (utente): gesti, pulsanti dal menu ⋯, velocità del gioco. Esito: «funziona perfettamente».
 
 ## Come verificare
 
