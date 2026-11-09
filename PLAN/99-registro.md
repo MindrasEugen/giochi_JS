@@ -92,3 +92,4 @@ Ultima modifica: 2026-11-03
 - 2026-11-09 - Tappa 35: Puzzle scorrevole (6 immagini SVG, logica con suggerimento, pagina, CSS di Codex in tre giri, test, 52 giochi), prova nel browser e APK. Manca la prova sul telefono.
 - 2026-11-09 - Tappa 35: aggiunte all'elenco del Puzzle scorrevole le 12 immagini SVG dell'utente (18 in tutto), test della cartella, APK rigenerato.
 - 2026-11-09 - Tappa 35: elenco automatico delle immagini del puzzle (`pnpm immagini`, anche dentro `build` e `sync`), ADR 0016, APK rigenerato.
+- 2026-11-09 - Tappe 34 e 35 completate: prova sul telefono di Invasione e del Puzzle scorrevole passata («tutto okay»).

@@ -1,6 +1,6 @@
 # Tappa 34 — Invasione: navetta più in alto sul telefono
 
-Ultima modifica: 2026-11-07
+Ultima modifica: 2026-11-09
 
 ## Obiettivo
 
@@ -12,7 +12,7 @@ Richiesta dell'utente dopo la prova sul telefono: in Invasione la navetta sta tr
 - [x] **Pagina** (`invasione/main.js`): la navetta si disegna su `linea(s)`.
 - [x] **Test** (`invasione/test-invasione.js`): valori del campo alto aggiornati (900: linea 787, scudi 652, colpo da 734, base raggiunta a 717) e controllo che con il campo di 560 non cambi nulla.
 - [x] Prova nel browser (412×880, 375×667 e schermo largo) e nuovo APK
-- [ ] Prova sul telefono (utente)
+- [x] Prova sul telefono (utente). Esito (2026-11-09): «tutto okay».
 
 ## Come verificare
 

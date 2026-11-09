@@ -20,7 +20,7 @@ Richiesta dell'utente: aggiungere alla raccolta un **puzzle scorrevole** per un 
 ## Come si sceglie il suggerimento
 
 - **3×3:** ricerca completa (IDA*, una variante di A* che usa poca memoria, con distanza di Manhattan e conflitti lineari). Il suggerimento è sempre la prima mossa di una soluzione più corta possibile.
-- **4×4 e 5×5:** una soluzione più corta possibile è troppo lenta da calcolare su un telefono. Si usa una ricerca a profondità limitata (IDA* con distanza di Manhattan e conflitti lineari), fermata dopo un numero massimo di posizioni esaminate. In pratica si usa una ricerca A* pesata (vedi Esito); se non trova la soluzione entro il limite, si ripercorre all'indietro la storia della partita fino al puzzle risolto. Il suggerimento avvicina alla soluzione ma non è sempre il più corto.
+- **4×4 e 5×5:** una soluzione più corta possibile è troppo lenta da calcolare su un telefono. Si usa una ricerca A* pesata (vedi Esito), fermata dopo un numero massimo di posizioni esaminate; se non trova la soluzione entro il limite, si ripercorre all'indietro la storia della partita fino al puzzle risolto. Il suggerimento avvicina alla soluzione ma non è sempre il più corto.
 
 ## Attività
 
@@ -31,7 +31,7 @@ Richiesta dell'utente: aggiungere alla raccolta un **puzzle scorrevole** per un 
 - [x] **Home e testi:** voce in `home.js` (logica, 1 giocatore), totale da 51 a 52 in `index.html`, `README.md` e `scripts/test-interfacce.js`.
 - [x] **Test** (`puzzle_scorrevole/test-puzzle.js`): mosse solo vicino allo spazio vuoto, mescolamento sempre risolvibile e mai già risolto, vittoria riconosciuta, tempo che parte alla prima mossa, tre suggerimenti al massimo, suggerimento esatto sul 3×3 e suggerimento che porta davvero alla soluzione (seguendo solo i suggerimenti) su posizioni facili del 4×4 e 5×5, immagine diversa dalla precedente.
 - [x] Prova nel browser (412×880, 375×667, schermo largo) e nuovo APK.
-- [ ] Prova sul telefono (utente).
+- [x] Prova sul telefono (utente), con le 18 immagini e l'elenco automatico. Esito (2026-11-09): «tutto okay».
 
 ## Come verificare
 
@@ -59,5 +59,4 @@ Richiesta dell'utente: aggiungere alla raccolta un **puzzle scorrevole** per un 
 
 ## Problemi aperti
 
-- Prova sul telefono (utente): tasselli comodi da toccare anche nel 5×5, suggerimento ben visibile, anteprima che non dà fastidio sopra l'angolo della griglia.
-- La [Tappa 34](52-tappa-34-invasione-fascia-dito.md) aspetta ancora la prova sul telefono: si può fare con lo stesso APK nuovo.
+- Nessuno.

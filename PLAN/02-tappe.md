@@ -46,7 +46,7 @@ Ultima modifica: 2026-11-09
 | 31 | [Mattoncini: livelli infiniti, colpi di bordo, mattoni che scendono, doppia palla](49-tappa-31-mattoncini-livelli.md) | ☑ completata |
 | 32 | [Solitari: suggerimento e avviso quando non ci sono più mosse](50-tappa-32-solitari-aiuto.md) | ☑ completata |
 | 33 | [Meteore: nuovo gioco arcade nello spazio](51-tappa-33-meteore.md) | ☑ completata |
-| 34 | [Invasione: navetta più in alto sul telefono](52-tappa-34-invasione-fascia-dito.md) | ◐ in corso (manca la prova sul telefono) |
-| 35 | [Puzzle scorrevole: nuovo gioco di logica](53-tappa-35-puzzle-scorrevole.md) | ◐ in corso (manca la prova sul telefono) |
+| 34 | [Invasione: navetta più in alto sul telefono](52-tappa-34-invasione-fascia-dito.md) | ☑ completata |
+| 35 | [Puzzle scorrevole: nuovo gioco di logica](53-tappa-35-puzzle-scorrevole.md) | ☑ completata |
 
 Legenda: ☐ da fare · ◐ in corso · ☑ completata · ✗ annullata
