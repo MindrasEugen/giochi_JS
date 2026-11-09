@@ -19,7 +19,8 @@ Le decisioni prese nel progetto Giochi JS. Ogni file descrive una decisione: **c
 | [0013](0013-app-android-con-capacitor.md) | App Android con Capacitor | 2026-11-06 | Tappa 28 |
 | [0014](0014-aiutante-comune-dei-solitari.md) | Aiutante comune dei solitari con ricerca in avanti (suggerimento e «nessuna mossa utile») | 2026-11-06 | Tappa 32 |
 | [0015](0015-puzzle-scorrevole-suggerimento-e-immagini.md) | Puzzle scorrevole: suggerimento a ricerca (esatto sul 3×3) e immagini in SVG | 2026-11-09 | Tappa 35 |
+| [0016](0016-elenco-automatico-immagini-puzzle.md) | Elenco automatico delle immagini del Puzzle scorrevole (`pnpm immagini`) | 2026-11-09 | Tappa 35 |
 
 ## Decisioni sostituite
 
-Nessuna.
+- [0015](0015-puzzle-scorrevole-suggerimento-e-immagini.md), solo la parte sull'elenco delle immagini scritto a mano → [0016](0016-elenco-automatico-immagini-puzzle.md).

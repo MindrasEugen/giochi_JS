@@ -22,6 +22,10 @@ Briscola, Scopa, Asso piglia tutto e Rubamazzetto usano le immagini del mazzo it
 Scopone scientifico (in coppie, anche con due persone e due compagni PC), Cirulla (presa del 15, matta e bussate), Tressette (a 2 con la pesca o a 4 in coppie, con obbligo di rispondere al seme) e Briscola chiamata (cinque giocatori, asta e socio segreto) completano il mazzo italiano. Mercante in fiera (asta con le fiches ed estrazione) e Cucù (scambi e vite) si giocano da 2 a 6, mescolando persone e PC.
 Blackjack (in due uno dei giocatori fa il banco, a turno) e Guerra usano il mazzo francese; Cambio colore ha un mazzo originale disegnato in CSS, da 2 a 4 giocatori. Le varianti adottate e i riferimenti delle regole sono nelle singole pagine; il conteggio finale mostra tutti i punti assegnati.
 
+## Immagini del Puzzle scorrevole
+
+Per aggiungere un'immagine basta copiarla in `puzzle_scorrevole/immagini/` (SVG, PNG, JPG o WebP, meglio quadrata) e avviare `pnpm immagini`: lo script `scripts/elenco-immagini.js` riscrive l'elenco in `puzzle_scorrevole/immagini.js` (il browser non può leggere il contenuto di una cartella). Il nome mostrato sotto l'anteprima è il `<title>` dell'SVG oppure, se manca, il nome del file (`13-faro-nella-tempesta.svg` → «Faro nella tempesta»). L'elenco si aggiorna da solo anche con `pnpm build` e `pnpm sync`; se ci si dimentica, `node scripts/check.js` lo segnala.
+
 ## App Android
 
 L'app «Giochi di una volta» (`it.giochijs.app`) contiene gli stessi giochi del sito, a schermo intero e in verticale, con il tasto indietro di Android e i campi degli arcade grandi quanto lo schermo. Le scelte sono negli [ADR 0012 e 0013](ADR/README.md).

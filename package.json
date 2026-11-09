@@ -5,8 +5,9 @@
   "description": "Giochi di una volta: raccolta di giochi in HTML, CSS e JavaScript, anche come app Android con Capacitor",
   "scripts": {
     "check": "node scripts/check.js",
-    "build": "node scripts/build-www.js",
-    "sync": "node scripts/build-www.js && cap sync android",
+    "immagini": "node scripts/elenco-immagini.js",
+    "build": "node scripts/elenco-immagini.js && node scripts/build-www.js",
+    "sync": "node scripts/elenco-immagini.js && node scripts/build-www.js && cap sync android",
     "android": "cap open android"
   },
   "dependencies": {

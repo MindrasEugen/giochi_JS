@@ -67,9 +67,16 @@ for (let k = 0; k < 200; k++) {
 controlla('l\'immagine nuova è sempre diversa da quella appena giocata', mairipetuta);
 controlla('con una sola immagine si usa quella', P.scegliImmagine([{ file: 'a.svg' }], 'a.svg', caso).file === 'a.svg');
 controlla('tutti i file delle immagini esistono', P.IMMAGINI.every(i => fs.existsSync(path.join(__dirname, 'immagini', i.file))));
-const inCartella = fs.readdirSync(path.join(__dirname, 'immagini')).filter(f => /\.(svg|png|jpe?g|webp)$/i.test(f));
-const mancanti = inCartella.filter(f => !P.IMMAGINI.some(i => i.file === f));
-controlla(`ogni immagine della cartella è nell'elenco (${inCartella.length} file)${mancanti.length ? ': mancano ' + mancanti.join(', ') : ''}`, mancanti.length === 0);
+// L'elenco generato (immagini.js) deve corrispondere alla cartella: se no, manca un "pnpm immagini"
+const Elenco = require('../scripts/elenco-immagini.js');
+const inCartella = Elenco.elenco();
+const mancanti = inCartella.filter(i => !P.IMMAGINI.some(j => j.file === i.file && j.nome === i.nome)).map(i => i.file);
+const sparite = P.IMMAGINI.filter(j => !inCartella.some(i => i.file === j.file)).map(j => j.file);
+controlla(`immagini.js aggiornato con la cartella (${inCartella.length} file)${mancanti.length + sparite.length ? `: avvia pnpm immagini (nuove: ${mancanti.join(', ') || 'nessuna'}; tolte: ${sparite.join(', ') || 'nessuna'})` : ''}`,
+    mancanti.length === 0 && sparite.length === 0);
+controlla('nome dal file: "13-faro-nella-tempesta.svg" diventa "Faro nella tempesta"', Elenco.nomeDaFile('13-faro-nella-tempesta.svg') === 'Faro nella tempesta'
+    && Elenco.nomeDaFile('Barca_a_vela.png') === 'Barca a vela');
+controlla('i nomi delle immagini vengono dal titolo dell’SVG', P.IMMAGINI.find(i => i.file === 'citta.svg')?.nome === 'Città di notte');
 const usate = new Set(Array.from({ length: 300 }, () => P.scegliImmagine(P.IMMAGINI, null, caso).file));
 controlla('a caso escono tutte le immagini', usate.size === P.IMMAGINI.length);
 
@@ -139,6 +146,7 @@ controlla('riserva: dalla storia si torna verso la soluzione saltando i giri', P
 // --- Pagina, con il DOM minimo ---
 const a = ambiente();
 a.$('#livello').value = 'facile';
+a.carica('puzzle_scorrevole/immagini.js');
 a.carica('puzzle_scorrevole/funzioni.js');
 a.carica('puzzle_scorrevole/main.js');
 controlla('pagina: 9 tasselli nel 3×3, l\'ultimo è il mancante', a.$('#griglia').children.length === 9
