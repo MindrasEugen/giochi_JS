@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <!-- Mongolfiere sulle colline: illustrazione originale per il Puzzle scorrevole -->
+  <defs>
+    <linearGradient id="cielo" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9ad0f5"/>
+      <stop offset="1" stop-color="#fff2d9"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#cielo)"/>
+  <!-- nuvole -->
+  <g fill="#ffffff" opacity="0.9">
+    <ellipse cx="80" cy="60" rx="50" ry="16"/><ellipse cx="110" cy="50" rx="30" ry="16"/>
+    <ellipse cx="480" cy="250" rx="60" ry="16"/><ellipse cx="450" cy="240" rx="34" ry="16"/>
+    <ellipse cx="260" cy="300" rx="44" ry="12"/>
+  </g>
+  <!-- mongolfiera grande a righe -->
+  <g>
+    <path d="M300 40 C230 40 200 100 210 150 C220 200 270 230 285 255 L315 255 C330 230 380 200 390 150 C400 100 370 40 300 40 Z" fill="#ef476f"/>
+    <path d="M300 40 C275 40 255 100 260 150 C265 200 285 230 292 255 L308 255 C315 230 335 200 340 150 C345 100 325 40 300 40 Z" fill="#ffd166"/>
+    <path d="M300 40 C292 40 285 100 288 150 C290 200 296 230 298 255 L302 255 C304 230 310 200 312 150 C315 100 308 40 300 40 Z" fill="#06d6a0"/>
+    <path d="M213 130 Q300 150 387 130" fill="none" stroke="#8d1e3c" stroke-width="5"/>
+    <g stroke="#5b3a29" stroke-width="2"><path d="M287 255 L288 280"/><path d="M313 255 L312 280"/></g>
+    <rect x="282" y="280" width="36" height="28" rx="4" fill="#a0673c"/>
+    <rect x="282" y="280" width="36" height="6" fill="#7a4b2a"/>
+  </g>
+  <!-- mongolfiera media a sinistra -->
+  <g>
+    <circle cx="110" cy="200" r="55" fill="#118ab2"/>
+    <path d="M110 145 C90 165 90 235 110 255 C130 235 130 165 110 145 Z" fill="#8ecae6"/>
+    <path d="M70 238 L100 275 L120 275 L150 238 Z" fill="#118ab2"/>
+    <g stroke="#5b3a29" stroke-width="2"><path d="M100 275 L102 292"/><path d="M120 275 L118 292"/></g>
+    <rect x="98" y="292" width="24" height="18" rx="3" fill="#a0673c"/>
+  </g>
+  <!-- mongolfiera piccola a destra -->
+  <g>
+    <circle cx="500" cy="110" r="36" fill="#f78c6b"/>
+    <path d="M464 110 Q500 124 536 110" fill="none" stroke="#ffffff" stroke-width="5"/>
+    <path d="M474 136 L494 160 L506 160 L526 136 Z" fill="#f78c6b"/>
+    <rect x="493" y="164" width="14" height="11" rx="2" fill="#a0673c"/>
+  </g>
+  <!-- uccelli -->
+  <g fill="none" stroke="#3d405b" stroke-width="2.5" stroke-linecap="round">
+    <path d="M410 60 q6 -6 12 0 q6 -6 12 0"/><path d="M190 30 q6 -6 12 0 q6 -6 12 0"/>
+  </g>
+  <!-- colline -->
+  <path d="M0 420 Q120 330 260 400 T600 380 L600 600 L0 600 Z" fill="#90be6d"/>
+  <path d="M0 470 Q160 400 320 460 T600 450 L600 600 L0 600 Z" fill="#6a994e"/>
+  <path d="M0 530 Q200 480 380 530 T600 520 L600 600 L0 600 Z" fill="#386641"/>
+  <!-- filari di vigne -->
+  <g stroke="#4f772d" stroke-width="4" stroke-linecap="round">
+    <path d="M330 420 L380 470"/><path d="M360 414 L410 464"/><path d="M390 408 L440 458"/><path d="M420 404 L470 454"/>
+  </g>
+  <!-- cipressi -->
+  <g fill="#2d4a22">
+    <ellipse cx="60" cy="400" rx="10" ry="36"/><ellipse cx="84" cy="408" rx="9" ry="30"/><ellipse cx="540" cy="390" rx="10" ry="38"/>
+  </g>
+  <!-- casale con tetto rosso -->
+  <rect x="180" y="405" width="80" height="50" fill="#f2e3bc"/>
+  <path d="M172 408 L220 375 L268 408 Z" fill="#c1440e"/>
+  <rect x="196" y="420" width="14" height="14" fill="#5d4037"/><rect x="230" y="420" width="14" height="14" fill="#5d4037"/>
+  <rect x="213" y="436" width="14" height="19" fill="#7b4b2a"/>
+  <!-- strada e girasoli in primo piano -->
+  <path d="M260 600 Q300 540 330 520 L350 520 Q330 550 330 600 Z" fill="#d9b382"/>
+  <g>
+    <g fill="#ffb703"><circle cx="70" cy="560" r="14"/><circle cx="120" cy="575" r="12"/><circle cx="480" cy="565" r="14"/><circle cx="530" cy="580" r="12"/></g>
+    <g fill="#6d4c41"><circle cx="70" cy="560" r="6"/><circle cx="120" cy="575" r="5"/><circle cx="480" cy="565" r="6"/><circle cx="530" cy="580" r="5"/></g>
+  </g>
+</svg>

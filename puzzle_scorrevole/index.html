@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="it">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/comune.css">
+        <link rel="stylesheet" href="../css/giocatori.css">
+        <link rel="stylesheet" href="../css/tavola.css">
+        <link rel="stylesheet" href="./style.css">
+        <title>Puzzle scorrevole</title>
+    </head>
+
+    <body>
+        <div class="contenitore" id="contenitore_gioco">
+            <a class="link-home" data-pannello href="../index.html">← Tutti i giochi</a>
+            <h1 data-pannello>Puzzle scorrevole</h1>
+            <p class="sottotitolo" data-pannello>Fai scorrere i tasselli nello spazio vuoto finché l'immagine torna intera.</p>
+
+            <div class="barra-modalita" data-pannello>
+                <label for="livello" class="nascosto-visivamente">Livello</label>
+                <select id="livello">
+                    <option value="facile" selected>Facile · 3×3</option>
+                    <option value="medio">Medio · 4×4</option>
+                    <option value="difficile">Difficile · 5×5</option>
+                </select>
+            </div>
+
+            <div class="tabellone">
+                <div class="segnapunti">
+                    <span class="segnapunti__nome">Mosse</span>
+                    <span class="segnapunti__punti" id="mosse">0</span>
+                </div>
+                <div class="segnapunti">
+                    <span class="segnapunti__nome">Tempo</span>
+                    <span class="segnapunti__punti" id="tempo">0:00</span>
+                </div>
+            </div>
+
+            <!-- tasselli creati da main.js; ogni tassello ha le variabili --riga e --colonna -->
+            <div class="griglia-puzzle" id="griglia" role="group" aria-label="Puzzle"></div>
+
+            <div class="azioni-puzzle" id="azioni">
+                <button type="button" id="suggerimento" class="pulsante pulsante--secondario">💡 Suggerimento (3)</button>
+                <button type="button" id="anteprima" class="pulsante pulsante--secondario" aria-expanded="false" aria-controls="anteprima_box">🖼️ Anteprima</button>
+            </div>
+
+            <figure class="anteprima-puzzle" id="anteprima_box" hidden>
+                <img id="anteprima_img" src="" alt="">
+                <figcaption id="anteprima_nome"></figcaption>
+            </figure>
+
+            <p id="messaggi" aria-live="polite"></p>
+
+            <div class="riepilogo-puzzle" id="riepilogo" hidden>
+                <div><span>Mosse</span><strong id="riepilogo_mosse">0</strong></div>
+                <div><span>Tempo</span><strong id="riepilogo_tempo">0:00</strong></div>
+                <div><span>Suggerimenti</span><strong id="riepilogo_suggerimenti">0</strong></div>
+            </div>
+
+            <button type="button" id="nuovaPartita" class="pulsante">Nuova partita</button>
+
+            <details class="pannello regole" data-pannello>
+                <summary>Regole e comandi</summary>
+                <ol>
+                    <li>L'immagine è divisa in tasselli e ne manca uno: rimettila in ordine.</li>
+                    <li>Tocca o clicca un tassello vicino allo spazio vuoto per farlo scivolare dentro. Con la tastiera, le frecce muovono un tassello verso lo spazio vuoto.</li>
+                    <li>Livelli: 3×3, 4×4 o 5×5. A ogni partita arriva un'immagine diversa; il puzzle è sempre risolvibile.</li>
+                    <li>Il tempo parte alla prima mossa.</li>
+                    <li>“Suggerimento” illumina il tassello da muovere per avvicinarti alla soluzione: tre per partita.</li>
+                    <li>“Anteprima” mostra in piccolo l'immagine da ricomporre.</li>
+                </ol>
+            </details>
+        </div>
+        <script src="../js/tavola.js"></script>
+        <script src="./funzioni.js"></script>
+        <script src="./main.js"></script>
+        <script src="../js/indietro.js"></script>
+    </body>
+
+</html>

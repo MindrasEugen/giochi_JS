@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <!-- Bosco in autunno: illustrazione originale per il Puzzle scorrevole -->
+  <defs>
+    <linearGradient id="cielo" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fcd5a5"/>
+      <stop offset="1" stop-color="#fff5e1"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#cielo)"/>
+  <!-- sole pallido e nuvole -->
+  <circle cx="300" cy="90" r="50" fill="#ffe8b0"/>
+  <g fill="#ffffff" opacity="0.8"><ellipse cx="150" cy="60" rx="60" ry="14"/><ellipse cx="470" cy="50" rx="70" ry="14"/></g>
+  <!-- stormo -->
+  <g fill="none" stroke="#7f5539" stroke-width="2.5" stroke-linecap="round">
+    <path d="M360 150 q6 -6 12 0 q6 -6 12 0"/><path d="M390 130 q6 -6 12 0 q6 -6 12 0"/><path d="M420 150 q6 -6 12 0 q6 -6 12 0"/>
+  </g>
+  <!-- colline lontane -->
+  <path d="M0 330 Q150 260 300 320 T600 300 L600 600 L0 600 Z" fill="#e9b872"/>
+  <!-- alberi lontani -->
+  <g>
+    <rect x="236" y="290" width="6" height="40" fill="#6f4518"/><circle cx="239" cy="280" r="26" fill="#f4a259"/>
+    <rect x="356" y="280" width="6" height="40" fill="#6f4518"/><circle cx="359" cy="270" r="28" fill="#e76f51"/>
+    <rect x="416" y="290" width="6" height="34" fill="#6f4518"/><circle cx="419" cy="282" r="22" fill="#ffb703"/>
+  </g>
+  <!-- prato -->
+  <path d="M0 400 Q200 360 400 400 T600 390 L600 600 L0 600 Z" fill="#bc6c25"/>
+  <!-- sentiero -->
+  <path d="M250 600 Q280 500 300 420 Q310 390 330 380 L345 380 Q330 400 330 430 Q330 520 380 600 Z" fill="#dda15e"/>
+  <!-- albero grande a sinistra -->
+  <rect x="70" y="200" width="40" height="300" fill="#6f4518"/>
+  <path d="M90 300 L40 250 M90 260 L140 220" stroke="#6f4518" stroke-width="12" stroke-linecap="round"/>
+  <g>
+    <circle cx="90" cy="150" r="80" fill="#d62828"/><circle cx="30" cy="210" r="50" fill="#f77f00"/>
+    <circle cx="150" cy="200" r="55" fill="#e85d04"/><circle cx="60" cy="100" r="40" fill="#f48c06"/>
+  </g>
+  <!-- cavità con gufo nel tronco -->
+  <ellipse cx="90" cy="360" rx="16" ry="22" fill="#3d2b1f"/>
+  <g><ellipse cx="90" cy="364" rx="12" ry="15" fill="#a68a64"/><circle cx="85" cy="358" r="4" fill="#fff"/><circle cx="95" cy="358" r="4" fill="#fff"/>
+    <circle cx="85" cy="358" r="2" fill="#000"/><circle cx="95" cy="358" r="2" fill="#000"/><path d="M88 364 L92 364 L90 368 Z" fill="#f4a261"/></g>
+  <!-- albero grande a destra -->
+  <rect x="490" y="220" width="36" height="280" fill="#7f5539"/>
+  <g>
+    <circle cx="508" cy="170" r="76" fill="#ffb703"/><circle cx="570" cy="230" r="46" fill="#fb8500"/>
+    <circle cx="450" cy="220" r="44" fill="#ffc300"/><circle cx="540" cy="110" r="36" fill="#f9a03f"/>
+  </g>
+  <!-- foglie che cadono -->
+  <g fill="#d62828">
+    <ellipse cx="200" cy="200" rx="8" ry="4" transform="rotate(30 200 200)"/><ellipse cx="420" cy="350" rx="8" ry="4" transform="rotate(-20 420 350)"/>
+  </g>
+  <g fill="#f77f00">
+    <ellipse cx="180" cy="320" rx="8" ry="4" transform="rotate(-40 180 320)"/><ellipse cx="560" cy="380" rx="8" ry="4" transform="rotate(50 560 380)"/>
+    <ellipse cx="260" cy="230" rx="7" ry="3.5" transform="rotate(10 260 230)"/>
+  </g>
+  <!-- volpe sul prato -->
+  <g>
+    <ellipse cx="420" cy="470" rx="44" ry="22" fill="#e76f51"/>
+    <path d="M376 470 Q330 440 340 500 Q360 490 380 480 Z" fill="#e76f51"/>
+    <path d="M340 500 Q336 488 346 482 Q352 494 340 500 Z" fill="#ffffff"/>
+    <circle cx="464" cy="450" r="20" fill="#e76f51"/>
+    <path d="M452 436 L456 414 L466 432 Z M470 432 L480 414 L482 438 Z" fill="#e76f51"/>
+    <path d="M476 452 L496 458 L478 466 Z" fill="#ffffff"/>
+    <circle cx="470" cy="446" r="2.5" fill="#1b1b1b"/><circle cx="496" cy="458" r="2.5" fill="#1b1b1b"/>
+    <g fill="#3d2b1f"><rect x="398" y="486" width="6" height="16"/><rect x="438" y="486" width="6" height="16"/></g>
+  </g>
+  <!-- funghi e ricci in basso -->
+  <g>
+    <rect x="146" y="540" width="12" height="24" fill="#fefae0"/><path d="M128 542 Q152 506 176 542 Z" fill="#c1121f"/>
+    <g fill="#fefae0"><circle cx="144" cy="530" r="3"/><circle cx="160" cy="526" r="3"/></g>
+    <rect x="186" y="552" width="8" height="16" fill="#fefae0"/><path d="M174 554 Q190 530 206 554 Z" fill="#c1121f"/>
+  </g>
+  <g>
+    <ellipse cx="540" cy="560" rx="26" ry="16" fill="#5e3c23"/>
+    <g stroke="#3d2b1f" stroke-width="3"><path d="M520 552 L514 540"/><path d="M532 546 L530 532"/><path d="M546 546 L550 532"/><path d="M558 552 L566 542"/></g>
+    <circle cx="566" cy="562" r="2.5" fill="#000"/>
+  </g>
+  <!-- foglie a terra -->
+  <g fill="#9c3d10" opacity="0.8">
+    <ellipse cx="40" cy="580" rx="10" ry="5"/><ellipse cx="230" cy="590" rx="9" ry="4"/><ellipse cx="460" cy="585" rx="10" ry="5"/>
+  </g>
+</svg>

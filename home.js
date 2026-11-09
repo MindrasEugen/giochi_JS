@@ -101,6 +101,8 @@ const GIOCHI = [
       descrizione: 'Fai scorrere le tessere e unisci quelle uguali fino a 2048. In due: sfida con le stesse tessere.' },
     { nome: 'Sudoku', cartella: 'sudoku', categoria: 'logica', emoji: '🧩', dueGiocatori: false,
       descrizione: 'Il classico rompicapo dei numeri, con tre difficoltà, note a matita e soluzione sempre unica.' },
+    { nome: 'Puzzle scorrevole', cartella: 'puzzle_scorrevole', categoria: 'logica', emoji: '🖼️', dueGiocatori: false,
+      descrizione: 'Fai scorrere i tasselli e ricomponi l’immagine: tre griglie, mosse, tempo e tre suggerimenti.' },
     { nome: 'Tris', cartella: 'tris', categoria: 'tavolo', emoji: '⭕', dueGiocatori: true,
       descrizione: 'Allinea tre simboli: in due giocatori oppure contro il computer.' },
     { nome: 'Dama', cartella: 'dama', categoria: 'tavolo', emoji: '⚪', dueGiocatori: true,

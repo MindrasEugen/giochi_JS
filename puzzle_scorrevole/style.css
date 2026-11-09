@@ -1,0 +1,338 @@
+/* Pagina */
+.contenitore {
+  position: relative;
+  width: 100%;
+  max-width: 660px;
+  margin-block: var(--spazio-3);
+  background-color: var(--colore-superficie);
+  border-radius: var(--raggio-xl);
+  box-shadow: var(--ombra-forte);
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+h1 { margin-bottom: var(--spazio-1); }
+.sottotitolo {
+  margin-top: 0;
+  color: var(--colore-testo-tenue);
+}
+.barra-modalita { margin-block: var(--spazio-3); }
+#livello { width: 100%; }
+
+/* Punteggio */
+.tabellone:not([hidden]) {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spazio-2);
+  margin: 0 0 var(--spazio-4);
+  padding: var(--spazio-3) var(--spazio-2);
+  border-radius: var(--raggio-l);
+  background: linear-gradient(135deg, var(--colore-primario), var(--colore-primario-chiaro));
+  color: var(--colore-superficie);
+}
+.segnapunti {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spazio-1);
+  min-width: 0;
+  padding: var(--spazio-1);
+}
+.segnapunti__nome { font-size: var(--testo-s); }
+.segnapunti__punti {
+  color: var(--colore-accento);
+  font-size: var(--testo-xl);
+  font-weight: var(--peso-bold);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+
+/* Griglia e tasselli */
+.griglia-puzzle {
+  position: relative;
+  width: min(100%, 60svh);
+  aspect-ratio: 1;
+  margin: var(--spazio-3) auto;
+  overflow: hidden;
+  border-radius: var(--raggio-m);
+  background-color: var(--colore-bordo);
+  box-shadow: var(--ombra-media);
+}
+.griglia-puzzle > .tassello {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% / var(--lato));
+  height: calc(100% / var(--lato));
+  transform: translate(calc(var(--colonna) * 100%), calc(var(--riga) * 100%));
+  appearance: none;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background-color: var(--colore-superficie);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--colore-superficie) 50%, transparent);
+  cursor: default;
+  touch-action: manipulation;
+  transition: transform var(--transizione), opacity var(--transizione);
+}
+.griglia-puzzle > .tassello--mobile { cursor: pointer; }
+.griglia-puzzle > .tassello:focus-visible {
+  z-index: 2;
+  outline: var(--spazio-1) solid var(--colore-accento);
+  outline-offset: calc(-1 * var(--spazio-1));
+}
+.griglia-puzzle > .tassello--suggerito {
+  z-index: 1;
+  box-shadow: inset 0 0 0 var(--spazio-1) var(--colore-accento),
+    inset 0 0 0 var(--spazio-2) var(--colore-primario);
+  animation: suggerimento-puzzle 2s ease-in-out infinite;
+}
+@keyframes suggerimento-puzzle {
+  50% {
+    box-shadow: inset 0 0 0 var(--spazio-2) var(--colore-accento),
+      inset 0 0 0 calc(var(--spazio-2) + var(--spazio-1)) var(--colore-primario);
+  }
+}
+.griglia-puzzle > .tassello--mancante {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+.griglia-puzzle--completa {
+  background-image: var(--immagine);
+  background-size: 100% 100%;
+  box-shadow: var(--ombra-forte);
+}
+.griglia-puzzle--completa > .tassello {
+  box-shadow: none;
+  cursor: default;
+  animation: dissolvenza-puzzle-completo .3s ease .4s forwards;
+  filter: none;
+}
+.griglia-puzzle--completa > .tassello--mancante {
+  opacity: 1;
+  visibility: visible;
+}
+/* Il ritardo lascia terminare la comparsa del tassello mancante. */
+@keyframes dissolvenza-puzzle-completo {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@media (hover: hover) {
+  .griglia-puzzle:not(.griglia-puzzle--completa) > .tassello--mobile:hover {
+    filter: brightness(1.1);
+  }
+}
+
+/* Comandi e messaggi */
+.azioni-puzzle {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spazio-2);
+  margin-block: var(--spazio-3);
+}
+.azioni-puzzle .pulsante {
+  min-width: 0;
+  min-height: var(--area-minima);
+  height: auto;
+  padding: var(--spazio-2);
+  font-size: var(--testo-s);
+}
+#suggerimento:disabled { opacity: .45; cursor: not-allowed; }
+#messaggi {
+  width: fit-content;
+  max-width: 100%;
+  margin: var(--spazio-3) auto;
+  padding: var(--spazio-2) var(--spazio-3);
+  border: 1px solid var(--colore-bordo);
+  border-radius: var(--raggio-xl);
+  background-color: var(--colore-sfondo);
+  font-size: var(--testo-m);
+  font-weight: var(--peso-semibold);
+}
+#messaggi:empty { display: none; }
+#contenitore_gioco #messaggi { align-self: center; margin-inline: auto; text-align: center; }
+#messaggi.messaggio--successo { color: var(--colore-successo); }
+#nuovaPartita {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  min-height: var(--area-minima);
+  margin-top: var(--spazio-3);
+  padding: var(--spazio-2) var(--spazio-4);
+}
+.regole { margin-top: var(--spazio-4); }
+
+/* Anteprima sovrapposta sul telefono */
+.anteprima-puzzle {
+  position: fixed;
+  top: calc(var(--area-minima) * 2 + var(--spazio-4) + var(--spazio-1));
+  right: var(--spazio-3);
+  z-index: 3;
+  width: calc(120px + var(--spazio-2) * 2);
+  max-width: calc(100% - var(--spazio-3) * 2);
+  margin: 0;
+  padding: var(--spazio-2);
+  border-radius: var(--raggio-m);
+  background-color: var(--colore-superficie);
+  box-shadow: var(--ombra-forte);
+  pointer-events: none;
+}
+.anteprima-puzzle img {
+  display: block;
+  width: 120px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: var(--raggio-s);
+  box-shadow: var(--ombra-leggera);
+}
+.anteprima-puzzle figcaption {
+  margin-top: var(--spazio-1);
+  color: var(--colore-testo-tenue);
+  font-size: var(--testo-s);
+}
+
+/* Riepilogo */
+.riepilogo-puzzle {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--spazio-1);
+  margin-block: var(--spazio-2);
+}
+.riepilogo-puzzle > div {
+  min-width: 0;
+  padding: var(--spazio-1);
+  border: 1px solid var(--colore-bordo);
+  border-radius: var(--raggio-s);
+  background-color: var(--colore-sfondo);
+}
+.riepilogo-puzzle span,
+.riepilogo-puzzle strong { display: block; font-size: var(--testo-s); }
+.riepilogo-puzzle span { color: var(--colore-testo-tenue); }
+.riepilogo-puzzle strong { font-variant-numeric: tabular-nums; }
+
+/* Tavola sul telefono */
+body.con-tavola .griglia-puzzle {
+  flex: none;
+  width: min(100%, calc(100svh - var(--spazio-5) * 8));
+  margin-block: 0;
+}
+body.con-tavola .azioni-puzzle { margin-block: 0; gap: var(--spazio-1); }
+body.con-tavola .azioni-puzzle .pulsante {
+  height: var(--area-minima);
+  padding: var(--spazio-1);
+}
+body.con-tavola .riepilogo-puzzle {
+  order: 1;
+  height: var(--area-minima);
+  flex: none;
+  grid-template-columns: auto auto max-content;
+  margin-block: 0;
+}
+body.con-tavola .riepilogo-puzzle > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spazio-1);
+  padding: 0 var(--spazio-1);
+  white-space: nowrap;
+  overflow-wrap: normal;
+}
+body.con-tavola #messaggi {
+  order: 2;
+  display: block;
+  flex: none;
+  min-height: calc(var(--testo-s) * var(--interlinea) + var(--spazio-2) + 2px);
+  margin-block: 0;
+  padding: var(--spazio-1) var(--spazio-3);
+  font-size: var(--testo-s);
+  white-space: nowrap;
+}
+body.con-tavola #messaggi:empty { visibility: hidden; }
+body.con-tavola #nuovaPartita {
+  order: 3;
+  width: 100%;
+  height: var(--area-minima);
+  margin-top: 0;
+  padding: var(--spazio-1) var(--spazio-2);
+}
+
+/* Ripristino degli schermi ampi */
+@media (min-width: 600px) {
+  .contenitore { margin-block: var(--spazio-4); }
+  body.con-tavola #contenitore_gioco.contenitore {
+    width: 100%;
+    border: 0;
+    box-shadow: var(--ombra-forte);
+  }
+  body.con-tavola .griglia-puzzle {
+    width: min(100%, 60svh);
+    margin-block: var(--spazio-3);
+  }
+  body.con-tavola .tabellone:not([hidden]) {
+    margin: 0 0 var(--spazio-4);
+    padding: var(--spazio-3) var(--spazio-2);
+  }
+  body.con-tavola .segnapunti__punti { font-size: var(--testo-xl); }
+  body.con-tavola .azioni-puzzle {
+    margin-block: var(--spazio-3);
+    gap: var(--spazio-2);
+  }
+  body.con-tavola .azioni-puzzle .pulsante { height: auto; padding: var(--spazio-2); }
+  body.con-tavola .riepilogo-puzzle {
+    order: 0;
+    height: auto;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-block: var(--spazio-2);
+  }
+  body.con-tavola .riepilogo-puzzle > div {
+    display: block;
+    padding: var(--spazio-1);
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  body.con-tavola #messaggi {
+    order: 0;
+    min-height: 0;
+    margin-block: var(--spazio-3);
+    padding: var(--spazio-2) var(--spazio-3);
+    font-size: var(--testo-m);
+    white-space: normal;
+  }
+  body.con-tavola #messaggi:empty { display: none; visibility: visible; }
+  body.con-tavola #nuovaPartita {
+    order: 0;
+    width: auto;
+    height: auto;
+    margin-top: var(--spazio-3);
+    padding: var(--spazio-2) var(--spazio-4);
+  }
+  .anteprima-puzzle {
+    position: static;
+    width: calc(160px + var(--spazio-2) * 2);
+    margin: var(--spazio-3) auto;
+  }
+  .anteprima-puzzle img { width: 160px; }
+}
+@media (min-width: 900px) {
+  .contenitore { margin-block: var(--spazio-5); }
+  body.con-tavola .segnapunti__punti { font-size: var(--testo-xl); }
+}
+
+/* Movimento ridotto */
+@media (prefers-reduced-motion: reduce) {
+  .griglia-puzzle--completa > .tassello {
+    opacity: 0;
+    transition: none;
+    animation: none;
+  }
+  .contenitore *,
+  .contenitore *::before,
+  .contenitore *::after {
+    transition: none;
+    animation: none;
+  }
+}

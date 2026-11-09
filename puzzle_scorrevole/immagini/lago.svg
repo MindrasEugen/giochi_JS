@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <!-- Lago di montagna al tramonto: illustrazione originale per il Puzzle scorrevole -->
+  <defs>
+    <linearGradient id="cielo" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2b2d6e"/>
+      <stop offset="0.45" stop-color="#c2507a"/>
+      <stop offset="0.8" stop-color="#f6a35c"/>
+      <stop offset="1" stop-color="#ffd98a"/>
+    </linearGradient>
+    <linearGradient id="acqua" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f2a067"/>
+      <stop offset="0.3" stop-color="#a65a8a"/>
+      <stop offset="1" stop-color="#1f2b5c"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="380" fill="url(#cielo)"/>
+  <!-- stelle nel cielo alto -->
+  <g fill="#fff8d6">
+    <circle cx="40" cy="30" r="2"/><circle cx="120" cy="60" r="1.5"/><circle cx="210" cy="25" r="2"/>
+    <circle cx="330" cy="45" r="1.5"/><circle cx="470" cy="20" r="2"/><circle cx="560" cy="70" r="1.5"/>
+    <circle cx="410" cy="90" r="1.2"/><circle cx="80" cy="110" r="1.2"/>
+  </g>
+  <!-- luna -->
+  <circle cx="500" cy="95" r="28" fill="#fff4c4"/>
+  <circle cx="512" cy="88" r="24" fill="#5a3c86" opacity="0.55"/>
+  <!-- sole che tramonta -->
+  <circle cx="300" cy="330" r="70" fill="#ffe08a"/>
+  <circle cx="300" cy="330" r="52" fill="#fff1b8"/>
+  <!-- nuvole -->
+  <g fill="#ffc6b0" opacity="0.85">
+    <ellipse cx="130" cy="200" rx="70" ry="14"/><ellipse cx="170" cy="190" rx="40" ry="12"/>
+    <ellipse cx="450" cy="230" rx="80" ry="12"/><ellipse cx="420" cy="222" rx="36" ry="10"/>
+  </g>
+  <!-- montagne lontane -->
+  <path d="M0 330 L90 220 L150 280 L230 170 L320 300 L390 210 L470 290 L540 200 L600 260 L600 380 L0 380 Z" fill="#6b4a8c"/>
+  <!-- neve sulle cime -->
+  <path d="M230 170 L205 205 L222 200 L234 212 L250 196 Z M540 200 L520 228 L536 224 L548 234 L560 220 Z M90 220 L72 242 L88 238 L98 248 L108 240 Z" fill="#f5e9ff"/>
+  <!-- montagne vicine -->
+  <path d="M0 380 L0 300 L60 270 L140 340 L200 300 L260 380 Z" fill="#3f2f63"/>
+  <path d="M340 380 L420 290 L470 330 L520 280 L600 330 L600 380 Z" fill="#3f2f63"/>
+  <!-- lago -->
+  <rect y="380" width="600" height="220" fill="url(#acqua)"/>
+  <!-- riflesso del sole -->
+  <g fill="#ffe7a0" opacity="0.8">
+    <rect x="250" y="392" width="100" height="5" rx="2"/><rect x="265" y="410" width="70" height="4" rx="2"/>
+    <rect x="278" y="428" width="44" height="4" rx="2"/><rect x="288" y="446" width="24" height="3" rx="1.5"/>
+  </g>
+  <!-- pini sulla riva sinistra -->
+  <g fill="#1d2a3a">
+    <path d="M20 400 L40 320 L60 400 Z"/><path d="M55 405 L80 300 L105 405 Z"/><path d="M100 400 L118 340 L136 400 Z"/>
+    <rect x="77" y="400" width="6" height="14"/>
+  </g>
+  <!-- casetta con finestra accesa a destra -->
+  <rect x="470" y="352" width="70" height="44" fill="#7a3b2e"/>
+  <path d="M462 356 L505 322 L548 356 Z" fill="#4a2420"/>
+  <rect x="485" y="366" width="16" height="14" fill="#ffd36b"/>
+  <rect x="514" y="370" width="14" height="26" fill="#3a1d18"/>
+  <!-- pontile e barca -->
+  <rect x="380" y="402" width="120" height="8" fill="#5b3a29"/>
+  <g fill="#5b3a29"><rect x="390" y="408" width="5" height="22"/><rect x="440" y="408" width="5" height="22"/><rect x="490" y="408" width="5" height="22"/></g>
+  <path d="M140 500 L260 500 L240 530 L160 530 Z" fill="#c8553d"/>
+  <rect x="198" y="440" width="4" height="60" fill="#3a2a20"/>
+  <path d="M202 444 L245 492 L202 492 Z" fill="#fff3e0"/>
+  <!-- cerchi nell'acqua e anatre -->
+  <g fill="none" stroke="#f7c7a5" stroke-width="2" opacity="0.6">
+    <ellipse cx="450" cy="540" rx="40" ry="8"/><ellipse cx="450" cy="540" rx="22" ry="4"/>
+  </g>
+  <g fill="#2a2440">
+    <ellipse cx="80" cy="560" rx="16" ry="7"/><circle cx="92" cy="552" r="5"/>
+    <ellipse cx="530" cy="480" rx="14" ry="6"/><circle cx="540" cy="473" r="4.5"/>
+  </g>
+  <!-- canne della riva in basso -->
+  <g stroke="#2d3b2a" stroke-width="4" stroke-linecap="round">
+    <path d="M10 600 L20 540"/><path d="M28 600 L30 530"/><path d="M570 600 L560 545"/><path d="M588 600 L592 530"/>
+  </g>
+  <g fill="#6b3f2a"><rect x="16" y="528" width="8" height="20" rx="4"/><rect x="556" y="534" width="8" height="20" rx="4"/></g>
+</svg>

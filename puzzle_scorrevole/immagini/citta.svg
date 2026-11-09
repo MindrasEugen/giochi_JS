@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <!-- Città di notte: illustrazione originale per il Puzzle scorrevole -->
+  <defs>
+    <linearGradient id="cielo" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0b132b"/>
+      <stop offset="0.7" stop-color="#3a506b"/>
+      <stop offset="1" stop-color="#5bc0be"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#cielo)"/>
+  <!-- stelle -->
+  <g fill="#fdf0d5">
+    <circle cx="30" cy="40" r="2"/><circle cx="90" cy="20" r="1.5"/><circle cx="150" cy="70" r="2"/><circle cx="230" cy="30" r="1.5"/>
+    <circle cx="300" cy="90" r="1.2"/><circle cx="360" cy="25" r="2"/><circle cx="560" cy="40" r="1.5"/><circle cx="520" cy="120" r="1.2"/>
+    <circle cx="60" cy="140" r="1.2"/><circle cx="200" cy="130" r="1.5"/>
+  </g>
+  <path d="M250 60 l3 8 l8 0 l-6 5 l2 8 l-7 -5 l-7 5 l2 -8 l-6 -5 l8 0 Z" fill="#ffe066"/>
+  <!-- luna piena -->
+  <circle cx="460" cy="90" r="46" fill="#fff3c4"/>
+  <g fill="#f1dca7"><circle cx="445" cy="78" r="8"/><circle cx="475" cy="105" r="6"/><circle cx="470" cy="70" r="4"/></g>
+  <!-- grattacieli lontani -->
+  <g fill="#1c2541">
+    <rect x="0" y="260" width="60" height="340"/><rect x="60" y="300" width="50" height="300"/><rect x="110" y="220" width="40" height="380"/>
+    <rect x="150" y="280" width="60" height="320"/><rect x="380" y="240" width="50" height="360"/><rect x="430" y="290" width="70" height="310"/>
+    <rect x="500" y="200" width="50" height="400"/><rect x="550" y="270" width="50" height="330"/>
+    <path d="M500 200 L525 150 L550 200 Z"/><rect x="523" y="120" width="4" height="30"/>
+  </g>
+  <circle cx="525" cy="118" r="4" fill="#ef233c"/>
+  <!-- torre con orologio al centro -->
+  <rect x="250" y="180" width="100" height="420" fill="#2b2d42"/>
+  <path d="M240 180 L300 100 L360 180 Z" fill="#3a3d5c"/>
+  <circle cx="300" cy="230" r="30" fill="#fff8dc"/>
+  <g stroke="#2b2d42" stroke-width="4" stroke-linecap="round"><path d="M300 230 L300 210"/><path d="M300 230 L314 238"/></g>
+  <!-- finestre accese -->
+  <g fill="#ffd166">
+    <rect x="10" y="280" width="12" height="16"/><rect x="36" y="320" width="12" height="16"/><rect x="10" y="380" width="12" height="16"/>
+    <rect x="72" y="320" width="10" height="14"/><rect x="90" y="360" width="10" height="14"/><rect x="120" y="250" width="8" height="12"/>
+    <rect x="132" y="300" width="8" height="12"/><rect x="164" y="300" width="12" height="16"/><rect x="186" y="350" width="12" height="16"/>
+    <rect x="266" y="290" width="16" height="20"/><rect x="318" y="290" width="16" height="20"/><rect x="266" y="340" width="16" height="20"/>
+    <rect x="392" y="260" width="10" height="14"/><rect x="410" y="310" width="10" height="14"/><rect x="444" y="310" width="12" height="16"/>
+    <rect x="470" y="350" width="12" height="16"/><rect x="510" y="230" width="10" height="14"/><rect x="530" y="290" width="10" height="14"/>
+    <rect x="562" y="290" width="12" height="16"/><rect x="580" y="340" width="12" height="16"/>
+  </g>
+  <g fill="#9bf6ff"><rect x="36" y="280" width="12" height="16"/><rect x="164" y="380" width="12" height="16"/><rect x="444" y="360" width="12" height="16"/><rect x="318" y="340" width="16" height="20"/></g>
+  <!-- ponte sul fiume -->
+  <rect y="460" width="600" height="140" fill="#14213d"/>
+  <path d="M0 450 Q150 380 300 450 Q450 380 600 450 L600 462 L0 462 Z" fill="#8d99ae"/>
+  <g stroke="#8d99ae" stroke-width="3"><path d="M75 420 L75 450"/><path d="M150 400 L150 450"/><path d="M225 420 L225 450"/><path d="M375 420 L375 450"/><path d="M450 400 L450 450"/><path d="M525 420 L525 450"/></g>
+  <!-- lampioni sul ponte -->
+  <g fill="#ffd166"><circle cx="40" cy="436" r="6"/><circle cx="300" cy="436" r="6"/><circle cx="560" cy="436" r="6"/></g>
+  <!-- riflessi nell'acqua -->
+  <g fill="#ffd166" opacity="0.5">
+    <rect x="30" y="490" width="20" height="4"/><rect x="34" y="510" width="12" height="3"/><rect x="290" y="490" width="20" height="4"/>
+    <rect x="294" y="510" width="12" height="3"/><rect x="550" y="490" width="20" height="4"/><rect x="440" y="530" width="30" height="3"/>
+  </g>
+  <rect x="440" y="510" width="60" height="4" fill="#fff3c4" opacity="0.5"/>
+  <!-- battello illuminato -->
+  <path d="M120 560 L260 560 L240 585 L140 585 Z" fill="#e76f51"/>
+  <rect x="150" y="536" width="80" height="24" fill="#f4a261"/>
+  <g fill="#fff3b0"><rect x="160" y="542" width="12" height="10"/><rect x="184" y="542" width="12" height="10"/><rect x="208" y="542" width="12" height="10"/></g>
+  <rect x="196" y="516" width="8" height="20" fill="#264653"/>
+</svg>

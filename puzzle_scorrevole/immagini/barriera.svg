@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <!-- Pesci nella barriera corallina: illustrazione originale per il Puzzle scorrevole -->
+  <defs>
+    <linearGradient id="acqua" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4cc9f0"/>
+      <stop offset="0.6" stop-color="#4361ee"/>
+      <stop offset="1" stop-color="#3a0ca3"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#acqua)"/>
+  <!-- raggi di luce dalla superficie -->
+  <g fill="#ffffff" opacity="0.12">
+    <path d="M80 0 L140 0 L60 400 L20 400 Z"/><path d="M260 0 L300 0 L280 380 L230 380 Z"/><path d="M450 0 L500 0 L560 360 L510 360 Z"/>
+  </g>
+  <!-- bolle -->
+  <g fill="none" stroke="#e0fbfc" stroke-width="2">
+    <circle cx="520" cy="60" r="10"/><circle cx="535" cy="30" r="6"/><circle cx="510" cy="100" r="5"/>
+    <circle cx="160" cy="240" r="7"/><circle cx="170" cy="210" r="4"/>
+  </g>
+  <!-- pesce pagliaccio grande -->
+  <g>
+    <ellipse cx="300" cy="200" rx="80" ry="46" fill="#ff7b00"/>
+    <path d="M372 200 L430 160 L430 240 Z" fill="#ff7b00"/>
+    <path d="M250 158 Q262 200 250 242 L272 246 Q284 200 272 154 Z" fill="#ffffff"/>
+    <path d="M318 156 Q330 200 318 244 L338 240 Q348 200 338 160 Z" fill="#ffffff"/>
+    <path d="M280 156 Q300 120 330 160 Z" fill="#ff9e00"/>
+    <circle cx="245" cy="190" r="10" fill="#ffffff"/><circle cx="243" cy="190" r="6" fill="#1b1b1b"/>
+    <path d="M228 214 Q238 220 246 214" fill="none" stroke="#7a2e00" stroke-width="3"/>
+  </g>
+  <!-- banco di pesciolini gialli -->
+  <g fill="#ffd60a">
+    <path d="M80 90 q20 -12 40 0 q-20 12 -40 0 Z M120 90 l10 -8 l0 16 Z"/>
+    <path d="M60 130 q20 -12 40 0 q-20 12 -40 0 Z M100 130 l10 -8 l0 16 Z"/>
+    <path d="M110 160 q20 -12 40 0 q-20 12 -40 0 Z M150 160 l10 -8 l0 16 Z"/>
+    <path d="M40 60 q20 -12 40 0 q-20 12 -40 0 Z M80 60 l10 -8 l0 16 Z"/>
+  </g>
+  <!-- pesce blu a destra -->
+  <g>
+    <path d="M440 330 Q500 280 560 330 Q500 380 440 330 Z" fill="#3a86ff"/>
+    <path d="M440 330 L400 300 L408 330 L400 360 Z" fill="#ffbe0b"/>
+    <path d="M480 300 Q500 270 530 305 Z" fill="#1d3557"/>
+    <circle cx="540" cy="324" r="5" fill="#ffffff"/><circle cx="541" cy="324" r="2.5" fill="#1b1b1b"/>
+  </g>
+  <!-- tartaruga in alto a sinistra -->
+  <g>
+    <ellipse cx="120" cy="320" rx="54" ry="34" fill="#588157"/>
+    <path d="M90 300 L120 288 L150 300 L150 340 L120 352 L90 340 Z" fill="#a3b18a" opacity="0.6"/>
+    <circle cx="180" cy="310" r="16" fill="#8db580"/><circle cx="186" cy="306" r="3" fill="#1b1b1b"/>
+    <g fill="#8db580"><ellipse cx="90" cy="290" rx="20" ry="9" transform="rotate(-30 90 290)"/><ellipse cx="150" cy="352" rx="20" ry="9" transform="rotate(30 150 352)"/></g>
+  </g>
+  <!-- fondale di sabbia -->
+  <path d="M0 500 Q150 460 300 500 T600 490 L600 600 L0 600 Z" fill="#f4d58d"/>
+  <!-- coralli e alghe -->
+  <g stroke="#f15bb5" stroke-width="12" stroke-linecap="round" fill="none">
+    <path d="M70 520 L70 440"/><path d="M70 470 L40 430"/><path d="M70 460 L100 420"/>
+  </g>
+  <g stroke="#fb5607" stroke-width="10" stroke-linecap="round" fill="none">
+    <path d="M480 510 L480 420"/><path d="M480 460 L450 410"/><path d="M480 450 L515 400"/><path d="M515 440 L540 420"/>
+  </g>
+  <g stroke="#2a9d8f" stroke-width="8" stroke-linecap="round" fill="none">
+    <path d="M200 520 Q180 470 200 420 Q220 380 200 340"/><path d="M230 520 Q250 470 230 430"/>
+    <path d="M380 520 Q400 460 380 410"/><path d="M570 520 Q550 470 570 430"/>
+  </g>
+  <!-- conchiglia, stella marina e granchio -->
+  <path d="M300 540 l10 22 l24 2 l-18 15 l6 24 l-22 -13 l-22 13 l6 -24 l-18 -15 l24 -2 Z" fill="#ff006e"/>
+  <path d="M120 560 Q140 520 160 560 Z" fill="#ffafcc"/>
+  <g stroke="#ffffff" stroke-width="2" opacity="0.6"><path d="M140 560 L140 534"/><path d="M130 560 L136 538"/><path d="M150 560 L144 538"/></g>
+  <g>
+    <ellipse cx="450" cy="565" rx="26" ry="16" fill="#e63946"/>
+    <circle cx="440" cy="546" r="4" fill="#1b1b1b"/><circle cx="460" cy="546" r="4" fill="#1b1b1b"/>
+    <path d="M424 560 q-20 -10 -16 -26 q10 10 20 14 Z M476 560 q20 -10 16 -26 q-10 10 -20 14 Z" fill="#e63946"/>
+  </g>
+  <!-- sassi -->
+  <g fill="#b08968"><ellipse cx="560" cy="580" rx="30" ry="14"/><ellipse cx="30" cy="585" rx="26" ry="12"/></g>
+</svg>
