@@ -67,6 +67,9 @@ for (let k = 0; k < 200; k++) {
 controlla('l\'immagine nuova è sempre diversa da quella appena giocata', mairipetuta);
 controlla('con una sola immagine si usa quella', P.scegliImmagine([{ file: 'a.svg' }], 'a.svg', caso).file === 'a.svg');
 controlla('tutti i file delle immagini esistono', P.IMMAGINI.every(i => fs.existsSync(path.join(__dirname, 'immagini', i.file))));
+const inCartella = fs.readdirSync(path.join(__dirname, 'immagini')).filter(f => /\.(svg|png|jpe?g|webp)$/i.test(f));
+const mancanti = inCartella.filter(f => !P.IMMAGINI.some(i => i.file === f));
+controlla(`ogni immagine della cartella è nell'elenco (${inCartella.length} file)${mancanti.length ? ': mancano ' + mancanti.join(', ') : ''}`, mancanti.length === 0);
 const usate = new Set(Array.from({ length: 300 }, () => P.scegliImmagine(P.IMMAGINI, null, caso).file));
 controlla('a caso escono tutte le immagini', usate.size === P.IMMAGINI.length);
 

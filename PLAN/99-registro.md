@@ -90,3 +90,4 @@ Ultima modifica: 2026-11-03
 - 2026-11-07 - Tappa 34: Invasione con navetta, scudi e base più in alto nel campo del telefono (stessa regola di Mattoncini), test, prova nel browser e APK. Manca la prova sul telefono.
 - 2026-11-09 - Scritto il piano della Tappa 35 (Puzzle scorrevole: nuovo gioco di logica con immagini, tre livelli, suggerimenti e anteprima), in attesa del via e della scelta delle immagini.
 - 2026-11-09 - Tappa 35: Puzzle scorrevole (6 immagini SVG, logica con suggerimento, pagina, CSS di Codex in tre giri, test, 52 giochi), prova nel browser e APK. Manca la prova sul telefono.
+- 2026-11-09 - Tappa 35: aggiunte all'elenco del Puzzle scorrevole le 12 immagini SVG dell'utente (18 in tutto), test della cartella, APK rigenerato.
